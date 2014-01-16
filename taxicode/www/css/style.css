@@ -1,0 +1,77 @@
+body {
+	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+
+	background-image: url('../img/background.jpg');
+	background-size: auto 480px;
+	background-position: center 0px;
+	background-repeat: no-repeat;
+
+	height: 100%;
+}
+
+#header {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 65px;
+	width: 100%;
+	background-image: url('../img/header.png');
+
+	box-shadow: 0px 0px 2px black;
+}
+
+#app {
+	margin-top: 65px;
+	color: white;
+}
+
+#app h1 {
+	text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	text-align: center;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	height: 46px;
+	width: 100%;
+	background-image: url('../img/header.png');
+
+	font-size: 0px;
+	text-align: center;
+
+}
+
+#footer a {
+	display: inline-block;
+	font-size: 8px;
+	width: 20%;
+	height: 46px;
+	padding: 0px 0px;
+	color: white;
+	cursor: pointer;
+}
+
+#footer a:hover {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+#footer a:active, #footer a:focus {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+#footer a img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 32px;
+	height: 32px;
+}
+
+input {
+	width: 100%;
+	font-size: 14px;
+}
