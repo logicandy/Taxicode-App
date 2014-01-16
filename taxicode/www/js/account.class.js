@@ -6,8 +6,15 @@ var Account = {
 
 	renderAccount : function() {
 
-		$("#app").empty();
-		$("#app").append("<div class='block'>Account Page</div>");
+		App.empty();
+		App.append("<h1>Account Page</h1>");
+
+		var block = $("<div class='block'><h2>You are not currently logged in</h2></div>");
+		var fieldset = $("<div class='fieldset'></div>");
+		fieldset.append("<div class='field'><label>Email</label><input type='email' /></div>");
+		fieldset.append("<div class='field'><label>Password</label><input type='password' /></div>");
+
+		App.append(block.append(fieldset));
 
 	},
 

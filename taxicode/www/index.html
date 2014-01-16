@@ -27,7 +27,9 @@
 		<!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/btn.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/util.js"></script>
+		<script type="text/javascript" src="js/ui.js"></script>
 		<title>Taxicode</title>
 	</head>
 	<body>
@@ -35,10 +37,10 @@
 		<div id="header">
 			<img src="img/logo.png" />
 		</div>
-		<div id="app"></div>
+		<div id="app" class="view"></div>
 
 		<div id="footer">
-			<a data-render="booking"><i></i>Book Journey</a>
+			<a data-render="booking" class="selected"><i></i>Book Journey</a>
 			<a data-render="account"><i></i>My Account</a>
 			<a data-render="bookings"><i></i>View Bookings</a>
 			<a data-render="help"><i></i>Help</a>
@@ -46,7 +48,6 @@
 		</div>
 
 		<script type="text/javascript" src="phonegap.js"></script>
-		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/app.class.js"></script>
 
 		<script type="text/javascript" src="js/booking.class.js"></script>
