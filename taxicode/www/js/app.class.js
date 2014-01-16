@@ -6,7 +6,7 @@ var App = {
 
 		if (typeof StatusBar != "undefined") {
 			StatusBar.styleLightContent();
-			StatusBar.backgroundColorByHexString("#1889D4");
+			StatusBar.overlaysWebView();
 		}
 
 		$("#start-console").click(function() {
