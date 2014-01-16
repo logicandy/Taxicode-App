@@ -1,11 +1,9 @@
 body {
 	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-
 	background-image: url('../img/background.jpg');
 	background-size: auto 480px;
 	background-position: center 0px;
 	background-repeat: no-repeat;
-
 	height: 100%;
 }
 
@@ -13,26 +11,33 @@ body {
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	height: 75px;
+
+	height: 33px;
 	width: 100%;
+	padding: 15px 0px;
+
+	text-align: center;
+
 	background-color: #1889D4;
-	background-image: url('../img/header.png');
+	background-image: url('../img/header2.png');
 	background-position: bottom;
 	background-repeat: repeat-x;
-
 	box-shadow: 0px 0px 2px black;
+
+}
+
+#header img {
+	width: 250px
 }
 
 #app {
-	margin-top: 75px;
+	margin-top: 73px;
 	color: white;
 }
 
-#app h1 {
-	text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+h1, h2, h3, h4, h5, h6, h7 {
 	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	font-weight: normal;
-	text-align: center;
 }
 
 #footer {
@@ -61,17 +66,57 @@ body {
 #footer a:hover { background: rgba(0, 0, 0, 0.1); }
 #footer a:active { background: rgba(0, 0, 0, 0.2); }
 
-#footer a img {
+#footer a i {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	width: 32px;
 	height: 32px;
+	background-size: 32px 64px;
 }
+
+#footer a.selected i {
+	background-position: -32px 0px;
+}
+
+#footer a[data-render=booking] i { background-image: url('../img/icon_book_journey.png'); }
+#footer a[data-render=account] i { background-image: url('../img/icon_account.png'); }
+#footer a[data-render=bookings] i { background-image: url('../img/icon_view_bookings.png'); }
+#footer a[data-render=help] i { background-image: url('../img/icon_help.png'); }
+#footer a[data-render=console] i { background-image: url('../img/icon_console.png'); }
 
 input {
 	width: 100%;
 	font-size: 14px;
+	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+}
+
+input[type=text], input[type=date], input[type=time], select {
+	box-sizing: border-box;
+	padding: 5px 10px;
+	height: 37px;
+
+	line-height: 27px;
+	border: none;
+
+	font-size: 16px;
+
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+	outline: none;
+
+	margin: 0px 0px 10px;
+}
+
+input[type=date], input[type=time] {
+	width: 48%;
+}
+input[type=time] {
+	margin-left: 4%;
+}
+
+select {
+	width: 100%;
 }
 
 #console input {
@@ -84,4 +129,16 @@ input {
 #console input:focus {
 	border-color: red;
 	outline: none;
+}
+
+.block {
+	padding: 10px;
+	background: white;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	color: black;
+}
+
+.block h2 {
+	margin: 0px;
+	text-shadow: none !important;
 }
