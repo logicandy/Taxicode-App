@@ -2,21 +2,24 @@ var App = {
 
 	initialize : function() {
 
+		var $this = this;
+
 		if (typeof StatusBar != "undefined") {
+			StatusBar.styleLightContent();
 			StatusBar.backgroundColorByHexString("#1889D4");
 		}
 
 		$("#start-console").click(function() {
-			this.console;
+			$this.console();
 		});
 		
 	},
 
 	console : function() {
-		$("#app").append("<input type='text' />");
-		$("#app").append("<input type='submit' />");
-		$("#app input:submit").click(function() {
-			eval($("#app input:text").val());
+		$("#console").remove();
+		$("#app").append("<div id='console'><input type='text' /></div>");
+		$("#console input:text").change(function() {
+			eval($("#console input:text").val());
 		});
 	}
 
