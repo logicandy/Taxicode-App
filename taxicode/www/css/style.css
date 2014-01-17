@@ -1,10 +1,26 @@
 body {
 	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	background-image: url('../img/background.jpg');
-	background-size: auto 480px;
+	background-size: auto 600px;
 	background-position: center 0px;
 	background-repeat: no-repeat;
 	height: 100%;
+}
+
+* {
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+#StatusBar {
+	width: 320px;
+	height: 21px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+	background-image: url('../img/statusbar.png');
+	background-size: 320px 21px;
 }
 
 #header {
@@ -14,7 +30,7 @@ body {
 
 	height: 33px;
 	width: 100%;
-	padding: 15px 0px;
+	padding: 20px 0px 10px;
 
 	text-align: center;
 
@@ -49,7 +65,7 @@ h1, h2, h3, h4, h5, h6, h7 {
 }
 
 #footer {
-	position: fixed;
+	position: absolute;
 	bottom: 0px;
 	left: 0px;
 	height: 46px;
@@ -96,10 +112,15 @@ h1, h2, h3, h4, h5, h6, h7 {
 #footer a[data-render=help] i { background-image: url('../img/icon_help.png'); }
 #footer a[data-render=console] i { background-image: url('../img/icon_console.png'); }
 
-input {
+input, select, textarea {
 	width: 100%;
 	font-size: 14px;
-	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	border-radius: 0px;
+	outline: none;
+	background: #FFF;
+	user-select: auto;
+	-webkit-user-select: auto;
 }
 
 input[type=text],
@@ -137,14 +158,23 @@ select {
 
 #console input {
 	border-radius: 0px;
+	border-width: 0px;
 	font-family: Courier;
 	font-weight: light;
-	border: 2px dotted black;
-	color: #990000;
+	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.75);
+	color: #A6E22A;
+	background: #000000;
+	transition: background-color linear 0.3s;
+	width: 100%;
+	resize: none;
+	box-sizing: border-box;
+	outline: none !important;
+	padding: 5px;
+	margin: 5px 0px;
+	font-size: 16px;
 }
 #console input:focus {
-	border-color: red;
-	outline: none;
+	background: #272822;
 }
 
 .block {

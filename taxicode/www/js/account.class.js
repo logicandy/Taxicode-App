@@ -1,29 +1,37 @@
 var Account = {
 
-	first_name : "Nod",
-	last_name : "Godburt",
-	email : "",
+	state : false,
 
-	renderAccount : function() {
+	name : false,
+	first_name : false,
+	last_name : false,
+	email : false,
+	picture : false,
+	locations : false,
 
-		App.empty();
-		App.append("<h1>Account Page</h1>");
+	initialize : function() {
 
-		var block = $("<div class='block'><h2>You are not currently logged in</h2></div>");
-		var fieldset = $("<div class='fieldset'></div>");
-		fieldset.append("<div class='field'><label>Email</label><input type='email' /></div>");
-		fieldset.append("<div class='field'><label>Password</label><input type='password' /></div>");
+		$this = this;
 
-		App.append(block.append(fieldset));
+		$this.state = "loading"
+
+		API.get("user", function(response) {
+			if (response.status == "OK") {
+				$this.state = true;
+				$this.load(response.user);
+			} else {
+				$this.state = false;
+			}
+		});
 
 	},
 
-	viewBookings : function() {
-
-		$("#app").empty();
-		$("#app").append("<div class='block'><h2>Bookings</h2></div>");
-		$("#app .block").append("");
-
+	load : function(user) {
+		$this = this;
+		$.each(user, function(key, value) {
+			$this[key] = value;
+		});
+		$this.state = true;
 	}
 
 };
