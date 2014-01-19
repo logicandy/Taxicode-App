@@ -159,8 +159,11 @@ var Views = {
 				.append("<h3>"+help[i].question+"</h3>")
 				.append("<div>"+help[i].answer+"</div>");
 		}
-
-		$view.find(".block").append("<br/><p><small>Developed by Web3r.</small></p>");
+		$view.find(".block")
+			.append("<br/>")
+			.append("<p><a href='http://www.taxicode.com/' target='_blank'>Taxicode</a></p>")
+			.append("<p><a href='http://www.taxipricecompare.co.uk/' target='_blank'>Taxi Price Compare</a></p>")
+			.append("<p><small>Developed by Web3r.</small></p>");
 		return $view;
 	},
 
@@ -191,6 +194,7 @@ var ViewAnimation = {
 		var duration = 600;
 		$("#app").after(panel);
 
+		$("body").animate({scrollTop: 0}, duration);
 		$("#app2").animate({left: 0}, {duration: duration, queue: false});
 		$("#app").animate({left: -shift}, {duration: duration, queue: false, complete: function() {
 			$("#app").css({left: 0}).empty().append($("#app2").children());

@@ -5,12 +5,16 @@ body {
 	background-position: center 0px;
 	background-repeat: no-repeat;
 	height: 100%;
-	margin-bottom: 60px;
+	margin-bottom: 55px;
 }
 
 * {
 	user-select: none;
 	-webkit-user-select: none;
+}
+
+a, a:active, a:visited {
+	color: #008DD4;
 }
 
 #StatusBar {
@@ -77,8 +81,7 @@ h1, h2, h3, h4, h5, h6, h7 {
 	font-size: 0px;
 	text-align: center;
 
-	z-index: 101;
-
+	z-index: 101#;
 }
 
 #footer a {
