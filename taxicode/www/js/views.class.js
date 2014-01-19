@@ -2,6 +2,8 @@ var Views = {
 
 	render: function(view, effect) {
 
+		window.location.hash = view;
+
 		if (view == "console") {
 			this.console();
 			return false;
@@ -67,8 +69,8 @@ var Views = {
 
 		var fieldset = $("<div class='fieldset'></div>");
 		fieldset.append("<div class='field'><label>Pickup</label><input type='text' data-var='pickup' /></div>");
-		fieldset.append("<div class='field'><label>Via</label><input type='text' data-var='destination' /></div>");
-		fieldset.append("<div class='field'><label>Destination</label><input type='text' placeholder='Optional' data-var='vias' /></div>");
+		fieldset.append("<div class='field'><label>Destination</label><input type='text' data-var='destination' /></div>");
+		fieldset.append("<div class='field'><label>Via</label><input type='text' placeholder='Optional' data-var='vias' /></div>");
 		block.append(fieldset);
 
 		block.append("<input type='date' data-var='pickupDate' min='"+(new Date().format())+"' />");
@@ -116,7 +118,9 @@ var Views = {
 				var fieldset = $("<div class='fieldset'></div>");
 				fieldset.append("<div class='field'><label>Email</label><input type='email' /></div>");
 				fieldset.append("<div class='field'><label>Password</label><input type='password' /></div>");
-				$view.append(block.append(fieldset));
+				block.append(fieldset);
+				block.append("<a class='btn'>Login</a>");
+				$view.append(block);
 				break;
 		}
 		return $view;
@@ -129,8 +133,34 @@ var Views = {
 
 	renderHelp : function($view) {
 		$view.append("<div class='block'><h2>Help</h2></div>");
-		$view.find(".block").append("<p>Welcome to the Taxicode App.</p>");
-		$view.find(".block").append("<p><small>Developed by Web3r.</small></p>");
+
+		var help = [
+			{
+				question: "What is the money back guarantee?",
+				answer: "At Taxicode we only pick the best taxi operators to use our booking system. If you're not 100% completely satisfied with your taxi experience, contact us and we will arrange a full refund for you. Our money back guarantee applies to online bookings only."
+			},
+			{
+				question: "Will I receive a confirmation email?",
+				answer: "Yes, you will receive two emails, the first confirming your booking and the second when the taxi company has recieved your job."
+			},
+			{
+				question: "Can I pay cash?",
+				answer: "Yes you can but you will need to call us and provide us with all the details over the phone. It's quicker and easier to book with us online. To pay cash please call us on {{$site_telephone}}"
+			},
+			{
+				question: "Is the payment secure?",
+				answer: "Yes, this payment is 100% secure and we do not store your card details on our system."
+			}
+		];
+
+		for (var i = 0; i < help.length; i++) {
+			$view.find(".block").append("<div class='expand-block'></div>");
+			$view.find(".block:last .expand-block:last")
+				.append("<h3>"+help[i].question+"</h3>")
+				.append("<div>"+help[i].answer+"</div>");
+		}
+
+		$view.find(".block").append("<br/><p><small>Developed by Web3r.</small></p>");
 		return $view;
 	},
 

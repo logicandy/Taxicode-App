@@ -16,18 +16,7 @@ var App = {
 			StatusBar.overlaysWebView();
 		}
 
-		$("[data-render]").click(function() {
-
-			var render = $(this).attr('data-render');
-
-			$("[data-render]").removeClass('selected');
-			$("[data-render='" + render + "']").addClass('selected');
-
-			Views.render(render, 'slide');
-
-		});
-
-		Views.render('booking2');
+		Views.render(window.location.hash?window.location.hash.substr(1):'booking2');
 		
 	},
 
