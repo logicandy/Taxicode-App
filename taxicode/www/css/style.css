@@ -1,7 +1,7 @@
 body {
 	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	background-image: url('../img/background.jpg');
-	background-size: auto 600px;
+	background-size: cover;
 	background-position: center 0px;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -58,6 +58,10 @@ a, a:active, a:visited {
 #header img {
 	width: 250px
 }
+
+.fixfixed #header, .fixfixed #footer { 
+	position: absolute; 
+} 
 
 .view {
 	position: relative;

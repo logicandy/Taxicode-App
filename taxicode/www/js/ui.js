@@ -29,3 +29,11 @@ $(document).on("click", "[data-render]", function() {
 	// $("#console input").val(val);
 	setTimeout(repeater, 500);
 })();
+
+// Fix input jump problem
+$(document).on('blur', 'input, select, textarea', function() {
+	$('#header, #footer').css({position: 'absolute'});
+});
+$(window).scroll(function() {
+	$('#header, #footer').css({position: 'fixed'});
+});
