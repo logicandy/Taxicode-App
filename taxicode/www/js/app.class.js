@@ -2,6 +2,9 @@ var App = {
 
 	element : $("#app"),
 
+	country : 'United Kingdom',
+	country_code : 'gb',
+
 
 	initialize: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);

@@ -4,27 +4,34 @@ var Views = {
 
 		window.location.hash = view;
 
+		// Get view
 		if (view == "console") {
 			this.console();
 			return false;
 		} else if (typeof this["render"+ucwords(view)] == "function") {
-			view = this["render"+ucwords(view)]($("<div class='view'></div>"))
+			var block = this["render"+ucwords(view)]($("<div class='view'></div>"))
 		} else {
 			alert("View doesn't exist: '"+view+"'");
 			return false;
 		}
 
+		// Setup interactivity
+		if (typeof this["setup"+ucwords(view)] == "function") {
+			this["setup"+ucwords(view)](block);
+		}
+
+		// Transition
 		switch (effect) {
 			case 'slide':
 			case 'slideFromRight':
-				ViewAnimation.slide(view, +1);
+				ViewAnimation.slide(block, +1);
 				break;
 			case 'slideFromLeft':
-				ViewAnimation.slide(view, -1);
+				ViewAnimation.slide(block, -1);
 				break;
 			case 'swap':
 			default:
-				App.empty().append(view);
+				App.empty().append(block);
 				break;
 		}
 
@@ -48,16 +55,6 @@ var Views = {
 		}
 
 		$view.append("<br/><div class='field'><a class='btn'>Get Quote</a></div>");
-
-		$view.find("[data-var]").each(function() {
-			var key = $(this).attr('data-var');
-			$(this).val(Booking[key]);
-		});
-
-		$view.find("[data-var]").change(function() {
-			var key = $(this).attr('data-var');
-			Booking[key] = $(this).val();
-		});
 
 		return $view;
 
@@ -83,19 +80,27 @@ var Views = {
 
 		block.append("<a class='btn'>Get Quote</a>");
 
-		block.find("[data-var]").each(function() {
+		return $view.append(block);
+	},
+
+	setupBooking : function($view) {
+		// Save and load
+		$view.find("[data-var]").each(function() {
 			var key = $(this).attr('data-var');
 			$(this).val(Booking[key]);
 		});
-
-		block.find("[data-var]").change(function() {
+		$view.find("[data-var]").change(function() {
 			var key = $(this).attr('data-var');
 			Booking[key] = $(this).val();
 		});
+		// Autocomplete
+		$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
+			var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: App.country_code}});
+		});
+	},
 
-		return $view.append(block);
-
-
+	setupBooking2 : function ($view) {
+		this.setupBooking($view);
 	},
 
 	renderAccount : function($view) {
