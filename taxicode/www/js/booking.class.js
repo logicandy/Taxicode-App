@@ -14,6 +14,9 @@ var Booking = {
 	returnDate: false,
 	returnTime: false,
 
-	passengers: 1
+	passengers: 1,
+
+	autocomplete: function() {
+	}
 
 };

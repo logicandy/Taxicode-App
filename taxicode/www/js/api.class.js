@@ -22,13 +22,18 @@ var API = {
 				break;
 		}
 
+		console.log(this.api_domain + "/" + (uri ? uri : ""));
+
 		$.ajax({
 			url: this.api_domain + "/" + (uri ? uri : ""),
 			type: "POST",
 			data: data ? data : {},
 			dataType: "jsonp",
-			success: callback ? callback : function(response) {
-				console.log(response);
+			success: function(response) {
+				console.log("API '"+uri+"' response:", response);
+				if (callback) {
+					callback(response);
+				}
 			}
 		});
 
