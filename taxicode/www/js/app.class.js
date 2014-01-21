@@ -5,7 +5,6 @@ var App = {
 	country : 'United Kingdom',
 	country_code : 'gb',
 
-
 	initialize: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
 	},
@@ -18,6 +17,10 @@ var App = {
 			StatusBar.styleLightContent();
 			StatusBar.overlaysWebView();
 		}
+
+		API.getKey();
+
+		User.initialize();
 
 		Views.render(window.location.hash?window.location.hash.substr(1):'booking2');
 		

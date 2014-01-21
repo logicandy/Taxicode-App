@@ -1,8 +1,11 @@
 var Views = {
 
+	current : false,
+
 	render: function(view, effect) {
 
 		window.location.hash = view;
+		this.current = view;
 
 		// Get view
 		if (view == "console") {
@@ -36,6 +39,10 @@ var Views = {
 		}
 
 
+	},
+
+	refresh: function() {
+		this.render(this.current);
 	},
 
 	renderBooking : function($view) {
@@ -107,15 +114,16 @@ var Views = {
 		
 		$view.append("<h1>Account Page</h1>");
 
-		switch (Account.state) {
+		switch (User.state) {
 			case "loading":
-				var block = $("<div class='block'><h2>Loading login...</h2></div>");
+				var block = $("<div class='block padded'><img src='img/loading.gif' /></div>");
 				$view.append(block);
 				break;
 			case true:
 				var block = $("<div class='block'></div>");
-				block.append("<p><center><img src='"+Account.picture+"' /></center></p>");
-				block.append("<p><strong>Name:</strong> "+Account.name+"</p>");
+				block.append("<p><center><img src='"+User.picture+"' /></center></p>");
+				block.append("<p><strong>Name:</strong> "+User.name+"</p>");
+				block.append("<p><a class='btn' data-action='logout'>Logout</a></p>");
 				$view.append(block);
 				break;
 			case false:
@@ -124,11 +132,23 @@ var Views = {
 				fieldset.append("<div class='field'><label>Email</label><input type='email' /></div>");
 				fieldset.append("<div class='field'><label>Password</label><input type='password' /></div>");
 				block.append(fieldset);
-				block.append("<a class='btn'>Login</a>");
+				block.append("<a class='btn' data-action='login'>Login</a>");
 				$view.append(block);
 				break;
 		}
 		return $view;
+	},
+
+	setupAccount : function($view) {
+
+		$view.find("[data-action=login]").click(function() {
+			User.login($view.find("[type=email]").val(), $view.find("[type=password]").val());
+		});
+
+		$view.find("[data-action=logout]").click(function() {
+			User.logout();
+		});
+
 	},
 
 	renderBookings : function($view) {

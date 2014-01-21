@@ -20,7 +20,7 @@ $(document).on("click", "[data-render]", function() {
 	$("[data-render]").removeClass('selected');
 	$("[data-render='" + render + "']").addClass('selected');
 
-	Views.render(render, 'slide');
+	Views.render(render, 'swap');
 
 });
 

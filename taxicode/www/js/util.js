@@ -12,6 +12,16 @@ Date.prototype.format = function() {
 	
 }
 
+Object.size = function(obj) {
+	var size = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			size++;
+		}
+	}
+	return size;
+};
+
 function ucwords(str) {
 	return (str + '').replace(/^([a-z\u00E0-\u00FC])|\s+([a-z\u00E0-\u00FC])/g, function($1) {
 		return $1.toUpperCase();
