@@ -101,9 +101,11 @@ var Views = {
 			Booking[key] = $(this).val();
 		});
 		// Autocomplete
-		$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
-			var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: App.country_code}});
-		});
+		if (typeof google == "object") {
+			$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
+				var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: App.country_code}});
+			});
+		}
 	},
 
 	setupBooking2 : function ($view) {
