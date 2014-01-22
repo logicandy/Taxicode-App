@@ -65,7 +65,7 @@ var API = {
 	},
 
 	encrypt : function (data) {
-		return data;
+		return RSA.encrypt(data, RSA.getPublicKey(this.public_key));
 	},
 
 	getKey : function (callback) {
