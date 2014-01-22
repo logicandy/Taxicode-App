@@ -17,17 +17,23 @@ $(document).on("click", "[data-render]", function() {
 		$(this).attr('data-render', 'booking');
 	}*/
 
-	$("[data-render]").removeClass('selected');
-	$("[data-render='" + render + "']").addClass('selected');
+	if (render != "console") {
+		$("[data-render]").removeClass('selected');
+		$("[data-render='" + render + "']").addClass('selected');
+	}
 
 	Views.render(render, 'swap');
 
 });
 
-(function repeater() {
-	var val = $(window).height() + ' ' + $('body').height();
-	// $("#console input").val(val);
-	setTimeout(repeater, 500);
+(function loaderAnimation() {
+	$(".loader div").each(function() {
+		var pos = parseInt($(this).css("background-position-x"));
+		pos = pos-64;
+		$(this).css("background-position-x", pos+"px");
+	});
+
+	setTimeout(loaderAnimation, 50);
 })();
 
 // Fix input jump problem

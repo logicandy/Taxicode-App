@@ -120,28 +120,13 @@ var Views = {
 		switch (User.state) {
 			case "loading":
 				var block = $("<div class='block padded'><img src='img/loading.gif' /></div>");
+				App.loading();
 				$view.append(block);
 				break;
 			case true:
-				var block = $("<div class='block'></div>");
-				block.append("<p><center><img src='"+User.user.picture+"' /></center></p>");
-				block.append("<p><strong>Name:</strong> "+User.user.name+"</p>");
-				block.append("<p><strong>Email:</strong> "+User.user.email+"</p>");
-				if (User.user.company) {
-					block.append("<p><strong>Company:</strong> "+User.user.company+"</p>");
-				}
-				block.append("<p><a class='btn' data-action='logout'>Logout</a></p>");
-				$view.append(block);
-				break;
+				return Template.render('account/user', User.user);
 			case false:
-				var block = $("<div class='block'><h2>You are not currently logged in</h2></div>");
-				var fieldset = $("<div class='fieldset'></div>");
-				fieldset.append("<div class='field'><label>Email</label><input type='email' /></div>");
-				fieldset.append("<div class='field'><label>Password</label><input type='password' /></div>");
-				block.append(fieldset);
-				block.append("<a class='btn' data-action='login'>Login</a>");
-				$view.append(block);
-				break;
+				return Template.render('account/login');
 		}
 		return $view;
 	},
@@ -164,40 +149,7 @@ var Views = {
 	},
 
 	renderHelp : function($view) {
-
-		$view.append("<div class='block'><h2>Help</h2></div>");
-
-		var help = [
-			{
-				question: "What is the money back guarantee?",
-				answer: "At Taxicode we only pick the best taxi operators to use our booking system. If you're not 100% completely satisfied with your taxi experience, contact us and we will arrange a full refund for you. Our money back guarantee applies to online bookings only."
-			},
-			{
-				question: "Will I receive a confirmation email?",
-				answer: "Yes, you will receive two emails, the first confirming your booking and the second when the taxi company has recieved your job."
-			},
-			{
-				question: "Can I pay cash?",
-				answer: "Yes you can but you will need to call us and provide us with all the details over the phone. It's quicker and easier to book with us online. To pay cash please call us on {{$site_telephone}}"
-			},
-			{
-				question: "Is the payment secure?",
-				answer: "Yes, this payment is 100% secure and we do not store your card details on our system."
-			}
-		];
-
-		for (var i = 0; i < help.length; i++) {
-			$view.find(".block").append("<div class='expand-block'></div>");
-			$view.find(".block:last .expand-block:last")
-				.append("<h3>"+help[i].question+"</h3>")
-				.append("<div>"+help[i].answer+"</div>");
-		}
-		$view.find(".block")
-			.append("<br/>")
-			.append("<p><a href='"+Config.domains.main+"' target='_blank'>Taxicode</a></p>")
-			.append("<p><a href='"+Config.domains.compare+"' target='_blank'>Taxi Price Compare</a></p>")
-			.append("<p><small>Developed by Web3r.</small></p>");
-		return $view;
+		return Template.render('help');
 	},
 
 	console : function() {
@@ -234,17 +186,3 @@ var ViewAnimation = {
 		}});
 	}
 }
-
-function Template(file, block, variables) {
-	$.ajax({
-		url: Config.dirs.views + file + ".tpl",
-		success: function(data) {
-			$.each(variables, function(key, value) {
-				console.log(key, value);
-				data.split("{"+key+"}").join(value);
-			});
-			$(block).html(data);
-		}
-	});
-}
-

@@ -6,7 +6,8 @@ var User = {
 	initialize : function() {
 		$this = this;
 		$this.loadEmpty();
-		$this.state = "loading"
+
+		App.loading();
 
 		API.get("user", {
 			success: function(response) {
@@ -15,6 +16,7 @@ var User = {
 				} else {
 					$this.state = false;
 				}
+				App.stopLoading();
 				$this.refreshView();
 			}
 		});
@@ -36,13 +38,14 @@ var User = {
 		} else {
 			$this.state = false;
 		}
+		App.stopLoading();
 		$this.refreshView();
 	},
 
 	login: function(email, password) {
 
 		$this = this;
-		$this.state = "loading";
+		App.loading();
 		$this.refreshView();
 
 		API.get("user/login", {
@@ -53,12 +56,13 @@ var User = {
 				} else {
 					$this.loadEmpty();
 					$this.state = false;
+					App.stopLoading();
 					$this.refreshView();
 				}
 			},
 			failure: function() {
-				alert('BALLS!');
 				$this.state = false;
+				App.stopLoading();
 				$this.refreshView();
 			}
 		});
@@ -67,7 +71,7 @@ var User = {
 	logout: function() {
 
 		$this = this;
-		$this.state = "loading";
+		App.loading();
 		$this.refreshView();
 
 		API.get("user/logout", {
@@ -75,6 +79,7 @@ var User = {
 				if (response.status == "OK") {
 					$this.loadEmpty();
 					$this.state = false;
+					App.stopLoading();
 				}
 				$this.refreshView();
 			}

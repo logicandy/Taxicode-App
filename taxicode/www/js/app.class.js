@@ -9,7 +9,7 @@ var App = {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
 	},
 
-	onDeviceReady : function() {
+	onDeviceReady: function() {
 
 		var $this = this;
 
@@ -25,6 +25,15 @@ var App = {
 		// Views.render(window.location.hash?window.location.hash.substr(1):'booking2');
 		Views.render('booking2');
 		
+	},
+
+	loading: function() {
+		$("#page-loading").remove();
+		$("body").append("<div id='page-loading'><div class='loader'><div></div></div></div>");
+	},
+
+	stopLoading: function() {
+		$("#page-loading").remove();
 	},
 
 	/* jQuery helpers */
