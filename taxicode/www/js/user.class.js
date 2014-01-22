@@ -1,6 +1,7 @@
 var User = {
 
 	state : false,
+	user : false,
 
 	initialize : function() {
 		$this = this;
@@ -18,19 +19,15 @@ var User = {
 	},
 
 	loadEmpty : function() {
-		this.name =
-		this.first_name =
-		this.last_name =
-		this.email =
-		this.picture =
-		this.locations = false;
+		this.user = false;
 	},
 
 	load : function(user) {
 		if (user) {
 			$this = this;
+			$this.user = {};
 			$.each(user, function(key, value) {
-				$this[key] = value;
+				$this.user[key] = value;
 			});
 			$this.state = true;
 		} else {
@@ -49,6 +46,8 @@ var User = {
 			if (response.status == "OK") {
 				User.load(response.user);
 			} else {
+				$this.loadEmpty();
+				$this.state = false;
 				$this.refreshView();
 			}
 		});
@@ -62,6 +61,7 @@ var User = {
 
 		API.get("user/logout", function(response) {
 			if (response.status == "OK") {
+				$this.loadEmpty();
 				$this.state = false;
 			}
 			$this.refreshView();

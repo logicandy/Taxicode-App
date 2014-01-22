@@ -123,8 +123,12 @@ var Views = {
 				break;
 			case true:
 				var block = $("<div class='block'></div>");
-				block.append("<p><center><img src='"+User.picture+"' /></center></p>");
-				block.append("<p><strong>Name:</strong> "+User.name+"</p>");
+				block.append("<p><center><img src='"+User.user.picture+"' /></center></p>");
+				block.append("<p><strong>Name:</strong> "+User.user.name+"</p>");
+				block.append("<p><strong>Email:</strong> "+User.user.email+"</p>");
+				if (User.user.company) {
+					block.append("<p><strong>Company:</strong> "+User.user.company+"</p>");
+				}
 				block.append("<p><a class='btn' data-action='logout'>Logout</a></p>");
 				$view.append(block);
 				break;

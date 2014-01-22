@@ -228,7 +228,6 @@ var RSA = {
         $data = $data.toString(16);
         while ($data.length < bytes*2)
             $data = '0' + $data;
-//        return Base64.encode($data);
         return Base64.encode(Hex.decode($data));
     },
     pkcs1pad2: function($data, $keysize) {
