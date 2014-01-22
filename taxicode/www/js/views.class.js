@@ -72,9 +72,9 @@ var Views = {
 		var block = $("<div class='block'><h2>Journey</h2></div>");
 
 		var fieldset = $("<div class='fieldset'></div>");
-		fieldset.append("<div class='field'><label>Pickup</label><input type='text' data-var='pickup' /></div>");
-		fieldset.append("<div class='field'><label>Destination</label><input type='text' data-var='destination' /></div>");
-		fieldset.append("<div class='field'><label>Via</label><input type='text' placeholder='Optional' data-var='vias' /></div>");
+		fieldset.append("<div class='field'><label>Pickup</label><input type='text' data-var='pickup' maxlength='100' /></div>");
+		fieldset.append("<div class='field'><label>Destination</label><input type='text' data-var='destination' maxlength='100' /></div>");
+		fieldset.append("<div class='field'><label>Via</label><input type='text' placeholder='Optional' data-var='vias' maxlength='100' /></div>");
 		block.append(fieldset);
 
 		block.append("<input type='date' data-var='pickupDate' min='"+(new Date().format())+"' />");
@@ -100,6 +100,7 @@ var Views = {
 			var key = $(this).attr('data-var');
 			Booking[key] = $(this).val();
 		});
+
 		// Autocomplete
 		if (typeof google == "object") {
 			$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
@@ -163,6 +164,7 @@ var Views = {
 	},
 
 	renderHelp : function($view) {
+
 		$view.append("<div class='block'><h2>Help</h2></div>");
 
 		var help = [
@@ -192,8 +194,8 @@ var Views = {
 		}
 		$view.find(".block")
 			.append("<br/>")
-			.append("<p><a href='http://www.taxicode.com/' target='_blank'>Taxicode</a></p>")
-			.append("<p><a href='http://www.taxipricecompare.co.uk/' target='_blank'>Taxi Price Compare</a></p>")
+			.append("<p><a href='"+Config.domains.main+"' target='_blank'>Taxicode</a></p>")
+			.append("<p><a href='"+Config.domains.compare+"' target='_blank'>Taxi Price Compare</a></p>")
 			.append("<p><small>Developed by Web3r.</small></p>");
 		return $view;
 	},
@@ -210,7 +212,6 @@ var Views = {
 			});
 		}
 	}
-
 
 };
 
@@ -233,3 +234,17 @@ var ViewAnimation = {
 		}});
 	}
 }
+
+function Template(file, block, variables) {
+	$.ajax({
+		url: Config.dirs.views + file + ".tpl",
+		success: function(data) {
+			$.each(variables, function(key, value) {
+				console.log(key, value);
+				data.split("{"+key+"}").join(value);
+			});
+			$(block).html(data);
+		}
+	});
+}
+

@@ -1,42 +1,36 @@
 var API = {
 
-	api_domain : 'http://api:8888',
-
 	public_key : false,
 
-	get : function () {
+	get : function(uri, set_options) {
 
 		var $this = this;
 
-		switch (arguments.length) {
-			case 0:
-				break;
-			case 1:
-				var uri = arguments[0];
-				break;
-			case 2:
-				var uri = arguments[0];
-				var callback = arguments[1];
-				break;
-			case 3:
-			default:
-				var uri = arguments[0];
-				var data = arguments[1];
-				var callback = arguments[2];
-				break;
+		var options = {
+			data: {},
+			success: function () {},
+			failure: function () {}
+		};
+
+		if (set_options) {
+			$.each(set_options, function(option, value) {
+				options[option] = value;
+			});
 		}
 
+		var failure = function() {};
+
 		var ajax = {
-			url: this.api_domain + "/" + (uri ? uri : ""),
+			url: Config.domains.api + (uri ? uri : ""),
 			type: "POST",
-			data: data ? data : {},
+			data: options.data,
 			dataType: "jsonp",
 			success: function(response) {
 				console.log("API '"+uri+"':", response);
-				if (callback) {
-					callback(response);
-				}
-			}
+				options.success(response);
+			},
+			failure: options.failure,
+			error: options.failure
 		};
 
 		// Gets public_key if data needs to be encrypted and public key isn't here.
@@ -54,11 +48,18 @@ var API = {
 		var $this = this;
 		
 		if (Object.size(ajax.data)) {
-			var json = JSON.stringify(ajax.data);
-			ajax.data = {encrypted: $this.encrypt(json)};
+			var encrypted = $this.encrypt(JSON.stringify(ajax.data));
+			if (encrypted) {
+				ajax.data = {encrypted: encrypted};
+			} else {
+				ajax.failure();
+				alert('API Error.');
+				return false;
+			}
 		}
 
 		$.ajax(ajax);
+		return true;
 	},
 
 	encrypt : function (data) {
@@ -68,10 +69,12 @@ var API = {
 
 	getKey : function (callback) {
 		var $this = this;
-		this.get("auth", function(response) {
-			$this.public_key = response.public_key;
-			if (typeof callback == "function") {
-				callback();
+		this.get("auth", {
+			success: function(response) {
+				$this.public_key = response.public_key;
+				if (typeof callback == "function") {
+					callback();
+				}
 			}
 		});
 	}

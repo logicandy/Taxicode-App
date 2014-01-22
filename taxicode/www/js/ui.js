@@ -11,11 +11,11 @@ $(document).on("click", "[data-render]", function() {
 
 	var render = $(this).attr('data-render');
 
-	if (render == "booking") {
+	/*if (render == "booking") {
 		$(this).attr('data-render', 'booking2');
 	} else if (render == "booking2") {
 		$(this).attr('data-render', 'booking');
-	}
+	}*/
 
 	$("[data-render]").removeClass('selected');
 	$("[data-render='" + render + "']").addClass('selected');

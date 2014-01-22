@@ -22,7 +22,8 @@ var App = {
 
 		User.initialize();
 
-		Views.render(window.location.hash?window.location.hash.substr(1):'booking2');
+		// Views.render(window.location.hash?window.location.hash.substr(1):'booking2');
+		Views.render('booking2');
 		
 	},
 

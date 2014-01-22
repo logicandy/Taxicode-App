@@ -8,14 +8,17 @@ var User = {
 		$this.loadEmpty();
 		$this.state = "loading"
 
-		API.get("user", function(response) {
-			if (response.status == "OK") {
-				$this.load(response.user);
-			} else {
-				$this.state = false;
+		API.get("user", {
+			success: function(response) {
+				if (response.status == "OK") {
+					$this.load(response.user);
+				} else {
+					$this.state = false;
+				}
+				$this.refreshView();
 			}
-			$this.refreshView();
 		});
+
 	},
 
 	loadEmpty : function() {
@@ -42,11 +45,19 @@ var User = {
 		$this.state = "loading";
 		$this.refreshView();
 
-		API.get("user/login", {email: email, password: password}, function(response) {
-			if (response.status == "OK") {
-				User.load(response.user);
-			} else {
-				$this.loadEmpty();
+		API.get("user/login", {
+			data: {email: email, password: password},
+			success: function(response) {
+				if (response.status == "OK") {
+					User.load(response.user);
+				} else {
+					$this.loadEmpty();
+					$this.state = false;
+					$this.refreshView();
+				}
+			},
+			failure: function() {
+				alert('BALLS!');
 				$this.state = false;
 				$this.refreshView();
 			}
@@ -59,12 +70,14 @@ var User = {
 		$this.state = "loading";
 		$this.refreshView();
 
-		API.get("user/logout", function(response) {
-			if (response.status == "OK") {
-				$this.loadEmpty();
-				$this.state = false;
+		API.get("user/logout", {
+			success: function(response) {
+				if (response.status == "OK") {
+					$this.loadEmpty();
+					$this.state = false;
+				}
+				$this.refreshView();
 			}
-			$this.refreshView();
 		});
 	},
 
