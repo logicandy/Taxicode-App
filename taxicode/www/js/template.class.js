@@ -28,6 +28,13 @@ var Template = {
 			return false;
 		}
 
+		this.data = data;
+
+		return $(this.processBlock(output));
+	},
+
+	processBlock: function(output) {
+		$this = this;
 		// Evals {{%eval}}
 		output = output.replace(/{{%(.*?)}}/g, function($0, $1) {
 			return eval($1);
@@ -35,25 +42,18 @@ var Template = {
 
 		// Data {{$data}}
 		output = output.replace(/{{\$(.*?)}}/g, function($0, $1) {
-			return eval("data."+$1);
+			return eval("Template.data."+$1);
 		});
 
 		// If block {{#if}} ... {{#endif}}
 		output = output.replace(/{{#if (.*?)}}((.|\n)*?){{#endif}}/g, function($0, $1, $2) {
-			console.log("ARGS",arguments);
-			return eval($1) ? $2 : "";
+			return eval($1) ? $this.processBlock($2) : "";
 		});
 
+		// Foreach block {{#foreach array/obj}} ... {{#endforeach}}
+		// To do
 
-		/*
-			$.each(data?data:{}, function(key, value) {
-				console.log(key, value);
-				output = output.split("{{$"+key+"}}").join(value);
-				//output = output.replace("/{"+key+"}/g", value);
-			});
-		*/
-
-		return $(output);
+		return ouput;
 	}
 
 };
