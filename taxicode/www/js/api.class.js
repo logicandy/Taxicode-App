@@ -53,19 +53,17 @@ var API = {
 	execute : function (ajax) {
 		var $this = this;
 		
-		$.each(ajax.data, function(key, value) {
-			ajax.data[key] = $this.encrypt(value);
-		});
-
 		if (Object.size(ajax.data)) {
-			ajax.encrypted = true;
+			var json = JSON.stringify(ajax.data);
+			ajax.data = {encrypted: $this.encrypt(json)};
 		}
 
 		$.ajax(ajax);
 	},
 
 	encrypt : function (data) {
-		return RSA.encrypt(data, RSA.getPublicKey(this.public_key));
+		var encrypted = RSA.encrypt(data, RSA.getPublicKey(this.public_key));
+		return encrypted;
 	},
 
 	getKey : function (callback) {
