@@ -70,7 +70,6 @@ var Template = {
 
 		// If block {{#if}} ... {{#endif}}
 		output = output.replace(/{{#if (.*?)}}((.|\n)*?){{#endif}}/g, function(pre, condition, block) {
-			console.log('CONF',condition);
 			return eval(condition) ? $this.processBlock(block) : "";
 		});
 

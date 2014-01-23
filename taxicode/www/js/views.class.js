@@ -74,7 +74,7 @@ var Views = {
 		var fieldset = $("<div class='fieldset'></div>");
 		fieldset.append("<div class='field'><label>Pickup</label><input type='text' data-var='pickup' maxlength='100' /></div>");
 		fieldset.append("<div class='field'><label>Destination</label><input type='text' data-var='destination' maxlength='100' /></div>");
-		fieldset.append("<div class='field'><label>Via</label><input type='text' placeholder='Optional' data-var='vias' maxlength='100' /></div>");
+		// fieldset.append("<div class='field'><label>Via</label><input type='text' placeholder='Optional' data-var='vias' maxlength='100' /></div>");
 		block.append(fieldset);
 
 		block.append("<input type='date' data-var='pickupDate' min='"+(new Date().format())+"' />");
@@ -85,7 +85,7 @@ var Views = {
 			block.find("select:last").append("<option value='"+i+"'>"+i+" Passenger"+(i>1?"s":"")+"</option>");
 		}
 
-		block.append("<a class='btn'>Get Quote</a>");
+		block.append("<a class='btn' onclick='Booking.getQuote();'>Get Quote</a>");
 
 		return $view.append(block);
 	},
