@@ -3,6 +3,8 @@ var Config = {
 	app: "taxicode",
 	version: 0.1,
 
+	mode: "developement",
+
 	internalPing: 250,
 	externalPing: 30000,
 

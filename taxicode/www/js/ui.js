@@ -39,3 +39,7 @@ $(document).on('blur', 'input, select, textarea', function() {
 $(window).scroll(function() {
 	$('#header, #footer').css({position: 'fixed'});
 });
+
+$(document).on("change", "#console input:text", function() {
+	eval($("#console input:text").val());
+});

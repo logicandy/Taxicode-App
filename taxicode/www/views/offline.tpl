@@ -12,4 +12,8 @@
 	<br/>
 	<p><a class="btn" onclick="App.loading();App.pingServer(App.stopLoading);">Try Again</a></p>
 
+	{{#if Config.mode=="developement"}}
+		<div id="console"><input type="text" autocapitalize="off" autocorrect="off"></div>
+	{{#endif}}
+
 </div>

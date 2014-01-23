@@ -159,9 +159,6 @@ var Views = {
 		} else {
 			$("#header > *").hide();
 			$("#header").append("<div id='console'><input type='text' autocapitalize='off' autocorrect='off' /></div>");
-			$("#console input:text").change(function() {
-				eval($("#console input:text").val());
-			});
 		}
 	}
 
