@@ -153,8 +153,8 @@ var Views = {
 	},
 
 	console : function() {
-		if ($("#console").length) {
-			$("#console").remove();
+		if ($(".console").length) {
+			$(".console").remove();
 			$("#header > *").show();
 		} else {
 			$("#header > *").hide();
