@@ -2,12 +2,11 @@ var User = {
 
 	state : false,
 	user : false,
+	ready : false,
 
-	initialize : function() {
+	initialize: function() {
 		$this = this;
 		$this.loadEmpty();
-
-		App.loading();
 
 		API.get("user", {
 			success: function(response) {
@@ -16,18 +15,20 @@ var User = {
 				} else {
 					$this.state = false;
 				}
-				App.stopLoading();
 				$this.refreshView();
+			},
+			complete: function() {
+				User.ready = true;
 			}
 		});
 
 	},
 
-	loadEmpty : function() {
+	loadEmpty: function() {
 		this.user = false;
 	},
 
-	load : function(user) {
+	load: function(user) {
 		if (user) {
 			$this = this;
 			$this.user = {};
@@ -44,41 +45,38 @@ var User = {
 
 	login: function(email, password) {
 
-		$this = this;
 		App.loading();
-		$this.refreshView();
-
+		User.refreshView();
 		API.get("user/login", {
 			data: {email: email, password: password},
 			success: function(response) {
 				if (response.status == "OK") {
 					User.load(response.user);
 				} else {
-					$this.loadEmpty();
-					$this.state = false;
+					User.loadEmpty();
+					User.state = false;
 					App.stopLoading();
-					$this.refreshView();
+					User.refreshView();
 				}
 			},
 			failure: function() {
-				$this.state = false;
+				User.state = false;
 				App.stopLoading();
-				$this.refreshView();
+				User.refreshView();
 			}
 		});
 	},
 
 	logout: function() {
 
-		$this = this;
 		App.loading();
-		$this.refreshView();
+		User.refreshView();
 
 		API.get("user/logout", {
 			success: function(response) {
 				if (response.status == "OK") {
-					$this.loadEmpty();
-					$this.state = false;
+					User.loadEmpty();
+					User.state = false;
 					App.stopLoading();
 				}
 				$this.refreshView();

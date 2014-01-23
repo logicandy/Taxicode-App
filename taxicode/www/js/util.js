@@ -27,3 +27,5 @@ function ucwords(str) {
 		return $1.toUpperCase();
 	});
 }
+
+$.jsonp

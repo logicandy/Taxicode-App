@@ -2,8 +2,7 @@ var App = {
 
 	element : $("#app"),
 
-	country : 'United Kingdom',
-	country_code : 'gb',
+	connected : undefined,
 
 	initialize: function() {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
@@ -11,20 +10,42 @@ var App = {
 
 	onDeviceReady: function() {
 
-		var $this = this;
-
 		if (typeof StatusBar != "undefined") {
 			StatusBar.styleLightContent();
 			StatusBar.overlaysWebView();
 		}
 
-		API.getKey();
+		// Startup
 
+		App.loading();
+
+		Template.initialize();
+		App.pingServer(false);
 		User.initialize();
 
-		// Views.render(window.location.hash?window.location.hash.substr(1):'booking2');
-		Views.render('booking2');
+		App.checkReady();
+
 		
+	},
+
+	checkReady: function() {
+		if (Template.ready && User.ready && App.connected != "undefined") {
+			App.onReady();
+		} else {
+			setTimeout(App.checkReady, Config.internalPing);
+		}
+	},
+
+	ready: false,
+	onReady: function() {
+		App.ready = true;
+		Views.render('booking2');
+		if (App.connected) {
+			API.getKey();
+		} else {
+			App.offline();
+		}
+		App.stopLoading();
 	},
 
 	loading: function() {
@@ -34,6 +55,33 @@ var App = {
 
 	stopLoading: function() {
 		$("#page-loading").remove();
+	},
+
+	pingServer: function(callback, renderOfflineWindow) {
+		callback = callback ? callback : function() {};
+		API.get("ping", {
+			success: function() {
+				callback();
+				App.online();
+			},
+			failure: function() {
+				callback();
+				App.offline(typeof renderOfflineWindow == "undefined" ? true : renderOfflineWindow);
+			}
+		});
+	},
+
+	online: function() {
+		$("#offline").remove();
+		App.connected = true;
+	},
+
+	offline: function(renderWindow) {
+		if (renderWindow) {
+			$("#offline").remove();
+			$("body").append(Template.render('offline'));
+		}
+		App.connected = false;
 	},
 
 	/* jQuery helpers */

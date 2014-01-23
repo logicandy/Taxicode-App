@@ -11,11 +11,7 @@ $(document).on("click", "[data-render]", function() {
 
 	var render = $(this).attr('data-render');
 
-	/*if (render == "booking") {
-		$(this).attr('data-render', 'booking2');
-	} else if (render == "booking2") {
-		$(this).attr('data-render', 'booking');
-	}*/
+	// $(this).attr('data-render', render == "booking" ? "booking2" : "booking");
 
 	if (render != "console") {
 		$("[data-render]").removeClass('selected');
@@ -27,12 +23,12 @@ $(document).on("click", "[data-render]", function() {
 });
 
 (function loaderAnimation() {
+	var width = 64;
+	var frames = 12;
 	$(".loader div").each(function() {
 		var pos = parseInt($(this).css("background-position-x"));
-		pos = pos-64;
-		$(this).css("background-position-x", pos+"px");
+		$(this).css("background-position-x", ((pos-width) % (-width*frames))+"px");
 	});
-
 	setTimeout(loaderAnimation, 50);
 })();
 

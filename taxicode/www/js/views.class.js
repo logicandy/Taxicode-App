@@ -104,7 +104,7 @@ var Views = {
 		// Autocomplete
 		if (typeof google == "object") {
 			$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
-				var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: App.country_code}});
+				var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
 			});
 		}
 	},
@@ -184,5 +184,6 @@ var ViewAnimation = {
 			$("#app").css({left: 0}).empty().append($("#app2").children());
 			$("#app2").remove();
 		}});
+
 	}
 }

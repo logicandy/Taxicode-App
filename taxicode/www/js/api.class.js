@@ -1,15 +1,21 @@
 var API = {
 
 	public_key : false,
+	default_retrys: false,
 
-	get : function(uri, set_options) {
+	get : function(uri, set_options, retrys) {
+
+		var retrys = retrys ? retrys : API.default_retrys;
+
+		console.log("retrys:",retrys);
 
 		var $this = this;
 
 		var options = {
 			data: {},
 			success: function () {},
-			failure: function () {}
+			failure: function () {},
+			complete: function () {}
 		};
 
 		if (set_options) {
@@ -27,10 +33,18 @@ var API = {
 			dataType: "jsonp",
 			success: function(response) {
 				console.log("API '"+uri+"':", response);
-				options.success(response);
+
+				if (response.status == "BAD_PUBLIC_KEY") {
+					API.getKey(retrys > 0 ? function() {
+						API.get(uri, set_options, retrys-1);
+					}:options.failure);
+				} else {
+					options.success(response);
+				}
 			},
 			failure: options.failure,
-			error: options.failure
+			error: options.error ? options.error : options.failure,
+			complete: options.complete
 		};
 
 		// Gets public_key if data needs to be encrypted and public key isn't here.
@@ -58,7 +72,7 @@ var API = {
 			}
 		}
 
-		$.ajax(ajax);
+		$.jsonp(ajax);
 		return true;
 	},
 

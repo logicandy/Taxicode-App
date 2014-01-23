@@ -5,7 +5,7 @@
 
 var StatusBar;
 
-setTimeout(function() {
+$(document).ready(function() {
 
 	// Device Ready event
 	var ready = document.createEvent("HTMLEvents");
@@ -17,5 +17,4 @@ setTimeout(function() {
 	StatusBar.styleLightContent = StatusBar.overlaysWebView = function() {};
 	$("body").append(StatusBar);
 
-
-}, 100);
+});

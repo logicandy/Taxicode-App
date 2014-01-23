@@ -3,11 +3,17 @@ var Config = {
 	app: "taxicode",
 	version: 0.1,
 
+	internalPing: 250,
+	externalPing: 30000,
+
 	ds: "/",
 
 	dirs: {
 		views: "views/"
 	},
+
+	country : 'United Kingdom',
+	country_code : 'gb',
 
 	domains: {
 		api: "http://api:8888/",
