@@ -45,6 +45,7 @@ var App = {
 		} else {
 			App.offline();
 		}
+		setTimeout(App.pingRepeat, Config.externalPing);
 		App.stopLoading();
 	},
 
@@ -68,7 +69,12 @@ var App = {
 				callback();
 				App.offline(typeof renderOfflineWindow == "undefined" ? true : renderOfflineWindow);
 			}
-		});
+		}, 0);
+	},
+
+	pingRepeat: function() {
+		App.pingServer();
+		setTimeout(App.pingRepeat, Config.externalPing);
 	},
 
 	online: function() {

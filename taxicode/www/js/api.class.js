@@ -7,8 +7,6 @@ var API = {
 
 		var retrys = retrys ? retrys : API.default_retrys;
 
-		console.log("retrys:",retrys);
-
 		var $this = this;
 
 		var options = {
