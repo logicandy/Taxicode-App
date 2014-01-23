@@ -1,0 +1,19 @@
+body {
+	background-image: url('../img/tpc/bg.jpg');
+}
+
+.logo {
+	display: inline-block;
+
+	width: 250px;
+	height: 34px;
+
+	background-image: url('../img/tpc/logo.png');
+	background-size: 250px 34px;
+
+	margin-top: 4px;
+}
+
+#header, #footer {
+	background: #008DD4;
+}

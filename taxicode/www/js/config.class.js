@@ -1,6 +1,6 @@
 var Config = {
 
-	app: "taxicode",
+	app: window.location.hash == "#tpc" ? "taxipricecompare" : "taxicode",
 	version: 0.1,
 
 	mode: "developement",
@@ -11,7 +11,9 @@ var Config = {
 	ds: "/",
 
 	dirs: {
-		views: "views/"
+		views: "views/",
+		css: "css/",
+		js: "js/"
 	},
 
 	country : 'United Kingdom',

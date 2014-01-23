@@ -23,6 +23,8 @@ var App = {
 		App.pingServer(false);
 		User.initialize();
 
+		App.addCSS(Config.app);
+
 		App.checkReady();
 
 		
@@ -88,6 +90,11 @@ var App = {
 			$("body").append(Template.render('offline'));
 		}
 		App.connected = false;
+	},
+
+	addCSS: function(css) {
+		var file = Config.dirs.css + css + ".css";
+		$('head').append('<link rel="stylesheet" type="text/css" href="'+file+'">');
 	},
 
 	/* jQuery helpers */

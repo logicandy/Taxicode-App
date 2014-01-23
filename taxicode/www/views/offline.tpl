@@ -1,7 +1,7 @@
 <div id="offline">
 
 	<br/>
-	<img src="img/logo_colour.png" />
+	<img src="img/{{%Config.app}}/logo_colour.png" />
 	<br/>
 	<br/>
 
@@ -13,7 +13,7 @@
 	<p><a class="btn" onclick="App.loading();App.pingServer(App.stopLoading);">Try Again</a></p>
 
 	{{#if Config.mode=="developement"}}
-		<div id="console"><input type="text" autocapitalize="off" autocorrect="off"></div>
+		<div class="console"><input type="text" autocapitalize="off" autocorrect="off"></div>
 	{{#endif}}
 
 </div>

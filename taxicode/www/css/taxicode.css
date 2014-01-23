@@ -1,0 +1,18 @@
+body {
+	background-image: url('../img/taxicode/bg.jpg');
+}
+
+.logo {
+	display: inline-block;
+
+	width: 250px;
+	height: 36px;
+
+	background-image: url('../img/taxicode/logo.png');
+	background-size: 250px 36px;
+
+}
+
+#header, #footer {
+	background-image: url('../img/taxicode/header2.png');
+}

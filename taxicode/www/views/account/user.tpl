@@ -1,6 +1,8 @@
-<div class='block'>
+<div class='block center'>
 
-	<p><center><img src='{picture}' /></center></p>
+	{{#if User.user.picture}}
+		<p><center><img src='{{$picture}}' class="user-picture" /></center></p>
+	{{#endif}}
 
 	<p><strong>Name:</strong> {{$name}}</p>
 	<p><strong>Email:</strong> {{$email}}</p>
