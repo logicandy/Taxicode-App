@@ -57,7 +57,7 @@ var Template = {
 	},
 
 	processBlock: function(output) {
-		$this = this;
+
 		// Evals {{%eval}}
 		output = output.replace(/{{%(.*?)}}/g, function(pre, statement) {
 			return eval(statement);
@@ -70,11 +70,19 @@ var Template = {
 
 		// If block {{#if}} ... {{#endif}}
 		output = output.replace(/{{#if (.*?)}}((.|\n)*?){{#endif}}/g, function(pre, condition, block) {
-			return eval(condition) ? $this.processBlock(block) : "";
+			return eval(condition) ? Template.processBlock(block) : "";
 		});
 
 		// Foreach block {{#foreach array/obj}} ... {{#endforeach}}
-		// To do
+		output = output.replace(/{{#foreach (.*?)}}((.|\n)*?){{#endforeach}}/g, function(pre, variable, block) {
+			var ret = "";
+			$.each(variable, function() {
+				var key = Array.isArray(variable) ? arguments[1] : arguments[0];
+				var val = Array.isArray(variable) ? arguments[0] : arguments[1];
+				ret += Template.processBlock(block, {key: key, val: val})
+			});
+			return ret;
+		});
 
 		return output;
 	}
