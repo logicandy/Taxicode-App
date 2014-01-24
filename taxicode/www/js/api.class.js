@@ -13,7 +13,8 @@ var API = {
 			data: {},
 			success: function () {},
 			failure: function () {},
-			complete: function () {}
+			complete: function () {},
+			type: "POST"
 		};
 
 		if (set_options) {
@@ -26,7 +27,7 @@ var API = {
 
 		var ajax = {
 			url: Config.domains.api + (uri ? uri : ""),
-			type: "POST",
+			type: options.type,
 			data: options.data,
 			dataType: "jsonp",
 			success: function(response) {
@@ -46,7 +47,7 @@ var API = {
 		};
 
 		// Gets public_key if data needs to be encrypted and public key isn't here.
-		if (this.public_key || !Object.size(ajax.data)) {
+		if (this.public_key || !Object.size(ajax.data) || ajax.type != "POST") {
 			this.execute(ajax);
 		} else {
 			$this.getKey(function(response) {
@@ -59,7 +60,7 @@ var API = {
 	execute : function (ajax) {
 		var $this = this;
 		
-		if (Object.size(ajax.data)) {
+		if (Object.size(ajax.data) && ajax.type == "POST") {
 			var encrypted = $this.encrypt(JSON.stringify(ajax.data));
 			if (encrypted) {
 				ajax.data = {encrypted: encrypted};
@@ -69,7 +70,7 @@ var API = {
 				return false;
 			}
 		}
-
+		console.log(ajax);
 		$.jsonp(ajax);
 		return true;
 	},
