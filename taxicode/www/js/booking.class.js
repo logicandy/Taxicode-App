@@ -1,28 +1,35 @@
 var Booking = {
 
-	/**
-	 * Booking instance vars
-	 */
+	layout: 1,
 
-	pickup: "",
-	destination: "",
-	vias: "",
+	data: {
+		pickup: "",
+		destination: "",
+		vias: "",
 
-	pickupDate: (new Date().format()),
-	pickupTime: "12:00",
+		pickupDate: (new Date().format()),
+		pickupTime: "12:00",
 
-	returnDate: false,
-	returnTime: false,
+		returnDate: false,
+		returnTime: false,
 
-	passengers: 1,
+		passengers: 1
+	},
+
+	updateData: function() {
+		$(".booking-engine [data-var]").each(function() {
+			Booking.data[$(this).attr('data-var')] = $(this).val();
+		});
+	},
 
 	getQuote: function() {
-		API.get("booking", {
+		Booking.updateData();
+		API.get("booking/quote", {
 			data: {
-				pickup: Booking.pickup,
-				destination: Booking.destination,
-				date: Booking.pickupDate+" "+Booking.pickupTime,
-				people: Booking.passengers	
+				pickup: Booking.data.pickup,
+				destination: Booking.data.destination,
+				date: Booking.data.pickupDate+" "+Booking.data.pickupTime,
+				people: Booking.data.passengers	
 			}
 		});
 	}

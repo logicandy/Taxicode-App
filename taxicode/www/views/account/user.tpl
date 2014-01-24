@@ -10,8 +10,6 @@
 		<p><strong>Company:</strong> {{$company}}</p>
 	{{#endif}}
 
-	<p>{{%Config.app}}</p>
-
 	<p><a class='btn' data-action='logout'>Logout</a></p>
 
 </div>

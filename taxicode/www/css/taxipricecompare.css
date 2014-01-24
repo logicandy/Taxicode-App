@@ -34,3 +34,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.btn:hover, .btn:active {
+	background: #000;
+}

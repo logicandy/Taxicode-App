@@ -50,13 +50,27 @@ var Template = {
 			console.error("Template Error: Load error please check it exists at '" + Config.dirs.views + template + Template.ext + "'");
 			return false;
 		}
-
-		this.data = data;
-
-		return $(this.processBlock(output));
+		return $(this.processBlock(output, data));
 	},
 
-	processBlock: function(output) {
+	processBlock: function(output, data) {
+		Template.data = data;
+
+		// Foreach block {{#foreach variable}} ... {{#endforeach}}
+		output = output.replace(/{{#foreach (.*?)}}((.|\n)*?){{#endforeach}}/g, function(pre, variable, block) {
+			var ret = "";
+			$.each(eval(variable), function() {
+				data.key = Array.isArray(variable) ? arguments[1] : arguments[0];
+				data.val = Array.isArray(variable) ? arguments[0] : arguments[1];
+				ret += Template.processBlock(block, data);
+			});
+			return ret;
+		});
+
+		// If block {{#if condition}} ... {{#endif}}
+		output = output.replace(/{{#if (.*?)}}((.|\n)*?){{#endif}}/g, function(pre, condition, block) {
+			return eval(condition) ? Template.processBlock(block, data) : "";
+		});
 
 		// Evals {{%eval}}
 		output = output.replace(/{{%(.*?)}}/g, function(pre, statement) {
@@ -65,23 +79,7 @@ var Template = {
 
 		// Data {{$data}}
 		output = output.replace(/{{\$(.*?)}}/g, function(pre, variable) {
-			return eval("Template.data."+variable);
-		});
-
-		// If block {{#if}} ... {{#endif}}
-		output = output.replace(/{{#if (.*?)}}((.|\n)*?){{#endif}}/g, function(pre, condition, block) {
-			return eval(condition) ? Template.processBlock(block) : "";
-		});
-
-		// Foreach block {{#foreach array/obj}} ... {{#endforeach}}
-		output = output.replace(/{{#foreach (.*?)}}((.|\n)*?){{#endforeach}}/g, function(pre, variable, block) {
-			var ret = "";
-			$.each(variable, function() {
-				var key = Array.isArray(variable) ? arguments[1] : arguments[0];
-				var val = Array.isArray(variable) ? arguments[0] : arguments[1];
-				ret += Template.processBlock(block, {key: key, val: val})
-			});
-			return ret;
+			return Template.data[variable];
 		});
 
 		return output;

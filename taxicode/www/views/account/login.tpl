@@ -7,6 +7,6 @@
 		<div class='field'><label>Password</label><input type='password' /></div>
 	</div>
 
-	<a class='btn' data-action='login'>Login</a>
+	<center><a class='btn' data-action='login'>Login</a></center>
 
 </div>

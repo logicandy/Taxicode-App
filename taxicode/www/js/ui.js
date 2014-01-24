@@ -34,10 +34,10 @@ $(document).on("click", "[data-render]", function() {
 
 // Fix input jump problem
 $(document).on('blur', 'input, select, textarea', function() {
-	$('#header, #footer').css({position: 'absolute', top: 0});
+	$('#header, #footer').css({position: 'absolute'});
 });
 $(window).scroll(function() {
-	$('#header, #footer').css({position: 'fixed', top: 0});
+	$('#header, #footer').css({position: 'fixed'});
 });
 
 $(document).on("change", ".console input:text", function() {

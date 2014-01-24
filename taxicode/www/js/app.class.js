@@ -26,7 +26,6 @@ var App = {
 		App.addCSS(Config.app);
 
 		App.checkReady();
-
 		
 	},
 
@@ -41,7 +40,7 @@ var App = {
 	ready: false,
 	onReady: function() {
 		App.ready = true;
-		Views.render('booking2');
+		Views.render('booking');
 		if (App.connected) {
 			API.getKey();
 		} else {
@@ -62,8 +61,16 @@ var App = {
 
 	pingServer: function(callback, renderOfflineWindow) {
 		callback = callback ? callback : function() {};
-		API.get("ping", {
-			success: function() {
+		API.get("ping/?v="+Config.version, {
+			success: function(response) {
+				if (response.status == "UPDATE_REQUIRED" || response.status == "BAD_VERSION") {
+					App.alert("An update required is required to continue. Please downloading it.");
+					return false;
+				}
+				if (response.status == "UPDATE_AVAILABLE" && !App.update_alerted) {
+					App.alert('An update is available to download.');
+					App.update_alerted = true;
+				}
 				callback();
 				App.online();
 			},
@@ -95,6 +102,11 @@ var App = {
 	addCSS: function(css) {
 		var file = Config.dirs.css + css + ".css";
 		$('head').append('<link rel="stylesheet" type="text/css" href="'+file+'">');
+	},
+
+	alert: function(data) {
+		// Placeholder function so alerts can be replaced at a later date.
+		alert(data);
 	},
 
 	/* jQuery helpers */

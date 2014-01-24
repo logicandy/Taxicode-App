@@ -196,7 +196,7 @@ input[type=date], input[type=time] {
 }
 
 input[type=date], input[type=time] {
-	width: 48%;
+	width: auto;
 	padding: 0px 0px 0px 5px;
 	font-size: 14px;
 	text-align: center;
