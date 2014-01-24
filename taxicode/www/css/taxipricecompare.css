@@ -17,3 +17,20 @@ body {
 #header, #footer {
 	background: #008DD4;
 }
+
+.btn {
+	font-size: 14px;
+	background: #008DD4;
+	color: white;
+	padding: 10px 20px;
+	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	border: none;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+
+	margin-left: auto;
+	margin-right: auto;
+}

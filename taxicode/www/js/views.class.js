@@ -4,7 +4,7 @@ var Views = {
 
 	render: function(view, effect) {
 
-		window.location.hash = view;
+		//window.location.hash = view;
 		this.current = view;
 
 		// Get view
@@ -68,6 +68,8 @@ var Views = {
 	},
 
 	renderBooking2 : function($view) {
+
+		return Template.render('booking');
 
 		var block = $("<div class='block'><h2>Journey</h2></div>");
 
