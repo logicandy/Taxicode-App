@@ -20,7 +20,6 @@ var App = {
 		App.loading();
 
 		Template.initialize();
-		App.pingServer(false);
 		User.initialize();
 
 		App.addCSS(Config.app);
@@ -30,11 +29,15 @@ var App = {
 	},
 
 	checkReady: function() {
-		if (Template.ready && User.ready && App.connected != "undefined") {
-			App.onReady();
-		} else {
-			setTimeout(App.checkReady, Config.internalPing);
+		if (Template.ready && User.ready) {
+			if (typeof App.connected != "undefined") {
+				App.onReady();
+				return true;
+			} else {
+				App.pingServer(false);
+			}
 		}
+		setTimeout(App.checkReady, Config.internalPing);
 	},
 
 	ready: false,
