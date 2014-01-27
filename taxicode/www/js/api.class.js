@@ -5,7 +5,7 @@ var API = {
 
 	get : function(uri, set_options, retrys) {
 
-		var retrys = retrys ? retrys : API.default_retrys;
+		retrys = retrys ? retrys : API.default_retrys;
 
 		var $this = this;
 
@@ -22,8 +22,6 @@ var API = {
 				options[option] = value;
 			});
 		}
-
-		var failure = function() {};
 
 		var ajax = {
 			url: Config.domains.api + (uri ? uri : ""),

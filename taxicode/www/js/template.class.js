@@ -46,7 +46,7 @@ var Template = {
 			return false;
 		}
 
-		if (this.templates[template] == false) {
+		if (this.templates[template] === false) {
 			console.error("Template Error: Load error please check it exists at '" + Config.dirs.views + template + Template.ext + "'");
 			return false;
 		}
