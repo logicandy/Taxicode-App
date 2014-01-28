@@ -68,7 +68,6 @@ var API = {
 				return false;
 			}
 		}
-		console.log(ajax);
 		$.jsonp(ajax);
 		return true;
 	},

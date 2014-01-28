@@ -120,7 +120,7 @@ h1, h2, h3, h4, h5, h6, h7 {
 }
 
 #footer a {
-	display: inline-block;
+	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
 	font-size: 8px;
 	width: 20%;
 	height: 46px;
@@ -278,7 +278,7 @@ select {
 	padding: 5px;
 	box-sizing: border-box;
 	box-shadow: none;
-	display: inline-block;
+	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
 	outline-offset: 0px;
 }
 
@@ -308,7 +308,7 @@ img[src='img/loading.gif'] {
 }
 
 .loader {
-	display: inline-block;
+	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
 	height: 64px;
 	width: 64px;
 
@@ -321,7 +321,7 @@ img[src='img/loading.gif'] {
 }
 
 .loader div {
-	display: inline-block;
+	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
 	height: 64px;
 	width: 64px;
 

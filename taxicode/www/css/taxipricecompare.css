@@ -3,7 +3,7 @@ body {
 }
 
 .logo {
-	display: inline-block;
+	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
 
 	width: 250px;
 	height: 34px;
@@ -37,4 +37,5 @@ body {
 
 .btn:hover, .btn:active {
 	background: #000;
+	color: white;
 }
