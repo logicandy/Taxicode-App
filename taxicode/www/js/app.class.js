@@ -35,11 +35,14 @@ var App = {
 	},
 
 	checkReady: function() {
-		if (Config.ready) {
-
-		}
-		if (Template.ready && User.ready && Help.ready && typeof App.connected != "undefined") {
-			App.onReady();
+		if (Template.ready && User.ready && Help.ready) {
+			if (typeof App.connected != "undefined") {
+				App.onReady();
+				return true;
+			} else {
+				App.pingServer(false);
+				setTimeout(App.checkReady, Config.internalPing);
+			}
 		} else {
 			setTimeout(App.checkReady, Config.internalPing);
 		}

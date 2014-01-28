@@ -1,7 +1,7 @@
 <div id="offline">
 
 	<br/>
-	<img src="img/{{%Config.app}}/logo_colour.png" />
+	<img src="img/{{%Config.subdir}}/logo_colour.png" />
 	<br/>
 	<br/>
 

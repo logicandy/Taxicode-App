@@ -2,6 +2,7 @@ var Config = {
 
 	app: window.location.hash == "#tpc" ? "taxipricecompare" : "taxicode",
 	title: window.location.hash == "#tpc" ? "Taxi Price Compare" : "Taxicode",
+	subdir: window.location.hash == "#tpc" ? "tpc" : "taxicode",
 
 	version: 0.1,
 
@@ -22,7 +23,7 @@ var Config = {
 	country_code : 'gb',
 
 	domains: {
-		api: "http://api:8888/",
+		api: "http://ap1i:8888/",
 		main: "http://taxicode:8888/",
 		compare: "http://heathrow:8888/"
 	},
