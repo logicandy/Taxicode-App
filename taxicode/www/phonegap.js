@@ -17,4 +17,6 @@ $(document).ready(function() {
 	StatusBar.styleLightContent = StatusBar.overlaysWebView = function() {};
 	$("body").append(StatusBar);
 
+	Config.platform = "browser";
+
 });

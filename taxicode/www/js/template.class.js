@@ -54,21 +54,21 @@ var Template = {
 	},
 
 	processBlock: function(output, data) {
-		Template.data = data;
+		Template.data = data = data ? data : {};
 
 		// Foreach block {{#foreach variable}} ... {{#endforeach}}
-		output = output.replace(/{{#foreach (.*?)}}((.|\n)*?){{#endforeach}}/g, function(pre, variable, block) {
+		output = output.replace(/{{#foreach (.*?)}}((.|\n|\r)*?){{#endforeach}}/g, function(pre, variable, block) {
 			var ret = "";
 			$.each(eval(variable), function() {
-				data.key = Array.isArray(variable) ? arguments[1] : arguments[0];
-				data.val = Array.isArray(variable) ? arguments[0] : arguments[1];
+				data.key = arguments[0];
+				data.val = arguments[1];
 				ret += Template.processBlock(block, data);
 			});
 			return ret;
 		});
 
 		// If block {{#if condition}} ... {{#endif}}
-		output = output.replace(/{{#if (.*?)}}((.|\n)*?){{#endif}}/g, function(pre, condition, block) {
+		output = output.replace(/{{#if (.*?)}}((.|\n|\r)*?){{#endif}}/g, function(pre, condition, block) {
 			return eval(condition) ? Template.processBlock(block, data) : "";
 		});
 

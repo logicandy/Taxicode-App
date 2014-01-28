@@ -19,18 +19,26 @@ var App = {
 
 		App.loading();
 
-		Template.initialize();
-		App.pingServer(false);
-		User.initialize();
+		Config.initialize(function() {
+			
+			Template.initialize();
+			App.pingServer(false);
+			User.initialize();
+			Help.initialize();
 
-		App.addCSS(Config.app);
+			App.addCSS(Config.app);
+			App.checkReady();
 
-		App.checkReady();
+		});
+		
 		
 	},
 
 	checkReady: function() {
-		if (Template.ready && User.ready && App.connected != "undefined") {
+		if (Config.ready) {
+
+		}
+		if (Template.ready && User.ready && Help.ready && typeof App.connected != "undefined") {
 			App.onReady();
 		} else {
 			setTimeout(App.checkReady, Config.internalPing);

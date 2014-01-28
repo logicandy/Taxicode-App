@@ -28,7 +28,7 @@ var Booking = {
 			data: {
 				pickup: Booking.data.pickup,
 				destination: Booking.data.destination,
-				date: Booking.data.pickupDate+" "+Booking.data.pickupTime,
+				date: new Date(Booking.data.pickupDate+" "+Booking.data.pickupTime).getTime()/1000,
 				people: Booking.data.passengers	
 			}
 		});
