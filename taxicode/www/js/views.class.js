@@ -2,7 +2,7 @@ var Views = {
 
 	current : false,
 
-	render: function(view, effect) {
+	render: function(view, effect, params) {
 
 		//window.location.hash = view;
 		this.current = view;
@@ -12,7 +12,7 @@ var Views = {
 			this.console();
 			return false;
 		} else if (typeof this["render"+ucwords(view)] == "function") {
-			var block = this["render"+ucwords(view)]($("<div class='view'></div>"))
+			var block = this["render"+ucwords(view)]($("<div class='view'></div>"), params?params:undefined);
 		} else if (typeof Template.templates[view] != "undefined") {
 			var block = Template.render(view);
 		} else {
@@ -22,7 +22,7 @@ var Views = {
 
 		// Setup interactivity
 		if (typeof this["setup"+ucwords(view)] == "function") {
-			this["setup"+ucwords(view)](block);
+			this["setup"+ucwords(view)](block, params?params:undefined);
 		}
 
 		// Transition
@@ -47,28 +47,67 @@ var Views = {
 		this.render(this.current);
 	},
 
-	renderBooking : function($view) {
-		var passengers = {};
-		for (var i = 1; i <= 30; i++) {
-			passengers[i] = i > 1 ? i + " Passengers" : "1 Passenger";
+	renderBooking : function($view, mode) {
+
+		switch (mode) {
+			case 'results':
+				return Template.render('booking/results', Booking.quotes);
+			case 'quote':
+				return Template.render('booking/quote', {
+					journey: Booking.journey,
+					quote: Booking.quotes[Booking.quote]
+				});
+			case 'form':
+			default:
+				var passengers = {};
+				for (var i = 1; i <= 30; i++) {
+					passengers[i] = i > 1 ? i + " Passengers" : "1 Passenger";
+				}
+				return Template.render('booking', {passengers: passengers});
 		}
-		return Template.render('booking', {passengers: passengers});
+		
 	},
 
-	setupBooking : function($view) {
-		// Save and load
-		$view.find("[data-var]").each(function() {
-			$(this).val(Booking.data[$(this).attr('data-var')]);
-		});
-		$view.find("[data-var]").change(function() {
-			Booking.data[$(this).attr('data-var')] = $(this).val();
-		});
+	setupBooking : function($view, mode) {
+		switch (mode) {
+			case 'results':
+				$view.find(".rating").each(function() {
+					var ratings = parseInt($(this).attr("data-ratings"));
+					if (ratings) {
+						var score = Math.floor(parseFloat($(this).attr("data-score")));
+						$(this).empty();
 
-		// Autocomplete
-		if (typeof google == "object") {
-			$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
-				var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
-			});
+						for (var i = 0; i < score; i++) {
+							$(this).append("<img src='img/star_red.png' />");
+						}
+						for (var i = 0; i < 5-score; i++) {
+							$(this).append("<img src='img/star_grey.png' />");
+						}
+
+						$(this).append("<span>("+ratings+")</span>");
+					} else {
+						$(this).html("No Ratings");
+					}
+				});
+			case 'form':
+			default:
+				
+				// Save and load
+				$view.find("[data-var]").each(function() {
+					$(this).val(Booking.data[$(this).attr('data-var')]);
+				});
+				$view.find("[data-var]").change(function() {
+					Booking.data[$(this).attr('data-var')] = $(this).val();
+				});
+
+				// Autocomplete
+				if (typeof google == "object") {
+					$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
+						var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
+					});
+				}
+
+				break;
 		}
 	},
 
@@ -129,7 +168,7 @@ var ViewAnimation = {
 		var shift = $(document).width() * d;
 		var height = App.element.height();
 
-		panel.attr({id: 'app2'}).css({left: shift, top: -App.element.offset().top-height});
+		var panel = $("<div></div>").append(panel).attr({id: 'app2'}).css({left: shift, top: -App.element.offset().top-height});
 
 		var duration = 600;
 		$("#app").after(panel);

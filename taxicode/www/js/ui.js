@@ -32,6 +32,15 @@ $(document).on("click", "[data-render]", function() {
 	setTimeout(loaderAnimation, 50);
 })();
 
+function addMaps() {
+	$(".map:not([data-loaded])[data-pickup]").each(function() {
+		$(this).journey();
+		$(this).attr('data-loaded', 1);
+	});
+	setTimeout(addMaps, 500);
+};
+google.maps.event.addDomListener(window, 'load', addMaps);
+
 // Fix input jump problem
 $(document).on('blur', 'input, select, textarea', function() {
 	$('#header, #footer').css({position: 'absolute'});

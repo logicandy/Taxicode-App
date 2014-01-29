@@ -3,13 +3,27 @@ var Template = {
 	ext: ".tpl",
 
 	templates: {
+
 		"tutorial/1"		: false,
-		"booking"			: false,
+//		"tutorial/2"		: false,
+
+		"booking/form"		: false,
+		"booking/results"	: false,
+		"booking/quote"		: false,
+		"booking/pay"		: false,
+		"booking/complete"	: false,
+
 		"account/login"		: false,
 		"account/user"		: false,
+
 		"bookings"			: false,
 		"help"				: false,
 		"offline"			: false
+
+	},
+
+	symlinks: {
+		'booking': 'booking/form'
 	},
 
 	loaded: 0,
@@ -40,6 +54,9 @@ var Template = {
 	},
 
 	render: function(template, data) {
+
+		template = typeof Template.symlinks[template] == "undefined" ? template : Template.symlinks[template];
+
 		var output = this.templates[template];
 
 		if (typeof this.templates[template] == "undefined") {
@@ -80,7 +97,7 @@ var Template = {
 
 		// Data {{$data}}
 		output = output.replace(/{{\$(.*?)}}/g, function(pre, variable) {
-			return Template.data[variable];
+			return eval("Template.data."+variable);
 		});
 
 		return output;

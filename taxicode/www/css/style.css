@@ -345,3 +345,47 @@ img[src='img/loading.gif'] {
 .floatl { float: left; }
 .floatr { float: right; }
 
+.result:nth-child(0) {
+	margin-top: 20px;
+}
+.result {
+	border-top: 1px solid #CCC;
+	padding: 15px;
+	margin: 10px -10px -10px;
+	cursor: pointer;
+	display: block;
+}
+.result:hover {
+	background: #F4F4F4;
+}
+
+.result:active {
+	background: #F0F0F0;
+}
+
+.result .price {
+	color: #C93636;
+	font-size: 36px;
+	float: right;
+}
+.quote .price {
+	color: #C93636;
+	margin-top: 10px;
+	font-size: 32px;
+}
+
+.result .rating {
+	font-size: 13px;
+	margin-top: 5px;
+	color: #666;
+}
+.result .rating img {
+	width: 16px;
+	height: 16px;
+	margin-right: 2px;
+	vertical-align: -3px;
+}
+
+.result .rating span {
+	padding-left: 5px;
+}
