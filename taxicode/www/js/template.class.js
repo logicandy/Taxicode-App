@@ -3,6 +3,7 @@ var Template = {
 	ext: ".tpl",
 
 	templates: {
+		"tutorial/1"		: false,
 		"booking"			: false,
 		"account/login"		: false,
 		"account/user"		: false,

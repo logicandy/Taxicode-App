@@ -52,6 +52,7 @@ var User = {
 			success: function(response) {
 				if (response.status == "OK") {
 					User.load(response.user);
+					Config.setting("login_email", email);
 				} else {
 					User.loadEmpty();
 					User.state = false;

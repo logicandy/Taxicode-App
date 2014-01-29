@@ -19,8 +19,7 @@ var Help = {
 			data: {platform: Config.platform, version: Config.settings.faqVersion},
 			success: function(response) {
 				if (response.faq) {
-					Config.settings.faqVersion = response.version;
-					Config.save();
+					Config.setting("faqVersion", response.version);
 					Help.FAQ = response.faq;
 					Help.updateFAQdb();
 					Help.ready = true;

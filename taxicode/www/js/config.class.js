@@ -41,13 +41,35 @@ var Config = {
 		});
 	},
 
+	setting: function(key, value) {
+		if (arguments.length == 2) {
+			Config.settings[key] = value;
+			Config.save();
+		} else {
+			return Config.settings[key];
+		}
+	},
+
+	get: function(key, if_undefined) {
+		var setting = Config.setting(key);
+		return typeof setting == "undefined" ? if_undefined : setting;
+	},
+
+	set: function(key, value) {
+		Config.setting(key, value);
+	},
+
+	remove: function(key) {
+		delete Config.settings[key];
+		Config.save();
+	},
+
 	save: function(success, failure) {
 		DBMC.createTable("SETTINGS", "'setting' TEXT, 'value' TEXT", true, function() {
 			var settings = [];
 			$.each(Config.settings, function(setting, value) {
 				settings.push({setting: setting, value: value});
 			});
-			console.log(settings);
 			DBMC.insert("SETTINGS", settings, success, failure);
 		}, failure, success);
 	},

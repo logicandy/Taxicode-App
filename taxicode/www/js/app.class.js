@@ -51,7 +51,11 @@ var App = {
 	ready: false,
 	onReady: function() {
 		App.ready = true;
-		Views.render('booking');
+		if (!Config.get("tutorial")) {
+			Views.render('tutorial/1');
+		} else {
+			Views.render('booking');
+		}
 		if (App.connected) {
 			API.getKey();
 		} else {

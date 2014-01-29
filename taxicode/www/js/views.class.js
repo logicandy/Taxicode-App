@@ -13,8 +13,10 @@ var Views = {
 			return false;
 		} else if (typeof this["render"+ucwords(view)] == "function") {
 			var block = this["render"+ucwords(view)]($("<div class='view'></div>"))
+		} else if (typeof Template.templates[view] != "undefined") {
+			var block = Template.render(view);
 		} else {
-			alert("View doesn't exist: '"+view+"'");
+			App.alert("View doesn't exist: '"+view+"'");
 			return false;
 		}
 
