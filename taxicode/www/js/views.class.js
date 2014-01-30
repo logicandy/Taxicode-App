@@ -57,6 +57,8 @@ var Views = {
 					journey: Booking.journey,
 					quote: Booking.quotes[Booking.quote]
 				});
+			case 'pay':
+				return Template.render('booking/pay');
 			case 'form':
 			default:
 				var passengers = {};
@@ -91,7 +93,6 @@ var Views = {
 				});
 			case 'form':
 			default:
-				
 				// Save and load
 				$view.find("[data-var]").each(function() {
 					$(this).val(Booking.data[$(this).attr('data-var')]);
@@ -99,14 +100,12 @@ var Views = {
 				$view.find("[data-var]").change(function() {
 					Booking.data[$(this).attr('data-var')] = $(this).val();
 				});
-
 				// Autocomplete
 				if (typeof google == "object") {
 					$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
 						var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
 					});
 				}
-
 				break;
 		}
 	},
@@ -163,12 +162,15 @@ var Views = {
 };
 
 var ViewAnimation = {
+	offset: 28,
 	slide : function (panel, d) {
 
 		var shift = $(document).width() * d;
 		var height = App.element.height();
 
-		var panel = $("<div></div>").append(panel).attr({id: 'app2'}).css({left: shift, top: -App.element.offset().top-height});
+		var panel = $("<div class='view'></div>").append(panel).attr({id: 'app2'}).css({left: shift, top: -height-ViewAnimation.offset});
+
+		console.log('panel', panel.offset(), panel.position());
 
 		var duration = 600;
 		$("#app").after(panel);

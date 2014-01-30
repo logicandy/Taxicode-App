@@ -13,9 +13,9 @@ $(document).ready(function() {
 	document.dispatchEvent(ready);
 
 	// Add StatusBar
-	StatusBar = $("<div id='StatusBar'></div>");
-	StatusBar.styleLightContent = StatusBar.overlaysWebView = function() {};
-	$("body").append(StatusBar);
+	// StatusBar = $("<div id='StatusBar'></div>");
+	// StatusBar.styleLightContent = StatusBar.overlaysWebView = function() {};
+	// $("body").append(StatusBar);
 
 	Config.platform = "browser";
 

@@ -1,5 +1,5 @@
 body {
-	font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	background-size: cover;
 	background-position: center 0px;
 	background-repeat: no-repeat;
@@ -65,7 +65,7 @@ a, a:active, a:visited {
 
 	height: 33px;
 	width: 100%;
-	padding: 20px 0px 10px;
+	padding: 2px 0px 10px;
 
 	text-align: center;
 
@@ -87,7 +87,7 @@ a, a:active, a:visited {
 
 .view {
 	position: relative;
-	margin-top: 46px;
+	margin-top: 28px;
 	color: white;
 }
 
@@ -172,8 +172,10 @@ input::-webkit-input-placeholder {
 }
 
 input[type=text],
+input[type=search],
 input[type=email],
 input[type=password],
+input[type=month],
 input[type=date],
 input[type=time],
 select {
@@ -261,18 +263,23 @@ select {
 	margin: -1px 0px 0px;
 }
 
+.fieldset {
+	text-align: center;
+	padding-bottom: 5px;
+}
+
 .block .field label {
 	width: 30%;
 	text-align: right;
 	color: #666;
 }
 
-.block .field input {
+.block .field input, .block .field select {
 	width: 70%;
 	border-left: 1px solid #CCC;
 }
 
-.block .field input, label {
+.block .field input, .block .field select, .block .field label {
 	font-size: 16px;
 	margin: 0px;
 	padding: 5px;
@@ -345,21 +352,21 @@ img[src='img/loading.gif'] {
 .floatl { float: left; }
 .floatr { float: right; }
 
-.result:nth-child(0) {
+.block-section:nth-child(0) {
 	margin-top: 20px;
 }
-.result {
+.block-section {
 	border-top: 1px solid #CCC;
 	padding: 15px;
 	margin: 10px -10px -10px;
 	cursor: pointer;
 	display: block;
 }
-.result:hover {
+.block-section:hover {
 	background: #F4F4F4;
 }
 
-.result:active {
+.block-section:active {
 	background: #F0F0F0;
 }
 

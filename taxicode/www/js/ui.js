@@ -43,7 +43,8 @@ google.maps.event.addDomListener(window, 'load', addMaps);
 
 // Fix input jump problem
 $(document).on('blur', 'input, select, textarea', function() {
-	$('#header, #footer').css({position: 'absolute'});
+	$('#header').css({position: 'absolute'});
+	$('#footer').css({position: 'absolute'});
 });
 $(window).scroll(function() {
 	$('#header, #footer').css({position: 'fixed'});

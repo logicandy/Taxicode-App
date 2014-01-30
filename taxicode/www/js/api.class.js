@@ -29,7 +29,7 @@ var API = {
 			data: options.data,
 			dataType: "jsonp",
 			success: function(response) {
-				console.log("API '"+uri+"':", response);
+				console.log("["+(new Date().formatTime())+"] API '"+uri+"':", response);
 
 				if (response.status == "BAD_PUBLIC_KEY") {
 					API.getKey(retrys > 0 ? function() {

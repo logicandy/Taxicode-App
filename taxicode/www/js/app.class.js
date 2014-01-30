@@ -11,8 +11,8 @@ var App = {
 	onDeviceReady: function() {
 
 		if (typeof StatusBar != "undefined") {
-			StatusBar.styleLightContent();
-			StatusBar.overlaysWebView();
+			//StatusBar.styleLightContent();
+			//StatusBar.overlaysWebView();
 		}
 
 		// Startup

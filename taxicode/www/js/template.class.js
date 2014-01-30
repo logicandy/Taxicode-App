@@ -55,6 +55,8 @@ var Template = {
 
 	render: function(template, data) {
 
+		data = jQuery.extend(true, {}, data ? data : {});
+
 		template = typeof Template.symlinks[template] == "undefined" ? template : Template.symlinks[template];
 
 		var output = this.templates[template];
@@ -72,7 +74,7 @@ var Template = {
 	},
 
 	processBlock: function(output, data) {
-		Template.data = data = data ? data : {};
+		Template.data = jQuery.extend({}, data ? data : {});
 
 		// Foreach block {{#foreach variable}} ... {{#endforeach}}
 		output = output.replace(/{{#foreach (.*?)}}((.|\n|\r)*?){{#endforeach}}/g, function(pre, variable, block) {

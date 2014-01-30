@@ -12,9 +12,12 @@
 	<p><strong>Destination:</strong> {{$journey.destination.string}}</p>
 	<p><strong>Distance:</strong> {{$journey.distance}} miles</p>
 
-	<p class="center"><a class="btn">Pay By Card</a></p>
-	<p class="center"><a class="btn">Call {{$quote.company_name}}</a></p>
+	<p class="center"><a class="btn" onclick="Booking.pay('card');">Pay By Card</a></p>
+	
+	{{#if Template.data.quote.company_phone}}
+		<p class="center"><a class="btn" href="tel:{{$quote.company_phone}}">Call {{$quote.company_name}}</a></p>
+	{{#endif}}
 
-	<a class="result center" style="color: inherit;" onclick="Views.render('booking','slideFromLeft','results');">Go Back</a>
+	<a class="block-section center" style="color: inherit;" onclick="Views.render('booking','slideFromLeft','results');">Go Back</a>
 
 </div>
