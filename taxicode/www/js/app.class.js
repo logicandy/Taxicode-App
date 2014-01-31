@@ -116,6 +116,7 @@ var App = {
 
 	addCSS: function(css) {
 		var file = Config.dirs.css + css + ".css";
+		$('head').find("link[href='"+file+"']").remove();
 		$('head').append('<link rel="stylesheet" type="text/css" href="'+file+'">');
 	},
 

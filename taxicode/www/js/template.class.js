@@ -10,8 +10,11 @@ var Template = {
 		"booking/form"		: false,
 		"booking/results"	: false,
 		"booking/quote"		: false,
-		"booking/pay"		: false,
 		"booking/complete"	: false,
+
+		"pay/customer"		: false,
+		"pay/card"			: false,
+		"pay/billing"		: false,
 
 		"account/login"		: false,
 		"account/user"		: false,

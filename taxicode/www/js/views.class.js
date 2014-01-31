@@ -57,8 +57,14 @@ var Views = {
 					journey: Booking.journey,
 					quote: Booking.quotes[Booking.quote]
 				});
-			case 'pay':
-				return Template.render('booking/pay');
+
+			case 'customer':
+				return Template.render('pay/customer');
+			case 'card':
+				return Template.render('pay/card');
+			case 'billing':
+				return Template.render('pay/billing');
+
 			case 'form':
 			default:
 				var passengers = {};

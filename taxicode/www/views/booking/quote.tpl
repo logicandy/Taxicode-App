@@ -8,9 +8,28 @@
 
 	<div class="price center">&pound;{{$quote.price.toFixed(2)}}</div>
 
-	<p><strong>Pickup:</strong> {{$journey.pickup.string}}</p>
-	<p><strong>Destination:</strong> {{$journey.destination.string}}</p>
-	<p><strong>Distance:</strong> {{$journey.distance}} miles</p>
+	<table class="info">
+		<tr>
+			<td>Pickup</td>
+			<td>{{$journey.pickup.string}}</td>
+		</tr>
+		<tr>
+			<td>Destination</td>
+			<td>{{$journey.destination.string}}</td>
+		</tr>
+		<tr>
+			<td>Distance</td>
+			<td>{{$journey.distance}}</td>
+		</tr>
+		<tr>
+			<td>People</td>
+			<td>{{$journey.people}}</td>
+		</tr>
+		<tr>
+			<td>Date</td>
+			<td>{{$journey.date}}</td>
+		</tr>
+	</table>
 
 	<p class="center"><a class="btn" onclick="Booking.pay('card');">Pay By Card</a></p>
 	

@@ -396,3 +396,26 @@ img[src='img/loading.gif'] {
 .result .rating span {
 	padding-left: 5px;
 }
+
+table {
+	border-collapse: collapse;
+}
+
+table td {
+	padding: 5px;
+	border: 1px solid #CCC;
+}
+
+.block table {
+	margin-left: -10px;
+	margin-right: -10px;
+}
+table.info tr td {
+	border-right: none;
+}
+table.info tr td:nth-child(1) {
+	text-align: right;
+	color: #666;
+	border-left: none;
+
+}

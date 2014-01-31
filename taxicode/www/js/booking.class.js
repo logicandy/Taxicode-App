@@ -40,7 +40,7 @@ var Booking = {
 				if (response.status == "OK") {
 					Booking.quotes = response.quotes;
 					Booking.journey = response.journey;
-					Views.render('booking','slide','results');
+					Views.render('booking', 'slide', 'results');
 				}
 				App.stopLoading();
 			},
@@ -56,7 +56,7 @@ var Booking = {
 	},
 
 	pay: function() {
-		Views.render('booking', 'slide', 'pay');
+		Views.render('booking', 'slide', 'customer');
 	},
 
 	form_data: {
