@@ -29,7 +29,10 @@
 
 	</div>
 	
-	<a class="block-section center" style="color: inherit;" onclick="Views.render('booking', 'slideFromLeft', 'customer');">Go Back</a>
-	<a class="block-section center" style="color: inherit;" onclick="Views.render('booking', 'slide', 'billing');">Next</a>
+
+	<div class="group" style="margin-bottom: -10px;">
+		<a class="block-section center" style="color: inherit;" onclick="Views.render('booking', 'slideFromLeft', 'customer');">Go Back</a>
+		<a class="block-section center" style="color: inherit;" onclick="Views.render('booking', 'slide', 'billing');">Next</a>
+	</div>
 
 </div>

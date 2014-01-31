@@ -279,6 +279,11 @@ select {
 	border-left: 1px solid #CCC;
 }
 
+.fieldset .field select {
+	padding: 2px !important;
+	box-sizing: border-box;
+}
+
 .block .field input, .block .field select, .block .field label {
 	font-size: 16px;
 	margin: 0px;
@@ -418,4 +423,22 @@ table.info tr td:nth-child(1) {
 	color: #666;
 	border-left: none;
 
+}
+
+.block .group {
+	margin: 0px -10px;
+	font-size: 0px;
+}
+
+.group .block-section {
+	margin: 0px;
+	display: inline-block;
+	box-sizing: border-box;
+	width: 50%;
+	border-left: 1px solid #CCC;
+	font-size: 16px;
+}
+
+.group .block-section:nth-child(0) {
+	border-left: none;
 }

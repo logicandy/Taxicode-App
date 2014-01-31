@@ -19,7 +19,7 @@
 		</tr>
 		<tr>
 			<td>Distance</td>
-			<td>{{$journey.distance}}</td>
+			<td>{{$journey.distance}} miles</td>
 		</tr>
 		<tr>
 			<td>People</td>
