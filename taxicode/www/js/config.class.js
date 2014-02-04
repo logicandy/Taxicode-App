@@ -23,9 +23,12 @@ var Config = {
 	country_code : 'gb',
 
 	domains: {
-		api: "http://api.taxicode.com/",
+		/*api: "http://api.taxicode.com/",
 		main: "http://www.taxicode.com/",
-		compare: "http://www.taxipricecompare.co.uk/"
+		compare: "https://www.taxipricecompare.co.uk/"*/
+		api: "http://api:8888/",
+		main: "http://taxicode:8888/",
+		compare: "http://heathrow:8888/"
 	},
 
 	initialize: function(callback) {

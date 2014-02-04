@@ -15,7 +15,7 @@ Date.prototype.formatTime = function() {
 
 	var hours = this.getHours();
 	var mins = new Date().getMinutes();
-	var secs = new Date().getMinutes();
+	var secs = new Date().getSeconds();
 
 	return (hours < 10 ? "0"+hours : hours) + ":" + (mins < 10 ? "0"+mins : mins) + ":" + (secs < 10 ? "0"+secs : secs);
 }

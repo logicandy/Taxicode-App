@@ -1,17 +1,17 @@
 <div class="block pay">
 
-	<div class="fieldset">
+	<h2>Your Details</h2>
 
-		<h3>Your Details</h3>
+	<div class="fieldset">
 
 		<div class="field">
 			<label>Name</label>
-			<input type="text" maxlength="30" />
+			<input type="text" maxlength="30" value="{{%typeof User.user.name == 'undefined' ? '' : User.user.name}}" />
 		</div>
 
 		<div class="field">
 			<label>Email</label>
-			<input type="email" maxlength="50" />
+			<input type="email" maxlength="50" value="{{%typeof User.user.email == 'undefined' ? '' : User.user.email}}" />
 		</div>
 
 		<div class="field">

@@ -168,15 +168,13 @@ var Views = {
 };
 
 var ViewAnimation = {
-	offset: 28,
+	offset: parseInt(App.element.css('marginTop')),
 	slide : function (panel, d) {
 
 		var shift = $(document).width() * d;
 		var height = App.element.height();
 
 		var panel = $("<div class='view'></div>").append(panel).attr({id: 'app2'}).css({left: shift, top: -height-ViewAnimation.offset});
-
-		console.log('panel', panel.offset(), panel.position());
 
 		var duration = 600;
 		$("#app").after(panel);

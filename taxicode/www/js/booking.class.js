@@ -40,6 +40,7 @@ var Booking = {
 				if (response.status == "OK") {
 					Booking.quotes = response.quotes;
 					Booking.journey = response.journey;
+					Booking.form_data.card_types = response.card;
 					Views.render('booking', 'slide', 'results');
 				}
 				App.stopLoading();
@@ -309,14 +310,7 @@ var Booking = {
 			ZM : 'Zambia',
 			ZW : 'Zimbabwe'
 		},
-		card_types: {
-			VISA : "Visa Credit",
-			DELTA : "Visa Debit",
-			UKE : "Visa Electron",
-			MC : "MasterCard",
-			MAESTRO : "Maestro",
-			AMEX : "American Express"
-		}
+		card_types: false
 	}
 
 };

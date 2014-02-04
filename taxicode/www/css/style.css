@@ -87,7 +87,7 @@ a, a:active, a:visited {
 
 .view {
 	position: relative;
-	margin-top: 28px;
+	margin-top: 53px;
 	color: white;
 }
 
@@ -366,6 +366,7 @@ img[src='img/loading.gif'] {
 	margin: 10px -10px -10px;
 	cursor: pointer;
 	display: block;
+	color: black;
 }
 .block-section:hover {
 	background: #F4F4F4;
@@ -373,6 +374,12 @@ img[src='img/loading.gif'] {
 
 .block-section:active {
 	background: #F0F0F0;
+}
+
+.block-section.disabled, .block-section.disabled:focus, .block-section.disabled:active {
+	background: white;
+	color: #999;
+	cursor: not-allowed;
 }
 
 .result .price {
@@ -441,4 +448,23 @@ table.info tr td:nth-child(1) {
 
 .group .block-section:nth-child(0) {
 	border-left: none;
+}
+
+.help {
+	display: inline-block;
+	background: #999;
+	color: #FFF;
+	height: 18px;
+	width: 18px;
+	text-align: center;
+	border-radius: 9px;
+	cursor: pointer;
+}
+
+.help:focus, .help:hover {
+	background: #777;
+}
+
+.help:active {
+	background: #555;
 }
