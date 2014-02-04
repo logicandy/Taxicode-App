@@ -79,7 +79,7 @@ var Config = {
 
 	settings: {
 		// Defaults
-		faqVersion: 0.1
+		faqVersion: 0.0
 	}
 
 };
