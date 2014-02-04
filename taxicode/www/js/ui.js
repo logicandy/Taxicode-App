@@ -10,16 +10,17 @@ $(document).on("click", ".expand-block > h3", function() {
 $(document).on("click", "[data-render]", function() {
 
 	var render = $(this).attr('data-render');
-
-	// $(this).attr('data-render', render == "booking" ? "booking2" : "booking");
-
 	if (render != "console") {
 		$("[data-render]").removeClass('selected');
 		$("[data-render='" + render + "']").addClass('selected');
 	}
-
 	Views.render(render, 'swap');
 
+});
+
+
+$(document).on("click", ".alert [data-action=close]", function() {
+	$(this).closest(".alert").remove();
 });
 
 (function loaderAnimation() {

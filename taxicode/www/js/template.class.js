@@ -21,7 +21,8 @@ var Template = {
 
 		"bookings"			: false,
 		"help"				: false,
-		"offline"			: false
+		"offline"			: false,
+		"alert"				: false
 
 	},
 

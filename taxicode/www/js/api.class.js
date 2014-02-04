@@ -3,25 +3,17 @@ var API = {
 	public_key : false,
 	default_retrys: false,
 
-	get : function(uri, set_options, retrys) {
+	get : function(uri, options, retrys) {
 
 		retrys = retrys ? retrys : API.default_retrys;
 
-		var $this = this;
-
-		var options = {
+		options = $.extend({
 			data: {},
-			success: function () {},
-			failure: function () {},
-			complete: function () {},
+			success: function() {},
+			failure: function() {},
+			complete: function() {},
 			type: "POST"
-		};
-
-		if (set_options) {
-			$.each(set_options, function(option, value) {
-				options[option] = value;
-			});
-		}
+		}, options);
 
 		var ajax = {
 			url: Config.domains.api + (uri ? uri : ""),
@@ -30,7 +22,7 @@ var API = {
 			dataType: "jsonp",
 			success: function(response) {
 				console.log("["+(new Date().formatTime())+"] API '"+uri+"':", response);
-
+				
 				if (response.status == "BAD_PUBLIC_KEY") {
 					API.getKey(retrys > 0 ? function() {
 						API.get(uri, set_options, retrys-1);
@@ -38,6 +30,7 @@ var API = {
 				} else {
 					options.success(response);
 				}
+				
 			},
 			failure: options.failure,
 			error: options.error ? options.error : options.failure,
@@ -48,8 +41,8 @@ var API = {
 		if (this.public_key || !Object.size(ajax.data) || ajax.type != "POST") {
 			this.execute(ajax);
 		} else {
-			$this.getKey(function(response) {
-				$this.execute(ajax);
+			API.getKey(function(response) {
+				API.execute(ajax);
 			});
 		}
 

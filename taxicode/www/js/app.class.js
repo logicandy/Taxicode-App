@@ -120,9 +120,86 @@ var App = {
 		$('head').append('<link rel="stylesheet" type="text/css" href="'+file+'">');
 	},
 
-	alert: function(data) {
-		// Placeholder function so alerts can be replaced at a later date.
-		alert(data);
+	/* System alert box function */
+	alert: function(data, settings) {
+
+		// Default settings - no title - one button that says OK and closes window
+		settings = $.extend({
+			options: {OK: function() {
+				$(this).closest('.alert').remove();
+			}},
+			title: false,
+			prompt: false
+		}, settings);
+
+		// Create alert box HTML with a template
+		var alert = Template.render('alert', {
+			title: settings.title,
+			data: data,
+			options: $.map(settings.options, function(e, i) { return i; }),
+			prompt: settings.prompt
+		});
+
+		// Add functionality to the alert buttons
+		$.each(settings.options, function(key, func) {
+			alert.find(".option[data-id='"+key+"']").click(func);
+		});
+
+		// Add prompt input field
+		if (settings.prompt) {
+			alert.find("input.prompt").keypress(function(e) {
+				if (e.keyCode == 13) {
+					settings.prompt(this);
+				}
+			});
+		}
+
+		// Add the page
+		$("body").append(alert);
+
+		// Focus on prompt field
+		if (settings.prompt) {
+			alert.find("input.prompt").focus();
+		}
+
+		// Returns alert
+		return alert;
+	},
+
+	confirm: function(data, callback) {
+		callback = typeof callback == "function" ? callback : function() {};
+		App.alert(data, {options: {
+			Cancel : function() {
+				$(this).closest('.alert').remove();
+				callback(false);
+			},
+			OK : function() {
+				$(this).closest('.alert').remove();
+				callback(true);
+			}
+		}});
+	},
+
+	prompt: function(data, callback) {
+		callback = typeof callback == "function" ? callback : function() {};
+		App.alert(data, {
+			prompt: function(element) {
+				var val = $(element).val();
+				$(element).closest('.alert').remove();
+				callback(val);
+			},
+			options: {
+				Cancel : function() {
+					$(this).closest('.alert').remove();
+					callback(null);
+				},
+				OK : function() {
+					var val = $(this).closest('.alert').find("input.prompt").val();
+					$(this).closest('.alert').remove();
+					callback(val);
+				},
+			}
+		});
 	},
 
 	/* jQuery helpers */
