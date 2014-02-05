@@ -18,7 +18,6 @@ $(document).on("click", "[data-render]", function() {
 
 });
 
-
 $(document).on("click", ".alert [data-action=close]", function() {
 	$(this).closest(".alert").remove();
 });
@@ -40,7 +39,9 @@ function addMaps() {
 	});
 	setTimeout(addMaps, 500);
 };
-google.maps.event.addDomListener(window, 'load', addMaps);
+if (typeof google != "undefined") {
+	google.maps.event.addDomListener(window, 'load', addMaps);
+}
 
 // Fix input jump problem
 $(document).on('blur', 'input, select, textarea', function() {
@@ -51,6 +52,6 @@ $(window).scroll(function() {
 	$('#header, #footer').css({position: 'fixed'});
 });
 
-$(document).on("change", ".console input:text", function() {
+$(document).on("change", ".console input", function() {
 	eval($(this).val());
 });

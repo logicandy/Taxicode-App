@@ -156,13 +156,17 @@ var Views = {
 	},
 
 	console : function() {
-		if ($(".console").length) {
-			$(".console").remove();
-			$("#header > *").show();
-		} else {
-			$("#header > *").hide();
-			$("#header").append("<div class='console'><input type='text' autocapitalize='off' autocorrect='off' /></div>");
-		}
+		App.alert("<div class='console'><input type='text' autocapitalize='off' autocorrect='off' style='width: 255px;'/></div>", {
+			title: "Console",
+			options: {
+				Cancel: function() {
+					$(this).closest(".alert").remove();
+				},
+				Execute: function() {
+					$(this).closest(".alert").find(".console input").change();
+				}
+			}
+		});
 	}
 
 };
