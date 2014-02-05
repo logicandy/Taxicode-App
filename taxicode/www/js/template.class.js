@@ -22,7 +22,8 @@ var Template = {
 		"bookings"			: false,
 		"help"				: false,
 		"offline"			: false,
-		"alert"				: false
+		"alert"				: false,
+		"errors"			: false
 
 	},
 
@@ -74,7 +75,7 @@ var Template = {
 			console.error("Template Error: Load error please check it exists at '" + Config.dirs.views + template + Template.ext + "'");
 			return false;
 		}
-		return $(this.processBlock(output, data));
+		return $("<div class='template'></div>").append(Template.processBlock(output, data));
 	},
 
 	processBlock: function(output, data) {

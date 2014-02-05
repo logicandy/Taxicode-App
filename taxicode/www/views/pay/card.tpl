@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="field">
-			<label>CV2 <span class="help" data-help="">?</span></label>
+			<label>CV2 <span class="help" data-help="The CV2 code is the last 3 digits on the back of your card normally found in the signature strip.">?</span></label>
 			<input type="text" maxlength="3" placeholder="xxx" />
 		</div>
 
@@ -37,7 +37,7 @@
 	
 
 	<div class="group" style="margin-bottom: -10px;">
-		<a class="block-section center" onclick="Views.render('booking', 'slideFromLeft', 'customer');">Go Back</a>
+		<a class="block-section center first" onclick="Views.render('booking', 'slideFromLeft', 'customer');">Go Back</a>
 		<a class="block-section center disabled" onclick="Views.render('booking', 'slide', 'billing');">Next</a>
 	</div>
 

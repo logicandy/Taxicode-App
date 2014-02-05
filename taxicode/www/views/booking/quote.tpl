@@ -8,28 +8,32 @@
 
 	<div class="price center">&pound;{{$quote.price.toFixed(2)}}</div>
 
-	<table class="info">
-		<tr>
-			<td>Pickup</td>
-			<td>{{$journey.pickup.string}}</td>
-		</tr>
-		<tr>
-			<td>Destination</td>
-			<td>{{$journey.destination.string}}</td>
-		</tr>
-		<tr>
-			<td>Distance</td>
-			<td>{{$journey.distance}} miles</td>
-		</tr>
-		<tr>
-			<td>People</td>
-			<td>{{$journey.people}}</td>
-		</tr>
-		<tr>
-			<td>Date</td>
-			<td>{{$journey.date}}</td>
-		</tr>
-	</table>
+	<div class="full">
+		<table class="info">
+			<tr>
+				<td>Pickup</td>
+				<td>{{$journey.pickup.string}}</td>
+			</tr>
+			<tr>
+				<td>Destination</td>
+				<td>{{$journey.destination.string}}</td>
+			</tr>
+			<tr>
+				<td>Distance</td>
+				<td>{{$journey.distance}} miles</td>
+			</tr>
+			<tr>
+				<td>People</td>
+				<td>{{$journey.people}}</td>
+			</tr>
+			<tr>
+				<td>Date</td>
+				<td>
+					{{%new Date(Template.data.journey.date).format('D, jS M Y \\a\\t g:ia')}}
+				</td>
+			</tr>
+		</table>
+	</div>
 
 	<p class="center"><a class="btn" onclick="Booking.pay('card');">Pay By Card</a></p>
 	

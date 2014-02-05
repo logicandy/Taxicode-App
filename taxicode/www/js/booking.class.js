@@ -7,8 +7,8 @@ var Booking = {
 		destination: "",
 		vias: "",
 
-		pickupDate: (new Date().format()),
-		pickupTime: "12:00",
+		pickup_date: (new Date().format()),
+		pickup_time: "12:00",
 
 		returnDate: false,
 		returnTime: false,
@@ -33,7 +33,7 @@ var Booking = {
 			data: {
 				pickup: Booking.data.pickup,
 				destination: Booking.data.destination,
-				date: new Date(Booking.data.pickupDate+" "+Booking.data.pickupTime).getTime()/1000,
+				date: new Date(Booking.data.pickup_date+" "+Booking.data.pickup_time).getTime()/1000,
 				people: Booking.data.passengers	
 			},
 			success: function(response) {
@@ -58,6 +58,16 @@ var Booking = {
 
 	pay: function() {
 		Views.render('booking', 'slide', 'customer');
+	},
+
+	validate: function(form) {
+		switch (form) {
+			case 'customer':
+				App.element.find("")
+
+				Views.render('booking', 'slide', 'card');
+				break;
+		}
 	},
 
 	form_data: {

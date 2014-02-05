@@ -96,6 +96,10 @@ a, a:active, a:visited {
 	text-align: center;
 }
 
+.template {
+	display: inline;
+}
+
 h1, h2, h3, h4, h5, h6, h7 {
 	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	font-weight: normal;
@@ -174,6 +178,7 @@ input::-webkit-input-placeholder {
 input[type=text],
 input[type=search],
 input[type=email],
+input[type=tel],
 input[type=password],
 input[type=month],
 input[type=date],
@@ -337,6 +342,7 @@ img[src='img/loading.gif'] {
 	padding: 15px;
 	max-height: 300px;
 	overflow-y: auto;
+	line-height: 26px;
 }
 
 .alert > .inner > .footer { display: table; width: 100%; }
@@ -425,6 +431,7 @@ img[src='img/loading.gif'] {
 	margin-top: 20px;
 }
 .block-section {
+	border-width: 0px;
 	border-top: 1px solid #CCC;
 	padding: 15px;
 	margin: 10px -10px -10px;
@@ -475,6 +482,7 @@ img[src='img/loading.gif'] {
 
 table {
 	border-collapse: collapse;
+	width: 100%;
 }
 
 table td {
@@ -482,7 +490,7 @@ table td {
 	border: 1px solid #CCC;
 }
 
-.block table {
+.block .full {
 	margin-left: -10px;
 	margin-right: -10px;
 }
@@ -493,7 +501,6 @@ table.info tr td:nth-child(1) {
 	text-align: right;
 	color: #666;
 	border-left: none;
-
 }
 
 .block .group {
@@ -505,12 +512,15 @@ table.info tr td:nth-child(1) {
 	margin: 0px;
 	display: inline-block;
 	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	width: 50%;
+	border: none;
+	border-top: 1px solid #CCC;
 	border-left: 1px solid #CCC;
 	font-size: 16px;
 }
 
-.group .block-section:nth-child(0) {
+.group .block-section.first {
 	border-left: none;
 }
 

@@ -1,8 +1,8 @@
 <div class="block pay">
 
-	<div class="fieldset">
+	<h2>Billing Address</h2>
 
-		<h3>Billing Address</h3>
+	<div class="fieldset">
 
 		<div class="field">
 			<label>Address 1</label>
@@ -36,8 +36,8 @@
 	</div>
 
 	<div class="group" style="margin-bottom: -10px;">
-		<a class="block-section center" style="color: inherit;" onclick="Views.render('booking', 'slideFromLeft', 'card');">Go Back</a>
-		<a class="block-section center" style="color: inherit;" onclick="Views.render('booking', 'slideFromLeft', 'billing');">Next</a>
+		<a class="block-section center first" onclick="Views.render('booking', 'slideFromLeft', 'card');">Go Back</a>
+		<a class="block-section center" onclick="Views.render('booking', 'slideFromLeft', 'billing');">Next</a>
 	</div>
 	
 </div>

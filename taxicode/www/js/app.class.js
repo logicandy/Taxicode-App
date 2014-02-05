@@ -168,7 +168,7 @@ var App = {
 
 	confirm: function(data, callback) {
 		callback = typeof callback == "function" ? callback : function() {};
-		App.alert(data, {options: {
+		return App.alert(data, {options: {
 			Cancel : function() {
 				$(this).closest('.alert').remove();
 				callback(false);
@@ -182,7 +182,7 @@ var App = {
 
 	prompt: function(data, callback) {
 		callback = typeof callback == "function" ? callback : function() {};
-		App.alert(data, {
+		return App.alert(data, {
 			prompt: function(element) {
 				var val = $(element).val();
 				$(element).closest('.alert').remove();

@@ -55,3 +55,7 @@ $(window).scroll(function() {
 $(document).on("change", ".console input", function() {
 	eval($(this).val());
 });
+
+$(document).on("click", "[data-help]", function() {
+	App.alert($(this).attr('data-help'));
+});

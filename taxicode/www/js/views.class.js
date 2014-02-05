@@ -22,7 +22,7 @@ var Views = {
 
 		// Setup interactivity
 		if (typeof this["setup"+ucwords(view)] == "function") {
-			this["setup"+ucwords(view)](block, params?params:undefined);
+			this["setup"+ucwords(view)](block, params);
 		}
 
 		// Transition
@@ -39,7 +39,6 @@ var Views = {
 				App.empty().append(block);
 				break;
 		}
-
 
 	},
 
@@ -97,18 +96,20 @@ var Views = {
 						$(this).html("No Ratings");
 					}
 				});
+			case 'customer':
+				break;
 			case 'form':
 			default:
 				// Save and load
-				$view.find("[data-var]").each(function() {
-					$(this).val(Booking.data[$(this).attr('data-var')]);
+				$view.find("[name]").each(function() {
+					$(this).val(Booking.data[$(this).attr('name')]);
 				});
-				$view.find("[data-var]").change(function() {
-					Booking.data[$(this).attr('data-var')] = $(this).val();
+				$view.find("[name]").change(function() {
+					Booking.data[$(this).attr('name')] = $(this).val();
 				});
 				// Autocomplete
 				if (typeof google == "object") {
-					$view.find("[data-var=pickup], [data-var=destination], [data-var=vias]").each(function() {
+					$view.find("[name=pickup], [name=destination], [name=vias]").each(function() {
 						var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
 					});
 				}
