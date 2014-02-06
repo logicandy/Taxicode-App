@@ -6,12 +6,12 @@
 
 		<div class="field">
 			<label>Name</label>
-			<input type="text" maxlength="30" name="name" value="{{%typeof User.user.name == 'undefined' ? '' : User.user.name}}" data-required="true" />
+			<input type="text" maxlength="30" name="name" data-required="true" />
 		</div>
 
 		<div class="field">
 			<label>Email</label>
-			<input type="email" maxlength="50" name="email" value="{{%typeof User.user.email == 'undefined' ? '' : User.user.email}}" data-required="true" />
+			<input type="email" maxlength="50" name="email" data-required="true" />
 		</div>
 
 		<div class="field">

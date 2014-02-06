@@ -5,12 +5,14 @@ var Form = {
 		var errors = [];
 		
 		// Required fields
-		$(form).find("[data-required=true]").each(function() {
-			if ($(this).val().trim() == "") {
-				errors.push({
-					field: this,
-					message: "Field is required."
-				});
+		$(form).find("[data-required]").each(function() {
+			if (eval($(this).attr('data-required'))) {
+				if ($(this).val().trim() == "") {
+					errors.push({
+						field: this,
+						message: "Field is required."
+					});
+				}
 			}
 		});
 

@@ -59,3 +59,9 @@ $(document).on("change", ".console input", function() {
 $(document).on("click", "[data-help]", function() {
 	App.alert($(this).attr('data-help'));
 });
+
+$(document).keypress(function(e) {
+	if (e.keyCode == 13) {
+		$(".alert .option:focus").click();
+	}
+});

@@ -118,3 +118,7 @@ if (!String.prototype.trim) {
 		return this.replace(/^\s+|\s+$/gm, '');
 	};
 }
+
+$.visible = function(e) {
+	return $(e).is(":visible");
+}

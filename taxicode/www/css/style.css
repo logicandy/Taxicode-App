@@ -377,6 +377,11 @@ img[src='img/loading.gif'] {
 	background: #F4F4F4;
 }
 
+.alert > .inner > .footer .option:focus {
+	outline: none;
+	color: green;
+}
+
 .alert > .inner > .footer .option:active {
 	background: #F0F0F0;
 }
@@ -541,8 +546,4 @@ table.info tr td:nth-child(1) {
 
 .help:active {
 	background: #555;
-}
-
-.alert {
-
 }

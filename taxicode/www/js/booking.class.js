@@ -2,6 +2,8 @@ var Booking = {
 
 	layout: 1,
 
+	state: "form",
+
 	data: {
 		pickup: "",
 		destination: "",
@@ -58,8 +60,7 @@ var Booking = {
 	validate: function(form) {
 		switch (form) {
 			case 'customer':
-				App.element.find("")
-
+				App.element.find("");
 				Views.render('booking', 'slide', 'card');
 				break;
 		}
@@ -68,12 +69,17 @@ var Booking = {
 	pay: {
 		data: {},
 		quote: function(type) {
+			Booking.pay.data = {};
 			Views.render('booking', 'slide', 'customer');
 		},
 		customer: function(data) {
 			$.extend(Booking.pay.data, data);
 			console.log(Booking.pay.data);
 			Views.render('booking', 'slide', 'card');
+		},
+		card: function(data) {
+			$.extend(Booking.pay.data, data);
+			Views.render('booking', 'slide', 'billing');
 		}
 	},
 

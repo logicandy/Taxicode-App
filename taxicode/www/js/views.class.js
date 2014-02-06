@@ -48,6 +48,8 @@ var Views = {
 
 	renderBooking : function($view, mode) {
 
+		mode = mode ? mode : Booking.state;
+
 		switch (mode) {
 			case 'results':
 				return Template.render('booking/results', Booking.quotes);
@@ -56,7 +58,6 @@ var Views = {
 					journey: Booking.journey,
 					quote: Booking.quotes[Booking.quote]
 				});
-
 			case 'customer':
 				return Template.render('pay/customer');
 			case 'card':
@@ -76,7 +77,10 @@ var Views = {
 	},
 
 	setupBooking : function($view, mode) {
-		switch (mode) {
+
+		Booking.state = mode ? mode : Booking.state;
+
+		switch (Booking.state) {
 			case 'results':
 				$view.find(".rating").each(function() {
 					var ratings = parseInt($(this).attr("data-ratings"));
@@ -97,6 +101,15 @@ var Views = {
 					}
 				});
 			case 'customer':
+				$view.find("[name=name]").val(Booking.pay.data.name ? Booking.pay.data.name : (User.user.name ? User.user.name : ""));
+				$view.find("[name=email]").val(Booking.pay.data.email ? Booking.pay.data.email : (User.user.email ? User.user.email : ""));
+				$view.find("[name=telephone]").val(Booking.pay.data.telephone ? Booking.pay.data.telephone : "");
+				break;
+			case 'card':
+				var maestro = function() {
+					$view.find(".maestro-field").toggle($(this).val() == "MAESTRO");
+				};
+				$view.find("[name=card_type]").each(maestro).change(maestro);
 				break;
 			case 'form':
 			default:

@@ -21,6 +21,6 @@
 
 	{{#endif}}
 
-	<a class="block-section center" style="color: inherit;" onclick="Views.render('booking','slideFromLeft');">Go Back</a>
+	<a class="block-section center" style="color: inherit;" onclick="Views.render('booking','slideFromLeft','form');">Go Back</a>
 
 </div>

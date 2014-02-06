@@ -157,9 +157,11 @@ var App = {
 		// Add the page
 		$("body").append(alert);
 
-		// Focus on prompt field
+		// Focus on new element
 		if (settings.prompt) {
 			alert.find("input.prompt").focus();
+		} else if (alert.find(".option").length == 1) {
+			alert.find(".option").focus();
 		}
 
 		// Returns alert

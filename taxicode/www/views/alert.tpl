@@ -13,7 +13,7 @@
 			<div class="footer">
 				<div class="options">
 					{{#foreach Template.data.options}}
-						<a class="option {{%Template.data.key==0?'first':''}} {{%Template.data.key==Template.data.options.length-1?'last':''}}" style="width: {{%100/Template.data.options.length}}%" data-id="{{$val}}">
+						<a class="option {{%Template.data.key==0?'first':''}} {{%Template.data.key==Template.data.options.length-1?'last':''}}" style="width: {{%100/Template.data.options.length}}%" data-id="{{$val}}" tabindex="-1">
 							{{$val}}
 						</a>
 					{{#endforeach}}

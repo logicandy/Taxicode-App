@@ -1,4 +1,4 @@
-<form class="block pay" data-submit="Views.render('booking', 'slide', 'billing');">
+<form class="block pay" data-submit="Booking.pay.card">
 
 	<h2>Card Details</h2>
 
@@ -23,9 +23,19 @@
 			<input type="text" maxlength="20" placeholder="xxxx xxxx xxxx xxxx" name="card_number" data-required="true" data-type="cardnumber" />
 		</div>
 
+		<div class="field maestro-field">
+			<label>Start</label>
+			<input type="month" maxlength="7" name="card_start" data-required="$.visible(this);" min="{{%new Date().format('Y-m')}}" />
+		</div>
+
 		<div class="field">
 			<label>Expiry</label>
-			<input type="month" maxlength="7" name="card_expiry" data-required="true" />
+			<input type="month" maxlength="7" name="card_expiry" data-required="true" min="{{%new Date().format('Y-m')}}" />
+		</div>
+
+		<div class="field maestro-field">
+			<label>Issue No.</label>
+			<input type="text" maxlength="2" name="issue_number" />
 		</div>
 
 		<div class="field">
