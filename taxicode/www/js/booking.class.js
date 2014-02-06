@@ -15,14 +15,13 @@ var Booking = {
 
 		passengers: 1
 	},
-
 	quotes: false,
 	journey: false,
 	quote: false,
 
 	updateData: function() {
-		$(".booking-engine [data-var]").each(function() {
-			Booking.data[$(this).attr('data-var')] = $(this).val();
+		$(".booking-engine [name]").each(function() {
+			Booking.data[$(this).attr('name')] = $(this).val();
 		});
 	},
 
@@ -56,10 +55,6 @@ var Booking = {
 		Views.render('booking', 'slide', 'quote');
 	},
 
-	pay: function() {
-		Views.render('booking', 'slide', 'customer');
-	},
-
 	validate: function(form) {
 		switch (form) {
 			case 'customer':
@@ -67,6 +62,18 @@ var Booking = {
 
 				Views.render('booking', 'slide', 'card');
 				break;
+		}
+	},
+
+	pay: {
+		data: {},
+		quote: function(type) {
+			Views.render('booking', 'slide', 'customer');
+		},
+		customer: function(data) {
+			$.extend(Booking.pay.data, data);
+			console.log(Booking.pay.data);
+			Views.render('booking', 'slide', 'card');
 		}
 	},
 

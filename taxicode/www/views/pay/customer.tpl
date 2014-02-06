@@ -1,4 +1,4 @@
-<form class="block pay" data-submit="Views.render('booking', 'slide', 'card');">
+<form class="block pay" data-submit="Booking.pay.customer">
 
 	<h2>Your Details</h2>
 
@@ -16,7 +16,7 @@
 
 		<div class="field">
 			<label>Telephone</label>
-			<input type="tel" maxlength="20" name="telephone" data-required="true" data-type="telephone" />
+			<input type="tel" maxlength="20" name="telephone" data-required="true"/>
 		</div>
 
 	</div>

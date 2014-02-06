@@ -35,7 +35,7 @@
 		</table>
 	</div>
 
-	<p class="center"><a class="btn" onclick="Booking.pay('card');">Pay By Card</a></p>
+	<p class="center"><a class="btn" onclick="Booking.pay.quote('card');">Pay By Card</a></p>
 	
 	{{#if Template.data.quote.company_phone}}
 		<p class="center"><a class="btn" href="tel:{{$quote.company_phone}}">Call {{$quote.company_name}}</a></p>

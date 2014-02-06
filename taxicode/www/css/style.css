@@ -354,16 +354,16 @@ img[src='img/loading.gif'] {
 	border-top: 1px solid #CCC;
 	cursor: pointer;
 	color: black;
-	border-left: 1px solid #CCC;
+	border-right: 1px solid #CCC;
 }
 
 .alert > .inner > .footer .option.first {
 	border-bottom-left-radius: 10px;
-	border-left: none;
 }
 
 .alert > .inner > .footer .option.last {
 	border-bottom-right-radius: 10px;
+	border-right: none;
 }
 
 .alert > .inner > .header {
