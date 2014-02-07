@@ -25,7 +25,7 @@
 
 		<div class="field maestro-field">
 			<label>Start</label>
-			<input type="month" maxlength="7" name="card_start" data-required="$.visible(this);" min="{{%new Date().format('Y-m')}}" />
+			<input type="month" maxlength="7" name="card_start" data-required="$.visible(this);" min="{{%new Date().format('Y-m')}}" data-value="$.visible(this)?$(this).val():''" />
 		</div>
 
 		<div class="field">
@@ -35,7 +35,7 @@
 
 		<div class="field maestro-field">
 			<label>Issue No.</label>
-			<input type="text" maxlength="2" name="issue_number" />
+			<input type="text" maxlength="2" name="issue_number" data-value="$.visible(this)?$(this).val():''" />
 		</div>
 
 		<div class="field">

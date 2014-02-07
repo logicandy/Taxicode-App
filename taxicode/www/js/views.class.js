@@ -100,17 +100,50 @@ var Views = {
 						$(this).html("No Ratings");
 					}
 				});
-			case 'customer':
-				$view.find("[name=name]").val(Booking.pay.data.name ? Booking.pay.data.name : (User.user.name ? User.user.name : ""));
-				$view.find("[name=email]").val(Booking.pay.data.email ? Booking.pay.data.email : (User.user.email ? User.user.email : ""));
-				$view.find("[name=telephone]").val(Booking.pay.data.telephone ? Booking.pay.data.telephone : "");
 				break;
+
+			case 'customer':
+				$view.find("[name=name]").val(use_if_set(Booking.pay.data.name, User.user.name, Config.settings.name, ""));
+				$view.find("[name=email]").val(use_if_set(Booking.pay.data.email, User.user.email, Config.settings.email, ""));
+				$view.find("[name=telephone]").val(use_if_set(Booking.pay.data.telephone, Config.settings.telephone, ""));
+				break;
+
 			case 'card':
+				$view.find("[name=card_type]").val(use_if_set(Booking.pay.data.card_type, ""));
+				$view.find("[name=card_number]").val(use_if_set(Booking.pay.data.card_number, ""));
+				$view.find("[name=card_start]").val(use_if_set(Booking.pay.data.card_start, ""));
+				$view.find("[name=card_expiry]").val(use_if_set(Booking.pay.data.card_expiry, ""));
+				$view.find("[name=issue_number]").val(use_if_set(Booking.pay.data.issue_number, ""));
+				$view.find("[name=CV2]").val(use_if_set(Booking.pay.data.CV2, ""));
 				var maestro = function() {
 					$view.find(".maestro-field").toggle($(this).val() == "MAESTRO");
 				};
 				$view.find("[name=card_type]").each(maestro).change(maestro);
 				break;
+
+			case 'billing':
+
+				// Check if we can use names from elsewhere (if they're both less than 20 chars)
+				var first_name = use_if_set(User.user.first_name, Config.settings.first_name, "");
+				var last_name = use_if_set(User.user.last_name, Config.settings.last_name, "");
+				if (first_name.length > 20 || last_name.length > 20) {
+					first_name = last_name = "";
+				}
+
+				$view.find("[name=billing_first_name]").val(use_if_set(Booking.pay.data.billing_first_name, Config.settings.billing_first_name, first_name));
+				$view.find("[name=billing_surname]").val(use_if_set(Booking.pay.data.billing_surname, Config.settings.billing_surname, last_name));
+				$view.find("[name=billing_address_1]").val(use_if_set(Booking.pay.data.billing_address_1, Config.settings.billing_address1, ""));
+				$view.find("[name=billing_address_2]").val(use_if_set(Booking.pay.data.billing_address_2, Config.settings.billing_address2, ""));
+				$view.find("[name=billing_town]").val(use_if_set(Booking.pay.data.billing_town, Config.settings.billing_town, ""));
+				$view.find("[name=billing_postcode]").val(use_if_set(Booking.pay.data.billing_postcode, Config.settings.billing_postcode, ""));
+				$view.find("[name=billing_country]").val(use_if_set(Booking.pay.data.billing_country, Config.settings.billing_country, ""));
+				$view.find("[name=billing_state]").val(use_if_set(Booking.pay.data.billing_state, Config.settings.billing_state, ""));
+				var us = function() {
+					$view.find(".us-field").toggle($(this).val() == "US");
+				};
+				$view.find("[name=billing_country]").each(us).change(us);
+				break;
+
 			case 'form':
 			default:
 				// Save and load

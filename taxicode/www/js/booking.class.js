@@ -74,12 +74,46 @@ var Booking = {
 		},
 		customer: function(data) {
 			$.extend(Booking.pay.data, data);
-			console.log(Booking.pay.data);
+			Config.setting(data);
 			Views.render('booking', 'slide', 'card');
 		},
 		card: function(data) {
 			$.extend(Booking.pay.data, data);
 			Views.render('booking', 'slide', 'billing');
+		},
+		complete: function(data) {
+			$.extend(Booking.pay.data, data);
+			Config.setting(data);
+			App.loading();
+			Booking.pay.data.quote = Booking.quote;
+
+			/*API.get("booking/pay", {
+				data: {
+					quote: Booking.quote,
+					name: "Josh Thompson"
+					email: "josh3276@gmail.com"
+					telephone: "07986 726202"
+					card_holder: ---------------------
+					card_type:
+
+
+					CV2: "123"
+					billing_address_1: "88"
+					billing_address_2: ""
+					billing_country: "GB"
+					billing_postcode: "412"
+					billing_state: ""
+					billing_town: "Test Town"
+					card_expiry: "2014-12"
+					card_number: "4462000000000003"
+					card_start: ""
+					card_type: "DELTA"
+					issue_number: ""
+					quote: "9010855C97640EBA93F74416B1295192"
+
+
+				}
+			});*/
 		}
 	},
 
@@ -332,6 +366,59 @@ var Booking = {
 			YE : 'Yemen',
 			ZM : 'Zambia',
 			ZW : 'Zimbabwe'
+		},
+		states: {
+			AL : 'Alabama',
+			AK : 'Alaska',
+			AZ : 'Arizona',
+			AR : 'Arkansas',
+			CA : 'California',
+			CO : 'Colorado',
+			CT : 'Connecticut',
+			DE : 'Delaware',
+			DC : 'District Of Columbia',
+			FL : 'Florida',
+			GA : 'Georgia',
+			HI : 'Hawaii',
+			ID : 'Idaho',
+			IL : 'Illinois',
+			IN : 'Indiana',
+			IA : 'Iowa',
+			KS : 'Kansas',
+			KY : 'Kentucky',
+			LA : 'Louisiana',
+			ME : 'Maine',
+			MD : 'Maryland',
+			MA : 'Massachusetts',
+			MI : 'Michigan',
+			MN : 'Minnesota',
+			MS : 'Mississippi',
+			MO : 'Missouri',
+			MT : 'Montana',
+			NE : 'Nebraska',
+			NV : 'Nevada',
+			NH : 'New Hampshire',
+			NJ : 'New Jersey',
+			NM : 'New Mexico',
+			NY : 'New York',
+			NC : 'North Carolina',
+			ND : 'North Dakota',
+			OH : 'Ohio',
+			OK : 'Oklahoma',
+			OR : 'Oregon',
+			PA : 'Pennsylvania',
+			RI : 'Rhode Island',
+			SC : 'South Carolina',
+			SD : 'South Dakota',
+			TN : 'Tennessee',
+			TX : 'Texas',
+			UT : 'Utah',
+			VT : 'Vermont',
+			VA : 'Virginia',
+			WA : 'Washington',
+			WV : 'West Virginia',
+			WI : 'Wisconsin',
+			WY : 'Wyoming'
 		},
 		card_types: false
 	}

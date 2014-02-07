@@ -78,7 +78,11 @@ var Form = {
 	data: function(form) {
 		var data = {};
 		$(form).find("[name]").each(function() {
-			data[$(this).attr('name')] = $(this).val();
+			if ($(this).is("[data-value]")) {
+				data[$(this).attr('name')] = eval($(this).attr("data-value"));
+			} else {
+				data[$(this).attr('name')] = $(this).val();
+			}
 		});
 		return data;
 	}

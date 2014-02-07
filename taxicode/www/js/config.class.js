@@ -44,12 +44,17 @@ var Config = {
 		});
 	},
 
-	setting: function(key, value) {
+	setting: function() {
 		if (arguments.length == 2) {
-			Config.settings[key] = value;
+			Config.settings[arguments[0]] = arguments[1];
+			Config.save();
+		} else if (typeof arguments[0] == "object") {
+			$.each(arguments[0], function(key, val) {
+				Config.settings[key] = val;
+			});
 			Config.save();
 		} else {
-			return Config.settings[key];
+			return Config.settings[arguments[0]];
 		}
 	},
 
@@ -68,13 +73,15 @@ var Config = {
 	},
 
 	save: function(success, failure) {
-		DBMC.createTable("SETTINGS", "'setting' TEXT, 'value' TEXT", true, function() {
-			var settings = [];
-			$.each(Config.settings, function(setting, value) {
-				settings.push({setting: setting, value: value});
-			});
-			DBMC.insert("SETTINGS", settings, success, failure);
-		}, failure, success);
+		DBMC.deleteTable("SETTINGS", function() {
+			DBMC.createTable("SETTINGS", "'setting' TEXT, 'value' TEXT", true, function() {
+				var settings = [];
+				$.each(Config.settings, function(setting, value) {
+					settings.push({setting: setting, value: value});
+				});
+				DBMC.insert("SETTINGS", settings, success, failure);
+			}, failure, success);
+		});
 	},
 
 	settings: {
