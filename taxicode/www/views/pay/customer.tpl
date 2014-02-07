@@ -22,8 +22,8 @@
 	</div>
 
 	<div class="group" style="margin-bottom: -10px;">
-		<a class="block-section center first" onclick="Views.render('booking', 'slideFromLeft', 'quote');">Go Back</a>
-		<input type="submit" class="block-section center" value="Next" />
+		<a class="block-section center first" onclick="Views.render('booking', 'slideFromLeft', 'quote');">Go Back</a><!--
+		--><input type="submit" class="block-section center" value="Next" />
 	</div>
 
 </form>

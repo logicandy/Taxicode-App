@@ -510,7 +510,7 @@ table.info tr td:nth-child(1) {
 
 .block .group {
 	margin: 0px -10px;
-	font-size: 0px;
+	// font-size: 0px;
 }
 
 .group .block-section {

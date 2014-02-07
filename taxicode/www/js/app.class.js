@@ -16,7 +16,6 @@ var App = {
 		}
 
 		// Startup
-
 		App.loading();
 
 		Config.initialize(function() {

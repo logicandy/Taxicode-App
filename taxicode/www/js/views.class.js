@@ -1,17 +1,23 @@
 var Views = {
 
 	current : false,
+	sub: false,
 
 	render: function(view, effect, params) {
-
-		//window.location.hash = view;
-		this.current = view;
 
 		// Get view
 		if (view == "console") {
 			this.console();
 			return false;
-		} else if (typeof this["render"+ucwords(view)] == "function") {
+		}/* else if (view == "booking" && Views.current == "booking" && Views.sub != "form") {
+			App.confirm('Start new booking quote?', function(response) {
+				if (response) {
+					Booking.clear();
+					Views.render('booking', 'slideFromLeft', 'form');
+					$(this).closest(".alert").remove();
+				}
+			});
+		}*/ else if (typeof this["render"+ucwords(view)] == "function") {
 			var block = this["render"+ucwords(view)]($("<div class='view'></div>"), params?params:undefined);
 		} else if (typeof Template.templates[view] != "undefined") {
 			var block = Template.render(view);
@@ -19,6 +25,10 @@ var Views = {
 			App.alert("View doesn't exist: '"+view+"'");
 			return false;
 		}
+
+		// Set current view
+		Views.current = view;
+		Views.sub = false;
 
 		// Setup interactivity
 		if (typeof this["setup"+ucwords(view)] == "function") {
@@ -49,6 +59,7 @@ var Views = {
 	renderBooking : function($view, mode) {
 
 		mode = mode ? mode : Booking.state;
+		Views.sub = mode;
 
 		switch (mode) {
 			case 'results':

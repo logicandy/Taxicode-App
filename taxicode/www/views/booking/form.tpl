@@ -17,8 +17,8 @@
 	</div>
 
 	<center>
-		<input type="date" name="pickup_date" min="{{%new Date().format()}}" />
-		<input type="time" name="pickup_time" />
+		<input type="date" name="pickup_date" min="{{%new Date().format()}}" /><!--
+		--><input type="time" name="pickup_time" />
 	</center>
 	
 	<select name="passengers">

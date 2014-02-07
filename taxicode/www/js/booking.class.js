@@ -4,22 +4,28 @@ var Booking = {
 
 	state: "form",
 
-	data: {
-		pickup: "",
-		destination: "",
-		vias: "",
+	data: {},
 
-		pickup_date: (new Date().format()),
-		pickup_time: "12:00",
-
-		returnDate: false,
-		returnTime: false,
-
-		passengers: 1
-	},
 	quotes: false,
 	journey: false,
 	quote: false,
+
+	initialize: function() {
+		Booking.clear();
+	},
+
+	clear: function() {
+		Booking.data = {
+			pickup: "",
+			destination: "",
+			vias: "",
+			pickup_date: (new Date().format()),
+			pickup_time: "12:00",
+			returnDate: false,
+			returnTime: false,
+			passengers: 1
+		}
+	},
 
 	updateData: function() {
 		$(".booking-engine [name]").each(function() {
@@ -424,3 +430,5 @@ var Booking = {
 	}
 
 };
+
+Booking.initialize();
