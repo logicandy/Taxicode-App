@@ -23,12 +23,12 @@ var Config = {
 	country_code : 'gb',
 
 	domains: {
-		/*api: "http://api.taxicode.com/",
+		api: "http://api.taxicode.com/",
 		main: "http://www.taxicode.com/",
-		compare: "https://www.taxipricecompare.co.uk/"*/
-		api: "http://api:8888/",
+		compare: "https://www.taxipricecompare.co.uk/"
+		/*api: "http://api:8888/",
 		main: "http://taxicode:8888/",
-		compare: "http://heathrow:8888/"
+		compare: "http://heathrow:8888/"*/
 	},
 
 	initialize: function(callback) {
@@ -36,11 +36,20 @@ var Config = {
 			$.each(rows, function(i, row) {
 				Config.settings[row.setting] = row.value;
 			});
-			console.log(Config.settings);
-			callback();
+			Config.loadPhoneGapConfig(callback);
 		}, function() {
 			// No saved settings to load
-			callback();
+			Config.loadPhoneGapConfig(callback);
+		});
+	},
+
+	loadPhoneGapConfig: function(callback) {
+		$.ajax({
+			url: "config.xml",
+			success: function(data) {
+				Config.phonegap = $(data);
+			},
+			complete: callback
 		});
 	},
 
