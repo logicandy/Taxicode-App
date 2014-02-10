@@ -143,9 +143,9 @@ var Views = {
 
 				$view.find("[name=billing_first_name]").val(use_if_set(Booking.pay.data.billing_first_name, Config.settings.billing_first_name, first_name));
 				$view.find("[name=billing_surname]").val(use_if_set(Booking.pay.data.billing_surname, Config.settings.billing_surname, last_name));
-				$view.find("[name=billing_address_1]").val(use_if_set(Booking.pay.data.billing_address_1, Config.settings.billing_address1, ""));
+				$view.find("[name=billing_address_1]").val(use_if_set(Booking.pay.data.billing_address_1, Config.settings.billing_address_1, ""));
 				$view.find("[name=billing_address_2]").val(use_if_set(Booking.pay.data.billing_address_2, Config.settings.billing_address2, ""));
-				$view.find("[name=billing_town]").val(use_if_set(Booking.pay.data.billing_town, Config.settings.billing_town, ""));
+				$view.find("[name=billing_city]").val(use_if_set(Booking.pay.data.billing_city, Config.settings.billing_city, ""));
 				$view.find("[name=billing_postcode]").val(use_if_set(Booking.pay.data.billing_postcode, Config.settings.billing_postcode, ""));
 				$view.find("[name=billing_country]").val(use_if_set(Booking.pay.data.billing_country, Config.settings.billing_country, ""));
 				$view.find("[name=billing_state]").val(use_if_set(Booking.pay.data.billing_state, Config.settings.billing_state, ""));
@@ -205,8 +205,7 @@ var Views = {
 	},
 
 	renderBookings : function($view) {
-		$view.append("<div class='block'><h2>Bookings</h2></div>");
-		return $view;
+		return Template.render('bookings');
 	},
 
 	renderHelp : function($view) {

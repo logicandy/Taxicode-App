@@ -26,7 +26,7 @@
 
 		<div class="field">
 			<label>Town/City</label>
-			<input name="billing_town" type="text" maxlength="30" data-required="true" />
+			<input name="billing_city" type="text" maxlength="30" data-required="true" />
 		</div>
 
 		<div class="field">

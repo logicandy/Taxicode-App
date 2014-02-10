@@ -3,7 +3,6 @@ var Booking = {
 	layout: 1,
 
 	state: "form",
-
 	data: {},
 
 	quotes: false,
@@ -12,6 +11,7 @@ var Booking = {
 
 	initialize: function() {
 		Booking.clear();
+		Booking.getBookings();
 	},
 
 	clear: function() {
@@ -93,34 +93,57 @@ var Booking = {
 			App.loading();
 			Booking.pay.data.quote = Booking.quote;
 
-			/*API.get("booking/pay", {
-				data: {
-					quote: Booking.quote,
-					name: "Josh Thompson"
-					email: "josh3276@gmail.com"
-					telephone: "07986 726202"
-					card_holder: ---------------------
-					card_type:
-
-
-					CV2: "123"
-					billing_address_1: "88"
-					billing_address_2: ""
-					billing_country: "GB"
-					billing_postcode: "412"
-					billing_state: ""
-					billing_town: "Test Town"
-					card_expiry: "2014-12"
-					card_number: "4462000000000003"
-					card_start: ""
-					card_type: "DELTA"
-					issue_number: ""
-					quote: "9010855C97640EBA93F74416B1295192"
-
-
+			API.get("booking/pay", {
+				data: $.extend({quote: Booking.quote}, Booking.pay.data),
+				success: function(response) {
+					if (response.status == "OK") {
+						Booking.reference = response.reference;
+						Booking.store();
+						Booking.reset();
+						Views.render('booking', 'slide', 'complete');
+					}
+				},
+				complete: function() {
+					App.stopLoading();
 				}
-			});*/
+			});
 		}
+	},
+
+	store: function() {
+		DBMC.createTable("BOOKINGS", "reference, date, return, pickup, destination, people, company_name, company_number", false, function() {
+			DBMC.insert("BOOKINGS", [{
+				reference: Booking.reference,
+				date: Booking.journey.date,
+				"return": Booking.journey["return"],
+				pickup: JSON.stringify(Booking.journey.pickup),
+				destination: JSON.stringify(Booking.journey.destination),
+				people: Booking.journey.people,
+				company_name: Booking.quotes[Booking.quote].company_name,
+				company_number: Booking.quotes[Booking.quote].company_phone
+			}], function() {
+				Booking.getBookings();
+			});
+		});
+	},
+
+	bookings: {},
+	getBookings: function() {
+		DBMC.select("BOOKINGS", "*", false, function(bookings) {
+			for (var i = 0; i < bookings.length; i++) {
+				bookings[i].pickup = JSON.parse(bookings[i].pickup);
+				bookings[i].destination = JSON.parse(bookings[i].destination);
+			}
+			Booking.bookings = bookings;
+		});
+	},
+
+	reset: function() {
+		Booking.data = {};
+		Booking.quote = false;
+		Booking.quotes = false;
+		Booking.journey = false;
+		Booking.pay.data = {};
 	},
 
 	form_data: {
