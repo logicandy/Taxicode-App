@@ -76,6 +76,35 @@ var Booking = {
 		}
 	},
 
+	sortBookings: function(bookings, order) {
+		// Set order
+		order = order ? order : 'DESC';
+
+		// Copy all bookings to array
+		var sortable = [];
+		$.each(bookings, function(key, value) {
+			sortable.push(value);
+		});
+
+		// Sort array by the date
+		sortable.sort(function(a, b) {
+			return (new Date(a.date).getTime()) - (new Date(b.date).getTime());
+		});
+
+		// If order is DESC, reverse array;
+		if (order.toUpperCase() == 'DESC') {
+			sortable.reverse();
+		}
+
+		// Fill new object with booking object with reference as key
+		var sorted = {};
+		$.each(sortable, function(i, booking) {
+			sorted[booking.reference] = booking;
+		});
+		return sorted;
+		
+	},
+
 	pay: {
 		data: {},
 		quote: function(type) {
