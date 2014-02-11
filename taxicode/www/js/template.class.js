@@ -11,6 +11,7 @@ var Template = {
 		"booking/results"	: false,
 		"booking/quote"		: false,
 		"booking/complete"	: false,
+		"booking/details"	: false,
 
 		"pay/customer"		: false,
 		"pay/card"			: false,

@@ -52,6 +52,7 @@ Date.prototype.format = function(format) {
 
 			// Year
 			case "Y": return year; // Year - Example: 2014
+			case "y": return year%100;
 
 			// Month
 			case "n": return month; // Months 0 - 12

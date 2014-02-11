@@ -24,7 +24,11 @@ var Booking = {
 			returnDate: false,
 			returnTime: false,
 			passengers: 1
-		}
+		};
+		Booking.quote = false;
+		Booking.quotes = false;
+		Booking.journey = false;
+		Booking.pay.data = {}
 	},
 
 	updateData: function() {
@@ -99,7 +103,7 @@ var Booking = {
 					if (response.status == "OK") {
 						Booking.reference = response.reference;
 						Booking.store();
-						Booking.reset();
+						Booking.clear();
 						Views.render('booking', 'slide', 'complete');
 					}
 				},
@@ -111,17 +115,28 @@ var Booking = {
 	},
 
 	store: function() {
-		DBMC.createTable("BOOKINGS", "reference, date, return, pickup, destination, people, company_name, company_number", false, function() {
-			DBMC.insert("BOOKINGS", [{
-				reference: Booking.reference,
-				date: Booking.journey.date,
-				"return": Booking.journey["return"],
-				pickup: JSON.stringify(Booking.journey.pickup),
-				destination: JSON.stringify(Booking.journey.destination),
-				people: Booking.journey.people,
-				company_name: Booking.quotes[Booking.quote].company_name,
-				company_number: Booking.quotes[Booking.quote].company_phone
-			}], function() {
+		Booking.bookings[Booking.reference] = {
+			reference: Booking.reference,
+			date: Booking.journey.date,
+			"return": Booking.journey["return"],
+			pickup: Booking.journey.pickup,
+			destination: Booking.journey.destination,
+			price: Booking.quotes[Booking.quote].price,
+			distance: Booking.quotes[Booking.quote].distance,
+			people: Booking.journey.people,
+			company_name: Booking.quotes[Booking.quote].company_name,
+			company_number: Booking.quotes[Booking.quote].company_phone
+		};
+		Booking.save();
+	},
+
+	save: function() {
+		$.each(Booking.bookings, function(id, b) {
+			Booking.bookings[id].pickup = JSON.stringify(b.pickup);
+			Booking.bookings[id].destination = JSON.stringify(b.destination);
+		});
+		DBMC.createTable("BOOKINGS", "reference, date, return, pickup, destination, price, distance, people, company_name, company_number", true, function() {
+			DBMC.insert("BOOKINGS", Booking.bookings, function() {
 				Booking.getBookings();
 			});
 		});
@@ -130,20 +145,14 @@ var Booking = {
 	bookings: {},
 	getBookings: function() {
 		DBMC.select("BOOKINGS", "*", false, function(bookings) {
+			Booking.bookings = {};
 			for (var i = 0; i < bookings.length; i++) {
-				bookings[i].pickup = JSON.parse(bookings[i].pickup);
-				bookings[i].destination = JSON.parse(bookings[i].destination);
+				Booking.bookings[bookings[i].reference] = $.extend({}, bookings[i], {
+					pickup: JSON.parse(bookings[i].pickup),
+					destination: JSON.parse(bookings[i].destination)
+				});
 			}
-			Booking.bookings = bookings;
 		});
-	},
-
-	reset: function() {
-		Booking.data = {};
-		Booking.quote = false;
-		Booking.quotes = false;
-		Booking.journey = false;
-		Booking.pay.data = {};
 	},
 
 	form_data: {

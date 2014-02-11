@@ -18,7 +18,7 @@ var Views = {
 				}
 			});
 		}*/ else if (typeof this["render"+ucwords(view)] == "function") {
-			var block = this["render"+ucwords(view)]($("<div class='view'></div>"), params?params:undefined);
+			var block = this["render"+ucwords(view)]($("<div class='view'></div>"), params);
 		} else if (typeof Template.templates[view] != "undefined") {
 			var block = Template.render(view);
 		} else {
@@ -75,7 +75,8 @@ var Views = {
 				return Template.render('pay/card');
 			case 'billing':
 				return Template.render('pay/billing');
-
+			case 'complete':
+				return Template.render('booking/complete');
 			case 'form':
 			default:
 				var passengers = {};
@@ -204,8 +205,13 @@ var Views = {
 
 	},
 
-	renderBookings : function($view) {
-		return Template.render('bookings');
+	renderBookings : function($view, details) {
+		console.log(details, "("+(typeof details)+")");
+		if (typeof details == "undefined") {
+			return Template.render('bookings');
+		} else {
+			return Template.render('booking/details', {booking: details});
+		}
 	},
 
 	renderHelp : function($view) {

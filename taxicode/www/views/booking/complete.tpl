@@ -1,11 +1,11 @@
-<div class="block">
+<div class="block center">
 
 	<h2>Booking Complete!</h2>
 
 	<p>Thank you for making a booking with us.</p>
-	<p>Your reference number is {{%Booking.reference%}}</p>
-	<p>It has been added to your bookings page</p>
+	<p>Your reference number is <strong>{{%Booking.reference}}</strong></p>
+	<p>It has been added to your bookings page.</p>
 
-	<center><a class="btn" onclick="Views.render('booking','slideFromRight','form')">Start New Booking</a></center>
+	<div><a class="btn" onclick="Views.render('booking','slideFromRight','form')">Start New Booking</a></div>
 
 </div>
