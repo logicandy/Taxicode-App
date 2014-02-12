@@ -18,8 +18,8 @@ var App = {
 		// Startup
 		App.loading();
 
+		Libs.initialize();
 		Config.initialize(function() {
-			
 			Template.initialize();
 			App.pingServer(false);
 			User.initialize();
@@ -34,7 +34,7 @@ var App = {
 	},
 
 	checkReady: function() {
-		if (Template.ready && User.ready && Help.ready) {
+		if (Template.ready && User.ready && Help.ready && Libs.ready) {
 			if (typeof App.connected != "undefined") {
 				App.onReady();
 				return true;
