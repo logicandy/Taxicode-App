@@ -5,17 +5,16 @@ var User = {
 	ready : false,
 
 	initialize: function() {
-		$this = this;
-		$this.loadEmpty();
+		User.loadEmpty();
 
 		API.get("user", {
 			success: function(response) {
 				if (response.status == "OK") {
-					$this.load(response.user);
+					User.load(response.user, false);
 				} else {
-					$this.state = false;
+					User.state = false;
 				}
-				$this.refreshView();
+				User.refreshView();
 			},
 			complete: function() {
 				User.ready = true;
@@ -28,19 +27,33 @@ var User = {
 		this.user = false;
 	},
 
-	load: function(user) {
+	load: function(user, stopLoading) {
 		if (user) {
-			$this = this;
-			$this.user = {};
+			User.user = {};
 			$.each(user, function(key, value) {
-				$this.user[key] = value;
+				User.user[key] = value;
 			});
-			$this.state = true;
+			User.state = true;
+			User.loadBookings();
 		} else {
-			$this.state = false;
+			User.state = false;
 		}
-		App.stopLoading();
-		$this.refreshView();
+		if (stopLoading !== false) {
+			App.stopLoading();
+		}
+		User.refreshView();
+	},
+
+	bookings: {},
+	loadBookings: function() {
+		API.get("user/bookings", {success: function(response) {
+			if (response.status == "OK") {
+				User.bookings = {};
+				$.each(response.bookings, function(id, booking) {
+					User.bookings[booking.reference] = booking;
+				});
+			}
+		}});
 	},
 
 	login: function(email, password) {
@@ -80,7 +93,7 @@ var User = {
 					User.state = false;
 					App.stopLoading();
 				}
-				$this.refreshView();
+				User.refreshView();
 			}
 		});
 	},

@@ -17,7 +17,6 @@ var App = {
 
 		// Startup
 		App.loading();
-
 		Libs.initialize();
 		Config.initialize(function() {
 			Template.initialize();
@@ -70,6 +69,7 @@ var App = {
 	},
 
 	stopLoading: function() {
+		console.trace("Stopped Loading");
 		$("#page-loading").remove();
 	},
 

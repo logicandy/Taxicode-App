@@ -13,6 +13,10 @@
 	<div class="full">
 		<table class="info">
 			<tr>
+				<td>Status</td>
+				<td>{{%Booking.bookings[Template.data.booking].status}}</td>
+			</tr>
+			<tr>
 				<td>Company</td>
 				<td>
 					{{%Booking.bookings[Template.data.booking].company_name}}

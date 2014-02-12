@@ -39,9 +39,14 @@ function addMaps() {
 	});
 	setTimeout(addMaps, 500);
 };
-if (typeof google != "undefined") {
-	google.maps.event.addDomListener(window, 'load', addMaps);
-}
+(function setupAddMaps() {
+	if (typeof google != "undefined") {
+		google.maps.event.addDomListener(window, 'load', addMaps);
+	} else {
+		setTimeout(setupAddMaps, 1000);
+	}
+})();
+
 
 // Fix input jump problem
 $(document).on('blur', 'input, select, textarea', function() {

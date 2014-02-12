@@ -154,7 +154,8 @@ var Booking = {
 			distance: Booking.quotes[Booking.quote].distance,
 			people: Booking.journey.people,
 			company_name: Booking.quotes[Booking.quote].company_name,
-			company_number: Booking.quotes[Booking.quote].company_phone
+			company_number: Booking.quotes[Booking.quote].company_phone,
+			status: "Unconfirmed"
 		};
 		Booking.save();
 	},
@@ -164,10 +165,29 @@ var Booking = {
 			Booking.bookings[id].pickup = JSON.stringify(b.pickup);
 			Booking.bookings[id].destination = JSON.stringify(b.destination);
 		});
-		DBMC.createTable("BOOKINGS", "reference, date, return, pickup, destination, price, distance, people, company_name, company_number", true, function() {
+		DBMC.createTable("BOOKINGS", "reference, date, return, pickup, destination, price, distance, people, company_name, company_number, status", true, function() {
 			DBMC.insert("BOOKINGS", Booking.bookings, function() {
 				Booking.getBookings();
 			});
+		});
+	},
+
+	checkBookings: function() {
+		API.get("booking/state", {
+			data: {booking: $.map(Booking.bookings, function(b) {
+				return b.reference;
+			}).join(",")},
+			type: "GET",
+			success: function(response) {
+				if (response.status == "OK") {
+					$.each(response.bookings, function(ref, booking) {
+						Booking.bookings[ref].status = booking.status.title;
+						Booking.bookings[ref].company_name = booking.company_name;
+						Booking.bookings[ref].company_number = booking.company_telephone;
+					});
+					Booking.save();
+				}
+			}
 		});
 	},
 

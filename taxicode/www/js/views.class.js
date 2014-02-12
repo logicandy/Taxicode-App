@@ -166,7 +166,7 @@ var Views = {
 					Booking.data[$(this).attr('name')] = $(this).val();
 				});
 				// Autocomplete
-				if (typeof google == "object") {
+				if (window.google && window.google.maps && window.google.maps.places) {
 					$view.find("[name=pickup], [name=destination], [name=vias]").each(function() {
 						var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
 					});

@@ -6,7 +6,7 @@
 		<p class="center">You have no bookings. Once you've made some bookings or logged in you will see your bookings here.</p>
 	{{#endif}}
 
-	{{#foreach Booking.sortBookings(Booking.bookings)}}
+	{{#foreach Booking.sortBookings($.extend({},User.bookings,Booking.bookings))}}
 		<div class="block-section" onclick="Views.render('bookings', 'slide', '{{$key}}');">
 
 			<div class="calendar fright" style="margin-left: 5px; margin-bottom: 5px;">
@@ -17,6 +17,7 @@
 
 			<h3>{{$val.reference}}</h3>
 
+			<div class="location-text"><strong>Status:</strong> {{$val.status}}</div>
 			<div class="location-text"><strong>From:</strong> {{$val.pickup.string}}</div>
 			<div class="location-text"><strong>To:</strong> {{$val.destination.string}}</div>
 		</div>
