@@ -590,3 +590,9 @@ table.small td {
 .location-text {
 	font-size: 13px;
 }
+
+.no-map {
+	font-size: 14px;
+	text-align: center;
+	color: #666;
+}

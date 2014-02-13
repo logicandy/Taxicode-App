@@ -69,7 +69,6 @@ var App = {
 	},
 
 	stopLoading: function() {
-		console.trace("Stopped Loading");
 		$("#page-loading").remove();
 	},
 

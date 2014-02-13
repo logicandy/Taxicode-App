@@ -51,7 +51,7 @@
 		};
 
 		$this.noMap = function(map) {
-			map.css({backgroundImage: 'none'}).html("<div class='no-map'>Apologies, no map available for this journey.</div>");
+			map.css({backgroundImage: 'none', height: 'auto'}).html("<div class='no-map'>Apologies, no map available for this journey.</div>");
 			options.failure();
 		};
 

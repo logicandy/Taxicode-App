@@ -7,7 +7,7 @@
 	{{#endif}}
 
 	{{#foreach Booking.sortBookings($.extend({},User.bookings,Booking.bookings))}}
-		<div class="block-section" onclick="Views.render('bookings', 'slide', '{{$key}}');">
+		<div class="block-section" onclick="Booking.details('{{$key}}');">
 
 			<div class="calendar fright" style="margin-left: 5px; margin-bottom: 5px;">
 				<span class="month">{{%(new Date(Template.data.val.date).format('M \'y'))}}</span>

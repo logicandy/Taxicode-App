@@ -1,6 +1,5 @@
 var API = {
 
-	public_key : false,
 	default_retrys: false,
 
 	get : function(uri, options, retrys) {
@@ -38,7 +37,7 @@ var API = {
 		};
 
 		// Gets public_key if data needs to be encrypted and public key isn't here.
-		if (this.public_key || !Object.size(ajax.data) || ajax.type != "POST") {
+		if (Config.get('public_key') || !Object.size(ajax.data) || ajax.type != "POST") {
 			this.execute(ajax);
 		} else {
 			API.getKey(function(response) {
@@ -49,10 +48,8 @@ var API = {
 	},
 
 	execute : function (ajax) {
-		var $this = this;
-		
 		if (Object.size(ajax.data) && ajax.type == "POST") {
-			var encrypted = $this.encrypt(JSON.stringify(ajax.data));
+			var encrypted = API.encrypt(JSON.stringify(ajax.data));
 			if (encrypted) {
 				ajax.data = {encrypted: encrypted};
 			} else {
@@ -66,15 +63,14 @@ var API = {
 	},
 
 	encrypt : function (data) {
-		var encrypted = RSA.encrypt(data, RSA.getPublicKey(this.public_key));
+		var encrypted = RSA.encrypt(data, RSA.getPublicKey(Config.get('public_key')));
 		return encrypted;
 	},
 
 	getKey : function (callback) {
-		var $this = this;
 		this.get("auth", {
 			success: function(response) {
-				$this.public_key = response.public_key;
+				Config.set('public_key', response.public_key);
 				if (typeof callback == "function") {
 					callback();
 				}

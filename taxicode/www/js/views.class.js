@@ -206,7 +206,6 @@ var Views = {
 	},
 
 	renderBookings : function($view, details) {
-		console.log(details, "("+(typeof details)+")");
 		if (typeof details == "undefined") {
 			return Template.render('bookings');
 		} else {

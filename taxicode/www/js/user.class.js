@@ -8,6 +8,7 @@ var User = {
 		User.loadEmpty();
 
 		API.get("user", {
+			data: User.authObject(),
 			success: function(response) {
 				if (response.status == "OK") {
 					User.load(response.user, false);
@@ -34,6 +35,7 @@ var User = {
 				User.user[key] = value;
 			});
 			User.state = true;
+			Config.set('auth_token', User.user.auth_token);
 			User.loadBookings();
 		} else {
 			User.state = false;
@@ -46,7 +48,7 @@ var User = {
 
 	bookings: {},
 	loadBookings: function() {
-		API.get("user/bookings", {success: function(response) {
+		API.get("user/bookings", {data: User.authObject(), success: function(response) {
 			if (response.status == "OK") {
 				User.bookings = {};
 				$.each(response.bookings, function(id, booking) {
@@ -54,6 +56,10 @@ var User = {
 				});
 			}
 		}});
+	},
+
+	authObject: function() {
+		return User.user && User.user.auth_token ? {auth_token: User.user.auth_token} : (Config.get('auth_token') ? {auth_token: Config.get('auth_token')} : {});
 	},
 
 	login: function(email, password) {
@@ -87,6 +93,7 @@ var User = {
 		User.refreshView();
 
 		API.get("user/logout", {
+			data: User.authObject(),
 			success: function(response) {
 				if (response.status == "OK") {
 					User.loadEmpty();

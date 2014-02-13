@@ -105,6 +105,10 @@ var Booking = {
 		
 	},
 
+	details: function(booking) {
+		Views.render('bookings', 'slide', Booking.bookings[booking] || User.bookings[booking]);
+	},
+
 	pay: {
 		data: {},
 		quote: function(type) {
