@@ -2,7 +2,7 @@
 
 	<h2>Bookings</h2>
 
-	{{#if !Object.size(Booking.bookings)}}
+	{{#if !Object.size(Booking.bookings) && !Object.size(User.bookings)}}
 		<p class="center">You have no bookings. Once you've made some bookings or logged in you will see your bookings here.</p>
 	{{#endif}}
 

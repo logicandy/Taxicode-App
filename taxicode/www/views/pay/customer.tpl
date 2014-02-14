@@ -5,18 +5,18 @@
 	<div class="fieldset">
 
 		<div class="field">
-			<label>Name</label>
-			<input type="text" maxlength="30" name="name" data-required="true" />
+			<label>Name</label><!--
+		--><input type="text" maxlength="30" name="name" data-required="true" />
 		</div>
 
 		<div class="field">
-			<label>Email</label>
-			<input type="email" maxlength="50" name="email" data-required="true" />
+			<label>Email</label><!--
+		--><input type="email" maxlength="50" name="email" data-required="true" />
 		</div>
 
 		<div class="field">
-			<label>Telephone</label>
-			<input type="tel" maxlength="20" name="telephone" data-required="true"/>
+			<label>Telephone</label><!--
+		--><input type="tel" maxlength="20" name="telephone" data-required="true"/>
 		</div>
 
 	</div>

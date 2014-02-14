@@ -5,38 +5,38 @@
 	<div class="fieldset">
 
 		<div class="field">
-			<label>Name</label>
-			<input type="text" maxlength="20" name="billing_first_name" data-required="true" data-type="billing_first_name" />
+			<label>Name</label><!--
+		--><input type="text" maxlength="20" name="billing_first_name" data-required="true" data-type="billing_first_name" />
 		</div>
 
 		<div class="field">
-			<label>Surname</label>
-			<input type="text" maxlength="20" name="billing_surname" data-required="true" data-type="billing_surname" />
+			<label>Surname</label><!--
+		--><input type="text" maxlength="20" name="billing_surname" data-required="true" data-type="billing_surname" />
 		</div>
 
 		<div class="field">
-			<label>Address 1</label>
-			<input name="billing_address_1" type="text" maxlength="50" data-required="true" />
+			<label>Address 1</label><!--
+		--><input name="billing_address_1" type="text" maxlength="50" data-required="true" />
 		</div>
 
 		<div class="field">
-			<label>Address 2</label>
-			<input name="billing_address_2" type="text" maxlength="50" />
+			<label>Address 2</label><!--
+		--><input name="billing_address_2" type="text" maxlength="50" />
 		</div>
 
 		<div class="field">
-			<label>Town/City</label>
-			<input name="billing_city" type="text" maxlength="30" data-required="true" />
+			<label>Town/City</label><!--
+		--><input name="billing_city" type="text" maxlength="30" data-required="true" />
 		</div>
 
 		<div class="field">
-			<label>Postcode</label>
-			<input name="billing_postcode" type="text" maxlength="10" data-required="true" />
+			<label>Postcode</label><!--
+		--><input name="billing_postcode" type="text" maxlength="10" data-required="true" />
 		</div>
 
 		<div class="field">
-			<label>Country</label>
-			<select name="billing_country">
+			<label>Country</label><!--
+		--><select name="billing_country">
 				{{#foreach Booking.form_data.countries}}
 					<option value="{{$key}}">{{$val}}</option>
 				{{#endforeach}}
@@ -44,8 +44,8 @@
 		</div>
 
 		<div class="field us-field">
-			<label>State</label>
-			<select name="billing_state" data-required="$.visible(this);" data-value="$.visible(this)?$(this).val():''">
+			<label>State</label><!--
+		--><select name="billing_state" data-required="$.visible(this);" data-value="$.visible(this)?$(this).val():''">
 				<option value="">- Select State -</option>
 				{{#foreach Booking.form_data.states}}
 					<option value="{{$key}}">{{$val}}</option>

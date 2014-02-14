@@ -5,13 +5,13 @@
 	<div class="fieldset">
 
 		<div class="field">
-			<label>Pickup</label>
-			<input type="text" name="pickup" maxlength="100" data-required="true" />
+			<label>Pickup</label><!--
+		--><input type="text" name="pickup" maxlength="100" data-required="true" />
 		</div>
 
 		<div class="field">
-			<label>Destination</label>
-			<input type="text" name="destination" maxlength="100" data-required="true" />
+			<label>Destination</label><!--
+		--><input type="text" name="destination" maxlength="100" data-required="true" />
 		</div>
 
 	</div>

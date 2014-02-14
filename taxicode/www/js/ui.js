@@ -50,11 +50,11 @@ function addMaps() {
 
 // Fix input jump problem
 $(document).on('blur', 'input, select, textarea', function() {
-	$('#header').css({position: 'absolute'});
-	$('#footer').css({position: 'absolute'});
+	//$('#header').css({position: 'absolute'});
+	//$('#footer').css({position: 'absolute'});
 });
 $(window).scroll(function() {
-	$('#header, #footer').css({position: 'fixed'});
+	//$('#header, #footer').css({position: 'fixed'});
 });
 
 $(document).on("change", ".console input", function() {
@@ -70,3 +70,15 @@ $(document).keypress(function(e) {
 		$(".alert .option:focus").click();
 	}
 });
+
+var setupLayout = function() {
+	$("#main").height(
+		$(window).height()
+		- $("#header").outerHeight()
+		- $("#footer").show().outerHeight()
+		- parseInt($("#main").css("padding-top"))
+		- parseInt($("#main").css("padding-bottom"))
+	);
+}
+$(document).ready(setupLayout);
+$(window).resize(setupLayout);

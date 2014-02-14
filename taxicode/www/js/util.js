@@ -122,7 +122,7 @@ if (!String.prototype.trim) {
 
 $.visible = function(e) {
 	return $(e).is(":visible");
-}
+};
 
 function use_if_set() {
 	for (var i = 0; i < arguments.length; i++) {
