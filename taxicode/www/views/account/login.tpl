@@ -10,3 +10,9 @@
 	<center><a class='btn' data-action='login'>Login</a></center>
 
 </div>
+
+<br/>
+
+<center><a class='btn small' data-action='create'>Create Account</a></center><br/>
+<center><a class='btn small' data-action='verify'>Verify Account</a></center>
+

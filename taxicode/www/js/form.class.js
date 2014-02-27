@@ -28,6 +28,15 @@ var Form = {
 			}
 		});
 
+		// Password == Password2
+		if ($(form).find("[name=password]") && $(form).find("[name=password2]")) {
+			$(form).find("[name=password]").each(function() {
+				if ($(form).find("[name=password]").val() != $(form).find("[name=password2]").val()) {
+					errors.push({field: this, message: "Passwords don't match."});
+				}
+			});
+		}
+
 		// Types
 		$(form).find("[type=tel]").each(function() {
 			if ($(this).val().length < 6) {

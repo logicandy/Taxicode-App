@@ -36,7 +36,7 @@ var User = {
 			});
 			User.state = true;
 			Config.set('auth_token', User.user.auth_token);
-			User.loadBookings();
+			Booking.getUserBookings(User.user.email, User.loadBookings);
 		} else {
 			User.state = false;
 		}
@@ -54,6 +54,7 @@ var User = {
 				$.each(response.bookings, function(id, booking) {
 					User.bookings[booking.reference] = booking;
 				});
+				Booking.saveUser();
 			}
 		}});
 	},
@@ -109,6 +110,44 @@ var User = {
 		if (Views.current == "account") {
 			Views.refresh();
 		}
+	},
+
+	create: function(data) {
+		App.loading();
+		API.get("user/create", {
+			data: data,
+			success: function(response) {
+				if (response.status == "OK") {
+					User.verifyEmail = data.email;
+					Views.render('account', undefined, 'verify');
+				} else {
+					App.alert(response.message);
+				}
+				App.stopLoading();
+			}, failure: function() {
+				App.stopLoading();
+			}
+		});
+	},
+
+	verify: function(data) {
+		App.loading();
+		API.get("user/verify", {
+			data: data,
+			success: function(response) {
+				if (response.status == "OK") {
+					Config.setting("login_email", response.user.email);
+					User.load(response.user);
+					App.stopLoading();
+				} else {
+					App.alert('Verification code failed');
+					App.stopLoading();
+				}
+			},
+			failure: function() {
+				App.stopLoading();
+			}
+		});
 	}
 
 };

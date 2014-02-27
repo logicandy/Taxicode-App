@@ -164,7 +164,7 @@ var Booking = {
 		Booking.save();
 	},
 
-	save: function() {
+	save: function(type) {
 		$.each(Booking.bookings, function(id, b) {
 			Booking.bookings[id].pickup = JSON.stringify(b.pickup);
 			Booking.bookings[id].destination = JSON.stringify(b.destination);
@@ -172,6 +172,19 @@ var Booking = {
 		DBMC.createTable("BOOKINGS", "reference, date, return, pickup, destination, price, distance, people, company_name, company_number, status", true, function() {
 			DBMC.insert("BOOKINGS", Booking.bookings, function() {
 				Booking.getBookings();
+			});
+		});
+	},
+
+	saveUser: function() {
+		$.each(User.bookings, function(id, b) {
+			User.bookings[id].user = User.user.email;
+			User.bookings[id].pickup = JSON.stringify(b.pickup);
+			User.bookings[id].destination = JSON.stringify(b.destination);
+		});
+		DBMC.createTable("USER_BOOKINGS", "user, reference, date, return, pickup, destination, price, distance, people, company_name, company_number, status", true, function() {
+			DBMC.insert("USER_BOOKINGS", User.bookings, function() {
+				Booking.getUserBookings();
 			});
 		});
 	},
@@ -204,6 +217,21 @@ var Booking = {
 					pickup: JSON.parse(bookings[i].pickup),
 					destination: JSON.parse(bookings[i].destination)
 				});
+			}
+		});
+	},
+
+	getUserBookings: function(email, success) {
+		DBMC.select("USER_BOOKINGS", "*", "user='" + email + "'", function(bookings) {
+			User.bookings = {};
+			for (var i = 0; i < bookings.length; i++) {
+				User.bookings[bookings[i].reference] = $.extend({}, bookings[i], {
+					pickup: JSON.parse(bookings[i].pickup),
+					destination: JSON.parse(bookings[i].destination)
+				});
+			}
+			if (success) {
+				success();
 			}
 		});
 	},

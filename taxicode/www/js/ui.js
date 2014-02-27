@@ -41,7 +41,7 @@ function addMaps() {
 };
 (function setupAddMaps() {
 	if (typeof google != "undefined") {
-		google.maps.event.addDomListener(window, 'load', addMaps);
+		google.maps.event.addDomListener(document, 'load', addMaps);
 	} else {
 		setTimeout(setupAddMaps, 1000);
 	}

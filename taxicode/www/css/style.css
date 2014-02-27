@@ -23,6 +23,11 @@ a, a:active, a:visited {
 	color: #008DD4;
 }
 
+hr {
+	border: none;
+	border-top: 1px solid #CCC;
+}
+
 #StatusBar {
 	width: 100%;
 	height: 21px;
@@ -182,6 +187,7 @@ input[type=password],
 input[type=month],
 input[type=date],
 input[type=time],
+input[type=number],
 select {
 	box-sizing: border-box;
 	height: 37px;
@@ -192,6 +198,8 @@ select {
 	outline: none;
 	border: none;
 }
+
+input[type="number"]::-webkit-outer-spin-button { display: none; }
 
 select {
 	border: 1px solid #999;
@@ -431,7 +439,7 @@ img[src='img/loading.gif'] {
 .fleft { float: left; }
 .fright { float: right; }
 
-.iblock { display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/ }
+.iblock { display: inline-block;zoom:1;*display:inline;}
 
 .block-section:nth-child(0) {
 	margin-top: 20px;

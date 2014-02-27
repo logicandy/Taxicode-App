@@ -9,15 +9,7 @@ var Views = {
 		if (view == "console") {
 			this.console();
 			return false;
-		}/* else if (view == "booking" && Views.current == "booking" && Views.sub != "form") {
-			App.confirm('Start new booking quote?', function(response) {
-				if (response) {
-					Booking.clear();
-					Views.render('booking', 'slideFromLeft', 'form');
-					$(this).closest(".alert").remove();
-				}
-			});
-		}*/ else if (typeof this["render"+ucwords(view)] == "function") {
+		} else if (typeof this["render"+ucwords(view)] == "function") {
 			var block = this["render"+ucwords(view)]($("<div class='view'></div>"), params);
 		} else if (typeof Template.templates[view] != "undefined") {
 			var block = Template.render(view);
@@ -115,18 +107,18 @@ var Views = {
 				break;
 
 			case 'customer':
-				$view.find("[name=name]").val(use_if_set(Booking.pay.data.name, User.user.name, Config.settings.name, ""));
-				$view.find("[name=email]").val(use_if_set(Booking.pay.data.email, User.user.email, Config.settings.email, ""));
-				$view.find("[name=telephone]").val(use_if_set(Booking.pay.data.telephone, Config.settings.telephone, ""));
+				$view.find("[name=name]").val(Booking.pay.data.name || User.user.name || Config.settings.name || ""));
+				$view.find("[name=email]").val(Booking.pay.data.email || User.user.email || Config.settings.email || ""));
+				$view.find("[name=telephone]").val(Booking.pay.data.telephone || User.user.phone || Config.settings.telephone || "");
 				break;
 
 			case 'card':
-				$view.find("[name=card_type]").val(use_if_set(Booking.pay.data.card_type, ""));
-				$view.find("[name=card_number]").val(use_if_set(Booking.pay.data.card_number, ""));
-				$view.find("[name=card_start]").val(use_if_set(Booking.pay.data.card_start, ""));
-				$view.find("[name=card_expiry]").val(use_if_set(Booking.pay.data.card_expiry, ""));
-				$view.find("[name=issue_number]").val(use_if_set(Booking.pay.data.issue_number, ""));
-				$view.find("[name=CV2]").val(use_if_set(Booking.pay.data.CV2, ""));
+				$view.find("[name=card_type]").val(Booking.pay.data.card_type || "");
+				$view.find("[name=card_number]").val(Booking.pay.data.card_number || "");
+				$view.find("[name=card_start]").val(Booking.pay.data.card_start || "");
+				$view.find("[name=card_expiry]").val(Booking.pay.data.card_expiry || "");
+				$view.find("[name=issue_number]").val(Booking.pay.data.issue_number || "");
+				$view.find("[name=CV2]").val(Booking.pay.data.CV2 || "");
 				var maestro = function() {
 					$view.find(".maestro-field").toggle($(this).val() == "MAESTRO");
 				};
@@ -136,20 +128,20 @@ var Views = {
 			case 'billing':
 
 				// Check if we can use names from elsewhere (if they're both less than 20 chars)
-				var first_name = use_if_set(User.user.first_name, Config.settings.first_name, "");
-				var last_name = use_if_set(User.user.last_name, Config.settings.last_name, "");
+				var first_name = User.user.first_name || Config.settings.first_name || "";
+				var last_name = User.user.last_name || Config.settings.last_name || "";
 				if (first_name.length > 20 || last_name.length > 20) {
 					first_name = last_name = "";
 				}
 
-				$view.find("[name=billing_first_name]").val(use_if_set(Booking.pay.data.billing_first_name, Config.settings.billing_first_name, first_name));
-				$view.find("[name=billing_surname]").val(use_if_set(Booking.pay.data.billing_surname, Config.settings.billing_surname, last_name));
-				$view.find("[name=billing_address_1]").val(use_if_set(Booking.pay.data.billing_address_1, Config.settings.billing_address_1, ""));
-				$view.find("[name=billing_address_2]").val(use_if_set(Booking.pay.data.billing_address_2, Config.settings.billing_address2, ""));
-				$view.find("[name=billing_city]").val(use_if_set(Booking.pay.data.billing_city, Config.settings.billing_city, ""));
-				$view.find("[name=billing_postcode]").val(use_if_set(Booking.pay.data.billing_postcode, Config.settings.billing_postcode, ""));
-				$view.find("[name=billing_country]").val(use_if_set(Booking.pay.data.billing_country, Config.settings.billing_country, ""));
-				$view.find("[name=billing_state]").val(use_if_set(Booking.pay.data.billing_state, Config.settings.billing_state, ""));
+				$view.find("[name=billing_first_name]").val(Booking.pay.data.billing_first_name || Config.settings.billing_first_name || first_name);
+				$view.find("[name=billing_surname]").val(Booking.pay.data.billing_surname || Config.settings.billing_surname || last_name);
+				$view.find("[name=billing_address_1]").val(Booking.pay.data.billing_address_1 || Config.settings.billing_address_1 || "");
+				$view.find("[name=billing_address_2]").val(Booking.pay.data.billing_address_2 || Config.settings.billing_address2 || "");
+				$view.find("[name=billing_city]").val(Booking.pay.data.billing_city || Config.settings.billing_city || "");
+				$view.find("[name=billing_postcode]").val(Booking.pay.data.billing_postcode || Config.settings.billing_postcode || "");
+				$view.find("[name=billing_country]").val(Booking.pay.data.billing_country || Config.settings.billing_country || "");
+				$view.find("[name=billing_state]").val(Booking.pay.data.billing_state || Config.settings.billing_state || "");
 				var us = function() {
 					$view.find(".us-field").toggle($(this).val() == "US");
 				};
@@ -175,9 +167,20 @@ var Views = {
 		}
 	},
 
-	renderAccount : function($view) {
+	renderAccount : function($view, mode) {
 		
 		$view.append("<h1>Account Page</h1>");
+
+		if (mode) {
+			switch (mode) {
+				case 'create':
+					return Template.render('account/create');
+					return;
+				case 'verify':
+					return Template.render('account/verify');
+					return;
+			}
+		}
 
 		switch (User.state) {
 			case "loading":
@@ -201,6 +204,14 @@ var Views = {
 
 		$view.find("[data-action=logout]").click(function() {
 			User.logout();
+		});
+
+		$view.find("[data-action=create]").click(function() {
+			Views.render('account', undefined, 'create');
+		});
+
+		$view.find("[data-action=verify]").click(function() {
+			Views.render('account', undefined, 'verify');
 		});
 
 	},
