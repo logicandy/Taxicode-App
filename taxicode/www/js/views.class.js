@@ -113,12 +113,12 @@ var Views = {
 				break;
 
 			case 'card':
-				$view.find("[name=card_type]").val(Booking.pay.data.card_type || "");
-				$view.find("[name=card_number]").val(Booking.pay.data.card_number || "");
+				$view.find("[name=card_type]").val(Booking.pay.data.card_type || (DevMode ? 'DELTA' : false) || "");
+				$view.find("[name=card_number]").val(Booking.pay.data.card_number || (DevMode ? '4462000000000003' : false) || "");
 				$view.find("[name=card_start]").val(Booking.pay.data.card_start || "");
-				$view.find("[name=card_expiry]").val(Booking.pay.data.card_expiry || "");
+				$view.find("[name=card_expiry]").val(Booking.pay.data.card_expiry || (DevMode ? '2014-12' : false) || "");
 				$view.find("[name=issue_number]").val(Booking.pay.data.issue_number || "");
-				$view.find("[name=CV2]").val(Booking.pay.data.CV2 || "");
+				$view.find("[name=CV2]").val(Booking.pay.data.CV2 || (DevMode ? '123' : false) || "");
 				var maestro = function() {
 					$view.find(".maestro-field").toggle($(this).val() == "MAESTRO");
 				};

@@ -76,6 +76,7 @@ var User = {
 				} else {
 					User.loadEmpty();
 					User.state = false;
+					App.alert(response.error);
 					App.stopLoading();
 					User.refreshView();
 				}
