@@ -39,9 +39,10 @@ function addMaps() {
 	});
 	setTimeout(addMaps, 500);
 };
+
 (function setupAddMaps() {
-	if (typeof google != "undefined") {
-		google.maps.event.addDomListener(document, 'load', addMaps);
+	if (typeof google != "undefined" && google.maps != "undefined") {
+		addMaps();
 	} else {
 		setTimeout(setupAddMaps, 1000);
 	}

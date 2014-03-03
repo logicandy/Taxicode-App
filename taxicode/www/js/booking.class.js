@@ -184,7 +184,7 @@ var Booking = {
 		});
 		DBMC.createTable("USER_BOOKINGS", "user, reference, date, return, pickup, destination, price, distance, people, company_name, company_number, status", true, function() {
 			DBMC.insert("USER_BOOKINGS", User.bookings, function() {
-				Booking.getUserBookings();
+				Booking.getUserBookings(User.user.email);
 			});
 		});
 	},

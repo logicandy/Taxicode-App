@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6, h7 {
 #footer a {
 	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
 	font-size: 8px;
-	width: 20%;
+	width: 25%;
 	height: 46px;
 	padding: 0px 0px;
 	color: white;

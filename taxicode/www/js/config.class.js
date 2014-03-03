@@ -6,7 +6,7 @@ var Config = {
 
 	version: 0.1,
 
-	mode: "developement",
+	mode: DevMode ? "developement" : "production",
 
 	internalPing: 250,
 	externalPing: 30000,
@@ -22,13 +22,14 @@ var Config = {
 	country : 'United Kingdom',
 	country_code : 'gb',
 
-	domains: {
-		/*api: "http://api.taxicode.com/",
-		main: "http://www.taxicode.com/",
-		compare: "https://www.taxipricecompare.co.uk/"*/
+	domains: DevMode ? {
 		api: "http://api:8888/",
 		main: "http://taxicode:8888/",
 		compare: "http://heathrow:8888/"
+	} : {
+		api: "http://api.taxicode.com/",
+		main: "http://www.taxicode.com/",
+		compare: "https://www.taxipricecompare.co.uk/"
 	},
 
 	initialize: function(callback) {
