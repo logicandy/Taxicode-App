@@ -138,6 +138,12 @@ var Booking = {
 						Booking.store();
 						Booking.clear();
 						Views.render('booking', 'slide', 'complete');
+					} else {
+						App.stopLoading();
+						App.alert(response.error ? response.error : "Error taking payment. Please review your information.", {options: {OK: function() {
+							$(this).closest('.alert').remove();
+							Views.render('booking', 'slideFromLeft', 'customer');
+						}}});
 					}
 				},
 				complete: function() {
