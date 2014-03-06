@@ -14,19 +14,29 @@
 		--><input type="text" name="destination" maxlength="100" data-required="true" />
 		</div>
 
-	</div>
+		<div class="field">
+			<label>Date</label><!--
+		--><input type="text" data-type="date" />
+		</div>
 
-	<center>
-		<input type="date" name="pickup_date" min="{{%new Date().format()}}" /><!--
-		--><input type="time" name="pickup_time" />
-	</center>
-	
-	<select name="passengers">
+		<div class="field">
+			<label>Time</label><!--
+		--><input type="text" data-type="time" />
+		</div>
+
+		<div class="field">
+			<label>People</label><!--
+		--><select name="passengers">
 		{{#foreach data.passengers}}
 			<option value="{{$key}}">{{$val}}</option>
 		{{#endforeach}}
 	</select>
 
+		</div>
+
+	</div>
+	
+	
 	<center><input type="submit" class="btn" value="Get Quote" /></center>
 
 </form>

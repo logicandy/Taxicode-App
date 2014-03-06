@@ -4,7 +4,7 @@
 		<h2 class="center">No Results</h2>
 	{{#endif}}
 
-	{{#if Object.size(Booking.quotes) && !Object.size(Booking.quotes) > 1}}
+	{{#if Object.size(Booking.quotes) && Object.size(Booking.quotes) <= 1}}
 		<h2>Results</h2>
 	{{#endif}}
 

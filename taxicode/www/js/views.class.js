@@ -27,6 +27,9 @@ var Views = {
 			this["setup"+ucwords(view)](block, params);
 		}
 
+		// Add mobiscroll elements
+		Views.mobiscroll(block);
+
 		// Transition
 		switch (effect) {
 			case 'slide':
@@ -262,7 +265,7 @@ var Views = {
 
 	},
 
-	renderBookings : function($view, details) {
+	renderBookings: function($view, details) {
 		if (typeof details == "undefined") {
 			return Template.render('bookings');
 		} else {
@@ -270,11 +273,11 @@ var Views = {
 		}
 	},
 
-	renderHelp : function($view) {
+	renderHelp: function($view) {
 		return Template.render('help');
 	},
 
-	console : function() {
+	console: function() {
 		App.alert("<div class='console'><input type='text' autocapitalize='off' autocorrect='off' style='width: 255px;'/></div>", {
 			title: "Console",
 			options: {
@@ -286,6 +289,35 @@ var Views = {
 				}
 			}
 		});
+	},
+
+	mobiscroll: function($view) {
+		var options = {
+			theme: 'ios7',
+			display: 'bottom'
+		};
+		$view.find("[data-type=date]").scroller('destroy').scroller($.extend(options, {
+			preset: 'date',
+			dateOrder: 'd Dmmyy',
+			minDate: new Date(),
+			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365),
+			stepMinute: 5
+		}));
+		$view.find("[data-type=time]").scroller('destroy').scroller($.extend(options, {
+			preset: 'time',
+			minDate: new Date(),
+			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365),
+			stepMinute: 5
+		}));
+		$view.find("[data-type=datetime]").scroller('destroy').scroller($.extend(options, {
+			preset: 'datetime',
+			minDate: new Date(),
+			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365),
+			stepMinute: 5
+		}));
+		$view.find("select").scroller('destroy').scroller($.extend(options, {
+			preset: 'select'
+		}));
 	}
 
 };
