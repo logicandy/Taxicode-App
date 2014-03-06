@@ -2,6 +2,7 @@ var Config = {
 
 	app: window.location.hash == "#tpc" ? "taxipricecompare" : "taxicode",
 	title: window.location.hash == "#tpc" ? "Taxi Price Compare" : "Taxicode",
+	quote_mode: window.location.hash == "#tpc" ? "all" : "tc",
 	subdir: window.location.hash == "#tpc" ? "tpc" : "taxicode",
 
 	version: 0.1,

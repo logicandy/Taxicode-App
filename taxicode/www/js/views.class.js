@@ -104,6 +104,52 @@ var Views = {
 						$(this).html("No Ratings");
 					}
 				});
+				$view.find("#sort-results").change(function() {
+					console.log($(this).val());
+					var prices = $view.find("#results").children().detach();
+					switch ($(this).val()) {
+					case "price":
+						prices.sort(function(a, b) {
+							return parseFloat($(a).attr('data-price')) - parseFloat($(b).attr('data-price'));
+						});
+						break;
+					case "feedback":
+						prices.sort(function(a, b) {
+							var total_a = parseInt($(a).attr('data-no-ratings'));
+							var total_b = parseInt($(b).attr('data-no-ratings'));
+							var score_a = total_a ? parseFloat($(a).attr('data-rating')) : 0;
+							var score_b = total_b ? parseFloat($(b).attr('data-rating')) : 0;
+							if ($(a).hasClass('active') != $(b).hasClass('active')) {
+								return $(a).hasClass('active') ? -1 : 1;
+							} else if (score_a < score_b) {
+								return 1;
+							} else if (score_a > score_b) {
+								return -1;
+							} else if (total_a > total_b) {
+								return 1;
+							} else if (total_b < total_a) {
+								return -1;
+							} else {
+								return parseFloat($(a).attr('data-price')) - parseFloat($(b).attr('data-price'));
+							}
+						});
+						break;
+					case "reliability":
+						prices.sort(function(a, b) {
+							if ($(a).hasClass('active') != $(b).hasClass('active')) {
+								return $(a).hasClass('active') ? -1 : 1;
+							} else if (parseInt($(a).attr('data-reliability')) < parseInt($(b).attr('data-reliability'))) {
+								return 1;
+							} else if (parseInt($(a).attr('data-reliability')) > parseInt($(b).attr('data-reliability'))) {
+								return -1;
+							} else {
+								return parseFloat($(a).attr('data-price')) - parseFloat($(b).attr('data-price'));
+							}
+						});
+						break;
+					}
+					$view.find("#results").html(prices);
+				});
 				break;
 
 			case 'customer':
