@@ -265,6 +265,7 @@
     height: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
 }
 /* Wheel +/- buttons */
 .dwwb {

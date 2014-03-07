@@ -10,7 +10,7 @@
 
 	{{#if Object.size(Booking.quotes) && Object.size(Booking.quotes) > 1}}
 		<h2>
-			<select class="fright" style="width: auto;" id="sort-results">
+			<select class="fright" id="sort-results">
 				<option value="reliability">Sort By Reliability</option>
 				<option value="price">Sort By Price</option>
 				<option value="feedback">Sort By Feedback</option>

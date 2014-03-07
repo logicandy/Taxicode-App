@@ -197,6 +197,7 @@ select {
 	font-size: 16px;
 	outline: none;
 	border: none;
+	background-image: none !important;
 }
 
 input[type="number"]::-webkit-outer-spin-button { display: none; }
@@ -602,4 +603,13 @@ table.small td {
 	font-size: 14px;
 	text-align: center;
 	color: #666;
+}
+
+#sort-results_dummy {
+	float: right;
+	width: 155px;
+	text-align: center;
+	margin-top: -5px;
+	margin-right: -5px;
+	border: 1px solid #CCC;
 }

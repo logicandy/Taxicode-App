@@ -4,16 +4,12 @@
 
 	<div class="fieldset">
 
-		<div class="center" style="padding: 0px 8px;">
-			<select name="card_type" data-required="true">
+		<div class="field">
+			<label>Type</label><!--
+		--><select name="card_type" data-required="true">
 				<option value="">- Select Card -</option>
 				{{#foreach Booking.form_data.card_types}}
-					<option value="{{$val.code}}">
-						{{$val.name}}
-						{{#if Template.data.val.uplift}}
-							(+&pound;{{%(Booking.quotes[Booking.quote].price * Template.data.val.uplift/100).toFixed(2)}})
-						{{#endif}}
-					</option>
+					<option value="{{$val.code}}">{{$val.name}} {{#if Template.data.val.uplift}} (+&pound;{{%(Booking.quotes[Booking.quote].price * Template.data.val.uplift/100).toFixed(2)}}){{#endif}}</option>
 				{{#endforeach}}
 			</select>
 		</div>
@@ -25,12 +21,14 @@
 
 		<div class="field maestro-field">
 			<label>Start</label><!--
-		--><input type="month" maxlength="7" name="card_start" data-required="$.visible(this);" min="{{%new Date().format('Y-m')}}" data-value="$.visible(this)?$(this).val():''" />
+		--><input type="text" data-type="month" maxlength="7" name="card_start" data-required="$.visible(this);" data-value="$.visible(this)?Booking.formatMonth($(this).val()):''"
+					data-data-min="{{%new Date().getTime()-1000*60*60*24*365*10}}" data-data-max="{{%new Date().getTime()}}" />
 		</div>
 
 		<div class="field">
 			<label>Expiry</label><!--
-		--><input type="month" maxlength="7" name="card_expiry" data-required="true" min="{{%new Date().format('Y-m')}}" />
+		--><input type="text" data-type="month" maxlength="7" name="card_expiry" data-required="true" data-value="Booking.formatMonth($(this).val())"
+					data-data-min="{{%new Date().getTime()}}" data-data-max="{{%new Date().getTime()+1000*60*60*24*365*10}}" />
 		</div>
 
 		<div class="field maestro-field">

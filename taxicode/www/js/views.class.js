@@ -201,7 +201,14 @@ var Views = {
 			default:
 				// Save and load
 				$view.find("[name]").each(function() {
-					$(this).val(Booking.data[$(this).attr('name')]);
+					// Get value
+					var val = Booking.data[$(this).attr('name')];
+					// If it is a date in YYYY-MM-DD Format, convert it to DD/MM/YYYY
+					if (val.match && val.match(/^[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]$/g)) {
+						val = val.substr(8, 2) + "/" + val.substr(5, 2) + "/" + val.substr(0, 4);
+					}
+					// Assign value
+					$(this).val(val);
 				});
 				$view.find("[name]").change(function() {
 					Booking.data[$(this).attr('name')] = $(this).val();
@@ -298,17 +305,26 @@ var Views = {
 		};
 		$view.find("[data-type=date]").scroller('destroy').scroller($.extend(options, {
 			preset: 'date',
-			dateOrder: 'd Dmmyy',
+			dateFormat: 'dd/mm/yy',
+			dateOrder: 'ddMyy',
 			minDate: new Date(),
-			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365),
-			stepMinute: 5
+			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 2)
 		}));
 		$view.find("[data-type=time]").scroller('destroy').scroller($.extend(options, {
 			preset: 'time',
-			minDate: new Date(),
-			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365),
+			timeFormat: 'HH:ii',
+			timeWheels: 'HHii',
 			stepMinute: 5
 		}));
+		$view.find("[data-type=month]").each(function() {
+			$(this).scroller('destroy').scroller($.extend(options, {
+				preset: 'date',
+				dateOrder: 'MMyy',
+				dateFormat: 'mm/yy',
+				minDate: $(this).is("[data-date-min]") ? new Date(parseInt($(this).attr('data-date-min'))) : undefined,
+				maxDate: $(this).is("[data-date-max]") ? new Date(parseInt($(this).attr('data-date-max'))) : undefined
+			}));
+		});
 		$view.find("[data-type=datetime]").scroller('destroy').scroller($.extend(options, {
 			preset: 'datetime',
 			minDate: new Date(),

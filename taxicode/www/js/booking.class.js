@@ -19,7 +19,7 @@ var Booking = {
 			pickup: "",
 			destination: "",
 			vias: "",
-			pickup_date: (new Date().format()),
+			pickup_date: (new Date(new Date().getTime()+1000*60*60*24).format("d/m/Y")),
 			pickup_time: "12:00",
 			returnDate: false,
 			returnTime: false,
@@ -33,8 +33,22 @@ var Booking = {
 
 	updateData: function() {
 		$(".booking-engine [name]").each(function() {
-			Booking.data[$(this).attr('name')] = $(this).val();
+			Booking.data[$(this).attr('name')] = Booking.formatDateTime($(this).val());
 		});
+	},
+
+	formatDateTime: function(text) {
+		if (text.match(/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/g)) {
+			return text.substr(6, 4) + "-" + text.substr(3, 2) + "-" + text.substr(0, 2);
+		}
+		return text;
+	},
+
+	formatMonth: function (text) {
+		if (text.match(/^[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/g)) {
+			return text.substr(3, 4) + "-" + text.substr(0, 2);
+		}
+		return text;
 	},
 
 	getQuote: function() {
