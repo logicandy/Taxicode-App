@@ -35,6 +35,10 @@
 		</table>
 	</div>
 
+	{{#if User.user.card_token}}
+		<p class="center"><a class="btn" onclick="Booking.pay.quote('token');">Use Saved Card</a></p>
+	{{#endif}}
+
 	<p class="center"><a class="btn" onclick="Booking.pay.quote('card');">Pay By Card</a></p>
 	
 	{{#if Template.data.quote.company_phone}}

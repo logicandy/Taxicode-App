@@ -16,6 +16,8 @@ var Template = {
 		"pay/customer"		: false,
 		"pay/card"			: false,
 		"pay/billing"		: false,
+		
+		"pay/token"			: false,
 
 		"account/login"		: false,
 		"account/user"		: false,

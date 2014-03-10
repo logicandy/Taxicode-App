@@ -128,7 +128,15 @@ var Booking = {
 		data: {},
 		quote: function(type) {
 			Booking.pay.data = {};
-			Views.render('booking', 'slide', 'customer');
+			switch (type) {
+			case "token":
+				Views.render('booking', 'slide', 'token');
+				break;
+			case "card":
+			default:
+				Views.render('booking', 'slide', 'customer');
+				break;
+			}
 		},
 		customer: function(data) {
 			$.extend(Booking.pay.data, data);
@@ -139,6 +147,19 @@ var Booking = {
 			$.extend(Booking.pay.data, data);
 			Views.render('booking', 'slide', 'billing');
 		},
+		complete_token: function(data) {
+			return false;
+			API.get("booking/pay", {
+				data: $.extend({quote: Booking.quote}, User.authObject(), {
+					method: "token",
+					CV2: data.CV2
+				}),
+				success: Booking.pay.complete_success,
+				complete: function() {
+					App.stopLoading();
+				}
+			});
+		},
 		complete: function(data) {
 			$.extend(Booking.pay.data, data);
 			Config.setting(data);
@@ -147,24 +168,25 @@ var Booking = {
 
 			API.get("booking/pay", {
 				data: $.extend({quote: Booking.quote}, User.authObject(), Booking.pay.data),
-				success: function(response) {
-					if (response.status == "OK") {
-						Booking.reference = response.reference;
-						Booking.store();
-						Booking.clear();
-						Views.render('booking', 'slide', 'complete');
-					} else {
-						App.stopLoading();
-						App.alert(response.error ? response.error : "Error taking payment. Please review your information.", {options: {OK: function() {
-							$(this).closest('.alert').remove();
-							Views.render('booking', 'slideFromLeft', 'customer');
-						}}});
-					}
-				},
+				success: Booking.pay.complete_success,
 				complete: function() {
 					App.stopLoading();
 				}
 			});
+		},
+		complete_success: function (response) {
+			if (response.status == "OK") {
+				Booking.reference = response.reference;
+				Booking.store();
+				Booking.clear();
+				Views.render('booking', 'slide', 'complete');
+			} else {
+				App.stopLoading();
+				App.alert(response.error ? response.error : "Error taking payment. Please review your information.", {options: {OK: function() {
+					$(this).closest('.alert').remove();
+					Views.render('booking', 'slideFromLeft', 'customer');
+				}}});
+			}
 		}
 	},
 

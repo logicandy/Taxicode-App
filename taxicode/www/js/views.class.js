@@ -70,6 +70,8 @@ var Views = {
 				return Template.render('pay/card');
 			case 'billing':
 				return Template.render('pay/billing');
+			case 'token':
+				return Template.render('pay/token');
 			case 'complete':
 				return Template.render('booking/complete');
 			case 'form':
@@ -168,6 +170,11 @@ var Views = {
 				$view.find("[name=card_expiry]").val(Booking.pay.data.card_expiry || (DevMode ? '12/2014' : false) || "");
 				$view.find("[name=issue_number]").val(Booking.pay.data.issue_number || "");
 				$view.find("[name=CV2]").val(Booking.pay.data.CV2 || (DevMode ? '123' : false) || "");
+				if (typeof Booking.pay.data.save == "boolean" ? Booking.pay.data.save : true) {
+					$view.find("[name=save]").attr("checked", "checked");
+				} else {
+					$view.find("[name=save]").removeAttr("checked");
+				}
 				var maestro = function() {
 					$view.find(".maestro-field").toggle($(this).val() == "MAESTRO");
 				};
@@ -195,6 +202,9 @@ var Views = {
 					$view.find(".us-field").toggle($(this).val() == "US");
 				};
 				$view.find("[name=billing_country]").each(us).change(us);
+				break;
+				
+			case 'token':
 				break;
 
 			case 'form':
