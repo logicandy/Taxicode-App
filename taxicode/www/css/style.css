@@ -440,7 +440,7 @@ img[src='img/loading.gif'] {
 .fleft { float: left; }
 .fright { float: right; }
 
-.iblock { display: inline-block;zoom:1;*display:inline;}
+.iblock { display: inline-block;zoom:1;*display:inline; }
 
 .block-section:nth-child(0) {
 	margin-top: 20px;
@@ -612,4 +612,20 @@ table.small td {
 	margin-top: -5px;
 	margin-right: -5px;
 	border: 1px solid #CCC;
+}
+
+.checkbox-field {
+	text-align: center;
+	display: block;
+	margin-bottom: 15px;
+}
+
+.checkbox-field input {
+	width: auto;
+	vertical-align: middle;
+}
+
+.checkbox-field div {
+	vertical-align: middle;
+	display: inline-block;zoom:1;*display:inline;
 }

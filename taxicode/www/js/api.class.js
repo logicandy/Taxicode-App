@@ -49,14 +49,40 @@ var API = {
 
 	execute : function (ajax) {
 		if (Object.size(ajax.data) && ajax.type == "POST") {
-			var encrypted = API.encrypt(JSON.stringify(ajax.data));
-			if (encrypted) {
-				ajax.data = {encrypted: encrypted};
+			
+			var json = JSON.stringify(ajax.data);
+			var char_split = 475;
+
+			if (json.length <= char_split) {
+
+				var encrypted = API.encrypt(json);
+				if (encrypted) {
+					ajax.data = {encrypted: encrypted};
+				} else {
+					ajax.failure();
+					App.alert('Apologies, an error has occured.');
+					return false;
+				}
+
+			} else if (json.length <= char_split * 2) {
+
+				var encrypted1 = API.encrypt(json.substr(0, char_split));
+				var encrypted2 = API.encrypt(json.substr(char_split));
+
+				if (encrypted1 && encrypted2) {
+					ajax.data = {encrypted: encrypted1, encrypted2: encrypted2};
+				} else {
+					ajax.failure();
+					App.alert('Apologies, an error has occured.');
+					return false;
+				}
+
 			} else {
 				ajax.failure();
-				alert('API Error.');
+				App.alert('Apologies, an error has occured.');
 				return false;
 			}
+			
 		}
 		$.jsonp(ajax);
 		return true;

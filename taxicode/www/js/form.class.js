@@ -89,6 +89,8 @@ var Form = {
 		$(form).find("[name]").each(function() {
 			if ($(this).is("[data-value]")) {
 				data[$(this).attr('name')] = eval($(this).attr("data-value"));
+			} else if ($(this).is(":checkbox")) {
+				data[$(this).attr('name')] = $(this).is(":checked");
 			} else {
 				data[$(this).attr('name')] = $(this).val();
 			}

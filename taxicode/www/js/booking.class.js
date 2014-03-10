@@ -146,7 +146,7 @@ var Booking = {
 			Booking.pay.data.quote = Booking.quote;
 
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote}, Booking.pay.data),
+				data: $.extend({quote: Booking.quote}, User.authObject(), Booking.pay.data),
 				success: function(response) {
 					if (response.status == "OK") {
 						Booking.reference = response.reference;
