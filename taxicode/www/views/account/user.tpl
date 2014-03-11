@@ -10,6 +10,15 @@
 		<p><strong>Company:</strong> {{$company}}</p>
 	{{#endif}}
 
+
+	{{#if Object.size(User.user.companies)}}
+		<hr/>
+		<h3>Favourite Companies</h3>
+		{{#foreach User.user.companies}}
+			<div>{{$val}}</div>
+		{{#endforeach}}
+	{{#endif}}
+
 	<p><a class='btn' data-action='logout'>Logout</a></p>
 
 </div>

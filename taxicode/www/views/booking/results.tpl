@@ -35,10 +35,16 @@
 					data-no-ratings="{{$val.rating.ratings}}"
 				>
 					<div class="price">&pound;{{$val.price.toFixed(2)}}</div>
-					<h3>{{$val.company_name}}</h3>
+					<h3>
+						{{%User.user && User.user.companies[Template.data[Template.data.key].company_id]?"<img src='img/star_orange.png' class='star' />":""}}
+						{{$val.company_name}}
+					</h3>
 					<small>Based in {{$val.company_location}}</small>
 					<div class="rating" data-score="{{$val.rating.score}}" data-ratings="{{$val.rating.ratings}}"></div>
 					<small>Reliability: {{$val.reliability}}/10</small>
+
+					<!-- Starred company -->
+					<div><strong>{{%User.user && User.user.companies[Template.data[Template.data.key].company_id]?"<small>You've successfully booked with "+Template.data[Template.data.key].company_name+" before.</small>":""}}</strong></div>
 				</div>
 
 			{{#endforeach}}

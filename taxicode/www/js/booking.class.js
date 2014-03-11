@@ -19,7 +19,7 @@ var Booking = {
 			pickup: "",
 			destination: "",
 			vias: "",
-			pickup_date: (new Date(new Date().getTime()+1000*60*60*24).format("d/m/Y")),
+			pickup_date: (new Date(new Date().getTime() + 1000*60*60*24).format("d/m/Y")),
 			pickup_time: "12:00",
 			returnDate: false,
 			returnTime: false,
