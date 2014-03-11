@@ -158,6 +158,7 @@ var Views = {
 				break;
 
 			case 'customer':
+			case 'token':
 				$view.find("[name=name]").val(Booking.pay.data.name || User.user.name || Config.settings.name || "");
 				$view.find("[name=email]").val(Booking.pay.data.email || User.user.email || Config.settings.email || "");
 				$view.find("[name=telephone]").val(Booking.pay.data.telephone || User.user.phone || Config.settings.telephone || "");

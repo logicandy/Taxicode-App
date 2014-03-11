@@ -148,10 +148,12 @@ var Booking = {
 			Views.render('booking', 'slide', 'billing');
 		},
 		complete_token: function(data) {
-			return false;
 			API.get("booking/pay", {
 				data: $.extend({quote: Booking.quote}, User.authObject(), {
 					method: "token",
+					name: data.name,
+					telephone: data.telephone,
+					email: data.email,
 					CV2: data.CV2
 				}),
 				success: Booking.pay.complete_success,
