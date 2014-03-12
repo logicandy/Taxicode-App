@@ -5,13 +5,18 @@ body {
 .logo {
 	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
 
-	width: 250px;
-	height: 34px;
+	width: 200px;
+	height: 27px;
 
 	background-image: url('../img/tpc/logo.png');
-	background-size: 250px 34px;
+	background-size: 200px 27px;
 
-	margin-top: 4px;
+	margin: 2px 15px 0px;
+}
+
+#header {
+	height: 21px;
+	padding: 10px 0px 15px 0px;
 }
 
 #header, #footer {

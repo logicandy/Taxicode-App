@@ -8,6 +8,26 @@
 
 	<div class="price center">&pound;{{$quote.price.toFixed(2)}}</div>
 
+	<br/>
+
+	<div class="center">
+
+		<a class="btn double" onclick="Booking.pay.quote('card');">
+			<span>New Card</span>
+			<small>Credit/Debit</small>
+		</a>
+
+		{{#if User.user.card_token}}
+			<a class="btn double" onclick="Booking.pay.quote('token');">
+				<span>Saved Card</span>
+				<small>Ending {{%User.user.card_token.digits}}</small>
+			</a>
+		{{#endif}}
+
+	</div>
+
+	<br/>
+
 	<div class="full">
 		<table class="info">
 			<tr>
@@ -34,12 +54,6 @@
 			</tr>
 		</table>
 	</div>
-
-	{{#if User.user.card_token}}
-		<p class="center"><a class="btn" onclick="Booking.pay.quote('token');">Use Saved Card</a></p>
-	{{#endif}}
-
-	<p class="center"><a class="btn" onclick="Booking.pay.quote('card');">Pay By Card</a></p>
 	
 	<!--
 		{{#if Template.data.quote.company_phone}}
