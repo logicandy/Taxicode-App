@@ -41,9 +41,11 @@
 
 	<p class="center"><a class="btn" onclick="Booking.pay.quote('card');">Pay By Card</a></p>
 	
-	{{#if Template.data.quote.company_phone}}
-		<p class="center"><a class="btn" href="tel:{{$quote.company_phone}}">Call {{$quote.company_name}}</a></p>
-	{{#endif}}
+	<!--
+		{{#if Template.data.quote.company_phone}}
+			<p class="center"><a class="btn" href="tel:{{$quote.company_phone}}">Call {{$quote.company_name}}</a></p>
+		{{#endif}}
+	-->
 
 	<a class="block-section center" style="color: inherit;" onclick="Views.render('booking','slideFromLeft','results');">Go Back</a>
 

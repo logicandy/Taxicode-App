@@ -61,7 +61,7 @@ var App = {
 		}
 		setTimeout(App.pingRepeat, Config.externalPing);
 		App.stopLoading();
-		$("body").attr("data-initialized", "true");
+		App.optionButton();
 	},
 
 	loading: function() {
@@ -203,10 +203,31 @@ var App = {
 		});
 	},
 
+	optionButton: function() {
+		if (typeof Views.back == "function") {
+			$("#header").addClass("option");
+			$("#header .option-button").html("Back");
+		} else if (!User.user && Views.current != "account") {
+			$("#header").addClass("option");
+			$("#header .option-button").html("Sign In");
+		} else {
+			$("#header").removeClass("option");
+		}
+		setTimeout(App.optionButton, Config.internalPing);
+	},
+
+	optionButtonClick: function() {
+		if (typeof Views.back == "function") {
+			Views.back();
+		} else if (!User.user && Views.current != "account") {
+			Views.render("account");
+		}
+	},
+
 	/* jQuery helpers */
-	find : function(a) { return this.element.find(a); },
-	append : function(a) { return this.element.append(a); },
-	empty : function() { return this.element.empty(); },
-	html : function (a) { return this.element.html(a); }
+	find : function(a) { return App.element.find(a); },
+	append : function(a) { return App.element.append(a); },
+	empty : function() { return App.element.empty(); },
+	html : function (a) { return App.element.html(a); }
 
 }

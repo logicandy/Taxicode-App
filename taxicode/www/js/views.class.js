@@ -2,8 +2,11 @@ var Views = {
 
 	current : false,
 	sub: false,
+	back: false,
 
 	render: function(view, effect, params) {
+
+		Views.back = false;
 
 		// Get view
 		if (view == "console") {
@@ -91,6 +94,9 @@ var Views = {
 
 		switch (Booking.state) {
 			case 'results':
+				Views.back = function() {
+					Views.render('booking', 'slideFromLeft', 'form');
+				};
 				$view.find(".rating").each(function() {
 					var ratings = parseInt($(this).attr("data-ratings"));
 					if (ratings) {
@@ -159,12 +165,18 @@ var Views = {
 
 			case 'customer':
 			case 'token':
+				Views.back = function() {
+					Views.render('booking', 'slideFromLeft', 'quote');
+				};
 				$view.find("[name=name]").val(Booking.pay.data.name || User.user.name || Config.settings.name || "");
 				$view.find("[name=email]").val(Booking.pay.data.email || User.user.email || Config.settings.email || "");
 				$view.find("[name=telephone]").val(Booking.pay.data.telephone || User.user.phone || Config.settings.telephone || "");
 				break;
 
 			case 'card':
+				Views.back = function() {
+					Views.render('booking', 'slideFromLeft', 'customer');
+				};
 				$view.find("[name=card_type]").val(Booking.pay.data.card_type || (DevMode ? 'DELTA' : false) || "");
 				$view.find("[name=card_number]").val(Booking.pay.data.card_number || (DevMode ? '4462000000000003' : false) || "");
 				$view.find("[name=card_start]").val(Booking.pay.data.card_start || "");
@@ -183,6 +195,9 @@ var Views = {
 				break;
 
 			case 'billing':
+				Views.back = function() {
+					Views.render('booking', 'slideFromLeft', 'card');
+				};
 
 				// Check if we can use names from elsewhere (if they're both less than 20 chars)
 				var first_name = User.user.first_name || Config.settings.first_name || "";
@@ -205,7 +220,10 @@ var Views = {
 				$view.find("[name=billing_country]").each(us).change(us);
 				break;
 				
-			case 'token':
+			case 'quote':
+				Views.back = function() {
+					Views.render('booking', 'slideFromLeft', 'results');
+				};
 				break;
 
 			case 'form':
@@ -287,6 +305,9 @@ var Views = {
 		if (typeof details == "undefined") {
 			return Template.render('bookings');
 		} else {
+			Views.back = function() {
+				Views.render('bookings', 'slideFromLeft');
+			};
 			return Template.render('booking/details', {booking: details});
 		}
 	},
