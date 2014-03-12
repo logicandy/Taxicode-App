@@ -61,6 +61,7 @@ var App = {
 		}
 		setTimeout(App.pingRepeat, Config.externalPing);
 		App.stopLoading();
+		$("body").attr("data-initialized", "true");
 	},
 
 	loading: function() {

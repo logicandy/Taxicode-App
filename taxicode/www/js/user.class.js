@@ -25,7 +25,8 @@ var User = {
 	},
 
 	loadEmpty: function() {
-		this.user = false;
+		User.user = false;
+		$("body").attr("data-user", "false");
 	},
 
 	load: function(user, stopLoading) {
@@ -34,6 +35,7 @@ var User = {
 			$.each(user, function(key, value) {
 				User.user[key] = value;
 			});
+			$("body").attr("data-user", User.user.email);
 			User.state = true;
 			Config.set('auth_token', User.user.auth_token);
 			Booking.getUserBookings(User.user.email, User.loadBookings);

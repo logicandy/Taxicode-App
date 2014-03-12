@@ -5,12 +5,18 @@ body {
 .logo {
 	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
 
-	width: 250px;
-	height: 36px;
+	width: 196px;
+	height: 30px;
 
 	background-image: url('../img/taxicode/logo.png');
-	background-size: 250px 36px;
+	background-size: 196px 30px;
+	margin: 0px 10px;
 
+}
+
+#header {
+	height: 24px;
+	padding: 10px 0px 15px 0px;
 }
 
 #header, #footer {

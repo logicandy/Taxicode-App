@@ -72,7 +72,7 @@ $(document).keypress(function(e) {
 	}
 });
 
-var setupLayout = function() {
+var setupLayout = function(repeat) {
 	$("#main").height(
 		$(window).height()
 		- $("#header").outerHeight()
@@ -80,6 +80,10 @@ var setupLayout = function() {
 		- parseInt($("#main").css("padding-top"))
 		- parseInt($("#main").css("padding-bottom"))
 	);
+	if (repeat === true) {
+		setTimeout(setupLayout, Config.internalPing, true);
+	}
 }
 $(document).ready(setupLayout);
 $(window).resize(setupLayout);
+setupLayout(true);
