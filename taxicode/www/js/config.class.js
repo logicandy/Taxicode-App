@@ -1,9 +1,13 @@
+var Params = JSON.parse('{"' + decodeURI(window.location.search.substr(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+
 var Config = {
 
-	app: window.location.hash == "#tpc" ? "taxipricecompare" : "taxicode",
-	title: window.location.hash == "#tpc" ? "Taxi Price Compare" : "Taxicode",
-	quote_mode: window.location.hash == "#tpc" ? "all" : "tc",
-	subdir: window.location.hash == "#tpc" ? "tpc" : "taxicode",
+	app:		Params.app == "tpc" ? "taxipricecompare" : "taxicode",
+	title:		Params.app == "tpc" ? "Taxi Price Compare" : "Taxicode",
+	quote_mode:	Params.app == "tpc" ? "all" : "tc",
+	subdir:		Params.app == "tpc" ? "tpc" : "taxicode",
+
+	theme: Params.theme == "android" ? "android" : "ios7",
 
 	version: 0.1,
 

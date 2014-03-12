@@ -332,7 +332,7 @@ var Views = {
 
 	mobiscroll: function($view) {
 		var options = {
-			theme: 'ios7',
+			theme: Config.params.theme ? Config.params.theme : 'ios7',
 			display: 'bottom'
 		};
 		$view.find("[data-type=date]").scroller('destroy').scroller($.extend(options, {
