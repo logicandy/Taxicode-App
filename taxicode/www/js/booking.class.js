@@ -275,10 +275,13 @@ var Booking = {
 					destination: JSON.parse(bookings[i].destination)
 				});
 			}
-			if (success) {
-				success();
-			}
+			//if (success) {
+			//	success();
+			//}
 		});
+		if (success) {
+			success();
+		}
 	},
 
 	form_data: {
