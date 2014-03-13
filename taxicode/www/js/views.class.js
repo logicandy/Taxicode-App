@@ -161,6 +161,7 @@ var Views = {
 					}
 					$view.find("#results").html(prices);
 				});
+				$view.find("#sort-results").change();
 				break;
 
 			case 'customer':
@@ -333,39 +334,46 @@ var Views = {
 	mobiscroll: function($view) {
 		var options = {
 			theme: Config.theme ? Config.theme : 'ios7',
-			display: 'bottom'
+			display: 'bottom',
 		};
-		$view.find("[data-type=date]").scroller('destroy').scroller($.extend(options, {
+		$view.find("[data-type=date]").scroller('destroy').scroller($.extend({
 			preset: 'date',
 			dateFormat: 'dd/mm/yy',
 			dateOrder: 'ddMyy',
 			minDate: new Date(),
 			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 2)
-		}));
-		$view.find("[data-type=time]").scroller('destroy').scroller($.extend(options, {
+		}, options));
+		$view.find("[data-type=time]").scroller('destroy').scroller($.extend({
 			preset: 'time',
 			timeFormat: 'HH:ii',
 			timeWheels: 'HHii',
 			stepMinute: 5
-		}));
+		}, options));
 		$view.find("[data-type=month]").each(function() {
-			$(this).scroller('destroy').scroller($.extend(options, {
+			$(this).scroller('destroy').scroller($.extend({
 				preset: 'date',
 				dateOrder: 'MMyy',
 				dateFormat: 'mm/yy',
 				minDate: $(this).is("[data-date-min]") ? new Date(parseInt($(this).attr('data-date-min'))) : undefined,
 				maxDate: $(this).is("[data-date-max]") ? new Date(parseInt($(this).attr('data-date-max'))) : undefined
-			}));
+			}, options));
+			console.log($(this), $.extend({
+				preset: 'date',
+				dateOrder: 'MMyy',
+				dateFormat: 'mm/yy',
+				minDate: $(this).is("[data-date-min]") ? new Date(parseInt($(this).attr('data-date-min'))) : undefined,
+				maxDate: $(this).is("[data-date-max]") ? new Date(parseInt($(this).attr('data-date-max'))) : undefined
+			}, options));
 		});
-		$view.find("[data-type=datetime]").scroller('destroy').scroller($.extend(options, {
+		$view.find("[data-type=datetime]").scroller('destroy').scroller($.extend({
 			preset: 'datetime',
 			minDate: new Date(),
 			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365),
 			stepMinute: 5
-		}));
-		$view.find("select").scroller('destroy').scroller($.extend(options, {
+		}, options));
+		$view.find("select").scroller('destroy').scroller($.extend({
 			preset: 'select'
-		}));
+		}, options));
 	}
 
 };

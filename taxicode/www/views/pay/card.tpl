@@ -22,13 +22,13 @@
 		<div class="field maestro-field">
 			<label>Start</label><!--
 		--><input type="text" data-type="month" maxlength="7" name="card_start" data-required="$.visible(this);" data-value="$.visible(this)?Booking.formatMonth($(this).val()):''"
-					data-data-min="{{%new Date().getTime()-1000*60*60*24*365*10}}" data-data-max="{{%new Date().getTime()}}" />
+					data-date-min="{{%new Date().getTime()-1000*60*60*24*365*10}}" data-date-max="{{%new Date().getTime()}}" />
 		</div>
 
 		<div class="field">
 			<label>Expiry</label><!--
 		--><input type="text" data-type="month" maxlength="7" name="card_expiry" data-required="true" data-value="Booking.formatMonth($(this).val())"
-					data-data-min="{{%new Date().getTime()}}" data-data-max="{{%new Date().getTime()+1000*60*60*24*365*10}}" />
+					data-date-min="{{%new Date().getTime()}}" data-date-max="{{%new Date().getTime()+1000*60*60*24*365*10}}" />
 		</div>
 
 		<div class="field maestro-field">

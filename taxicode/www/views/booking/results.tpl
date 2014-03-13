@@ -11,11 +11,10 @@
 	{{#if Object.size(Booking.quotes) && Object.size(Booking.quotes) > 1}}
 		<h2>
 			<select class="fright" id="sort-results">
-				<option value="reliability">Sort By Reliability</option>
+				{{%Config.app=="taxicode"?"":"<option value='reliability'>Sort By Reliability</option>"}}
 				<option value="price">Sort By Price</option>
 				<option value="feedback">Sort By Feedback</option>
 			</select>
-
 			Results
 		</h2>
 	{{#endif}}
@@ -41,7 +40,7 @@
 					</h3>
 					<small>Based in {{$val.company_location}}</small>
 					<div class="rating" data-score="{{$val.rating.score}}" data-ratings="{{$val.rating.ratings}}"></div>
-					<small>Reliability: {{$val.reliability}}/10</small>
+					{{%Config.app=="taxicode"?"":"<small>Reliability: "+Template.data[Template.data.key].reliability+"/10</small>"}}
 
 					<!-- Starred company -->
 					<div><strong>{{%User.user && User.user.companies[Template.data[Template.data.key].company_id]?"<small>You've successfully booked with "+Template.data[Template.data.key].company_name+" before.</small>":""}}</strong></div>
