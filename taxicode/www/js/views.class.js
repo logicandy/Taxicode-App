@@ -313,6 +313,27 @@ var Views = {
 		}
 	},
 
+	setupBookings: function($views, details) {
+		$views.find(".resend-booking").click(function() {
+			App.loading();
+			API.get("booking/resend", {
+				data: $.extend({reference: details.reference}, User.authObject()),
+				success: function(response) {
+					App.stopLoading();
+					if (response.status == "OK") {
+						App.alert("You should recieve an email from us shortly to the email address the booking was made from. If you don't please check your spam folder.", {title: "Receipt Sent"})
+					} else {
+						App.alert("Failed to resend reciept, please try again later.", {title: "Uh oh!"});
+					}
+				},
+				failure: function() {
+					App.stopLoading();
+					App.alert("Failed to resend reciept, please try again later.", {title: "Uh oh!"});
+				}
+			});
+		});
+	},
+
 	renderHelp: function($view) {
 		return Template.render('help');
 	},

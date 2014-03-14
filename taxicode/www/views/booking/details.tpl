@@ -20,7 +20,7 @@
 				<td>Company</td>
 				<td>
 					{{%Template.data.booking.company_name}}
-					{{#if Template.data.booking.company_number}}
+					{{#if Template.data.booking.company_number != "false"}}
 						<br/><a class="" href="tel:{{%Template.data.booking.company_number}}">{{%Template.data.booking.company_number}}</a>
 					{{#endif}}
 				</td>
@@ -45,6 +45,10 @@
 			</tr>
 		</table>
 	</div>
+
+	<p class="center">
+		<a class="btn resend-booking">Resend Booking Receipt</a>
+	</p>
 
 	<a class="block-section center" style="color: inherit;" onclick="Views.render('bookings','slideFromLeft');">Go Back</a>
 
