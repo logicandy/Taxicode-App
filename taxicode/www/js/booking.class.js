@@ -1,7 +1,5 @@
 var Booking = {
 
-	layout: 1,
-
 	state: "form",
 	data: {},
 
@@ -132,6 +130,9 @@ var Booking = {
 			case "token":
 				Views.render('booking', 'slide', 'token');
 				break;
+			case "cash":
+				Views.render('booking', 'slide', 'cash');
+				break;
 			case "card":
 			default:
 				Views.render('booking', 'slide', 'customer');
@@ -147,21 +148,6 @@ var Booking = {
 			$.extend(Booking.pay.data, data);
 			Views.render('booking', 'slide', 'billing');
 		},
-		complete_token: function(data) {
-			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote}, User.authObject(), {
-					method: "token",
-					name: data.name,
-					telephone: data.telephone,
-					email: data.email,
-					CV2: data.CV2
-				}),
-				success: Booking.pay.complete_success,
-				complete: function() {
-					App.stopLoading();
-				}
-			});
-		},
 		complete: function(data) {
 			$.extend(Booking.pay.data, data);
 			Config.setting(data);
@@ -170,13 +156,52 @@ var Booking = {
 
 			API.get("booking/pay", {
 				data: $.extend({quote: Booking.quote}, User.authObject(), Booking.pay.data),
-				success: Booking.pay.complete_success,
+				success: function(response) {
+					Booking.pay.complete_success(response, 'customer');
+				},
 				complete: function() {
 					App.stopLoading();
 				}
 			});
 		},
-		complete_success: function (response) {
+		complete_token: function(data) {
+			App.loading();
+			API.get("booking/pay", {
+				data: $.extend({quote: Booking.quote}, User.authObject(), {
+					method: "token",
+					name: data.name,
+					telephone: data.telephone,
+					email: data.email,
+					CV2: data.CV2,
+					notes: data.notes
+				}),
+				success: function(response) {
+					Booking.pay.complete_success(response, 'token');
+				},
+				complete: function() {
+					App.stopLoading();
+				}
+			});
+		},
+		complete_cash: function(data) {
+			App.loading();
+			API.get("booking/pay", {
+				data: $.extend({quote: Booking.quote}, User.authObject(), {
+					method: "cash",
+					name: data.name,
+					telephone: data.telephone,
+					email: data.email,
+					notes: data.notes
+				}),
+				success: function(response) {
+					Booking.pay.complete_success(response, 'cash');
+				},
+				complete: function() {
+					App.stopLoading();
+				}
+			});
+		},
+		complete_success: function (response, fail_view) {
 			if (response.status == "OK") {
 				Booking.reference = response.reference;
 				Booking.store();
@@ -186,7 +211,7 @@ var Booking = {
 				App.stopLoading();
 				App.alert(response.error ? response.error : "Error taking payment. Please review your information.", {options: {OK: function() {
 					$(this).closest('.alert').remove();
-					Views.render('booking', 'slideFromLeft', 'customer');
+					Views.render('booking', fail_view == 'customer' ? 'slideFromLeft' : 'swap', fail_view);
 				}}});
 			}
 		}

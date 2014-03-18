@@ -19,6 +19,11 @@
 		--><input type="tel" maxlength="20" name="telephone" data-required="true"/>
 		</div>
 
+		<div class="field">
+			<label>Notes</label><!--
+		--><input type="text" maxlength="50" name="notes" placeholder="Journey Notes (optional)" />
+		</div>
+
 	</div>
 
 	<div class="group" style="margin-bottom: -10px;">

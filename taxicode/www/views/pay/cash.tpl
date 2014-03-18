@@ -1,4 +1,4 @@
-<form class="block pay" data-submit="Booking.pay.complete_token">
+<form class="block pay" data-submit="Booking.pay.complete_cash">
 
 	<h2>Complete Booking</h2>
 
@@ -16,23 +16,12 @@
 
 		<div class="field">
 			<label>Telephone</label><!--
-		--><input type="tel" maxlength="20" name="telephone" data-required="true"/>
+		--><input type="tel" maxlength="20" name="telephone" data-required="true" />
 		</div>
 
 		<div class="field">
 			<label>Notes</label><!--
 		--><input type="text" maxlength="50" name="notes" placeholder="Journey Notes (optional)" />
-		</div>
-
-	</div>
-
-	<p>The card currently connected to your account ends <span class="card">{{%User.user.card_token.digits}}</span>.</p>
-
-	<div class="fieldset">
-
-		<div class="field">
-			<label>CV2 <span class="help" data-help="The CV2 code is the last 3 digits on the back of your card normally found in the signature strip.">?</span></label><!--
-		--><input type="text" maxlength="3" placeholder="xxx" name="CV2" data-type="cv2" />
 		</div>
 
 	</div>

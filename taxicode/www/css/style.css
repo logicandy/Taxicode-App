@@ -502,6 +502,11 @@ img[src='img/loading.gif'] {
 	font-size: 36px;
 	float: right;
 }
+
+.result .price .cash {
+	text-align: right;
+	font-size: 14px;
+}
 .quote .price {
 	color: #C93636;
 	margin-top: 10px;
@@ -670,10 +675,12 @@ table.small td {
 	padding-right: 10px;
 	display: inline-block;
 	border-radius: 0px;
+	line-height: 24px;
+	font-size: 16px;
 }
 
 .btn.double small {
 	display: block;
-	font-size: small;
-	line-height: 24px;
+	font-size: 12px;
+	line-height: 20px;
 }

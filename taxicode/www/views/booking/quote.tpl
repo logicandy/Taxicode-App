@@ -24,6 +24,17 @@
 			</a>
 		{{#endif}}
 
+		{{#if User.user.card_token && $.inArray("CASH", Booking.quotes[Booking.quote].payment_options) > -1}}
+			<a class="btn double" onclick="Booking.pay.quote('cash');">
+				<span>By Cash</span>
+				<small>To The Driver</small>
+			</a>
+		{{#endif}}
+
+		{{#if !User.user.card_token && $.inArray("CASH", Booking.quotes[Booking.quote].payment_options) > -1}}
+			<div>Logged in users can pay by cash.</div>
+		{{#endif}}
+
 	</div>
 
 	<br/>

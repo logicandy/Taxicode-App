@@ -33,7 +33,10 @@
 					data-rating="{{$val.rating.score}}"
 					data-no-ratings="{{$val.rating.ratings}}"
 				>
-					<div class="price">&pound;{{$val.price.toFixed(2)}}</div>
+					<div class="price">
+						<div>&pound;{{$val.price.toFixed(2)}}</div>
+						{{%$.inArray("CASH", Template.data[Template.data.key].payment_options)>-1?"<div class='cash'>Accepts Cash</div>":""}}
+					</div>
 					<h3>
 						{{%User.user && User.user.companies[Template.data[Template.data.key].company_id]?"<img src='img/star_orange.png' class='star' />":""}}
 						{{$val.company_name}}

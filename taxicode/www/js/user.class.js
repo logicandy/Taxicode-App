@@ -68,7 +68,7 @@ var User = {
 	login: function(email, password) {
 
 		App.loading();
-		User.refreshView();
+		User.refreshView(email);
 		API.get("user/login", {
 			data: {email: email, password: password},
 			success: function(response) {
@@ -80,13 +80,13 @@ var User = {
 					User.state = false;
 					App.alert(response.error);
 					App.stopLoading();
-					User.refreshView();
+					User.refreshView(email);
 				}
 			},
 			failure: function() {
 				User.state = false;
 				App.stopLoading();
-				User.refreshView();
+				User.refreshView(email);
 			}
 		});
 	},
@@ -109,9 +109,9 @@ var User = {
 		});
 	},
 
-	refreshView: function() {
+	refreshView: function(email) {
 		if (Views.current == "account") {
-			Views.refresh();
+			Views.render("account", "swap", {email: email});
 		}
 	},
 

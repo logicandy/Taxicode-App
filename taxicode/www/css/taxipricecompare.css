@@ -53,3 +53,13 @@ body {
 	padding: 5px 15px;
 	width: auto;
 }
+
+.btn.double {
+	font-size: 13px;
+	padding: 4px;
+	margin: 2px 0px;
+}
+
+.btn.double small {
+	font-size: 10px;
+}

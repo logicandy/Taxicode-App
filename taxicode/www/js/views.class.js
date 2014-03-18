@@ -75,6 +75,8 @@ var Views = {
 				return Template.render('pay/billing');
 			case 'token':
 				return Template.render('pay/token');
+			case 'cash':
+				return Template.render('pay/cash');
 			case 'complete':
 				return Template.render('booking/complete');
 			case 'form':
@@ -166,6 +168,7 @@ var Views = {
 
 			case 'customer':
 			case 'token':
+			case 'cash':
 				Views.back = function() {
 					Views.render('booking', 'slideFromLeft', 'quote');
 				};
@@ -277,7 +280,7 @@ var Views = {
 			case true:
 				return Template.render('account/user', User.user);
 			case false:
-				return Template.render('account/login');
+				return Template.render('account/login', mode && mode.email ? {email: mode.email} : {});
 		}
 		return $view;
 	},
