@@ -183,8 +183,8 @@ var Views = {
 				};
 				$view.find("[name=card_type]").val(Booking.pay.data.card_type || (DevMode ? 'DELTA' : false) || "");
 				$view.find("[name=card_number]").val(Booking.pay.data.card_number || (DevMode ? '4462000000000003' : false) || "");
-				$view.find("[name=card_start]").val(Booking.pay.data.card_start || "");
-				$view.find("[name=card_expiry]").val(Booking.pay.data.card_expiry || (DevMode ? '12/2014' : false) || "");
+				$view.find("[name=card_start]").val(Booking.pay.data.card_start || new Date(new Date().getTime()-1000*60*60*24*365).format("m/Y"));
+				$view.find("[name=card_expiry]").val(Booking.pay.data.card_expiry || (DevMode ? '12/2014' : false) || new Date(new Date().getTime()+1000*60*60*24*365).format("m/Y"));
 				$view.find("[name=issue_number]").val(Booking.pay.data.issue_number || "");
 				$view.find("[name=CV2]").val(Booking.pay.data.CV2 || (DevMode ? '123' : false) || "");
 				if (typeof Booking.pay.data.save == "boolean" ? Booking.pay.data.save : true) {
