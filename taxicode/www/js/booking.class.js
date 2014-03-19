@@ -63,6 +63,7 @@ var Booking = {
 			success: function(response) {
 				if (response.status == "OK") {
 					Booking.quotes = response.quotes;
+					Booking.numbers = response.numbers;
 					Booking.journey = response.journey;
 					Booking.form_data.card_types = response.card;
 					Views.render('booking', 'slide', 'results');
@@ -165,6 +166,7 @@ var Booking = {
 			});
 		},
 		complete_token: function(data) {
+			$.extend(Booking.pay.data, data);
 			App.loading();
 			API.get("booking/pay", {
 				data: $.extend({quote: Booking.quote}, User.authObject(), {

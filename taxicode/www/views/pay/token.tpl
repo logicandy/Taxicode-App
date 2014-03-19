@@ -20,8 +20,8 @@
 		</div>
 
 		<div class="field">
-			<label>Notes</label><!--
-		--><input type="text" maxlength="50" name="notes" placeholder="Journey Notes (optional)" />
+			<label>Notes<div class="max-chars" data-for="notes"></div></label><!--
+		--><textarea type="text" maxlength="50" name="notes" placeholder="Journey Notes (optional)"></textarea>
 		</div>
 
 	</div>

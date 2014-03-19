@@ -87,3 +87,12 @@ var setupLayout = function(repeat) {
 $(document).ready(setupLayout);
 $(window).resize(setupLayout);
 setupLayout(true);
+
+(function countChars() {
+	$(".max-chars[data-for]").each(function() {
+		var field = $("[name='"+$(this).attr("data-for")+"']");
+		var chars = parseInt(field.attr("maxlength")) - field.val().replace(/\n/g, "  ").length;
+		$(this).text("(" + chars + ")").css({color: chars <= 10 ? "red" : "#AAA"});
+	});
+	setTimeout(countChars, 100);
+})();

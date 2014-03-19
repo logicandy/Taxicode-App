@@ -1,6 +1,6 @@
 <form class="block pay" data-submit="Booking.pay.complete_cash">
 
-	<h2>Complete Booking</h2>
+	<h2>Complete Cash Booking</h2>
 
 	<div class="fieldset">
 
@@ -20,8 +20,8 @@
 		</div>
 
 		<div class="field">
-			<label>Notes</label><!--
-		--><input type="text" maxlength="50" name="notes" placeholder="Journey Notes (optional)" />
+			<label>Notes<div class="max-chars" data-for="notes"></div></label><!--
+		--><textarea type="text" maxlength="50" name="notes" placeholder="Journey Notes (optional)"></textarea>
 		</div>
 
 	</div>
