@@ -7,6 +7,8 @@ var Config = {
 	quote_mode:	Params.app == "tpc" ? "all" : "tc",
 	subdir:		Params.app == "tpc" ? "tpc" : "taxicode",
 
+	demo: Params.demo,
+
 	theme: Params.theme == "android" ? "android" : "ios7",
 
 	version: 0.1,

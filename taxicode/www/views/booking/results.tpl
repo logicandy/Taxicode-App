@@ -8,7 +8,7 @@
 		<h2 class="center">Nearby Company Numbers</h2>
 		<div id="results">
 
-			<div class="block-section" style="background: white !important; cursor: default;"><strong>We currently don't have coverage for your jounrey. Here are the numbers of some local taxi firms that may be able to provide you with service</strong></div>
+			<div class="block-section" style="background: white !important; cursor: default;"><strong>We don't offer online bookings in the area you selected. Here are the numbers of some local taxi firms that may be able to provide you with service</strong></div>
 
 			{{#foreach Booking.numbers}}
 				<a class="block-section" href="tel:{{$val.phone.replace(/\ /g,'');}}" style="text-decoration: none;">

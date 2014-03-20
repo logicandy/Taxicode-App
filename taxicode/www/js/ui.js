@@ -22,6 +22,13 @@ $(document).on("click", ".alert [data-action=close]", function() {
 	$(this).closest(".alert").remove();
 });
 
+$(document).on("click", "[href^='tel:']", function() {
+	if (Config.demo) {
+		var tel = $(this).attr('href').substr(4);
+		App.alert("On the live "+Config.title+" App, clicking this would call the number: "+tel, {title: "Demo Mode"});
+	}
+});
+
 (function loaderAnimation() {
 	var width = 64;
 	var frames = 12;
