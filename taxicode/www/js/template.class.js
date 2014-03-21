@@ -24,6 +24,8 @@ var Template = {
 		"account/user"		: false,
 		"account/create"	: false,
 		"account/verify"	: false,
+		"account/password"	: false,
+		"account/cards"		: false,
 
 		"bookings"			: false,
 		"help"				: false,

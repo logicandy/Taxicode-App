@@ -475,7 +475,10 @@ img[src='img/loading.gif'] {
 	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.75);
 }
 
+.left { text-align: left; }
+.right { text-align: right; }
 .center { text-align: center; }
+.justify { text-align: justify; }
 
 .clear { clear: both; }
 .clearl { clear: left; }

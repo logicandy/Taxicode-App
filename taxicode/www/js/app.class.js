@@ -210,6 +210,9 @@ var App = {
 		} else if (!User.user && Views.current != "account") {
 			$("#header").addClass("option");
 			$("#header .option-button").html("Sign In");
+		} else if (User.user && Views.current == "account") {
+			$("#header").addClass("option");
+			$("#header .option-button").html("Sign Out");
 		} else {
 			$("#header").removeClass("option");
 		}
@@ -219,7 +222,9 @@ var App = {
 	optionButtonClick: function() {
 		if (typeof Views.back == "function") {
 			Views.back();
-		} else if (!User.user && Views.current != "account") {
+		} else if (User.user && Views.current == "account") {
+			User.logout();
+		}  else if (!User.user && Views.current != "account") {
 			Views.render("account");
 		}
 	},

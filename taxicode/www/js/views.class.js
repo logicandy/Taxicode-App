@@ -261,14 +261,22 @@ var Views = {
 		$view.append("<h1>Account Page</h1>");
 
 		if (mode) {
+
+			Views.back = function() {
+				Views.render('account', 'slideFromLeft');
+			};
+
 			switch (mode) {
 				case 'create':
 					return Template.render('account/create');
-					return;
 				case 'verify':
 					return Template.render('account/verify');
-					return;
+				case 'card':
+					return Template.render('account/cards');
+				case 'password':
+					return Template.render('account/password');
 			}
+			Views.back = false; // No mode set
 		}
 
 		switch (User.state) {
@@ -296,11 +304,19 @@ var Views = {
 		});
 
 		$view.find("[data-action=create]").click(function() {
-			Views.render('account', undefined, 'create');
+			Views.render('account', 'slide', 'create');
 		});
 
 		$view.find("[data-action=verify]").click(function() {
-			Views.render('account', undefined, 'verify');
+			Views.render('account', 'slide', 'verify');
+		});
+
+		$view.find("[data-action=card]").click(function() {
+			Views.render('account', 'slide', 'card');
+		});
+
+		$view.find("[data-action=password]").click(function() {
+			Views.render('account', 'slide', 'password');
 		});
 
 	},
@@ -414,7 +430,7 @@ var ViewAnimation = {
 		var duration = 600;
 		$("#app").after(panel);
 
-		$("body").animate({scrollTop: 0}, duration);
+		$("#main").animate({scrollTop: 0}, duration);
 		$("#app2").animate({left: 0}, {duration: duration, queue: false});
 		$("#app").animate({left: -shift}, {duration: duration, queue: false, complete: function() {
 			$("#app").css({left: 0}).empty().append($("#app2").children());
