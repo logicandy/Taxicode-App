@@ -26,6 +26,15 @@ var Config = {
 		js: "js/"
 	},
 
+	cards: {
+		VISA: {code: 'VISA', name: 'Visa Credit'},
+		DELTA: {code: 'DELTA', name: 'Visa Debit'},
+		UKE: {code: 'UKE', name: 'Visa Electron'},
+		MC: {code: 'MC', name: 'MasterCard'},
+		MAESTRO: {code: 'MAESTRO', name: 'Maestro'},
+		AMEX: {code: 'AMEX', name: 'American Express'}
+	},
+
 	country : 'United Kingdom',
 	country_code : 'gb',
 

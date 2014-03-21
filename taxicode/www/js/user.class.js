@@ -133,6 +133,24 @@ var User = {
 		});
 	},
 
+	changePassword: function(data) {
+		App.loading();
+		API.get("user/changepassword", {
+			data: $.extend({}, User.authObject(), data),
+			success: function(response) {
+				if (response.status == "OK") {
+					App.alert("Your password has been successfully changed.", {title: "Success"});
+					Views.back();
+				} else {
+					App.alert(response.error);
+				}
+				App.stopLoading();
+			}, failure: function() {
+				App.stopLoading();
+			}
+		});
+	},
+
 	verify: function(data) {
 		App.loading();
 		API.get("user/verify", {

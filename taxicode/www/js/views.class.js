@@ -272,7 +272,12 @@ var Views = {
 				case 'verify':
 					return Template.render('account/verify');
 				case 'card':
-					return Template.render('account/cards');
+					$view = Template.render('account/cards');
+					var maestro = function() {
+						$view.find(".maestro-field").toggle($(this).val() == "MAESTRO");
+					};
+					$view.find("[name=card_type]").each(maestro).change(maestro);
+					return $view;
 				case 'password':
 					return Template.render('account/password');
 			}
