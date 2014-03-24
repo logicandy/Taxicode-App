@@ -20,7 +20,7 @@
 				<td>Company</td>
 				<td>
 					{{%Template.data.booking.company_name}}
-					{{#if Template.data.booking.company_number != "false"}}
+					{{#if Template.data.booking.company_number != "false" && Template.data.booking.company_number != null}}
 						<br/><a class="" href="tel:{{%Template.data.booking.company_number}}">{{%Template.data.booking.company_number}}</a>
 					{{#endif}}
 				</td>
