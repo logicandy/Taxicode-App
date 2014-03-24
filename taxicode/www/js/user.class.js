@@ -133,6 +133,21 @@ var User = {
 		});
 	},
 
+	removeCard: function() {
+		App.loading();
+		API.get("user/removecard", {
+			data: User.authObject(),
+			success: function(response) {
+				if (response.status == "OK") {
+					User.user.card_token = false;
+				}
+				App.stopLoading();
+			}, failure: function() {
+				App.stopLoading();
+			}
+		});
+	},
+
 	changePassword: function(data) {
 		App.loading();
 		API.get("user/changepassword", {

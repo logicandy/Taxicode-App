@@ -324,6 +324,10 @@ var Views = {
 			Views.render('account', 'slide', 'password');
 		});
 
+		$view.find("[data-action=remove-card]").click(function() {
+			User.removeCard();
+		});
+
 	},
 
 	renderBookings: function($view, details) {
