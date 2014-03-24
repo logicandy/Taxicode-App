@@ -796,3 +796,14 @@ table.small td {
 	color: white;
 	text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
+
+.refresh-pull .refresh-icon {
+	margin: 10px auto 20px;
+	width: 35px;
+	height: 35px;
+	padding: 5px;
+	border-radius: 25px;
+	background: #FFF;
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+	display: none;
+}

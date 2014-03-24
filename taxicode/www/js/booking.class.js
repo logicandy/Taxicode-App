@@ -261,20 +261,30 @@ var Booking = {
 		});
 	},
 
-	checkBookings: function() {
+	checkBookings: function(success) {
 		API.get("booking/state", {
-			data: {booking: $.map(Booking.bookings, function(b) {
+			data: {booking: $.map($.extend({}, Booking.bookings, User.bookings), function(b) {
 				return b.reference;
 			}).join(",")},
 			type: "GET",
 			success: function(response) {
 				if (response.status == "OK") {
 					$.each(response.bookings, function(ref, booking) {
-						Booking.bookings[ref].status = booking.status.title;
-						Booking.bookings[ref].company_name = booking.company_name;
-						Booking.bookings[ref].company_number = booking.company_telephone;
+						if (Booking.bookings[ref]) {
+							Booking.bookings[ref].status = booking.status.title;
+							Booking.bookings[ref].company_name = booking.company_name;
+							Booking.bookings[ref].company_number = booking.company_telephone;
+						}
+						if (User.bookings && User.bookings[ref]) {
+							User.bookings[ref].status = booking.status.title;
+							User.bookings[ref].company_name = booking.company_name;
+							User.bookings[ref].company_number = booking.company_telephone;
+						}
 					});
 					Booking.save();
+				}
+				if (success) {
+					success();
 				}
 			}
 		});

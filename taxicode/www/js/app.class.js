@@ -25,6 +25,9 @@ var App = {
 			Help.initialize();
 
 			App.addCSS(Config.app);
+			if (Config.demo) {
+				App.addCSS("demo");
+			}
 			App.checkReady();
 
 		});
@@ -206,7 +209,7 @@ var App = {
 	optionButton: function() {
 		if (typeof Views.back == "function") {
 			$("#header").addClass("option");
-			$("#header .option-button").html("Back");
+			$("#header .option-button").html(Views.back_text ? Views.back_text : "Back");
 		} else if (!User.user && Views.current != "account") {
 			$("#header").addClass("option");
 			$("#header .option-button").html("Sign In");

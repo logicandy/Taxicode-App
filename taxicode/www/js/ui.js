@@ -103,3 +103,23 @@ setupLayout(true);
 	});
 	setTimeout(countChars, 100);
 })();
+
+$(document).ready(function() {
+	$("#main").scroll(function() {
+		var $this = $(this);
+		if ($this.is("[data-scroll-top]:not(.refreshing)")) {
+			var min = parseInt($this.attr("data-scroll-top"));
+			var current = $this.scrollTop();
+			// Pause to check if scrolled more
+			setTimeout(function() {
+				if ($this.scrollTop() == current) {
+					if (current == 0 && typeof Views.refresh == "function") {
+						Views.refresh();
+					} else if (current < min) {
+						$this.animate({scrollTop: min}, 100);
+					}
+				}
+			}, 250);
+		}
+	});
+});

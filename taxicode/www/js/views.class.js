@@ -3,10 +3,14 @@ var Views = {
 	current : false,
 	sub: false,
 	back: false,
+	back_text: false,
+	refresh: false,
 
 	render: function(view, effect, params) {
 
 		Views.back = false;
+		Views.back_text = false;
+		Views.refresh = false;
 
 		// Get view
 		if (view == "console") {
@@ -34,19 +38,26 @@ var Views = {
 		Views.mobiscroll(block);
 
 		// Transition
+		Views.unsetupRefresh();
 		switch (effect) {
 			case 'slide':
 			case 'slideFromRight':
-				ViewAnimation.slide(block, +1);
+				ViewAnimation.slide(block, +1, function() {
+					Views.setupRefresh(block);
+				});
 				break;
 			case 'slideFromLeft':
-				ViewAnimation.slide(block, -1);
+				ViewAnimation.slide(block, -1, function() {
+					Views.setupRefresh(block);
+				});
 				break;
 			case 'swap':
 			default:
 				App.empty().append(block);
+				Views.setupRefresh(block);
 				break;
 		}
+
 
 	},
 
@@ -334,14 +345,38 @@ var Views = {
 		if (typeof details == "undefined") {
 			return Template.render('bookings');
 		} else {
-			Views.back = function() {
-				Views.render('bookings', 'slideFromLeft');
-			};
 			return Template.render('booking/details', {booking: details});
 		}
 	},
 
 	setupBookings: function($views, details) {
+
+		if (typeof details == "undefined") {
+			Views.back_text = "Refresh";
+			Views.refresh = function() {
+				$("#main").addClass("refreshing");
+				Booking.checkBookings(function() {
+					$("#main").removeClass("refreshing");
+					var target = parseInt($("#main").attr("data-scroll-top"));
+					$("#main").animate({scrollTop: target}, 100, function() {
+						Views.render('bookings');
+						App.stopLoading();
+					});
+				},function() {
+					$("#main").removeClass("refreshing");
+					App.stopLoading();
+				});
+			};
+			Views.back = function() {
+				App.loading();
+				Views.refresh();
+			}
+		} else {
+			Views.back = function() {
+				Views.render('bookings', 'slideFromLeft');
+			};
+		}
+
 		$views.find(".resend-booking").click(function() {
 			App.loading();
 			API.get("booking/resend", {
@@ -423,13 +458,33 @@ var Views = {
 		$view.find("select").scroller('destroy').scroller($.extend({
 			preset: 'select'
 		}, options));
+	},
+
+	setupRefresh: function($view) {
+		if ($view.find(".refresh-pull")) {
+			var icon = $view.find(".refresh-pull > .refresh-icon");
+			icon.show();
+			var offset = icon.outerHeight() + parseInt(icon.css("marginTop")) + parseInt(icon.css("marginBottom"));
+			$("#main").scrollTop(offset);
+			$("#main").attr("data-scroll-top", offset);
+		} else {
+			$("#main").attr("data-scroll-top", 0);
+		}
+	},
+
+	unsetupRefresh: function() {
+		var icon = $(".refresh-pull > .refresh-icon");
+		var offset = icon.outerHeight() + parseInt(icon.css("marginTop")) + parseInt(icon.css("marginBottom"));
+		var current = $("#main").scrollTop();
+		$("#main").attr("data-scroll-top", 0).scrollTop(current - offset);
+		icon.hide();
 	}
 
 };
 
 var ViewAnimation = {
 	offset: parseInt(App.element.css('marginTop')),
-	slide : function (panel, d) {
+	slide: function (panel, d, complete) {
 
 		var shift = $(document).width() * d;
 		var height = App.element.height();
@@ -444,6 +499,9 @@ var ViewAnimation = {
 		$("#app").animate({left: -shift}, {duration: duration, queue: false, complete: function() {
 			$("#app").css({left: 0}).empty().append($("#app2").children());
 			$("#app2").remove();
+			if (complete) {
+				complete();
+			}
 		}});
 
 	}

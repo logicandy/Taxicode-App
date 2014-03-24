@@ -20,7 +20,7 @@
 
 	{{#if !User.user.card_token}}
 		<!--<h3>Add Payment Card</h3>-->
-		<p>You currently don't have a credit or debit card assosiated with your account.</p>
+		<p>You currently don't have a credit or debit card associated with your account.</p>
 		<p>To add one, make sure you tick 'Save Card Details' when you next book.</p> 
 	{{#endif}}
 
