@@ -1,10 +1,18 @@
+html {
+	height: 100%;
+	min-height: 100%;
+	max-height: 100%;
+}
+
 body {
 	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	background-size: cover;
+	background: #E0E0E0;
 	background-position: center 0px;
 	background-repeat: no-repeat;
-	background-attachment: fixed;
 	height: 100%;
+	min-height: 100%;
+	max-height: 100%;
 	margin: 0px;
 	padding: 0px;
 
@@ -13,6 +21,9 @@ body {
 	-webkit-touch-callout: none;
 	-webkit-text-size-adjust: none;
 	-webkit-user-select: none;
+
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
 
 	overflow-x: hidden;
 }
@@ -66,7 +77,6 @@ hr {
 }
 
 #header {
-
 	height: 33px;
 	width: 100%;
 	padding: 2px 0px 10px;
@@ -75,7 +85,6 @@ hr {
 
 	background-position: bottom;
 	background-repeat: repeat-x;
-	box-shadow: 0px 0px 2px black;
 
 	z-index: 100;
 }
@@ -500,6 +509,7 @@ img[src='img/loading.gif'] {
 	cursor: pointer;
 	display: block;
 	color: black;
+	transition: -webkit-transform 0.2s linear;
 }
 .block-section:hover {
 	background: #F4F4F4;
@@ -798,7 +808,7 @@ table.small td {
 }
 
 .refresh-pull .refresh-icon {
-	margin: 10px auto 20px;
+	margin: 20px auto 30px;
 	width: 35px;
 	height: 35px;
 	padding: 5px;
@@ -806,4 +816,13 @@ table.small td {
 	background: #FFF;
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 	display: none;
+	text-align: center;
+	vertical-align: middle;
+	overflow: hidden;
+	opacity: 0;
+	transition: opacity 0.3s linear;
+}
+
+.refreshing .refresh-pull .refresh-icon {
+	opacity: 1;
 }

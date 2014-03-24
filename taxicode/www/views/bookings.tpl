@@ -1,5 +1,9 @@
 <div class="refresh-pull">
-	<div class="refresh-icon"><img src="img/loading.gif" /></div>
+
+	{{#if false && (Object.size(Booking.bookings) || Object.size(User.bookings))}}
+		<div class="refresh-icon"><img src="img/loading.gif" /></div>
+	{{#endif}}
+	
 	<div class="block">
 
 		<h2>Bookings</h2>
@@ -23,7 +27,6 @@
 				<div class="location-text"><strong>From:</strong> {{$val.pickup.string}}</div>
 				<div class="location-text"><strong>To:</strong> {{$val.destination.string}}</div>
 			</div>
-
 		{{#endforeach}}
 
 	</div>
