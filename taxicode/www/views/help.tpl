@@ -11,8 +11,8 @@
 
 	<br/>
 
-	<p><a href="{{%Config.domains.main}}" target="_blank">Taxicode</a></p>
-	<p><a href="{{%Config.domains.compare}}" target="_blank">Taxi Price Compare</a></p>
+	<!--<p><a href="{{%Config.domains.main}}" target="_blank">Taxicode</a></p>
+	<p><a href="{{%Config.domains.compare}}" target="_blank">Taxi Price Compare</a></p>-->
 	<p><small>Developed by Web3r.</small></p>
 
 	{{#if Config.mode=="developement"}}
