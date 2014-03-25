@@ -221,6 +221,11 @@ input::-webkit-input-placeholder {
 	padding-right: 5px;
 }
 
+input[type=submit] {
+	appearance: none;
+	-webkit-appearance: none;
+}
+
 input[type=text],
 input[type=search],
 input[type=email],
