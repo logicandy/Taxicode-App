@@ -105,6 +105,8 @@ setupLayout(true);
 })();
 
 $(document).ready(function() {
+	// Scroll back down on refresh pull - currently not being used due to bug with short pages.
+	/*
 	$("#main").scroll(function() {
 		var $this = $(this);
 		if ($this.is("[data-scroll-top]:not(.refreshing)")) {
@@ -121,5 +123,5 @@ $(document).ready(function() {
 				}
 			}, 250);
 		}
-	});
+	});*/
 });
