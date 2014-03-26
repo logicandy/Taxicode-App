@@ -47,7 +47,7 @@
 	<access origin="http://127.0.0.1*" />
 
 	<gap:plugin name="com.phonegap.plugin.statusbar" />
-	<gap:plugin name="com.adobe.plugins.pushplugin" />
+	<!--<gap:plugin name="com.adobe.plugins.pushplugin" />-->
 	<gap:plugin name="org.apache.cordova.device" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	<feature name="StatusBar">
