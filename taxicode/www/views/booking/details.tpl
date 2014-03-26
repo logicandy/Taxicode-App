@@ -40,7 +40,7 @@
 			<tr>
 				<td>Date</td>
 				<td>
-					{{%new Date(Template.data.booking.date).format('D, jS M Y \\a\\t g:ia')}}
+					{{%new Date(Template.data.booking.date.replace(/\ /g, 'T')).format('D, jS M Y \\a\\t g:ia')}}
 				</td>
 			</tr>
 		</table>
