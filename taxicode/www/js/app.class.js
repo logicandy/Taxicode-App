@@ -13,6 +13,7 @@ var App = {
 		if (typeof StatusBar != "undefined") {
 			//StatusBar.styleLightContent();
 			//StatusBar.overlaysWebView();
+			StatusBar.overlaysWebView(false);
 		}
 
 		// Startup

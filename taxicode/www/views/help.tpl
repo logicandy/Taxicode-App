@@ -15,10 +15,4 @@
 	<p><a href="{{%Config.domains.compare}}" target="_blank">Taxi Price Compare</a></p>-->
 	<p><small>Developed by Web3r.</small></p>
 
-	{{#if Config.mode=="developement"}}
-		<hr />
-		<h3>Dev Mode Toolkit</h3>
-		<a href="test.html">Test Page</a>
-	{{#endif}}
-
 </div>

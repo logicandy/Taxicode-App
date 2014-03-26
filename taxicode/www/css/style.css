@@ -237,6 +237,8 @@ input[type=time],
 input[type=number],
 select {
 	box-sizing: border-box;
+	appearance: none;
+	-webkit-appearance: none;
 	height: 37px;
 	padding: 5px 10px;
 	margin: 0px 0px 10px;
