@@ -2,8 +2,8 @@
 <widget id="com.taxicode.taxicode" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	
 	<name>Taxicode</name>
-	<description>Taxicode allows you to get quotes for and book taxis online.</description>
-	<author email="support@web3r.co.uk" href="http://www.taxicode.com">Taxicode Team</author>
+	<description>The UK's only Online National Taxi Booking App. Market leaders in both price and reliability. Taxicode is a national taxi booking service, we offer an amazing service for all your medium and long distance taxi bookings. You can use us to pre-book your taxi journey almost anywhere in the country and compare prices from our highly reliable and competitively priced taxi partners.</description>
+	<author email="support@web3r.co.uk" href="http://www.taxicode.com">Web 3 Resource</author>
 
 	<feature name="http://api.phonegap.com/1.0/device" />
 	<preference name="permissions" value="none" />
@@ -21,6 +21,9 @@
 	<preference name="disable-cursor" value="false" />
 	<preference name="android-minSdkVersion" value="7" />
 	<preference name="android-installLocation" value="auto" />
+	<preference name="DisallowOverscroll" value="true" />
+
+	<preference name="BackgroundColor" value="0x008DD4FF"/>
 
 	<icon src="icon.png" />
 	<icon gap:platform="ios" height="57" src="res/icon/ios/icon-57.png" width="57" />
