@@ -16,9 +16,9 @@
 			<div class="block-section" onclick="Booking.details('{{$key}}');">
 
 				<div class="calendar fright" style="margin-left: 5px; margin-bottom: 5px;">
-					<span class="month">{{%(new Date(Template.data.val.date).replace(/\ /g, 'T').format('M \'y'))}}</span>
-					<span class="date">{{%(new Date(Template.data.val.date).replace(/\ /g, 'T').format('j'))}}</span>
-					<span class="time">{{%(new Date(Template.data.val.date).replace(/\ /g, 'T').format('g:ia'))}}</span>
+					<span class="month">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('M \'y'))}}</span>
+					<span class="date">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('j'))}}</span>
+					<span class="time">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('g:ia'))}}</span>
 				</div>
 
 				<h3>{{$val.reference}}</h3>
