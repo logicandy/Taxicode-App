@@ -64,6 +64,7 @@ var App = {
 			App.offline();
 		}
 		setTimeout(App.pingRepeat, Config.externalPing);
+		Analytics.setup();
 		App.stopLoading();
 		App.optionButton();
 	},

@@ -15,8 +15,8 @@ var Config = {
 
 	mode: DevMode ? "developement" : "production",
 
-	internalPing: 250,
-	externalPing: 30000,
+	internalPing: 1000 * 0.25, // 0.25 seconds
+	externalPing: 1000 * 30, // 30 seconds
 
 	ds: "/",
 
@@ -34,6 +34,8 @@ var Config = {
 		MAESTRO: {code: 'MAESTRO', name: 'Maestro'},
 		AMEX: {code: 'AMEX', name: 'American Express'}
 	},
+
+	google_analytics_id: "UA-49481876-1",
 
 	country : 'United Kingdom',
 	country_code : 'gb',

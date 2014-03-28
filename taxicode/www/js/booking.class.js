@@ -26,7 +26,7 @@ var Booking = {
 		Booking.quote = false;
 		Booking.quotes = false;
 		Booking.journey = false;
-		Booking.pay.data = {}
+		Booking.pay.data = {};
 	},
 
 	updateData: function() {
@@ -69,9 +69,11 @@ var Booking = {
 					Views.render('booking', 'slide', 'results');
 				}
 				App.stopLoading();
+				Analytics.event("Booking", "Quote", "Quote For Journey Success", 1);
 			},
 			failure: function() {
 				App.stopLoading();
+				Analytics.event("Booking", "Quote", "Quote For Journey Failed", 0);
 			}
 		});
 	},
@@ -204,6 +206,7 @@ var Booking = {
 			});
 		},
 		complete_success: function (response, fail_view) {
+			Analytics.event("Booking", "Booked", "Booking Complete", 1);
 			if (response.status == "OK") {
 				Booking.reference = response.reference;
 				Booking.store();
