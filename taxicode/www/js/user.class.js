@@ -73,9 +73,11 @@ var User = {
 			data: {email: email, password: password},
 			success: function(response) {
 				if (response.status == "OK") {
+					Analytics.event("User", "Login", "User successfully logged in", 1);
 					User.load(response.user);
 					Config.setting("login_email", email);
 				} else {
+					Analytics.event("User", "Login", "User failed to log in", 0);
 					User.loadEmpty();
 					User.state = false;
 					App.alert(response.error);
