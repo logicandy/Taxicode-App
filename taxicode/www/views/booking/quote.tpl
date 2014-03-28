@@ -60,7 +60,7 @@
 			<tr>
 				<td>Date</td>
 				<td>
-					{{%new Date(Template.data.journey.date).format('D, jS M Y \\a\\t g:ia')}}
+					{{%new Date(Template.data.journey.date.replace(/\ /g, 'T')).format('D, jS M Y \\a\\t g:ia')}}
 				</td>
 			</tr>
 		</table>

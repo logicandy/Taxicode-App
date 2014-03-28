@@ -14,13 +14,20 @@ var API = {
 			type: "POST"
 		}, options);
 
+		var url = Config.domains.api + (uri ? uri : "");
 		var ajax = {
-			url: Config.domains.api + (uri ? uri : ""),
+			url: url,
 			type: options.type,
 			data: options.data,
 			dataType: "jsonp",
 			success: function(response) {
-				console.log("["+(new Date().formatTime())+"] API '"+uri+"':", response);
+				console.log("["+(new Date().formatTime())+"] API '"+uri+"':", {
+					sent: {
+						url: url,
+						data: options.data
+					},
+					response : response,
+				});
 				
 				if (response.status == "BAD_PUBLIC_KEY") {
 					API.getKey(retrys > 0 ? function() {

@@ -13,7 +13,7 @@
 	<preference name="webviewbounce" value="true" />
 	<preference name="prerendered-icon" value="false" />
 	<preference name="stay-in-webview" value="false" />
-	<!--preference name="ios-statusbarstyle" value="black-opaque" /-->
+	<preference name="ios-statusbarstyle" value="black" />
 	<preference name="detect-data-types" value="true" />
 	<preference name="exit-on-suspend" value="false" />
 	<preference name="show-splash-screen-spinner" value="true" />
@@ -47,11 +47,15 @@
 	<access origin="http://127.0.0.1*" />
 
 	<gap:plugin name="com.phonegap.plugin.statusbar" />
-	<gap:plugin name="com.adobe.plugins.pushplugin" />
 	<gap:plugin name="org.apache.cordova.device" />
-	<gap:plugin name="org.apache.cordova.inappbrowser" />
+	<gap:plugin name="com.adobe.plugins.GAPlugin" />
+	
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
+	</feature>
+
+	<feature name="GAPlugin" >
+		< param name="android-package" value="com.adobe.plugins.GAPlugin"/>
 	</feature>
 
 </widget>
