@@ -1,37 +1,37 @@
 Date.prototype.format = function(format) {
 
-	var $this = this;
+	var $this = new Date(this.getTime() + this.getTimezoneOffset() * 60000);
 
 	format = format ? format : "Y-m-d";
 
-	var year = this.getFullYear();
+	var year = $this.getFullYear();
 
-	var month = this.getMonth()+1;
+	var month = $this.getMonth();
 	var month_pad = month < 10 ? "0" + month : month;
 
-	var date = this.getDate();
+	var date = $this.getDate();
 	var date_pad = date < 10 ? "0" + date : date;
 
-	var hours = this.getHours();
+	var hours = $this.getHours();
 	var hours_pad = hours < 10 ? "0" + hours : hours;
 
-	var day = this.getDay();
+	var day = $this.getDay();
 
 	var date_suffix = date == 1 ? "st" : (date == 2 ? "nd" : (date == 3 ? "rd" : "th"));
 
 	var hours12 = hours > 12 ? hours - 12 : hours;
-	var hours12_pad = hours12 < 10 ? "0"+hours12 : hours12;
+	var hours12_pad = hours12 < 10 ? "0" + hours12 : hours12;
 
-	var mins = this.getMinutes();
-	var mins_pad = mins < 10 ? "0"+mins : mins;
+	var mins = $this.getMinutes();
+	var mins_pad = mins < 10 ? "0" + mins : mins;
 
-	var secs = this.getSeconds();
-	var secs_pad = secs < 10 ? "0"+secs : secs;
+	var secs = $this.getSeconds();
+	var secs_pad = secs < 10 ? "0" + secs : secs;
 
-	var millisecs = this.getMilliseconds();
+	var millisecs = $this.getMilliseconds();
 	var millisecs_pad = millisecs < 10 ? "000" + millisecs : (millisecs < 100 ? "00" + millisecs : "0" + millisecs);
 
-	var ampm = hours > 11 ? "am" : "pm";
+	var ampm = hours < 12 ? "am" : "pm";
 
 	var months_short = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];	
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -67,7 +67,7 @@ Date.prototype.format = function(format) {
 
 			// Day
 			case "w": return day; // 0 = Sunday ... 6 = Saturday
-			case "N": return day?day:7; // 1 = Monday ... 7 = Sunday
+			case "N": return day ? day : 7; // 1 = Monday ... 7 = Sunday
 			case "l": return days[day]; // Monday - Sunday
 			case "D": return days_short[day]; // Mon - Sun
 

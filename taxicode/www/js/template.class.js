@@ -31,7 +31,9 @@ var Template = {
 		"help"				: false,
 		"offline"			: false,
 		"alert"				: false,
+		
 		"errors"			: false,
+		"debug"				: false,
 
 		"common/card"		: false
 

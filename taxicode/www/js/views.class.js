@@ -58,6 +58,8 @@ var Views = {
 				break;
 		}
 
+		return block;
+
 
 	},
 
@@ -373,7 +375,7 @@ var Views = {
 			}
 		} else {
 			Views.back = function() {
-				Views.render('bookings', 'slideFromLeft');
+				Views.render("bookings", "slideFromLeft");
 			};
 		}
 
@@ -394,6 +396,15 @@ var Views = {
 					App.alert("Failed to resend reciept, please try again later.", {title: "Uh oh!"});
 				}
 			});
+		});
+
+		$views.find(".rebook-journey").click(function() {
+			Booking.clear();
+			Booking.data.pickup = details.pickup.string;
+			Booking.data.destination = details.destination.string;
+			Booking.data.passengers = parseInt(details.people);
+			Booking.data.pickup_time = new Date(details.date.replace(/\ /g, "T")).format("H:i");
+			Views.render("booking").find("[name=pickup_date]").focus();
 		});
 	},
 

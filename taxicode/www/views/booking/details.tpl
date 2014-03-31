@@ -47,6 +47,10 @@
 	</div>
 
 	<p class="center">
+		<a class="btn rebook-journey">Rebook Journey</a>
+	</p>
+
+	<p class="center">
 		<a class="btn resend-booking">Resend Booking Receipt</a>
 	</p>
 
