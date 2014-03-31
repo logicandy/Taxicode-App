@@ -1,6 +1,6 @@
 var DBMC = {
 	
-	db: window.openDatabase(Config.app, Config.version, Config.title+" Database", 1024*1024*2),
+	db: window.openDatabase(Config.app, 0.1, Config.title+" Database", 1024*1024*2),
 
 	createTable: function(name, cols, overwrite, success, error) {
 		DBMC.db.transaction(function(tx) {

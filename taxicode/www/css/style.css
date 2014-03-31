@@ -538,6 +538,11 @@ img[src='img/loading.gif'] {
 	cursor: not-allowed;
 }
 
+.result[data-active=false] {
+	opacity: 0.5;
+	cursor: default !important;
+}
+
 .result .price {
 	color: #C93636;
 	font-size: 36px;
@@ -574,6 +579,10 @@ img[src='img/loading.gif'] {
 .result .star {
 	width: 16px;
 	height: 16px;
+}
+
+table.no-border , table.no-border tr, table.no-border th, table.no-border td {
+	border: none !important;
 }
 
 table {

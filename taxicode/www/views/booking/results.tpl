@@ -42,11 +42,12 @@
 
 				<div
 					class="block-section result"
-					onclick="Booking.selectQuote('{{$key}}');"
+					{{%Template.data.val.active?'onclick=\'Booking.selectQuote("' + Template.data.key + '");\'':''}}
 					data-price="{{$val.price}}"
 					data-reliability="{{$val.reliability}}"
 					data-rating="{{$val.rating.score}}"
 					data-no-ratings="{{$val.rating.ratings}}"
+					data-active="{{$val.active?'true':'false'}}"
 				>
 					<div class="price">
 						<div>&pound;{{$val.price.toFixed(2)}}</div>

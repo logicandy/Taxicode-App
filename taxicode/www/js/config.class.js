@@ -11,7 +11,7 @@ var Config = {
 
 	theme: Params.theme == "android" ? "android" : "ios7",
 
-	version: 0.1,
+	version: 0.2,
 
 	mode: DevMode ? "developement" : "production",
 

@@ -6,7 +6,7 @@ Date.prototype.format = function(format) {
 
 	var year = $this.getFullYear();
 
-	var month = $this.getMonth();
+	var month = $this.getMonth() + 1;
 	var month_pad = month < 10 ? "0" + month : month;
 
 	var date = $this.getDate();
@@ -52,13 +52,13 @@ Date.prototype.format = function(format) {
 
 			// Year
 			case "Y": return year; // Year - Example: 2014
-			case "y": return year%100;
+			case "y": return year % 100;
 
 			// Month
 			case "n": return month; // Months 0 - 12
 			case "m": return month_pad; // Months 00 - 12
-			case "M": return months_short[month]; // Jan - Dec
-			case "F": return months[month]; // January - December
+			case "M": return months_short[month - 1]; // Jan - Dec
+			case "F": return months[month - 1]; // January - December
 
 			// Date
 			case "j": return date; // Date 00 - 31

@@ -14,6 +14,6 @@
 
 	<br/><hr/><br/>
 
-	<center><a class='btn small' data-action='login'>Back</a></center><br/>
+	<center><a class='btn small' data-action='back'>Back</a></center><br/>
 
 </form>

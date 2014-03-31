@@ -174,7 +174,20 @@ var Views = {
 						});
 						break;
 					}
+
 					$view.find("#results").html(prices);
+
+					$view.find("#results .black").remove();
+					// Move non-active bookings to end
+					if ($view.find("#results [data-active=false]").length) {
+						// Add instance not active message
+						$view.find("#results").append("<div class='block-section center black' style='background: #333; color: white;'>The following taxi companies require more notice to book online.</div>");
+						$view.find("#results [data-active=false]").each(function() {
+							$view.find("#results").append(this);
+						});
+					}
+
+
 				});
 				$view.find("#sort-results").change();
 				break;
@@ -313,6 +326,10 @@ var Views = {
 
 	setupAccount : function($view) {
 
+		$view.find("[data-action=back]").click(function() {
+			Views.render("account", "slideFromLeft");
+		});
+
 		$view.find("[data-action=login]").click(function() {
 			User.login($view.find("[type=email]").val(), $view.find("[type=password]").val());
 		});
@@ -435,7 +452,7 @@ var Views = {
 			preset: 'date',
 			dateFormat: 'dd/mm/yy',
 			dateOrder: 'ddMyy',
-			minDate: new Date(),
+			minDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 0),
 			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 2)
 		}, options));
 		$view.find("[data-type=time]").scroller('destroy').scroller($.extend({
