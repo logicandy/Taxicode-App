@@ -11,12 +11,12 @@
 
 	<div>
 
-		<div class="info-block">
+		<div class="info-block" data-render="bookings">
 			<span>Total Bookings</span>
 			<div>{{%User.user.bookings_totals.total}}</div>
 		</div>
 
-		<div class="info-block">
+		<div class="info-block" data-render="bookings">
 			<span>Current Bookings</span>
 			<div>{{%User.user.bookings_totals.current}}</div>
 		</div>
