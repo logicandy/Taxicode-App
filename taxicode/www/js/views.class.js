@@ -452,7 +452,7 @@ var Views = {
 			preset: 'date',
 			dateFormat: 'dd/mm/yy',
 			dateOrder: 'ddMyy',
-			minDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 0),
+			minDate: new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 1),
 			maxDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 2)
 		}, options));
 		$view.find("[data-type=time]").scroller('destroy').scroller($.extend({

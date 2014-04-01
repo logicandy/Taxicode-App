@@ -40,14 +40,18 @@
 
 			{{#foreach Booking.quotes}}
 
-				<div
+				<a
 					class="block-section result"
-					{{%Template.data.val.active?'onclick=\'Booking.selectQuote("' + Template.data.key + '");\'':''}}
+
 					data-price="{{$val.price}}"
 					data-reliability="{{$val.reliability}}"
 					data-rating="{{$val.rating.score}}"
 					data-no-ratings="{{$val.rating.ratings}}"
 					data-active="{{$val.active?'true':'false'}}"
+
+					{{%Template.data.val.active ? "onclick=\"Booking.selectQuote('" + Template.data.key + "')\"" : ""}}
+					{{%!Template.data.val.active && Template.data.val.company_phone ? "href='tel:" + Template.data.val.company_phone.replace(/\ /g, '') + "'" : ""}}
+
 				>
 					<div class="price">
 						<div>&pound;{{$val.price.toFixed(2)}}</div>
@@ -63,7 +67,11 @@
 
 					<!-- Starred company -->
 					<div><strong>{{%User.user && User.user.companies[Template.data[Template.data.key].company_id]?"<small>You've successfully booked with "+Template.data[Template.data.key].company_name+" before.</small>":""}}</strong></div>
-				</div>
+
+					<!-- No active companies phone number -->
+					{{%!Template.data.val.active && Template.data.val.company_phone ? "<center class='clear' style='opacity: 1; margin-top: 15px;'><strong>Click to call on " + Template.data.val.company_phone + "</strong></center>" : ""}}
+
+				</a>
 
 			{{#endforeach}}
 

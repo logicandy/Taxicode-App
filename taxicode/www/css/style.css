@@ -514,7 +514,7 @@ img[src='img/loading.gif'] {
 .block-section:nth-child(0) {
 	margin-top: 20px;
 }
-.block-section {
+.block-section, .block-section:active, .block-section:visited {
 	border-width: 0px;
 	border-top: 1px solid #CCC;
 	padding: 15px;
@@ -538,9 +538,14 @@ img[src='img/loading.gif'] {
 	cursor: not-allowed;
 }
 
-.result[data-active=false] {
-	opacity: 0.5;
+.result[data-active=false], .result[data-active=false]:active, .result[data-active=false]:hover {
 	cursor: default !important;
+	background: white !important;
+	text-decoration: none;
+}
+
+.result[data-active=false] > * {
+	opacity: 0.5;
 }
 
 .result .price {

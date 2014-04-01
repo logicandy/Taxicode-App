@@ -10,6 +10,11 @@
 
 		{{#if !Object.size(Booking.bookings) && !Object.size(User.bookings)}}
 			<p class="center">You have no bookings. Once you've made some bookings or logged in you will see your bookings here.</p>
+
+			<!-- Try one of these -->
+			<p class="center"><a class="btn" data-render="booking">Make A Booking</a></p>
+			{{%User.user ? "" : "<p class='center'><a class='btn' data-render='account'>Login / Create Account</a></p>"}}
+
 		{{#endif}}
 
 		{{#foreach Booking.sortBookings($.extend({},User.bookings,Booking.bookings))}}
