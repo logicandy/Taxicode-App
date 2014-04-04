@@ -61,7 +61,7 @@
 						{{%User.user && User.user.companies[Template.data[Template.data.key].company_id]?"<img src='img/star_orange.png' class='star' />":""}}
 						{{$val.company_name}}
 					</h3>
-					<small>Based in {{$val.company_location}}</small>
+					<!--<small>Based in {{$val.company_location}}</small>-->
 					<div class="rating" data-score="{{$val.rating.score}}" data-ratings="{{$val.rating.ratings}}"></div>
 					{{%Config.app=="taxicode"?"":"<small>Reliability: "+Template.data[Template.data.key].reliability+"/10</small>"}}
 
