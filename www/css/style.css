@@ -313,17 +313,17 @@ select {
 	text-align: center;
 }
 
-.block .field {
+.field {
 	margin: 10px -10px;
 	border-top: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
 	font-size: 0px;
 }
 
-.block .fieldset {
+.fieldset {
 	margin: 10px -10px;
 }
-.block .fieldset .field {
+.fieldset .field {
 	margin: -1px 0px 0px;
 }
 
@@ -332,13 +332,13 @@ select {
 	padding-bottom: 5px;
 }
 
-.block .field label {
+.field label {
 	width: 30%;
 	text-align: right;
 	color: #666;
 }
 
-.block .field input, .block .field select, .block .field textarea {
+.field input, .field select, .field textarea {
 	width: 70%;
 	border-left: 1px solid #CCC;
 }
@@ -348,7 +348,7 @@ select {
 	box-sizing: border-box;
 }
 
-.block .field input, .block .field select, .block .field label {
+.field input, .field select, .field label {
 	font-size: 16px;
 	margin: 0px;
 	padding: 5px;
@@ -360,7 +360,7 @@ select {
 	line-height: 27px;
 }
 
-.block .field textarea {
+.field textarea {
 	border: none;
 	border-left: 1px solid #CCC;
 	height: auto;

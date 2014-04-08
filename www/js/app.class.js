@@ -18,6 +18,7 @@ var App = {
 
 		// Startup
 		App.loading();
+		App.start_time = new Date().getTime();
 		Libs.initialize();
 		Config.initialize(function() {
 			Template.initialize();
@@ -37,6 +38,10 @@ var App = {
 	},
 
 	checkReady: function() {
+		if (new Date().getTime() - App.start_time > 1000 * 60) {
+			// If 1 minute has passed, restart entire app.
+			App.restart();
+		}
 		if (Template.ready && User.ready && Help.ready && Libs.ready) {
 			if (typeof App.connected != "undefined") {
 				App.onReady();
@@ -48,6 +53,10 @@ var App = {
 		} else {
 			setTimeout(App.checkReady, Config.internalPing);
 		}
+	},
+
+	restart: function() {
+		window.location.href = window.location.href;
 	},
 
 	ready: false,

@@ -1,6 +1,9 @@
 <form class="block booking-engine" data-submit="Booking.getQuote();">
 
-	<h2>Journey</h2>
+	<h2>
+		<a class="btn small fright" onclick="Booking.clearForm();">Clear</a>
+		Journey
+	</h2>
 
 	<div class="fieldset">
 

@@ -29,6 +29,11 @@ var Booking = {
 		Booking.pay.data = {};
 	},
 
+	clearForm: function() {
+		Booking.clear();
+		Views.render('booking');
+	},
+
 	updateData: function() {
 		$(".booking-engine [name]").each(function() {
 			Booking.data[$(this).attr('name')] = Booking.formatDateTime($(this).val());

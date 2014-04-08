@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.taxicode.taxicode" version="0.9.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.taxicode.taxicode" version="0.9.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	
 	<name>Taxicode</name>
 	<description>The UK's only Online National Taxi Booking App. Market leaders in both price and reliability. Taxicode is a national taxi booking service, we offer an amazing service for all your medium and long distance taxi bookings. You can use us to pre-book your taxi journey almost anywhere in the country and compare prices from our highly reliable and competitively priced taxi partners.</description>

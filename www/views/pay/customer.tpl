@@ -1,6 +1,11 @@
 <form class="block pay" data-submit="Booking.pay.customer">
 
-	<h2>Your Details</h2>
+	<h2>
+		{{#if !User.user}}
+			<a class="btn small fright" onclick="User.loginPopup(function(){Views.render('booking', undefined, 'customer')});">Login</a>
+		{{#endif}}
+		Your Details
+	</h2>
 
 	<div class="fieldset">
 

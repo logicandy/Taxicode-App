@@ -65,7 +65,7 @@ var User = {
 		return User.user && User.user.auth_token ? {auth_token: User.user.auth_token} : (Config.get('auth_token') ? {auth_token: Config.get('auth_token')} : {});
 	},
 
-	login: function(email, password) {
+	login: function(email, password, success, failure) {
 
 		App.loading();
 		User.refreshView(email);
@@ -76,19 +76,29 @@ var User = {
 					Analytics.event("User", "Login", "User successfully logged in", 1);
 					User.load(response.user);
 					Config.setting("login_email", email);
+					if (typeof success == "function") {
+						success();
+					}
 				} else {
 					Analytics.event("User", "Login", "User failed to log in", 0);
 					User.loadEmpty();
 					User.state = false;
-					App.alert(response.error);
 					App.stopLoading();
 					User.refreshView(email);
+					if (typeof failure == "function") {
+						failure(response.error);
+					} else {
+						App.alert(response.error);
+					}
 				}
 			},
 			failure: function() {
 				User.state = false;
 				App.stopLoading();
 				User.refreshView(email);
+				if (typeof failure == "function") {
+					failure();
+				}
 			}
 		});
 	},
@@ -186,6 +196,35 @@ var User = {
 				App.stopLoading();
 			}
 		});
+	},
+
+	loginPopup: function(success) {
+		App.alert(
+			Template.render('account/login_popup').html(),
+			{
+				title: "Login",
+				options: {
+					Cancel: function() {
+						$(this).closest('.alert').remove();
+					},
+					Login: function() {
+						$(this).closest('.alert').remove();
+
+						var email = $(this).closest('.alert').find(".email").val();
+						var password = $(this).closest('.alert').find(".password").val();
+						User.login(email, password, function() {
+							$(this).closest('.alert').remove();
+							Views.refreshView();
+							if (typeof success == "function") {
+								success();
+							}
+						}, User.loginPopup);
+
+					}
+				},
+			}
+
+		);
 	}
 
 };

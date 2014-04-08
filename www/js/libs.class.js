@@ -32,11 +32,13 @@ var Libs = {
 				url: Libs.libraries[library].url,
 				dataType: "script",
 				success: function() {
-					console.log("Loaded library: "+library);
+					console.log("Loaded library: " + library);
 					Libs.libraries[library].success();
 				}
 			});
 		}
+		// Check if library loaded or not, if not it will try again.
+		setTimeout(Libs.load, Config.externalPing, library);
 	},
 
 	checkReady: function(library) {

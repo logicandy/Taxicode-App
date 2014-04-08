@@ -506,6 +506,10 @@ var Views = {
 		var current = $("#main").scrollTop();
 		$("#main").attr("data-scroll-top", 0).scrollTop(current - offset);
 		icon.hide();
+	},
+
+	refreshView: function() {
+
 	}
 
 };

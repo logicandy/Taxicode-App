@@ -15,4 +15,3 @@
 
 <center><a class='btn small' data-action='create'>Create Account</a></center><br/>
 <center><a class='btn small' data-action='verify'>Verify Account</a></center>
-

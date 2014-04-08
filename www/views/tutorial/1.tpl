@@ -17,10 +17,6 @@
 	<p>Taxicode is a National UK booking service that covers 95% of the UK population. Taxicode is great for all your medium and long distance taxi bookings.</p>
 	<p>You can use us to pre-book your taxi journey almost anywhere in the country and compare prices from our highly reliable and competitively priced taxi partners.</p>
 
-	<div class="field">
-		
-	</div>
-
 	<br/>
 
 	<p><a class="btn" onclick="Config.set('tutorial', true); Views.render('booking');">Continue</a></p>
