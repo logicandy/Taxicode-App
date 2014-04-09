@@ -32,7 +32,8 @@
 		{{#endif}}
 
 		{{#if !User.user.card_token && $.inArray("CASH", Booking.quotes[Booking.quote].payment_options) > -1}}
-			<div>Logged in users can pay by cash.</div>
+			<p>Logged in users can pay by cash.</p>
+			<p><a class="btn small" onclick="User.loginPopup(function(){Views.render('booking', undefined, 'quote')});">Login</a></p>
 		{{#endif}}
 
 	</div>

@@ -25,19 +25,46 @@ $(document).on("click", ".alert [data-action=close]", function() {
 $(document).on("click", "[href^='tel:']", function() {
 	if (Config.demo) {
 		var tel = $(this).attr('href').substr(4);
-		App.alert("On the live "+Config.title+" App, clicking this would call the number: "+tel, {title: "Demo Mode"});
+		App.alert("On the live " + Config.title + " App, clicking this would call the number: " + tel, {title: "Demo Mode"});
 	}
 });
 
-(function loaderAnimation() {
-	var width = 64;
-	var frames = 12;
-	$(".loader div").each(function() {
-		var pos = parseInt($(this).css("background-position-x"));
-		$(this).css("background-position-x", ((pos-width) % (-width*frames))+"px");
+(function changeTooltip() {
+	$("[data-tooltip]").each(function() {
+		if ($(this).is("[data-tooltip-next]")) {
+			var tip = (parseInt($(this).attr("data-tooltip-next")) + 1) % App.tooltips.length;
+			$(this).find(".inner").animate({opacity: 0}, 300, function() {
+				$(this).find("span").html(App.tooltips[tip]).closest(".inner").animate({opacity: 1}, 300);
+			});
+		} else {
+			var tip = (parseInt($(this).attr("data-tooltip")) + 1) % App.tooltips.length;
+		}
+		$(this).attr("data-tooltip-next", tip);
 	});
-	setTimeout(loaderAnimation, 50);
+	setTimeout(changeTooltip, 1000 * 10);
 })();
+
+$(document).on("click", ".tool-tip", function() {
+	$this = $(this);
+	App.confirm("Turn off tool tips?", function (response) {
+		if (response) {
+			Config.set("tooltips", "off");
+			$this.animate({opacity: 0}, 300, function() {
+				$this.remove();
+			});
+		}
+	});
+});
+
+// (function loaderAnimation() {
+// 	var width = 64;
+// 	var frames = 12;
+// 	$(".loader div").each(function() {
+// 		var pos = parseInt($(this).css("background-position-x"));
+// 		$(this).css("background-position-x", ((pos-width) % (-width*frames))+"px");
+// 	});
+// 	setTimeout(loaderAnimation, 50);
+// })();
 
 function addMaps() {
 	$(".map:not([data-loaded])[data-pickup]").each(function() {

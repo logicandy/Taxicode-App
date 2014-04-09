@@ -78,9 +78,15 @@ var App = {
 		App.optionButton();
 	},
 
-	loading: function() {
+	loading: function(text) {
+
 		$("#page-loading").remove();
 		$("body").append("<div id='page-loading'><div class='loader'><div></div></div></div>");
+
+		if (text) {
+			$("#page-loading .loader").css({height: 'auto'}).append("<span class='loading-text'>" + text + "</span>");
+		}
+
 	},
 
 	stopLoading: function() {
@@ -242,6 +248,16 @@ var App = {
 			Views.render("account");
 		}
 	},
+
+	/* Array of tooltips. Shuffled accept first element. */
+	tooltips: ["Taxicode works best for all your medium and long distance bookings."].concat($([
+		"Creating an account will speed up your booking process in the future.",
+		"You need to book a minimum of 1 hour in advance with taxicode.",
+		"Our taxi network is great for all airport transfers and holiday pickups.",
+		"Business customer can create business account to manage their bookings"
+	]).sort(function() {
+    	return Math.random() > Math.random();
+	}).toArray()),
 
 	/* jQuery helpers */
 	find : function(a) { return App.element.find(a); },

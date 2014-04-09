@@ -172,7 +172,7 @@ h1, h2, h3, h4, h5, h6, h7 {
 }
 
 #footer a {
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: inline-block;zoom:1;*display:inline;
 	font-size: 8px;
 	width: 25%;
 	height: 46px;
@@ -354,7 +354,7 @@ select {
 	padding: 5px;
 	box-sizing: border-box;
 	box-shadow: none;
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: inline-block;zoom:1;*display:inline;
 	outline-offset: 0px;
 	vertical-align: top;
 	line-height: 27px;
@@ -393,13 +393,13 @@ select {
 	display: none;
 }
 
-img[src='img/loading.gif'] {
-	width: 35px;
-	height: 35px;
+img[src='taxicode-loader@2x.gif'] {
+	width: 32px;
+	height: 32px;
 }
 
 .alert > .inner {
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: inline-block;zoom:1;*display:inline;
 
 	max-width: 90%;
 	min-width: 50%;
@@ -469,25 +469,34 @@ img[src='img/loading.gif'] {
 }
 
 .loader {
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+
 	height: 64px;
 	width: 64px;
 
 	background: #FFFFFF;
 	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
 	
-	border-radius: 10px;
+	border-radius: 100px;
 
-	padding: 20px;
+	padding: 15px;
+}
+
+#page-loading .loading-text {
+	margin: 5px 0px;
+	display: block;
+	font-weight: bold;
 }
 
 .loader div {
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: inline-block;zoom:1;*display:inline;
 	height: 64px;
 	width: 64px;
 
-	background-image: url("../img/loading.png");
-	background-size: 768px 64px;
+	background-image: url("../img/taxicode-loader@2x.gif");
+	background-size: 64px 64px;
 	background-position: 0px;
 }
 
@@ -765,7 +774,7 @@ table.small td {
 }
 
 .card-styled {
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: inline-block;zoom:1;*display:inline;
 	margin-bottom: 10px;
 
 	padding: 15px 25px;
@@ -824,7 +833,7 @@ table.small td {
 }
 
 .card-styled .number {
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: inline-block;zoom:1;*display:inline;
 	/*padding: 5px;
 	background: white;
 	border: 1px solid black;*/
@@ -852,4 +861,14 @@ table.small td {
 
 .refreshing .refresh-pull .refresh-icon {
 	opacity: 1;
+}
+
+.tool-tip {
+	margin-bottom: 7px;
+	background: #FCFFBA;
+	cursor: pointer;
+}
+
+.tool-tip:hover {
+	background: #FAFF89;
 }

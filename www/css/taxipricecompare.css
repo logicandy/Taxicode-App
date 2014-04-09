@@ -3,7 +3,7 @@ body {
 }
 
 .logo {
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: inline-block;zoom:1;*display:inline;
 
 	width: 200px;
 	height: 27px;
@@ -28,7 +28,7 @@ body {
 	background: #008DD4;
 	color: white;
 	padding: 10px 20px;
-	display: inline-block;/*ie7*/zoom:1;*display:inline;/*ie7end*/
+	display: inline-block;zoom:1;*display:inline;
 	text-transform: uppercase;
 	text-decoration: none;
 	cursor: pointer;

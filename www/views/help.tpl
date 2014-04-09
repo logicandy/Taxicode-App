@@ -2,6 +2,13 @@
 
 	<h2>Help</h2>
 
+	{{#if Config.get("tooltips") == "off"}}
+		<p class="center" onclick="Config.set('tooltips', 'on');$(this).fadeOut();">
+			<span>Turn Tool Tips back on?</span>
+			<input type="checkbox" style="display: inline; width: auto;">
+		</p>
+	{{#endif}}
+
 	{{#foreach Help.FAQ}}
 		<div class="expand-block faq">
 			<h3>{{%data.val.question}}</h3>

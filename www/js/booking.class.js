@@ -56,7 +56,7 @@ var Booking = {
 
 	getQuote: function() {
 		Booking.updateData();
-		App.loading();
+		App.loading("Fetching Quotes");
 		API.get("booking/quote", {
 			data: {
 				pickup: Booking.data.pickup,
