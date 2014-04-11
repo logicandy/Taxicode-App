@@ -872,3 +872,24 @@ table.small td {
 .tool-tip:hover {
 	background: #FAFF89;
 }
+
+#offline-warning {
+	position: fixed;
+	bottom: 46px;
+	left: 0px;
+	width: 100%;
+	z-index: 20000;
+}
+
+#offline-warning > div {
+	margin: 5px;
+	padding: 5px;
+	background: rgb(255, 150, 150);
+	border: 1px solid rgb(216, 87, 87);
+	border-radius: 3px;
+	color: white;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+	text-align: center;
+}
+
+

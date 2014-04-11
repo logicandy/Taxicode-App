@@ -128,9 +128,15 @@ var App = {
 	offline: function(renderWindow) {
 		if (renderWindow) {
 			$("#offline").remove();
-			$("body").append(Template.render('offline'));
+			$("body").append(Template.render('offline/screen'));
 		}
 		App.connected = false;
+		App.offlineWarning();
+	},
+
+	offlineWarning: function() {
+		$("#offline-warning").remove();
+		$("body").append(Template.render('offline/alert'));
 	},
 
 	addCSS: function(css) {
