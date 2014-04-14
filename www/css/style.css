@@ -126,6 +126,10 @@ hr {
 	padding: 5px;
 }
 
+body[data-status=offline] .view {
+    padding-bottom: 75px;
+}
+
 #offline img {
 	width: 250px;
 }
