@@ -50,6 +50,6 @@
 	</div>
 	
 	
-	<center><input type="submit" class="btn" value="Get Quote" /></center>
+	<center><input type="submit" class="btn online" value="Get Quote" /></center>
 
 </form>

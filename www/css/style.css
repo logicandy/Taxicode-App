@@ -76,7 +76,7 @@ hr {
 	height: 100%;
 	padding: 10px 10%;
 	background: white;
-	z-index: 10000;
+	z-index: 20001;
 	text-align: center;
 }
 
@@ -884,12 +884,14 @@ table.small td {
 #offline-warning > div {
 	margin: 5px;
 	padding: 5px;
-	background: rgb(255, 150, 150);
-	border: 1px solid rgb(216, 87, 87);
-	border-radius: 3px;
+	background: #FD8A8A;
+	border: 1px solid #D85757;
 	color: white;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+	text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
 	text-align: center;
 }
 
-
+body[data-status=offline] .btn.online {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
