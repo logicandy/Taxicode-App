@@ -2,7 +2,6 @@
 	<div class="block tool-tip" data-tooltip="0">
 		<div class="close fright">&times;</div>
 		<div class="inner">
-			<strong>Top tip:</strong>
 			<span>{{%App.tooltips[0]}}</span>
 		</div>
 	</div>
