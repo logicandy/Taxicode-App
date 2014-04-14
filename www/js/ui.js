@@ -29,6 +29,11 @@ $(document).on("click", "[href^='tel:']", function() {
 	}
 });
 
+$(document).on("click", "body[data-status=offline] .btn.online, body[data-status=offline] a.online, body[data-status=offline] input.online", function() {
+	App.alert("You need to be online.");
+	return false;
+});
+
 (function changeTooltip() {
 	$("[data-tooltip]").each(function() {
 		if ($(this).is("[data-tooltip-next]")) {

@@ -10,7 +10,7 @@
 		<div class="field"><label>Code</label><input type="number" name="verify" data-requiref="true" /></div>
 	</div>
 
-	<center><input type="submit" class="btn" value="Verify Account" /></center>
+	<center><input type="submit" class="btn online" value="Verify Account" /></center>
 
 	<br/><hr/><br/>
 

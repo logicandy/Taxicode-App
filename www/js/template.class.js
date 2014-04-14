@@ -27,10 +27,12 @@ var Template = {
 		"account/verify"		: false,
 		"account/password"		: false,
 		"account/cards"			: false,
+		
+		"offline/screen"		: false,
+		"offline/alert"			: false,
 
 		"bookings"				: false,
 		"help"					: false,
-		"offline"				: false,
 		"alert"					: false,
 		
 		"errors"				: false,

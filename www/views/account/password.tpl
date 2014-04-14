@@ -25,7 +25,7 @@
 
 	<div class="group" style="margin-bottom: -10px;">
 		<a class="block-section center first" onclick="Views.back();">Go Back</a><!--
-		--><input type="submit" class="block-section center" value="Change" />
+		--><input type="submit" class="block-section center online" value="Change" />
 	</div>
 
 </form>

@@ -47,7 +47,7 @@ var App = {
 				App.onReady();
 				return true;
 			} else {
-				App.pingServer(false);
+				App.pingServer(false, true);
 				setTimeout(App.checkReady, Config.internalPing);
 			}
 		} else {
@@ -70,7 +70,7 @@ var App = {
 		if (App.connected) {
 			API.getKey();
 		} else {
-			App.offline();
+			App.offline(true);
 		}
 		setTimeout(App.pingRepeat, Config.externalPing);
 		Analytics.setup();
@@ -110,7 +110,7 @@ var App = {
 			},
 			failure: function() {
 				callback();
-				App.offline(typeof renderOfflineWindow == "undefined" ? true : renderOfflineWindow);
+				App.offline(typeof renderOfflineWindow == "undefined" ? false : renderOfflineWindow);
 			}
 		}, 0);
 	},
@@ -121,16 +121,25 @@ var App = {
 	},
 
 	online: function() {
-		$("#offline").remove();
+		$("body").attr("data-status", "online");
+		$("#offline, #offline-warning").remove();
 		App.connected = true;
 	},
 
 	offline: function(renderWindow) {
+		$("body").attr("data-status", "offline");
 		if (renderWindow) {
 			$("#offline").remove();
-			$("body").append(Template.render('offline'));
+			$("body").append(Template.render('offline/screen'));
+		} else {
+			App.offlineWarning();
 		}
 		App.connected = false;
+	},
+
+	offlineWarning: function() {
+		$("#offline-warning").remove();
+		$("body").append(Template.render('offline/alert'));
 	},
 
 	addCSS: function(css) {
