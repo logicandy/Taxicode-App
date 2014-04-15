@@ -17,21 +17,21 @@
 			<small>Credit/Debit</small>
 		</a>
 
-		{{#if User.user.card_token}}
+		{{#if User.user && User.user.card_token}}
 			<a class="btn double" onclick="Booking.pay.quote('token');">
 				<span>Saved Card</span>
 				<small>Ending {{%User.user.card_token.digits}}</small>
 			</a>
 		{{#endif}}
 
-		{{#if User.user.card_token && $.inArray("CASH", Booking.quotes[Booking.quote].payment_options) > -1}}
+		{{#if User.user && $.inArray("CASH", Booking.quotes[Booking.quote].payment_options) > -1}}
 			<a class="btn double" onclick="Booking.pay.quote('cash');">
 				<span>By Cash</span>
 				<small>To The Driver</small>
 			</a>
 		{{#endif}}
 
-		{{#if !User.user.card_token && $.inArray("CASH", Booking.quotes[Booking.quote].payment_options) > -1}}
+		{{#if !User.user && $.inArray("CASH", Booking.quotes[Booking.quote].payment_options) > -1}}
 			<p>Logged in users can pay by cash.</p>
 			<p><a class="btn small" onclick="User.loginPopup(function(){Views.render('booking', undefined, 'quote')});">Login</a></p>
 		{{#endif}}

@@ -2,7 +2,7 @@
 
 	<h2>{{$name}}</h2>
 
-	{{#if User.user.picture}}
+	{{#if User.user.picture && App.connected}}
 		<p><img src='{{$picture}}' class="user-picture" /></p>
 	{{#endif}}
 
