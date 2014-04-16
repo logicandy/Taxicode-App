@@ -115,14 +115,17 @@ var Views = {
 				$view.find(".rating").each(function() {
 					var ratings = parseInt($(this).attr("data-ratings"));
 					if (ratings) {
-						var score = Math.floor(parseFloat($(this).attr("data-score")));
+						var score = parseFloat($(this).attr("data-score"));
 						$(this).empty();
 
-						for (var i = 0; i < score; i++) {
-							$(this).append("<img src='img/star_red.png' />");
-						}
-						for (var i = 0; i < 5-score; i++) {
-							$(this).append("<img src='img/star_grey.png' />");
+						for (var i = 0; i < 5; i++) {
+							if (score > i + 0.5) {
+								$(this).append("<img src='img/star_red.png' />");
+							} else if (score > i) {
+								$(this).append("<img src='img/star_red_half.png' />");
+							} else {
+								$(this).append("<img src='img/star_grey.png' />");
+							}
 						}
 
 						$(this).append("<span>("+ratings+")</span>");
