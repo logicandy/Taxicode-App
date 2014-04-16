@@ -47,7 +47,7 @@ var App = {
 				App.onReady();
 				return true;
 			} else {
-				App.pingServer(false, true);
+				App.pingServer(false);
 				setTimeout(App.checkReady, Config.internalPing);
 			}
 		} else {
@@ -70,7 +70,7 @@ var App = {
 		if (App.connected) {
 			API.getKey();
 		} else {
-			App.offline(true);
+			App.offline();
 		}
 		setTimeout(App.pingRepeat, Config.externalPing);
 		Analytics.setup();
@@ -93,7 +93,7 @@ var App = {
 		$("#page-loading").remove();
 	},
 
-	pingServer: function(callback, renderOfflineWindow) {
+	pingServer: function(callback) {
 		callback = callback ? callback : function() {};
 		API.get("ping/?v="+Config.version, {
 			success: function(response) {
@@ -110,7 +110,7 @@ var App = {
 			},
 			failure: function() {
 				callback();
-				App.offline(typeof renderOfflineWindow == "undefined" ? false : renderOfflineWindow);
+				App.offline();
 			}
 		}, 0);
 	},
@@ -120,26 +120,23 @@ var App = {
 		setTimeout(App.pingRepeat, Config.externalPing);
 	},
 
+	connected_initial: false,
 	online: function() {
+		App.connected_initial = true;
 		$("body").attr("data-status", "online");
 		$("#offline, #offline-warning").remove();
 		App.connected = true;
 	},
 
-	offline: function(renderWindow) {
+	offline: function() {
 		$("body").attr("data-status", "offline");
-		if (renderWindow) {
-			$("#offline").remove();
-			$("body").append(Template.render('offline/screen'));
+		$("#offline, #offline-warning").remove();
+		if (App.ready && App.connected_initial) {
+			$("body").append(Template.render('offline/alert'));
 		} else {
-			App.offlineWarning();
+			$("body").append(Template.render('offline/screen'));
 		}
 		App.connected = false;
-	},
-
-	offlineWarning: function() {
-		$("#offline-warning").remove();
-		$("body").append(Template.render('offline/alert'));
 	},
 
 	addCSS: function(css) {
