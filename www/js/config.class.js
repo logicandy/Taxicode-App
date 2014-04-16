@@ -45,7 +45,7 @@ var Config = {
 		main: "http://taxicode:8888/",
 		compare: "http://heathrow:8888/"
 	} : {
-		api: "https://api1.taxicode.com/",
+		api: "https://api.taxicode.com/",
 		main: "http://www.taxicode.com/",
 		compare: "https://www.taxipricecompare.co.uk/"
 	},
