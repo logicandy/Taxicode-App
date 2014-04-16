@@ -136,6 +136,12 @@ setupLayout(true);
 	setTimeout(countChars, 100);
 })();
 
+(function adjustFullHeightElements() {
+	// This function resets the css as height: 100% so that iOS devices are forced to update height when the window height changes.
+	$(".alert, #offline").css({height: "100%"});
+	setTimeout(adjustFullHeightElements, 250);
+})();
+
 $(document).ready(function() {
 	// Scroll back down on refresh pull - currently not being used due to bug with short pages.
 	/*
