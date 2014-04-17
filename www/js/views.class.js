@@ -154,9 +154,9 @@ var Views = {
 								return 1;
 							} else if (score_a > score_b) {
 								return -1;
-							} else if (total_a > total_b) {
+							} else if (total_a < total_b) {
 								return 1;
-							} else if (total_b < total_a) {
+							} else if (total_b > total_a) {
 								return -1;
 							} else {
 								return parseFloat($(a).attr('data-price')) - parseFloat($(b).attr('data-price'));
