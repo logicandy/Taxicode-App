@@ -17,7 +17,7 @@ var App = {
 		}
 
 		// Startup
-		App.loading();
+		App.loading("Loading App Data");
 		App.start_time = new Date().getTime();
 		Libs.initialize();
 		Config.initialize(function() {
@@ -84,9 +84,15 @@ var App = {
 		$("body").append("<div id='page-loading'><div class='loader'><div></div></div></div>");
 
 		if (text) {
-			$("#page-loading .loader").css({height: 'auto'}).append("<span class='loading-text'>" + text + "</span>");
+			App.setLoadingText(text);
 		}
 
+	},
+
+	setLoadingText: function(text) {
+		var loader = $("#page-loading .loader").css({height: 'auto'});
+		loader.find(".loading-text").remove();
+		loader.append("<span class='loading-text'>" + text + "</span>");
 	},
 
 	stopLoading: function() {

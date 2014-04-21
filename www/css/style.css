@@ -377,6 +377,22 @@ select {
 	margin: 0px;
 }
 
+.field .locate-me {
+	display: inline-block;zoom:1;*display:inline;
+	height: 37px;
+	width: 36px;
+	border-left: 1px solid #CCC;
+	background-image: url("../img/locate.png");
+	background-size: 17px 17px;
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+.field .locate-me:hover {
+	background-image: url("../img/locate-hover.png");
+}
+
 .expand-block {
 	border-top: 1px solid #CCC;
 	border-bottom: 1px solid #CCC;
@@ -492,6 +508,7 @@ img[src='taxicode-loader@2x.gif'] {
 	margin: 5px 0px;
 	display: block;
 	font-weight: bold;
+	text-align: center;
 }
 
 .loader div {

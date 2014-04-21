@@ -390,7 +390,7 @@ var Views = {
 				});
 			};
 			Views.back = function() {
-				App.loading();
+				App.loading("Loading Bookings");
 				Views.refresh();
 			}
 		} else {

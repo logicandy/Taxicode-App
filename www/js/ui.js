@@ -142,6 +142,13 @@ setupLayout(true);
 	setTimeout(adjustFullHeightElements, 250);
 })();
 
+function locateField(field) {
+	var size = $(field).outerHeight();
+	$(field).closest(".field").find(".locate-me").remove();
+	$(field).width($(field).width() - size);
+	$(field).after("<div class='locate-me'></div>");
+}
+
 $(document).ready(function() {
 	// Scroll back down on refresh pull - currently not being used due to bug with short pages.
 	/*
