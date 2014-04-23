@@ -252,7 +252,6 @@ select {
 	font-size: 16px;
 	outline: none;
 	border: none;
-	background-image: none !important;
 }
 
 input[type="number"]::-webkit-outer-spin-button { display: none; }
@@ -345,6 +344,22 @@ select {
 .field input, .field select, .field textarea {
 	width: 70%;
 	border-left: 1px solid #CCC;
+}
+
+.field input.locatable {
+	background-image: url("../img/locate.png");
+	background-size: 17px 17px;
+	background-position: calc(100% - 10px) center;
+	background-repeat: no-repeat;
+	padding-right: 40px;
+}
+
+.field input.locatable:hover {
+	background-image: url("../img/locate-hover.png");
+}
+
+.field input.located {
+	color: #0AF;
 }
 
 .fieldset .field select {

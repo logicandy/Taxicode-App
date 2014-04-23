@@ -142,12 +142,45 @@ setupLayout(true);
 	setTimeout(adjustFullHeightElements, 250);
 })();
 
-function locateField(field) {
-	var size = $(field).outerHeight();
-	$(field).closest(".field").find(".locate-me").remove();
-	$(field).width($(field).width() - size);
-	$(field).after("<div class='locate-me'></div>");
+function locateField(fields) {
+	if (navigator && navigator.geolocation) {
+		$(fields).addClass("locatable");
+	}
 }
+
+$(document).on("click", ".locatable", function(e) {
+	if (!$(this).is(".located") && e.offsetX > $(this).outerWidth() - $(this).outerHeight()) {
+		getLocationForField(this);
+	}
+});
+
+function getLocationForField(field) {
+	console.log(field);
+	navigator.geolocation.getCurrentPosition(function(geolocation) {
+		$(field).after($(field).addClass("located").val("Your Location").attr({
+			"data-lat": geolocation.coords.latitude,
+			"data-lng": geolocation.coords.longitude
+		}).clone());
+		Booking.data[$(field).attr('name')] = {
+			lat: geolocation.coords.latitude,
+			lng: geolocation.coords.longitude
+		};
+		$(field).remove();
+	}, function() {
+		$(field).val("");
+		App.alert("Can't find your current location.");
+	});
+}
+
+$(document).on("click", ".locatable.located", function(e) {
+	$(this).removeClass("located").val("");
+	if ($(this).is(".google-ac")) {
+		$(this).change(function() {
+			Booking.data[$(this).attr('name')] = $(this).val();
+		});
+		var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
+	}
+});
 
 $(document).ready(function() {
 	// Scroll back down on refresh pull - currently not being used due to bug with short pages.

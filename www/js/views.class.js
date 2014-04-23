@@ -264,20 +264,31 @@ var Views = {
 				$view.find("[name]").each(function() {
 					// Get value
 					var val = Booking.data[$(this).attr('name')];
-					// If it is a date in YYYY-MM-DD Format, convert it to DD/MM/YYYY
-					if (val.match && val.match(/^[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]$/g)) {
-						val = val.substr(8, 2) + "/" + val.substr(5, 2) + "/" + val.substr(0, 4);
+
+					if (typeof val == "object") {
+						// Field is lat/lng object
+						getLocationForField(this);
+					} else {
+						// If it is a date in YYYY-MM-DD Format, convert it to DD/MM/YYYY
+						if (val.match && val.match(/^[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]$/g)) {
+							val = val.substr(8, 2) + "/" + val.substr(5, 2) + "/" + val.substr(0, 4);
+						}
+						// Assign value
+						$(this).val(val);
 					}
-					// Assign value
-					$(this).val(val);
+					
 				});
 				$view.find("[name]").change(function() {
 					Booking.data[$(this).attr('name')] = $(this).val();
 				});
+				locateField($view.find("[name=pickup]"));
 				// Autocomplete
 				if (window.google && window.google.maps && window.google.maps.places) {
 					$view.find("[name=pickup], [name=destination], [name=vias]").each(function() {
-						var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
+						$(this).addClass("google-ac");
+						if (!$(this).is(".located")) {
+							var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
+						}
 					});
 				}
 				break;

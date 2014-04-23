@@ -36,7 +36,14 @@ var Booking = {
 
 	updateData: function() {
 		$(".booking-engine [name]").each(function() {
-			Booking.data[$(this).attr('name')] = Booking.formatDateTime($(this).val());
+			if ($(this).is("[data-lat][data-lng]")) {
+				Booking.data[$(this).attr('name')] = {
+					lat: parseFloat($(this).attr("data-lat")),
+					lng: parseFloat($(this).attr("data-lng"))
+				};
+			} else {
+				Booking.data[$(this).attr('name')] = Booking.formatDateTime($(this).val());
+			}
 		});
 	},
 
