@@ -116,7 +116,7 @@ hr {
 	display: inline;
 }
 
-.option-button:hover {
+.option-button/*:hover*/:active {
 	color: black;
 }
 
@@ -185,7 +185,7 @@ h1, h2, h3, h4, h5, h6, h7 {
 	cursor: pointer;
 }
 
-#footer a:hover { background: rgba(0, 0, 0, 0.1); }
+#footer a/*:hover*/:active { background: rgba(0, 0, 0, 0.1); }
 #footer a:active { background: rgba(0, 0, 0, 0.2); box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.2); }
 
 #footer a i {
@@ -404,7 +404,7 @@ select {
 	cursor: pointer;
 }
 
-.expand-block > h3:hover {
+.expand-block > h3/*:hover*/:active {
 	color: #008DD4;
 }
 
@@ -467,7 +467,7 @@ img[src='taxicode-loader@2x.gif'] {
 	border-radius: 10px 10px 0px 0px;
 }
 
-.alert > .inner > .footer .option:hover {
+.alert > .inner > .footer .option/*:hover*/:active {
 	background: #F4F4F4;
 }
 
@@ -554,7 +554,7 @@ img[src='taxicode-loader@2x.gif'] {
 	color: black;
 	transition: -webkit-transform 0.2s linear;
 }
-.block-section:hover {
+.block-section/*:hover*/:active {
 	background: #F4F4F4;
 }
 
@@ -568,7 +568,7 @@ img[src='taxicode-loader@2x.gif'] {
 	cursor: not-allowed;
 }
 
-.result[data-active=false], .result[data-active=false]:active, .result[data-active=false]:hover {
+.result[data-active=false], .result[data-active=false]:active, .result[data-active=false]/*:hover*/:active {
 	cursor: default !important;
 	background: white !important;
 	text-decoration: none;
@@ -685,7 +685,7 @@ table.small td {
 	cursor: pointer;
 }
 
-.help:focus, .help:hover {
+.help:focus, .help/*:hover*/:active {
 	background: #777;
 }
 
@@ -890,7 +890,7 @@ table.small td {
 	cursor: pointer;
 }
 
-.tool-tip:hover {
+.tool-tip/*:hover*/:active {
 	background: #FAFF89;
 }
 

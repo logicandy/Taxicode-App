@@ -134,7 +134,6 @@ var Views = {
 					}
 				});
 				$view.find("#sort-results").change(function() {
-					console.log($(this).val());
 					var prices = $view.find("#results").children().detach();
 					switch ($(this).val()) {
 					case "price":
