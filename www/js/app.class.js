@@ -266,7 +266,7 @@ var App = {
 		"Creating an account will speed up your booking process in the future.",
 		"You need to book a minimum of 1 hour in advance with taxicode.",
 		"Our taxi network is great for all airport transfers and holiday pickups.",
-		"Business customer can create business account to manage their bookings"
+		"Business customer can create business accounts to manage their bookings."
 	]).sort(function() {
     	return Math.random() > Math.random();
 	}).toArray()),

@@ -281,7 +281,7 @@ var Views = {
 				$view.find("[name]").change(function() {
 					Booking.data[$(this).attr('name')] = $(this).val();
 				});
-				locateField($view.find("[name=pickup]"));
+				//locateField($view.find("[name=pickup]"));
 				// Autocomplete
 				if (window.google && window.google.maps && window.google.maps.places) {
 					$view.find("[name=pickup], [name=destination], [name=vias]").each(function() {
