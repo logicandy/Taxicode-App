@@ -287,7 +287,7 @@ var Views = {
 					$view.find("[name=pickup], [name=destination], [name=vias]").each(function() {
 						$(this).addClass("google-ac");
 						if (!$(this).is(".located")) {
-							Autocomplete.add(this);
+							Taxicode_Autocomplete.add(this);
 						}
 					});
 				}

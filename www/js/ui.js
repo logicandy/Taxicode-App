@@ -178,7 +178,7 @@ $(document).on("click", ".locatable.located", function(e) {
 		$(this).change(function() {
 			Booking.data[$(this).attr('name')] = $(this).val();
 		});
-		var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
+		Taxicode_Autocomplete(this);
 	}
 });
 

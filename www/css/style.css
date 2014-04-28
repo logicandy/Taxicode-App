@@ -984,3 +984,11 @@ body[data-status=offline] .btn.online {
 	font-size: 11px;
 	color: #999;
 }
+
+input.tc-autocomplete-searching {
+	background-image: url('../img/circle-loader-padded.gif');
+	background-size: 21px 16px;
+	background-position: right;
+	background-repeat: no-repeat;
+	padding-right: 25px;
+}
