@@ -953,8 +953,6 @@ body[data-status=offline] .btn.online {
 	border-top: 1px solid #CCC;
 	padding: 5px 10px;
 	line-height: 20px;
-	font-size: 13px;
-	font-weight: bold;
 }
 
 .tc-autocomplete-suggestions li:nth-child(1) {
@@ -964,4 +962,25 @@ body[data-status=offline] .btn.online {
 .tc-autocomplete-suggestions li:hover, .tc-autocomplete-suggestions li.selected {
 	background: #F9F9F9;
 	color: #C93636;
+}
+
+.tc-autocomplete-suggestions li .comma1,
+.tc-autocomplete-suggestions li .comma2 {
+	font-size: 0px !important;
+}
+
+.tc-autocomplete-suggestions li .text-block1 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #000;
+}
+
+.tc-autocomplete-suggestions li .text-block2 {
+	font-size: 13px;
+	color: #000;
+}
+
+.tc-autocomplete-suggestions li span, .tc-autocomplete-suggestions li .comma {
+	font-size: 11px;
+	color: #999;
 }

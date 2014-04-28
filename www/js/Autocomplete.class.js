@@ -17,13 +17,18 @@ var Autocomplete = {
 		Autocomplete.setup();
 
 		if (!$(field).attr("placeholder")) {
-			$(field).attr("placeholder", "Enter a location");
+			$(field).attr({
+				placeholder: "Enter a location",
+				autocomplete: "off"
+			});
 		}
 
 		$(field).attr("data-autocomplete-id", Autocomplete.i++);
 
 		$(field).change(function() {
-			Autocomplete.search($(this).val(), this);
+			if ($(this).attr("data-autocomplete-current") != $(this).val()) {
+				Autocomplete.search($(this).val(), this);
+			}
 		}).keyup(function(event) {
 			if (event.keyCode != 38 && event.keyCode != 40 && event.keyCode != 13) {
 				Autocomplete.search($(this).val(), this);
@@ -65,7 +70,7 @@ var Autocomplete = {
 	},
 
 	search: function(term, field) {
-		if (term.length >= 3 && $(field).attr("data-autocomplete-current") != term) {
+		if (term.length >= 3) {
 			$(field).attr("data-autocomplete-current", term);
 			if (Autocomplete.cache[term]) {
 				Autocomplete.results(term, field);
@@ -105,13 +110,22 @@ var Autocomplete = {
 				event.stopPropagation();
 			});
 
+			$(".tc-autocomplete-suggestions").find("li").each(function() {
+				var text = $(this).text().split(",");
+				var new_text = "";
+				for (var i = 0; i < text.length; i++) {
+					new_text += (i ? "<span class='comma comma" + (i+1) + "'>,</span> " : "") + "<span class='text-block" + (i+1) + "'>" + text[i] + "</span>";
+				}
+				$(this).html(new_text.replace(/\ \ /g, ' '));
+			});
+
 		}
 	},
 
 	selectResult: function(string, term, field_id) {
 		$("[data-autocomplete-id='" + field_id + "']")
 			.attr("data-autocomplete-search", term)
-			.val(string);
+			.val(string.replace(/\ \ /g, ' '));
 		Autocomplete.removeResults();
 	},
 
