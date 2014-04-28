@@ -287,7 +287,7 @@ var Views = {
 					$view.find("[name=pickup], [name=destination], [name=vias]").each(function() {
 						$(this).addClass("google-ac");
 						if (!$(this).is(".located")) {
-							var ac = new google.maps.places.Autocomplete(this, {componentRestrictions: {country: Config.country_code}});
+							Autocomplete.add(this);
 						}
 					});
 				}

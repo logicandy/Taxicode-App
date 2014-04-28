@@ -905,7 +905,7 @@ table.small td {
 	cursor: pointer;
 }
 
-.tool-tip/*:hover*/:active {
+.tool-tip:active {
 	background: #FAFF89;
 }
 
@@ -929,4 +929,39 @@ table.small td {
 body[data-status=offline] .btn.online {
 	opacity: 0.5;
 	cursor: not-allowed;
+}
+
+.tc-autocomplete-suggestions {
+	position: absolute;
+	z-index: 10;
+
+	height: auto;
+	width: 245px;
+	margin: 0px;
+	padding: 0px;
+
+	max-height: 200px;
+	overflow-y: auto;
+
+	background: #FFF;
+	color: #000;
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+	list-style: none;
+}
+
+.tc-autocomplete-suggestions li {
+	border-top: 1px solid #CCC;
+	padding: 5px 10px;
+	line-height: 20px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.tc-autocomplete-suggestions li:nth-child(1) {
+	border-top: none;
+}
+
+.tc-autocomplete-suggestions li:hover, .tc-autocomplete-suggestions li.selected {
+	background: #F9F9F9;
+	color: #C93636;
 }
