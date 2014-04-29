@@ -7,17 +7,20 @@ var Libs = {
 		google: {
 			url: "https://www.google.com/jsapi",
 			success: function() {
-				google.load("maps", "3", {other_params: 'libraries=places&sensor=false', callback: function() {
+				google.load("maps", "3", {other_params: /*'libraries=places&'+*/ 'sensor=false', callback: function() {
 					Libs.checkReady();
 				}});
 			},
 			ready: function() {
-				return window.google && window.google.maps && window.google.maps.places ? true : false;
+				return window.google && window.google.maps /* && window.google.maps.places */ ? true : false;
 			}
 		}
 	},
 
 	initialize: function() {
+		if (OfflineMode) {
+			Libs.libraries = {};
+		}
 		$.each(Libs.libraries, function(name, library) {
 			Libs.load(name);
 		});
@@ -25,7 +28,6 @@ var Libs = {
 	},
 
 	load: function(library) {
-		// DOESN'T WORK AS AJAX DOESN'T KNOW IF SCRIPT FAILED
 		if (!Libs.libraries[library].ready()) {
 			setTimeout(Libs.load, Libs.timeout, library);
 			$.ajax({
@@ -37,8 +39,6 @@ var Libs = {
 				}
 			});
 		}
-		// Check if library loaded or not, if not it will try again.
-		setTimeout(Libs.load, Config.externalPing, library);
 	},
 
 	checkReady: function(library) {

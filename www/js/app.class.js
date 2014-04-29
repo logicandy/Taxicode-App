@@ -262,9 +262,9 @@ var App = {
 	/* Array of tooltips. Shuffled accept first element. */
 	tooltips: ["Taxicode works best for all your medium and long distance bookings."].concat($([
 		"Creating an account will speed up your booking process in the future.",
-		"You need to book a minimum of 1 hour in advance with taxicode.",
+		"You need to book a minimum of 1 hour in advance with Taxicode.",
 		"Our taxi network is great for all airport transfers and holiday pickups.",
-		"Business customer can create business accounts to manage their bookings."
+		"Business customers can create a business account to manage bookings"
 	]).sort(function() {
     	return Math.random() > Math.random();
 	}).toArray()),

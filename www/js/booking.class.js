@@ -21,7 +21,8 @@ var Booking = {
 			pickup_time: "12:00",
 			returnDate: false,
 			returnTime: false,
-			passengers: 1
+			passengers: 1,
+			vehicle: 0
 		};
 		Booking.quote = false;
 		Booking.quotes = false;
@@ -170,7 +171,7 @@ var Booking = {
 			Booking.pay.data.quote = Booking.quote;
 
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote}, User.authObject(), Booking.pay.data),
+				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle}, User.authObject(), Booking.pay.data),
 				success: function(response) {
 					Booking.pay.complete_success(response, 'customer');
 				},
@@ -183,7 +184,7 @@ var Booking = {
 			$.extend(Booking.pay.data, data);
 			App.loading();
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote}, User.authObject(), {
+				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle}, User.authObject(), {
 					method: "token",
 					name: data.name,
 					telephone: data.telephone,
@@ -202,7 +203,7 @@ var Booking = {
 		complete_cash: function(data) {
 			App.loading();
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote}, User.authObject(), {
+				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle}, User.authObject(), {
 					method: "cash",
 					name: data.name,
 					telephone: data.telephone,

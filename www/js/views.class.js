@@ -256,6 +256,12 @@ var Views = {
 				Views.back = function() {
 					Views.render('booking', 'slideFromLeft', 'results');
 				};
+				$view.find("#vehicles-list").change(function() {
+					var v = $(this).val();
+					var vehicle = Booking.quotes[Booking.quote].vehicles[v];
+					$("#quote-price").val("&pound;"+vehicle.price.toFixed(2));
+					Booking.data.vehicle = v;
+				});
 				break;
 
 			case 'form':
@@ -281,16 +287,14 @@ var Views = {
 				$view.find("[name]").change(function() {
 					Booking.data[$(this).attr('name')] = $(this).val();
 				});
-				//locateField($view.find("[name=pickup]"));
+				// locateField($view.find("[name=pickup]"));
 				// Autocomplete
-				if (window.google && window.google.maps && window.google.maps.places) {
-					$view.find("[name=pickup], [name=destination], [name=vias]").each(function() {
-						$(this).addClass("google-ac");
-						if (!$(this).is(".located")) {
-							Taxicode_Autocomplete.add(this);
-						}
-					});
-				}
+				$view.find("[name=pickup], [name=destination], [name=vias]").each(function() {
+					$(this).addClass("tc-autocomplete-field");
+					if (!$(this).is(".located")) {
+						Taxicode_Autocomplete.add(this);
+					}
+				});
 				break;
 		}
 	},

@@ -6,8 +6,14 @@
 		style="height: 160px;"
 	></div>
 
-	<div class="price center">&pound;{{$quote.price.toFixed(2)}}</div>
+	<div id="quote-price" class="price center">&pound;{{$quote.price.toFixed(2)}}</div>
 
+	<!--<select id="vehicles-list">
+		{{#foreach Booking.quotes[Booking.quote].vehicles}}
+			<option value="{{$key}}">{{$val.count}} &times; {{$val.name}} (&pound;{{$val.price.toFixed(2)}})</option>
+		{{#endforeach}}
+	</select>-->
+	
 	<br/>
 
 	<div class="center">

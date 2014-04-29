@@ -746,13 +746,20 @@ table.small td {
 	color: #666;
 }
 
-#sort-results_dummy {
-	float: right;
-	width: 155px;
+#sort-results_dummy, #vehicles-list_dummy {
 	text-align: center;
 	margin-top: -5px;
 	margin-right: -5px;
 	border: 1px solid #CCC;
+}
+
+#sort-results_dummy {
+	float: right;
+	width: 155px;
+}
+
+#vehicles-list_dummy {
+	margin-top: 10px;
 }
 
 .checkbox-field {

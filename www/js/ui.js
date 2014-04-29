@@ -174,7 +174,7 @@ function getLocationForField(field) {
 
 $(document).on("click", ".locatable.located", function(e) {
 	$(this).removeClass("located").val("");
-	if ($(this).is(".google-ac")) {
+	if ($(this).is(".tc-autocomplete-field")) {
 		$(this).change(function() {
 			Booking.data[$(this).attr('name')] = $(this).val();
 		});
