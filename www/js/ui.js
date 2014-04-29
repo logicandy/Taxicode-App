@@ -111,9 +111,11 @@ $(document).keypress(function(e) {
 	}
 });
 
+var windowHeight = 0;
 var setupLayout = function(repeat) {
+	windowHeight = Math.max($(window).height(), windowHeight);
 	$("#main").height(
-		$(window).height()
+		windowHeight
 		- $("#header").outerHeight()
 		- $("#footer").show().outerHeight()
 		- parseInt($("#main").css("padding-top"))
