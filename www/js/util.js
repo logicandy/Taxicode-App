@@ -1,6 +1,7 @@
-Date.prototype.format = function(format) {
+Date.prototype.format = function(format, offset) {
 
-	var $this = new Date(this.getTime() + this.getTimezoneOffset() * 60000);
+	offset = offset == false ? 0 : this.getTimezoneOffset() * 60000;
+	var $this = new Date(this.getTime() + offset);
 
 	format = format ? format : "Y-m-d";
 

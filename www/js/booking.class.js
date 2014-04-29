@@ -13,12 +13,14 @@ var Booking = {
 	},
 
 	clear: function() {
+		var coeff = 1000 * 60 * 5;
+		var date = new Date(Math.ceil((new Date().getTime() + 1000*60*60*2) / coeff) * coeff - (new Date().getTimezoneOffset()) * 60000);
 		Booking.data = {
 			pickup: "",
 			destination: "",
 			vias: "",
-			pickup_date: (new Date(new Date().getTime() + 1000*60*60*24).format("d/m/Y")),
-			pickup_time: "12:00",
+			pickup_date: date.format("d/m/Y"),
+			pickup_time: date.format("H:i"),
 			returnDate: false,
 			returnTime: false,
 			passengers: 1,
@@ -65,11 +67,12 @@ var Booking = {
 	getQuote: function() {
 		Booking.updateData();
 		App.loading("Fetching Quotes");
+		var date = new Date(Booking.data.pickup_date+"T"+Booking.data.pickup_time);
 		API.get("booking/quote", {
 			data: {
 				pickup: Booking.data.pickup,
 				destination: Booking.data.destination,
-				date: new Date(Booking.data.pickup_date+"T"+Booking.data.pickup_time).getTime()/1000,
+				date: date.getTime() / 1000 + date.getTimezoneOffset() * 60,
 				people: Booking.data.passengers,
 				mode: Config.quote_mode,
 			},

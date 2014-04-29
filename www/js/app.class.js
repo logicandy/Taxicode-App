@@ -91,6 +91,7 @@ var App = {
 		var loader = $("#page-loading .loader").css({height: 'auto'});
 		loader.find(".loading-text").remove();
 		loader.append("<span class='loading-text'>" + text + "</span>");
+		$("#page-loading").height(windowHeight);
 	},
 
 	stopLoading: function() {

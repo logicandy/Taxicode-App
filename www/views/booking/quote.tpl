@@ -8,11 +8,11 @@
 
 	<div id="quote-price" class="price center">&pound;{{$quote.price.toFixed(2)}}</div>
 
-	<!--<select id="vehicles-list">
+	<select id="vehicles-list">
 		{{#foreach Booking.quotes[Booking.quote].vehicles}}
 			<option value="{{$key}}">{{$val.count}} &times; {{$val.name}} (&pound;{{$val.price.toFixed(2)}})</option>
 		{{#endforeach}}
-	</select>-->
+	</select>
 	
 	<br/>
 

@@ -1,4 +1,4 @@
-<div class="alert">
+<div class="alert" style="height: {{%windowHeight}}px;">
 	<div class="inner">
 		{{#if Template.data.title}}
 			<div class="header"><h2>{{$title}}</h2></div>
