@@ -961,13 +961,28 @@ body[data-status=offline] .btn.online {
 	line-height: 20px;
 }
 
+.tc-autocomplete-suggestions li.tc-autocomplete-title, .tc-autocomplete-suggestions:hover li.tc-autocomplete-title {
+	padding: 3px 10px;
+	background: #CCC;
+	font-weight: bold;
+}
+
+.tc-autocomplete-suggestions li.tc-autocomplete-title .tc-google-logo {
+	margin: 4px -8px 0px 0px;
+	float: right;
+	width: 104px;
+	background-image: url('../img/powered-by-google-on-white.png');
+	width: 104px;
+	height: 16px;
+}
+
 .tc-autocomplete-suggestions li:nth-child(1) {
 	border-top: none;
 }
 
 .tc-autocomplete-suggestions li:hover, .tc-autocomplete-suggestions li.selected {
-	background: #F9F9F9;
-	color: #C93636;
+	background: #F0F0F0;
+	color: #C93636 !important;
 }
 
 .tc-autocomplete-suggestions li .comma1,

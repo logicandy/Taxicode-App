@@ -3,6 +3,7 @@ var Taxicode_Autocomplete = {
 	cache: {},
 	i: 0,
 	country_code: 'gb',
+	group: true,
 
 	setup: function() {
 		jQuery(document).click(function() {
@@ -41,16 +42,17 @@ var Taxicode_Autocomplete = {
 			if (jQuery(".tc-autocomplete-suggestions")) {
 				switch(event.keyCode) {
 					case 40: // UP
-						var index = jQuery(".tc-autocomplete-suggestions li.selected").index() + 1;
-						jQuery(".tc-autocomplete-suggestions li").removeClass("selected");
-						jQuery(jQuery(".tc-autocomplete-suggestions li")[index]).addClass("selected");
+						var index = jQuery(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title).selected").index(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title)") + 1;
+						index = index > jQuery(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title)").length - 1 ? 0 : index;
+						jQuery(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title)").removeClass("selected");
+						jQuery(jQuery(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title)")[index]).addClass("selected");
 						Taxicode_Autocomplete.shiftResultsScroll();
 						return false;
 					case 38: // DOWN
-						var index = jQuery(".tc-autocomplete-suggestions li.selected").index() - 1;
-						index = index < 0 ? jQuery(".tc-autocomplete-suggestions li").length - 1 : index;
-						jQuery(".tc-autocomplete-suggestions li").removeClass("selected");
-						jQuery(jQuery(".tc-autocomplete-suggestions li")[index]).addClass("selected");
+						var index = jQuery(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title).selected").index(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title)") - 1;
+						index = index < 0 ? jQuery(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title)").length - 1 : index;
+						jQuery(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title)").removeClass("selected");
+						jQuery(jQuery(".tc-autocomplete-suggestions li:not(.tc-autocomplete-title)")[index]).addClass("selected");
 						Taxicode_Autocomplete.shiftResultsScroll();
 						return false;
 					case 13: // ENTER
@@ -72,14 +74,14 @@ var Taxicode_Autocomplete = {
 		if (term.length >= 3) {
 			jQuery(field).attr("data-autocomplete-current", term);
 			jQuery(field).addClass("tc-autocomplete-searching");
-			if (Taxicode_Autocomplete.cache[term]) {
+			if (Taxicode_Autocomplete.cache[term.trim().toLowerCase()]) {
 				Taxicode_Autocomplete.results(term, field);
 			} else {
-				API.get("places", {
+				(typeof Taxicode_API == "object" ? Taxicode_API : API).get("places", {
 					data: {term: term, country: Taxicode_Autocomplete.country_code},
 					success: function(response) {
 						if (response.status == "OK") {
-							Taxicode_Autocomplete.cache[response.term] = response.results
+							Taxicode_Autocomplete.cache[response.term.trim().toLowerCase()] = response.results
 							Taxicode_Autocomplete.results(response.term, field);
 						}
 					}
@@ -101,19 +103,22 @@ var Taxicode_Autocomplete = {
 				left: jQuery(field).offset().left,
 				width: jQuery(field).outerWidth()
 			});
-			jQuery.each(Taxicode_Autocomplete.cache[term], function(group, results) {
+			jQuery.each(Taxicode_Autocomplete.cache[term.trim().toLowerCase()], function(group, results) {
+				if (Taxicode_Autocomplete.group && results.length) {
+					suggestions.append("<li class='tc-autocomplete-title'>" + (group == "GOOGLE" ? "PLACES<img src='/img/powered-by-google-on-white.png' />" : group + "S")+ "</li>");
+				}
 				jQuery.each(results, function(i, result) {
 					suggestions.append("<li>" + (typeof result == "object" ? result.string : result) + "</li>");
 				});
 			});
 			jQuery("body").append(suggestions);
 
-			jQuery(".tc-autocomplete-suggestions").find("li").click(function(event) {
+			jQuery(".tc-autocomplete-suggestions").find("li:not(.tc-autocomplete-title)").click(function(event) {
 				Taxicode_Autocomplete.selectResult(jQuery(this).text(), term, jQuery(field).attr("data-autocomplete-id"));
 				event.stopPropagation();
 			});
 
-			jQuery(".tc-autocomplete-suggestions").find("li").each(function() {
+			jQuery(".tc-autocomplete-suggestions").find("li:not(.tc-autocomplete-title)").each(function() {
 				var text = jQuery(this).text().split(",");
 				var new_text = "";
 				for (var i = 0; i < text.length; i++) {
