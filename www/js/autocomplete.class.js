@@ -105,7 +105,7 @@ var Taxicode_Autocomplete = {
 			});
 			jQuery.each(Taxicode_Autocomplete.cache[term.trim().toLowerCase()], function(group, results) {
 				if (Taxicode_Autocomplete.group && results.length) {
-					suggestions.append("<li class='tc-autocomplete-title'>" + (group == "GOOGLE" ? "PLACES<img src='/img/powered-by-google-on-white.png' />" : group + "S")+ "</li>");
+					suggestions.append("<li class='tc-autocomplete-title'>" + (group == "GOOGLE" ? "PLACES<div class='tc-google-logo'></div>" : group + "S")+ "</li>");
 				}
 				jQuery.each(results, function(i, result) {
 					suggestions.append("<li>" + (typeof result == "object" ? result.string : result) + "</li>");

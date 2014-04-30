@@ -943,6 +943,7 @@ body[data-status=offline] .btn.online {
 	z-index: 10;
 
 	height: auto;
+
 	margin: 0px;
 	padding: 0px;
 
@@ -959,12 +960,15 @@ body[data-status=offline] .btn.online {
 	border-top: 1px solid #CCC;
 	padding: 5px 10px;
 	line-height: 20px;
+	cursor: pointer;
 }
 
 .tc-autocomplete-suggestions li.tc-autocomplete-title, .tc-autocomplete-suggestions:hover li.tc-autocomplete-title {
 	padding: 3px 10px;
 	background: #CCC;
 	font-weight: bold;
+	color: #000 !important;
+	cursor: default;
 }
 
 .tc-autocomplete-suggestions li.tc-autocomplete-title .tc-google-logo {
@@ -1006,8 +1010,8 @@ body[data-status=offline] .btn.online {
 	color: #999;
 }
 
-input.tc-autocomplete-searching {
-	background-image: url('../img/circle-loader-padded.gif');
+input.tc-autocomplete-searching[type=text] {
+	background-image: url('../img/taxicode-main/circle-loader-padded.gif') !important;
 	background-size: 21px 16px;
 	background-position: right;
 	background-repeat: no-repeat;
