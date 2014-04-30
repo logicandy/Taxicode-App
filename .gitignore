@@ -1,8 +1,6 @@
 /taxicode/plugins/ios.json
 taxicode/plugins/android.json
-/base/*
 /taxicode/npm-debug.log
-/taxicode.zip
 /taxicode/platforms/*
 
 Archive.zip

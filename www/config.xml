@@ -30,22 +30,26 @@
 	<icon src="icon.png" />
 
 	<!-- iOS Icons -->
-	<icon gap:platform="ios" height="57" width="57" src="res/icon/ios/icon-57.png" />
-	<icon gap:platform="ios" height="72" width="72"  src="res/icon/ios/icon-72.png"/>
-	<icon gap:platform="ios" height="76" width="76"  src="res/icon/ios/icon-76.png"/>
-	<icon gap:platform="ios" height="114" width="114" src="res/icon/ios/icon-114.png" />
-	<icon gap:platform="ios" height="120" width="120"  src="res/icon/ios/icon-120.png"/>
-	<icon gap:platform="ios" height="144" width="144" src="res/icon/ios/icon-144.png" />
-	<icon gap:platform="ios" height="152" width="152"  src="res/icon/ios/icon-152.png"/>
-	<icon gap:platform="ios" height="156" width="156"  src="res/icon/ios/icon-156.png"/>
+	<icon gap:platform="ios" height="57" width="57" src="res/icons/ios/icon-57.png" />
+	<icon gap:platform="ios" height="72" width="72"  src="res/icons/ios/icon-72.png"/>
+	<icon gap:platform="ios" height="76" width="76"  src="res/icons/ios/icon-76.png"/>
+	<icon gap:platform="ios" height="114" width="114" src="res/icons/ios/icon-114.png" />
+	<icon gap:platform="ios" height="120" width="120"  src="res/icons/ios/icon-120.png"/>
+	<icon gap:platform="ios" height="144" width="144" src="res/icons/ios/icon-144.png" />
+	<icon gap:platform="ios" height="152" width="152"  src="res/icons/ios/icon-152.png"/>
+	<icon gap:platform="ios" height="156" width="156"  src="res/icons/ios/icon-156.png"/>
 
 	<!-- Android Icons -->
-	<icon gap:platform="android" gap:density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
-	<icon gap:platform="android" gap:density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
-	<icon gap:platform="android" gap:density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
-	<icon gap:platform="android" gap:density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
-	<icon gap:platform="android" gap:density="xxhdpi" src="res/icon/android/icon-144-xxhdpi.png" />
-	<icon gap:platform="android" gap:density="xxxhdpi" src="res/icon/android/icon-192-xxxhdpi.png" />
+	<icon gap:platform="android" gap:density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
+	<icon gap:platform="android" gap:density="mdpi" src="res/icons/android/icon-48-mdpi.png" />
+	<icon gap:platform="android" gap:density="hdpi" src="res/icons/android/icon-72-hdpi.png" />
+	<icon gap:platform="android" gap:density="xhdpi" src="res/icons/android/icon-96-xhdpi.png" />
+	<icon gap:platform="android" gap:density="xxhdpi" src="res/icons/android/icon-144-xxhdpi.png" />
+	<icon gap:platform="android" gap:density="xxxhdpi" src="res/icons/android/icon-192-xxxhdpi.png" />
+
+	<!-- Windows Icons -->
+    <icon gap:platform="winphone" src="res/icons/windows-phone/icon-48.png" />
+    <icon gap:platform="winphone" gap:role="background" src="res/icons/windows-phone/icon-173.png" />
 
 	<!-- iPhone 4 Splash Screen -->
 	<gap:splash gap:platform="ios" height="480" width="320" src="res/screen/ios/screen-iphone-portrait.png" />
@@ -68,6 +72,9 @@
 	<gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/screen-xhdpi-portrait.png" />
 	<gap:splash gap:density="xxhdpi" gap:platform="android" src="res/screen/android/screen-xxhdpi-portrait.png" />
 	<gap:splash gap:density="xxxhdpi" gap:platform="android" src="res/screen/android/screen-xxxhdpi-portrait.png" />
+
+	<!-- Windows Splash Screen -->
+	<gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
 
 	<!-- Plugins -->
 	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
