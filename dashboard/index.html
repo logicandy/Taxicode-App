@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Taxicode</title>
+
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+		<script type="text/javascript"> var DevMode = false; </script>
+
+		<script type="text/javascript" src="js/rsa/jsbn.js"></script>
+		<script type="text/javascript" src="js/rsa/sha1.js"></script>
+		<script type="text/javascript" src="js/rsa/rsa.js"></script>
+		
+		<script type="text/javascript" src="js/system/jquery.js"></script>
+		<script type="text/javascript" src="js/system/jquery.jsonp.js"></script>
+		<script type="text/javascript" src="js/system/jquery.maps.js"></script>
+
+		<script type="text/javascript" src="js/config.class.js"></script>
+		<script type="text/javascript" src="js/util.js"></script>
+		<script type="text/javascript" src="js/ui.js"></script>
+
+		<!-- MOBISCROLL -->
+		<script src="js/mobiscroll/js/mobiscroll.core.js"></script>
+		<script src="js/mobiscroll/js/mobiscroll.scroller.js" type="text/javascript"></script>
+
+		<script src="js/mobiscroll/js/mobiscroll.datetime.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/mobiscroll.select.js" type="text/javascript"></script>
+
+		<script src="js/mobiscroll/js/mobiscroll.scroller.jqm.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/mobiscroll.scroller.ios.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/mobiscroll.scroller.ios7.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/mobiscroll.scroller.android.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/mobiscroll.scroller.android-ics.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/mobiscroll.scroller.wp.js" type="text/javascript"></script>
+
+		<script src="js/mobiscroll/js/i18n/mobiscroll.i18n.de.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/i18n/mobiscroll.i18n.es.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/i18n/mobiscroll.i18n.fr.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/i18n/mobiscroll.i18n.hu.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/i18n/mobiscroll.i18n.it.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/i18n/mobiscroll.i18n.no.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/i18n/mobiscroll.i18n.pt-BR.js" type="text/javascript"></script>
+		<script src="js/mobiscroll/js/i18n/mobiscroll.i18n.zh.js" type="text/javascript"></script>
+
+		<link href="js/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+		<link href="js/mobiscroll/css/mobiscroll.scroller.jqm.css" rel="stylesheet" type="text/css" />
+		<link href="js/mobiscroll/css/mobiscroll.scroller.android.css" rel="stylesheet" type="text/css" />
+		<link href="js/mobiscroll/css/mobiscroll.scroller.android-ics.css" rel="stylesheet" type="text/css" />
+		<link href="js/mobiscroll/css/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css" />
+		<link href="js/mobiscroll/css/mobiscroll.scroller.ios7.css" rel="stylesheet" type="text/css" />
+		<link href="js/mobiscroll/css/mobiscroll.scroller.sense-ui.css" rel="stylesheet" type="text/css" />
+		<link href="js/mobiscroll/css/mobiscroll.scroller.wp.css" rel="stylesheet" type="text/css" />
+
+		<link href="js/mobiscroll/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+
+	</head>
+	<body>
+
+		<div id="header">
+			<a class="option-button" onclick="App.optionButtonClick();"></a>
+			<div class="logo"></div>
+			<div class="company" id="company_name">Partner Dashboard</div>
+		</div>
+		<div id="main">
+			<div id="app" class="view"></div>
+		</div>	
+		<div id="footer">
+			<a data-render="new" class="selected"><i></i>New Bookings</a><!--
+			--><a data-render="bookings"><i></i>View Bookings</a><!--
+			--><a data-render="bin"><i></i>Bookings Bin</a><!--
+			--><a data-render="terminal"><i></i>Terminal</a><!--
+			--><a data-render="settings"><i></i>Settings</a>
+		</div>
+
+		<script type="text/javascript" src="phonegap.js"></script>
+		<script type="text/javascript" src="js/app.class.js"></script>
+
+		<script type="text/javascript" src="js/system/analytics.class.js"></script>
+		<script type="text/javascript" src="js/system/form.class.js"></script>
+		<script type="text/javascript" src="js/system/api.class.js"></script>
+		<script type="text/javascript" src="js/system/db.class.js"></script>
+
+		<script type="text/javascript" src="js/libs.class.js"></script>
+		<script type="text/javascript" src="js/views.class.js"></script>
+		<script type="text/javascript" src="js/template.class.js"></script>
+		<script type="text/javascript" src="js/user.class.js"></script>
+
+		<script type="text/javascript">App.initialize();</script>
+		
+	</body>
+</html>
