@@ -229,18 +229,12 @@ var App = {
 	},
 
 	optionButton: function() {
-		/*if (typeof Views.back == "function") {
+		if (typeof Views.back == "function") {
 			$("#header").addClass("option");
 			$("#header .option-button").html(Views.back_text ? Views.back_text : "Back");
-		} else if (!User.user && Views.current != "account") {
-			$("#header").addClass("option");
-			$("#header .option-button").html("Sign In");
-		} else if (User.user && Views.current == "account") {
-			$("#header").addClass("option");
-			$("#header .option-button").html("Sign Out");
 		} else {
 			$("#header").removeClass("option");
-		}*/
+		}
 		setTimeout(App.optionButton, Config.internalPing);
 	},
 

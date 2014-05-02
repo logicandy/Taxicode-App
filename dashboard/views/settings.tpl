@@ -1,24 +1,49 @@
 <div class="block">
 	<h2>Settings</h2>
 
-	<h3>Push Notification Settings</h3>
+	<h3 class="underlined">General Settings</h3>
+
+	<table class='borderless'>
+		<tr>
+			<td>Tool Tips:</td>
+			<td style="text-align: right;"><input type="checkbox" {{#if Config.get("tooltips") != "off"}}checked{{#off}} /></td>
+		</tr>
+	</table>
+	
+	<h3 class="underlined">Push Notification Settings</h3>
 
 	<table class='borderless'>
 		<tr>
 			<td>New Bookings:</td>
-			<td><input type="checkbox" /></td>
+			<td style="text-align: right;"><input type="checkbox" /></td>
 		</tr>
 		<tr>
 			<td>Bookings Bin:</td>
-			<td><input type="checkbox" /></td>
+			<td style="text-align: right;"><input type="checkbox" /></td>
 		</tr>
 		<tr>
 			<td>Bookings Bin Radius:</td>
-			<td>...</td>
+			<td style="text-align: right;">
+				<select id="bookings-bin-radius">
+					<option value="5">5 miles</option>
+					<option value="10">10 miles</option>
+					<option value="15">15 miles</option>
+					<option value="20">20 miles</option>
+					<option value="25">25 miles</option>
+					<option value="30">30 miles</option>
+					<option value="35">35 miles</option>
+					<option value="40">40 miles</option>
+					<option value="45">45 miles</option>
+					<option value="50">50 miles</option>
+				</select>
+			</td>
 		</tr>
 	</table>
 
-	<h3>Account Details</h3>
+	<center><a class="btn">Save Settings</a></center>
+	<br/>
+
+	<h3 class="underlined">Account Details</h3>
 
 	<table class='borderless'>
 		<tr>

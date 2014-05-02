@@ -18,10 +18,10 @@ var Views = {
 
 		// Get view
 		if (view == "console") {
-			this.console();
+			Views.console();
 			return false;
-		} else if (typeof this["render"+ucwords(view)] == "function") {
-			var block = this["render"+ucwords(view)]($("<div class='view'></div>"), params);
+		} else if (typeof Views["render"+ucwords(view)] == "function") {
+			var block = Views["render"+ucwords(view)]($("<div class='view'></div>"), params);
 		} else if (typeof Template.templates[view] != "undefined") {
 			var block = Template.render(view);
 		} else {
@@ -34,38 +34,42 @@ var Views = {
 		Views.sub = false;
 
 		// Setup interactivity
-		if (typeof this["setup"+ucwords(view)] == "function") {
-			this["setup"+ucwords(view)](block, params);
+		if (typeof Views["setup"+ucwords(view)] == "function") {
+			Views["setup"+ucwords(view)](block, params);
+			console.log("setup"+ucwords(view));
 		}
 
 		// Add mobiscroll elements
 		Views.mobiscroll(block);
 
 		// Transition
-		Views.unsetupRefresh();
 		switch (effect) {
 			case 'slide':
 			case 'slideFromRight':
 				ViewAnimation.slide(block, +1, function() {
-					Views.setupRefresh(block);
 				});
 				break;
 			case 'slideFromLeft':
 				ViewAnimation.slide(block, -1, function() {
-					Views.setupRefresh(block);
 				});
 				break;
 			case 'swap':
 			default:
 				App.empty().append(block);
-				Views.setupRefresh(block);
 				break;
 		}
 		return block;
 	},
 
 	refresh: function() {
-		this.render(this.current);
+		Views.render(Views.current);
+	},
+
+	setupNew: function() {
+		Views.back = function() {
+			App.alert('No');
+		};
+		Views.back_text = "Refresh";
 	},
 
 	console: function() {
@@ -125,30 +129,6 @@ var Views = {
 		$view.find("select").scroller('destroy').scroller($.extend({
 			preset: 'select'
 		}, options));
-	},
-
-	setupRefresh: function($view) {
-		if ($view.find(".refresh-pull")) {
-			var icon = $view.find(".refresh-pull > .refresh-icon");
-			icon.show();
-			var offset = icon.outerHeight() + parseInt(icon.css("marginTop")) + parseInt(icon.css("marginBottom"));
-			$("#main").scrollTop(offset);
-			$("#main").attr("data-scroll-top", offset);
-		} else {
-			$("#main").attr("data-scroll-top", 0);
-		}
-	},
-
-	unsetupRefresh: function() {
-		var icon = $(".refresh-pull > .refresh-icon");
-		var offset = icon.outerHeight() + parseInt(icon.css("marginTop")) + parseInt(icon.css("marginBottom"));
-		var current = $("#main").scrollTop();
-		$("#main").attr("data-scroll-top", 0).scrollTop(current - offset);
-		icon.hide();
-	},
-
-	refreshView: function() {
-
 	}
 
 };

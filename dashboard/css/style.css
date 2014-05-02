@@ -184,8 +184,11 @@ h1, h2, h3, h4, h5, h6, h7 {
 
 h3 {
 	color: #C93636;
-	border-bottom: 1px solid #CCC;
 	padding: 5px;
+}
+
+h3.underlined {
+	border-bottom: 1px solid #CCC;
 }
 
 #footer {
@@ -249,6 +252,10 @@ input, select, textarea {
 }
 input, textarea {
 	border-radius: 0px;
+}
+
+input[type=checkbox], input[type=radio] {
+	width: auto;
 }
 
 input::-webkit-input-placeholder {
@@ -777,12 +784,11 @@ table.small td {
 	color: #666;
 }
 
-#sort-results_dummy {
+#bookings-bin-radius_dummy {
 	float: right;
-	width: 155px;
+	width: 85px;
+	padding: 2px 4px;
 	text-align: center;
-	margin-top: -5px;
-	margin-right: -5px;
 	border: 1px solid #CCC;
 }
 
@@ -1049,4 +1055,5 @@ body[data-status=offline] .btn.online {
 #company_name {
 	background: rgba(0, 0, 0, 0.1);
 	padding-bottom: 3px;
+	text-align: center;
 }
