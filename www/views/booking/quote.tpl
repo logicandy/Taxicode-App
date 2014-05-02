@@ -8,11 +8,11 @@
 
 	<div id="quote-price" class="price center">&pound;{{$quote.price.toFixed(2)}}</div>
 
-	<select id="vehicles-list">
+	<!--<select id="vehicles-list">
 		{{#foreach Booking.quotes[Booking.quote].vehicles}}
 			<option value="{{$key}}">{{$val.count}} &times; {{$val.name}} (&pound;{{$val.price.toFixed(2)}})</option>
 		{{#endforeach}}
-	</select>
+	</select>-->
 	
 	<br/>
 
@@ -39,6 +39,8 @@
 
 		{{#if !User.user && $.inArray("CASH", Booking.quotes[Booking.quote].payment_options) > -1}}
 			<p>Logged in users can pay by cash.</p>
+		{{#endif}}
+		{{#if !User.user}}
 			<p><a class="btn small" onclick="User.loginPopup(function(){Views.render('booking', undefined, 'quote')});">Login</a></p>
 		{{#endif}}
 

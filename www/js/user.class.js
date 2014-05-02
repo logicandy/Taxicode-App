@@ -198,9 +198,9 @@ var User = {
 		});
 	},
 
-	loginPopup: function(success) {
+	loginPopup: function(success, error) {
 		App.alert(
-			Template.render('account/login_popup').html(),
+			Template.render('account/login_popup', {error: error}).html(),
 			{
 				title: "Login",
 				options: {
@@ -218,7 +218,9 @@ var User = {
 							if (typeof success == "function") {
 								success();
 							}
-						}, User.loginPopup);
+						}, function(error) {
+							User.loginPopup(success, error);
+						});
 
 					}
 				},
