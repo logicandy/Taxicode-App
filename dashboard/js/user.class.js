@@ -37,6 +37,7 @@ var User = {
 			$("body").attr("data-user", User.user.email);
 			User.state = true;
 			Config.set('auth_token', User.user.auth_token);
+			$("#footer").show();
 		} else {
 			User.state = false;
 		}
@@ -60,6 +61,7 @@ var User = {
 					Analytics.event("User", "Login", "User successfully logged in", 1);
 					User.load(response.user);
 					Config.setting("login_email", data.email);
+					Views.render("new");
 				} else {
 					Analytics.event("User", "Login", "User failed to log in", 0);
 					User.loadEmpty();

@@ -582,14 +582,31 @@ img[src='taxicode-loader@2x.gif'] {
 	margin-top: 20px;
 }
 .block-section, .block-section:active, .block-section:visited {
+	text-align: left;
 	border-width: 0px;
 	border-top: 1px solid #CCC;
 	padding: 5px;
+	box-sizing: border-box;
 	margin: 10px -10px -10px;
 	cursor: pointer;
 	display: block;
 	color: black;
 	transition: -webkit-transform 0.2s linear;
+}
+
+
+@media screen and (min-width: 650px) {
+	.block-sections {
+		text-align: center;
+	}
+	.block-section {
+		margin: 5px;
+		display: inline-block;zoom:1;*display:inline;
+		border: 0px;
+		outline: 1px solid #CCC;
+		width: 45%;
+		max-width: 400px;
+	}
 }
 
 .block-section:active {
@@ -1056,4 +1073,8 @@ body[data-status=offline] .btn.online {
 	background: rgba(0, 0, 0, 0.1);
 	padding-bottom: 3px;
 	text-align: center;
+}
+
+.hide {
+	display: none;
 }
