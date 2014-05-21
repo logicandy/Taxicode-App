@@ -31,7 +31,7 @@ var API = {
 				
 				if (response.status == "BAD_PUBLIC_KEY") {
 					API.getKey(retrys > 0 ? function() {
-						API.get(uri, set_options, retrys-1);
+						API.get(uri, options, retrys-1);
 					}:options.failure);
 				} else {
 					options.success(response);
