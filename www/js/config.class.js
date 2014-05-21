@@ -2,10 +2,10 @@ var Params = window.location.search ? JSON.parse('{"' + decodeURI(window.locatio
 
 var Config = {
 
-	app:		AppName == "tpc" ? "taxipricecompare" : "taxicode",
-	title:		AppName == "tpc" ? "Taxi Price Compare" : "Taxicode",
-	quote_mode:	AppName == "tpc" ? "all" : "tc",
-	subdir:		AppName == "tpc" ? "tpc" : "taxicode",
+	app:		Params.app == "tpc" ? "taxipricecompare" : "taxicode",
+	title:		Params.app == "tpc" ? "Taxi Price Compare" : "Taxicode",
+	quote_mode:	Params.app == "tpc" ? "all" : "tc",
+	subdir:		Params.app == "tpc" ? "tpc" : "taxicode",
 
 	demo: Params.demo,
 
