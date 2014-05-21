@@ -29,7 +29,6 @@ var App = {
 				App.addCSS("demo");
 			}
 			App.checkReady();
-
 		});
 		
 		
