@@ -295,6 +295,23 @@ var Views = {
 						Taxicode_Autocomplete.add(this);
 					}
 				});
+
+				if (Booking.data["return"]) {
+					$view.find(".return-field").show();
+					Booking.data["return"] = true;
+				} else {
+					$view.find(".return-field").hide();
+					Booking.data["return"] = false;
+				}
+				$view.find(".add-return").click(function() {
+					if ($view.find(".return-field").is(":visible")) {
+						Booking.data["return"] = false;
+					} else {
+						Booking.data["return"] = true;				
+					}
+					$view.find(".return-field").slideToggle();
+				});
+
 				break;
 		}
 	},

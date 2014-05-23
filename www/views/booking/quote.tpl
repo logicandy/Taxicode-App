@@ -72,6 +72,14 @@
 					{{%new Date(Template.data.journey.date.replace(/\ /g, 'T')).format('D, jS M Y \\a\\t g:ia')}}
 				</td>
 			</tr>
+			{{#if Booking.data['return']}}
+				<tr>
+					<td>Return</td>
+					<td>
+						{{%new Date(Template.data.journey.return.replace(/\ /g, 'T')).format('D, jS M Y \\a\\t g:ia')}}
+					</td>
+				</tr>
+			{{#endif}}
 		</table>
 	</div>
 	

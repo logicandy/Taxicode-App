@@ -7,7 +7,7 @@
 	</div>
 {{#endif}}
 
-<form class="block booking-engine" data-submit="Booking.getQuote();">
+<form class="block booking-engine" data-validate="Booking.validateQuoteForm()" data-submit="Booking.getQuote();">
 
 	<h2>
 		<a class="btn small fright" onclick="Booking.clearForm();">Clear</a>
@@ -39,11 +39,22 @@
 		<div class="field">
 			<label>People</label><!--
 		--><select name="passengers">
-			{{#foreach data.passengers}}
-				<option value="{{$key}}">{{$val}}</option>
-			{{#endforeach}}
-		</select>
+				{{#foreach data.passengers}}
+					<option value="{{$key}}">{{$val}}</option>
+				{{#endforeach}}
+			</select>
+		</div>
 
+		<div class="field">
+			<a class="add-return">+ Add Return Journey</a>
+		</div>
+
+		<div class="field return-field">
+			<label>Return</label><input type="text" name="return_date" data-type="date" />
+		</div>
+
+		<div class="field return-field">
+			<label>Time</label><input type="text" name="return_time" data-type="time" />
 		</div>
 
 	</div>

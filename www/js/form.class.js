@@ -73,8 +73,6 @@ var Form = {
 				errors.push({field: this, message: "Invalid CV2."});
 			}
 		});
-
-		Form.renderErrors(errors);
 		return errors;
 	},
 
@@ -101,7 +99,19 @@ var Form = {
 };
 
 $(document).on("submit", "form", function() {
-	if (!Form.validate(this).length && eval($(this).attr('data-validate')) !== false) {
+
+	var errors = Form.validate(this);
+	var custom = eval($(this).attr('data-validate'));
+
+	if (typeof custom == "object") {
+		errors = errors.concat(custom);
+	}
+
+	console.log(errors, custom);
+	
+	Form.renderErrors(errors);
+
+	if (!errors.length && custom !== false) {
 		var func = eval($(this).attr('data-submit'));
 		if (typeof func == "function") {
 			func(Form.data(this));

@@ -367,6 +367,14 @@ select {
 	box-sizing: border-box;
 }
 
+.fieldset .field a {
+	display: block;
+	padding: 5px;
+	font-size: 16px;
+	line-height: 27px;
+	color: black;
+}
+
 .field input, .field select, .field label {
 	font-size: 16px;
 	margin: 0px;

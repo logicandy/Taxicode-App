@@ -21,8 +21,9 @@ var Booking = {
 			vias: "",
 			pickup_date: date.format("d/m/Y"),
 			pickup_time: date.format("H:i"),
-			returnDate: false,
-			returnTime: false,
+			"return": false,
+			return_date: date.format("d/m/Y"),
+			return_time: date.format("H:i"),
 			passengers: 1,
 			vehicle: 0
 		};
@@ -47,6 +48,10 @@ var Booking = {
 			} else {
 				Booking.data[$(this).attr('name')] = Booking.formatDateTime($(this).val());
 			}
+			if (!Booking.data["return"]) {
+				Booking.data.return_date = '';
+				Booking.data.return_time = '';
+			}
 		});
 	},
 
@@ -68,11 +73,17 @@ var Booking = {
 		Booking.updateData();
 		App.loading("Fetching Quotes");
 		var date = new Date(Booking.data.pickup_date+"T"+Booking.data.pickup_time);
+		if (Booking.data["return"]) {
+			var return_date = new Date(Booking.data.return_date+"T"+Booking.data.return_time);
+		} else {
+			var return_date = false;
+		}
 		API.get("booking/quote", {
 			data: {
 				pickup: Booking.data.pickup,
 				destination: Booking.data.destination,
 				date: date.getTime() / 1000 + date.getTimezoneOffset() * 60,
+				"return": return_date,
 				people: Booking.data.passengers,
 				mode: Config.quote_mode,
 			},
@@ -106,6 +117,25 @@ var Booking = {
 				Views.render('booking', 'slide', 'card');
 				break;
 		}
+	},
+
+	validateQuoteForm: function() {
+		Booking.updateData();
+
+		var errors = [];
+
+		if (Booking.data['return']) {
+			var out = new Date(Booking.data.pickup_date+"T"+Booking.data.pickup_time).getTime();
+			var re = new Date(Booking.data.return_date+"T"+Booking.data.return_time).getTime();
+			if (out >= re) {
+				errors.push({
+					field: "Return",
+					message: "Return date must be after pickup date."
+				});
+			}
+		}
+
+		return errors;
 	},
 
 	sortBookings: function(bookings, order) {
