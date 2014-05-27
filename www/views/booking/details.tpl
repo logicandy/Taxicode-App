@@ -43,6 +43,16 @@
 					{{%new Date(Template.data.booking.date.replace(/\ /g, 'T')).format('D, jS M Y \\a\\t g:ia')}}
 				</td>
 			</tr>
+
+			{{#if Template.data.booking['return'] && Template.data.booking['return'] != "false"}}
+				<tr>
+					<td>Return</td>
+					<td>
+						{{%new Date(Template.data.booking['return'].replace(/\ /g, 'T')).format('D, jS M Y \\a\\t g:ia')}}
+					</td>
+				</tr>
+			{{#endif}}
+
 		</table>
 	</div>
 

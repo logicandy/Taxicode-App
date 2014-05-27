@@ -20,10 +20,30 @@
 		{{#foreach Booking.sortBookings($.extend({},User.bookings,Booking.bookings))}}
 			<div class="block-section" onclick="Booking.details('{{$key}}');">
 
-				<div class="calendar fright" style="margin-left: 5px; margin-bottom: 5px;">
-					<span class="month">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('M \'y'))}}</span>
-					<span class="date">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('j'))}}</span>
-					<span class="time">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('g:ia'))}}</span>
+				<div class="fright">
+
+					<div class="iblock">
+						{{#if Template.data.val['return'] && Template.data.val['return'] != "false"}}
+							<div class="calendar-date-name">Out</div>
+						{{#endif}}
+						<div class="calendar" style="margin-left: 5px; margin-bottom: 5px;">
+							<span class="month">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('M \'y'))}}</span>
+							<span class="date">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('j'))}}</span>
+							<span class="time">{{%(new Date(Template.data.val.date.replace(/\ /g, 'T')).format('g:ia'))}}</span>
+						</div>
+					</div>
+
+					<div class="iblock">
+						{{#if Template.data.val['return'] && Template.data.val['return'] != "false"}}
+							<div class="calendar-date-name">Return</div>
+							<div class="calendar return" style="margin-left: 5px; margin-bottom: 5px;">
+								<span class="month">{{%(new Date(Template.data.val['return'].replace(/\ /g, 'T')).format('M \'y'))}}</span>
+								<span class="date">{{%(new Date(Template.data.val['return'].replace(/\ /g, 'T')).format('j'))}}</span>
+								<span class="time">{{%(new Date(Template.data.val['return'].replace(/\ /g, 'T')).format('g:ia'))}}</span>
+							</div>
+						{{#endif}}
+					</div>
+
 				</div>
 
 				<h3>{{$val.reference}}</h3>

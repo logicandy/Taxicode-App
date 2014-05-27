@@ -730,6 +730,9 @@ table.small td {
 	text-align: center;
 	font-size: 12px;
 }
+.calendar.return .month {
+	background: #F5803E;
+}
 .calendar .date {
 	display: block;
 	color: #292929;
@@ -742,6 +745,13 @@ table.small td {
 	text-align: center;
 	font-size: 12px;
 	padding: 0px 3px 3px;
+}
+
+.calendar-date-name {
+	text-align: center;
+	font-size: 10px;
+	margin: -15px 0px 0px;
+	line-height: 15px;
 }
 
 .location-text {

@@ -73,17 +73,14 @@ var Booking = {
 		Booking.updateData();
 		App.loading("Fetching Quotes");
 		var date = new Date(Booking.data.pickup_date+"T"+Booking.data.pickup_time);
-		if (Booking.data["return"]) {
-			var return_date = new Date(Booking.data.return_date+"T"+Booking.data.return_time);
-		} else {
-			var return_date = false;
-		}
+		var return_date = Booking.data["return"] ? new Date(Booking.data.return_date+"T"+Booking.data.return_time) : false;
+		
 		API.get("booking/quote", {
 			data: {
 				pickup: Booking.data.pickup,
 				destination: Booking.data.destination,
 				date: date.getTime() / 1000 + date.getTimezoneOffset() * 60,
-				"return": return_date,
+				"return": return_date ? return_date.getTime() / 1000 + return_date.getTimezoneOffset() * 60 : false,
 				people: Booking.data.passengers,
 				mode: Config.quote_mode,
 			},
