@@ -271,6 +271,14 @@ var Views = {
 					// Get value
 					var val = Booking.data[$(this).attr('name')];
 
+					if ($(this).attr("name") == "return_date" && val === false) {
+						val = Booking.data.return_date = Booking.startDate().format("d/m/Y");
+					}
+
+					if ($(this).attr("name") == "return_time" && val === false) {
+						val = Booking.data.return_time = Booking.startDate().format("H:i");
+					}
+
 					if (typeof val == "object") {
 						// Field is lat/lng object
 						getLocationForField(this);
@@ -302,13 +310,12 @@ var Views = {
 				} else {
 					$view.find(".return-field").hide();
 					Booking.data["return"] = false;
+					var date = Booking.startDate();
+					Booking.data.return_date = date.format("d/m/Y");
+					Booking.data.return_time = date.format("H:i");
 				}
 				$view.find(".add-return").click(function() {
-					if ($view.find(".return-field").is(":visible")) {
-						Booking.data["return"] = false;
-					} else {
-						Booking.data["return"] = true;				
-					}
+					Booking.data["return"] = !$view.find(".return-field").is(":visible");
 					$view.find(".return-field").slideToggle();
 				});
 
@@ -316,7 +323,7 @@ var Views = {
 		}
 	},
 
-	renderAccount : function($view, mode) {
+	renderAccount: function($view, mode) {
 		
 		$view.append("<h1>Account Page</h1>");
 

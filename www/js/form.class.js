@@ -106,8 +106,6 @@ $(document).on("submit", "form", function() {
 	if (typeof custom == "object") {
 		errors = errors.concat(custom);
 	}
-
-	console.log(errors, custom);
 	
 	Form.renderErrors(errors);
 

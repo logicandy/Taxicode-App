@@ -12,9 +12,13 @@ var Booking = {
 		Booking.getBookings();
 	},
 
-	clear: function() {
+	startDate: function() {
 		var coeff = 1000 * 60 * 5;
-		var date = new Date(Math.ceil((new Date().getTime() + 1000*60*60*2) / coeff) * coeff - (new Date().getTimezoneOffset()) * 60000);
+		return new Date(Math.ceil((new Date().getTime() + 1000*60*60*2) / coeff) * coeff - (new Date().getTimezoneOffset()) * 60000); 
+	},
+
+	clear: function() {
+		var date = Booking.startDate();
 		Booking.state = "form";
 		Booking.data = {
 			pickup: "",
@@ -49,11 +53,13 @@ var Booking = {
 			} else {
 				Booking.data[$(this).attr('name')] = Booking.formatDateTime($(this).val());
 			}
-			if (!Booking.data["return"]) {
-				Booking.data.return_date = '';
-				Booking.data.return_time = '';
-			}
 		});
+
+		if (!Booking.data["return"] || !$("[name=return_date]").val() || !$("[name=return_time]").val()) {
+			Booking.data["return"] = false;
+			Booking.data.return_date = false;
+			Booking.data.return_time = false;
+		}
 	},
 
 	formatDateTime: function(text) {
