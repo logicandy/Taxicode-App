@@ -15,6 +15,7 @@ var Booking = {
 	clear: function() {
 		var coeff = 1000 * 60 * 5;
 		var date = new Date(Math.ceil((new Date().getTime() + 1000*60*60*2) / coeff) * coeff - (new Date().getTimezoneOffset()) * 60000);
+		Booking.state = "form";
 		Booking.data = {
 			pickup: "",
 			destination: "",
