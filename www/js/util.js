@@ -125,9 +125,14 @@ $.visible = function(e) {
 	return $(e).is(":visible");
 };
 
+function addConsole() {
+	$("#footer").append("<a data-render='console'><i></i>Console</a>");
+	$("#footer a").css({width: '20%'});
+	DevMode = true;
+}
+
 $(document).ready(function() {
 	if (DevMode) {
-		$("#footer").append("<a data-render='console'><i></i>Console</a>");
-		$("#footer a").css({width: '20%'});
+		addConsole();
 	}
 });

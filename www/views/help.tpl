@@ -18,6 +18,6 @@
 
 	<br/>
 
-	<p><small>Developed by Web3r.</small></p>
+	<p date-dev-mode-count="20"><small>Developed by Web3r.</small></p>
 
 </div>

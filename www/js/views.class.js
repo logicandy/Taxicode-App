@@ -21,7 +21,7 @@ var Views = {
 		} else if (typeof Template.templates[view] != "undefined") {
 			var block = Template.render(view);
 		} else {
-			App.alert("View doesn't exist: '"+view+"'");
+			App.alert("View doesn't exist: '" + view + "'");
 			return false;
 		}
 
@@ -470,8 +470,22 @@ var Views = {
 		return Template.render('help');
 	},
 
+	setupHelp: function($view) {
+		$view.find("[date-dev-mode-count]").click(function() {
+			var count = parseInt($(this).attr('date-dev-mode-count'));
+			$(this).attr('date-dev-mode-count', count - 1);
+			if (count <= 0 && !DevMode) {
+				App.confirm('Turn On Developer Mode?', function(response) {
+					if (response) {
+						addConsole();
+					}
+				});
+			}
+		});
+	},
+
 	console: function() {
-		App.alert("<div class='console'><input type='text' autocapitalize='off' autocorrect='off' style='width: 255px;'/></div>", {
+		App.alert("<div class='console'><input type='text' autocapitalize='off' autocorrect='off' style='width: 255px;' /></div>", {
 			title: "Console",
 			options: {
 				Cancel: function() {

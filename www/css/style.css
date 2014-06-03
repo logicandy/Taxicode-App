@@ -1029,7 +1029,7 @@ body[data-status=offline] .btn.online {
 }
 
 input.tc-autocomplete-searching[type=text] {
-	background-image: url('../img/taxicode-main/circle-loader-padded.gif') !important;
+	background-image: url('../img/circle-loader-padded.gif') !important;
 	background-size: 21px 16px;
 	background-position: right;
 	background-repeat: no-repeat;
