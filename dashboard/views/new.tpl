@@ -1,4 +1,5 @@
 <div class="block">
+	<a class="option-button refresh" onclick="User.getBookings('new');"></a>
 	<h2>New Bookings</h2>
 
 	{{#if Config.get("tooltips") !== "off"}}
@@ -20,7 +21,7 @@
 			</div>
 
 			<div style="margin-left: 75px;">
-				<div class="price">&pound;12.0{{$val}}</div>
+				<div class="price">&pound;{{%(Math.random()*100).toFixed(2);}}</div>
 				<div class="distance">2 Miles</div>
 				<div><strong>Pickup: </strong> Test</div>
 				<div><strong>Via: </strong> Really really long place name</div>

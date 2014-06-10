@@ -82,12 +82,18 @@ var User = {
 	},
 
 	getBookings: function(mode) {
+		App.loading("Fetching Bookings");
 		API.get("dashboard/bookings", {
 			data: $.extend({mode: mode}, User.authObject()),
 			success: function(response) {
 				if (response.status == "OK") {
 					User.bookings[mode] = response.bookings;
+					Views.refresh();
 				}
+				App.stopLoading();
+			},
+			failure: function() {
+				App.stopLoading();
 			}
 		});
 	},
@@ -102,7 +108,6 @@ var User = {
 					User.state = false;
 					App.stopLoading();
 				}
-				User.refreshView();
 				$("#company_name").text("Partner Dashboard");
 			}
 		});

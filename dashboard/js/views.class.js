@@ -4,13 +4,11 @@ var Views = {
 	sub: false,
 	back: false,
 	back_text: false,
-	refresh: false,
 
 	render: function(view, effect, params) {
 
 		Views.back = false;
 		Views.back_text = false;
-		Views.refresh = false;
 
 		if (!User.user) {
 			view = "login";

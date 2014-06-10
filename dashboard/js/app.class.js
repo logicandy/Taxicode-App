@@ -229,12 +229,6 @@ var App = {
 	},
 
 	optionButton: function() {
-		if (typeof Views.back == "function") {
-			$("#header").addClass("option");
-			$("#header .option-button").html(Views.back_text ? Views.back_text : "Back");
-		} else {
-			$("#header").removeClass("option");
-		}
 		setTimeout(App.optionButton, Config.internalPing);
 	},
 
