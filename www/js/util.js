@@ -126,7 +126,7 @@ $.visible = function(e) {
 };
 
 function addConsole() {
-	$("#footer").append("<a data-render='console'><i></i>Console</a>");
+	$("#footer a[data-render='console']").show();
 	$("#footer a").css({width: '20%'});
 	DevMode = true;
 }

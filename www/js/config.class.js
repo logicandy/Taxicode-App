@@ -60,6 +60,26 @@ var Config = {
 			// No saved settings to load
 			Config.loadPhoneGapConfig(callback);
 		});
+		
+		// Adjust theme
+		if (typeof device == "object" && device.platform && device.platform.toLowerCase) {
+			switch (device.platform.toLowerCase()) {
+				case "android":
+					Config.theme = "android";
+					break;
+				case "wince":
+				case "windows":
+				case "windowsphone":
+				case "windows8":
+					Config.theme = "wp";
+					break;
+				case "ios":
+				default:
+					Config.theme = "ios7";
+					break;
+			}
+		}
+		
 	},
 
 	loadPhoneGapConfig: function(callback) {
@@ -118,22 +138,3 @@ var Config = {
 	}
 
 };
-
-// Adjust theme
-if (typeof device == "object" && device.platform && device.platform.toLowerCase) {
-	switch (device.platform.toLowerCase()) {
-		case "android":
-			Config.theme = "android";
-			break;
-		case "wince":
-		case "windows":
-		case "windowsphone":
-		case "windows8":
-			Config.theme = "wp";
-			break;
-		case "ios":
-		default:
-			Config.theme = "ios7";
-			break;
-	}
-}

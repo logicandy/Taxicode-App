@@ -76,6 +76,10 @@ function addMaps() {
 		$(this).journey();
 		$(this).attr('data-loaded', 1);
 	});
+	$(".map:not([data-loaded]):not([data-pickup])[data-lat][data-lng]").each(function() {
+		$(this).location();
+		$(this).attr('data-loaded', 1);
+	});
 	setTimeout(addMaps, 500);
 };
 

@@ -51,7 +51,8 @@
 		};
 
 		$this.noMap = function(map) {
-			map.css({backgroundImage: 'none', height: 'auto'}).html("<div class='no-map'>Apologies, no map available for this journey.</div>");
+			var noMapText = $this.attr("data-nomap") ? $this.attr("data-nomap") : "Apologies, no map available for this journey.";
+			map.css({backgroundImage: 'none', height: 'auto'}).html("<div class='no-map'>" + noMapText + "</div>");
 			options.failure();
 		};
 
@@ -115,19 +116,22 @@
 
 		// Set the function
 		return this.each(function() {
-			var center = new google.maps.LatLng(parseFloat($(this).attr('data-lat')),parseFloat($(this).attr('data-lng')));
+			var center = new google.maps.LatLng(parseFloat($(this).attr('data-lat')), parseFloat($(this).attr('data-lng')));
 			var mapOptions = {
-				zoom: 11,
+				zoom: $(this).attr('data-zoom') ? parseInt($(this).attr('data-zoom')) : 11,
 				center: center,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				mapTypeControl: false,
 				streetViewControl: false
 			};
-			var map = new google.maps.Map($(this).find('.map').css({backgroundImage: 'none'})[0], mapOptions);
-			var marker = new google.maps.Marker({
-				position: center,
-				map: map
-			});
+			var target = $(this).is(".map") ? $(this) : $(this).find('.map');
+			var map = new google.maps.Map(target.css({backgroundImage: 'none'})[0], mapOptions);
+			if ($(this).attr("data-marker") != "false") {
+				var marker = new google.maps.Marker({
+					position: center,
+					map: map
+				});
+			}
 		});
 		
 	};

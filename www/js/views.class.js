@@ -319,6 +319,21 @@ var Views = {
 					$view.find(".return-field").slideToggle();
 				});
 
+				// Add map stuff for tablets
+				var updateMap = function() {
+					var pickup = $view.find("[name=pickup]").val();
+					var destination = $view.find("[name=destination]").val();
+					if (pickup.trim() != "" && destination.trim() != "") {
+						$view.find(".map").removeAttr("data-loaded").attr({
+							"data-pickup": pickup + ", UK",
+							"data-destination": destination + ", UK"
+						});
+					}
+				};
+				$view.find("[name=pickup], [name=destination], [name=vias]").blur(updateMap);
+				updateMap();
+
+
 				break;
 		}
 	},
