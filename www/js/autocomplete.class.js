@@ -72,6 +72,14 @@ var Taxicode_Autocomplete = {
 
 	search: function(term, field) {
 		if (term.length >= 3) {
+			setTimeout(Taxicode_Autocomplete.searchFire, 500, term, field);
+		} else {
+			jQuery(field).removeClass("tc-autocomplete-searching");
+		}
+	},
+
+	searchFire: function(term, field) {
+		if (jQuery(field).val() == term) {
 			jQuery(field).attr("data-autocomplete-current", term);
 			jQuery(field).addClass("tc-autocomplete-searching");
 			if (Taxicode_Autocomplete.cache[term.trim().toLowerCase()]) {
@@ -88,8 +96,6 @@ var Taxicode_Autocomplete = {
 				});
 			}
 			jQuery(field).removeAttr("data-autocomplete-search");
-		} else {
-			jQuery(field).removeClass("tc-autocomplete-searching");
 		}
 	},
 
