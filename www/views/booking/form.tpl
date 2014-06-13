@@ -7,8 +7,8 @@
 	</div>
 {{#endif}}
 
-<div class="tablet-columns">
-	<div class="tablet-columns-inner">
+<!--<div class="tablet-columns">
+	<div class="tablet-columns-inner">-->
 
 		<form class="block booking-engine" data-validate="Booking.validateQuoteForm()" data-submit="Booking.getQuote();">
 
@@ -69,5 +69,5 @@
 
 		<!--<div class="block map" data-lat="54" data-lng="-1.5" data-zoom="5" data-marker="false" style="height: 160px; width: 50%;"></div>-->
 
-	</div>
-</div>
+<!--	</div>
+</div>-->
