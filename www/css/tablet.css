@@ -29,3 +29,9 @@
 		display: table-cell !important;
 	}
 }
+
+@media screen and (min-height: 750px) {
+	.tablet-map {
+		height: 320px !important;
+	}
+}

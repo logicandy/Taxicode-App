@@ -2,7 +2,7 @@
 
 	<h2 class="center">Reference: {{%Template.data.booking.reference}}</h2>
 
-	<div class="map"
+	<div class="map tablet-map"
 		data-pickup="{{%Template.data.booking.pickup.position[0]}},{{%Template.data.booking.pickup.position[1]}}"
 		data-destination="{{%Template.data.booking.destination.position[0]}},{{%Template.data.booking.destination.position[1]}}"
 		style="height: 160px; margin-top: 5px;"

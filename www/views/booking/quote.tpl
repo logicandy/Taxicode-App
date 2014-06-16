@@ -1,6 +1,6 @@
 <div class="block quote">
 
-	<div class="map"
+	<div class="map tablet-map"
 		data-pickup="{{$journey.pickup.position[0]}},{{$journey.pickup.position[1]}}"
 		data-destination="{{$journey.destination.position[0]}},{{$journey.destination.position[1]}}"
 		style="height: 160px;"
