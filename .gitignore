@@ -4,6 +4,6 @@ taxicode/plugins/android.json
 /taxicode/platforms/*
 
 Archive.zip
-Taxicode-release.apk
-Taxicode.ipa
-app.xap
+*.apk
+*.xap
+*.ipa
