@@ -48,15 +48,16 @@
 	<icon gap:platform="android" gap:density="xxhdpi" src="res/icons/android/icon-144-xxhdpi.png" />
 	<icon gap:platform="android" gap:density="xxxhdpi" src="res/icons/android/icon-192-xxxhdpi.png" />
 
-	<!-- Windows Icons -->
-    <icon gap:platform="winphone" src="res/icons/windows-phone/icon-48.png" />
-    <icon gap:platform="winphone" gap:role="background" src="res/icons/windows-phone/icon-173.png" />
+	<!-- Windows Icons / Tiles -->
+	<icon gap:platform="winphone" src="res/icons/windows-phone/icon-48.png" />
+	<icon gap:platform="winphone" src="res/icons/windows-phone/icon-62-tile.png" />
+	<icon gap:platform="winphone" gap:role="background" src="res/icons/windows-phone/icon-173-tile.png" />
 
 	<!-- iPhone 4 Splash Screen -->
 	<gap:splash gap:platform="ios" height="480" width="320" src="res/screen/ios/screen-iphone-portrait.png" />
 	<gap:splash gap:platform="ios" height="960" width="640" src="res/screen/ios/screen-iphone-portrait-2x.png" />
 
-	<!-- iPhone 5 Splash Screen -->
+	<!-- iPhone 5+ Splash Screen -->
 	<gap:splash gap:platform="ios" height="568" width="320" src="res/screen/ios/screen-iphone-portrait-568h.png" />
 	<gap:splash gap:platform="ios" height="1136" width="640" src="res/screen/ios/screen-iphone-portrait-568h-2x.png" />
 
