@@ -365,6 +365,7 @@ var Booking = {
 
 	getUserBookings: function(email, success) {
 		DBMC.select("USER_BOOKINGS", "*", "user='" + email + "'", function(bookings) {
+			console.log("BOOKINGS", arguments);
 			User.bookings = {};
 			for (var i = 0; i < bookings.length; i++) {
 				User.bookings[bookings[i].reference] = $.extend({}, bookings[i], {
