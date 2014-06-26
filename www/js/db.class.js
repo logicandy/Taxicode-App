@@ -1,8 +1,21 @@
-// window.openDatabase = null;
+window.openDatabase = null;
 
 var WebSQLFaker = {
 	db: {},
+	indexedDB: false,
+	ready: false,
+	init: function() {
+		// Check if we can load db from local storage
+		if (typeof localStorage.taxicode == "string") {
+			WebSQLFaker.db = JSON.parse(localStorage.taxicode);
+		}
+		// Set ready state
+		WebSQLFaker.ready = true;
+	},
 	openDatabase: function() {
+		if (!WebSQLFaker.ready) {
+			WebSQLFaker.init();
+		}
 		return {
 			transaction: function(transaction, error1, success1) {
 				transaction({
@@ -126,8 +139,9 @@ var WebSQLFaker = {
 			row[name] = value;
 		});
 		// Add row
-		console.log(table);
 		WebSQLFaker.db[table].push(row);
+		// Store new database
+		WebSQLFaker.save();
 		// Return
 		return {status: "OK", rows: []};
 	},
@@ -136,6 +150,8 @@ var WebSQLFaker = {
 		table = table.replace(/`/g,'');
 		// Create empty table
 		WebSQLFaker.db[table] = [];
+		// Store new database
+		WebSQLFaker.save();
 		// Return
 		return {status: "OK", rows: []};
 	},
@@ -144,11 +160,24 @@ var WebSQLFaker = {
 		table = table.replace(/`/g,'');
 		// Delete table
 		WebSQLFaker.db[table] = null;
+		// Store new database
+		WebSQLFaker.save();
 		// Return
 		return {status: "OK", rows: []};
 	},
 	condition: function() {
 		return true;
+	},
+	save: function() {
+		localStorage.setItem("taxicode", JSON.stringify(WebSQLFaker.db));
+		return;
+		// Save the database in IndexedDB storage
+		var transaction = WebSQLFaker.indexedDB.transaction("taxicode", "readwrite");
+		var objectStore = transaction.objectStore("taxicode");                    
+		var request = objectStore.add({ taxicode: 12312 });
+		request.onsuccess = function (evt) {
+			console.log("EVT", evt);// do something when the add succeeded                          
+		};
 	}
 }
 
