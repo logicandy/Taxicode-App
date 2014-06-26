@@ -1,8 +1,16 @@
-window.openDatabase = null;
+// window.openDatabase = null; // Comment out this line to test browsers that don't support WebSQL
 
+/**
+ * This class is used to fake WebSQL behaviour.
+ * It emulates basic WebSQL queries storing the DB as a Javascript object.
+ * When the database updates, it stores a JSON string of the DB object and
+ * saves it to local storage. If you don't have local storage then it still
+ * isn't supported.
+ * IndexedDB support could also be added as a save method in future to
+ * increase compatibility even more.
+ */
 var WebSQLFaker = {
 	db: {},
-	indexedDB: false,
 	ready: false,
 	init: function() {
 		// Check if we can load db from local storage
@@ -180,6 +188,7 @@ var WebSQLFaker = {
 		};
 	}
 }
+WebSQLFaker.init();
 
 var DBMC = {
 
