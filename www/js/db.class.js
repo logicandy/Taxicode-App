@@ -14,8 +14,8 @@ var WebSQLFaker = {
 	ready: false,
 	init: function() {
 		// Check if we can load db from local storage
-		if (typeof localStorage.taxicode == "string") {
-			WebSQLFaker.db = JSON.parse(localStorage.taxicode);
+		if (typeof localStorage.getItem("taxicode") == "string") {
+			WebSQLFaker.db = JSON.parse(localStorage.getItem("taxicode"));
 		}
 		// Set ready state
 		WebSQLFaker.ready = true;
@@ -30,7 +30,6 @@ var WebSQLFaker = {
 					executeSql: function(sql, args, success2, error2) {
 						// Process SQL
 						var query = WebSQLFaker.parseSQL(sql, args);
-						console.error(query);
 						switch (query.type) {
 							case "ERROR":
 								if (typeof error == "function") {
@@ -41,12 +40,12 @@ var WebSQLFaker = {
 								if (query.result) {
 									if (typeof success1 == "function") {
 										success1(transaction, {
-											rows: query.result
+											rows: query.result.rows ? query.result.rows : query.result
 										});
 									}
 									if (typeof success2 == "function") {
 										success2(transaction, {
-											rows: query.result
+											rows: query.result.rows ? query.result.rows : query.result
 										});
 									}
 								} else {
@@ -177,15 +176,8 @@ var WebSQLFaker = {
 		return true;
 	},
 	save: function() {
+		localStorage.removeItem("taxicode");
 		localStorage.setItem("taxicode", JSON.stringify(WebSQLFaker.db));
-		return;
-		// Save the database in IndexedDB storage
-		var transaction = WebSQLFaker.indexedDB.transaction("taxicode", "readwrite");
-		var objectStore = transaction.objectStore("taxicode");                    
-		var request = objectStore.add({ taxicode: 12312 });
-		request.onsuccess = function (evt) {
-			console.log("EVT", evt);// do something when the add succeeded                          
-		};
 	}
 }
 WebSQLFaker.init();
@@ -240,7 +232,7 @@ var DBMC = {
 			tx.executeSql('SELECT '+selector+' FROM `'+table+'` WHERE '+(where?where:1), [], function(tx, results) {
 				var data = [];
 				for (var i = 0; i < results.rows.length; i++) {
-					data.push(results.rows.item(i));
+					data.push(typeof results.rows.item == "function" ? results.rows.item(i) : results.rows[i]);
 				}
 				success(data);
 			}, null, error);
