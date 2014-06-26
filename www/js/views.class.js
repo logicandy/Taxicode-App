@@ -323,7 +323,7 @@ var Views = {
 				var updateMap = function() {
 					var pickup = $view.find("[name=pickup]").val();
 					var destination = $view.find("[name=destination]").val();
-					if (pickup.trim() != "" && destination.trim() != "") {
+					if (typeof pickup == "string" && typeof destination == "string" && pickup.trim() != "" && destination.trim() != "") {
 						$view.find(".map").removeAttr("data-loaded").attr({
 							"data-pickup": pickup + ", UK",
 							"data-destination": destination + ", UK"
