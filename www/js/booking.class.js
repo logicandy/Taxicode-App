@@ -269,6 +269,20 @@ var Booking = {
 					notes: data.notes
 				}),
 				success: function(response) {
+					API.get("user", {
+						data: User.authObject(),
+						success: function(response) {
+							if (response.status == "OK") {
+								User.load(response.user, false);
+							} else {
+								User.state = false;
+							}
+							User.refreshView();
+						},
+						complete: function() {
+							User.ready = true;
+						}
+					});
 					Booking.pay.complete_success(response, 'balance');
 				},
 				complete: function() {
