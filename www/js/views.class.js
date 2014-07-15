@@ -90,6 +90,8 @@ var Views = {
 				return Template.render('pay/token');
 			case 'cash':
 				return Template.render('pay/cash');
+			case 'balance':
+				return Template.render('pay/balance');
 			case 'complete':
 				return Template.render('booking/complete');
 			case 'form':
@@ -197,6 +199,7 @@ var Views = {
 			case 'customer':
 			case 'token':
 			case 'cash':
+			case 'balance':
 				Views.back = function() {
 					Views.render('booking', 'slideFromLeft', 'quote');
 				};

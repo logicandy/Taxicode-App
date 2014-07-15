@@ -21,6 +21,13 @@
 			<div>{{%User.user.bookings_totals.current}}</div>
 		</div>
 
+		{{#if User.user.balance}}
+			<div class="info-block">
+				<span>Account Balance</span>
+				<div style="width: auto;">&pound;{{%User.user.balance.toFixed(2)}}</div>
+			</div>
+		{{#endif}}
+
 	</div>
 
 	<hr/>

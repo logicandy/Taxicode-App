@@ -186,6 +186,9 @@ var Booking = {
 			case "cash":
 				Views.render('booking', 'slide', 'cash');
 				break;
+			case "balance":
+				Views.render('booking', 'slide', 'balance');
+				break;
 			case "card":
 			default:
 				Views.render('booking', 'slide', 'customer');
@@ -249,6 +252,24 @@ var Booking = {
 				}),
 				success: function(response) {
 					Booking.pay.complete_success(response, 'cash');
+				},
+				complete: function() {
+					App.stopLoading();
+				}
+			});
+		},
+		complete_balance: function(data) {
+			App.loading();
+			API.get("booking/pay", {
+				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle}, User.authObject(), {
+					method: "balance",
+					name: data.name,
+					telephone: data.telephone,
+					email: data.email,
+					notes: data.notes
+				}),
+				success: function(response) {
+					Booking.pay.complete_success(response, 'balance');
 				},
 				complete: function() {
 					App.stopLoading();

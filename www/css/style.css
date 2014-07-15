@@ -1035,3 +1035,7 @@ input.tc-autocomplete-searching[type=text] {
 	background-repeat: no-repeat;
 	padding-right: 25px;
 }
+
+.payment-options > a {
+	margin-bottom: 4px;
+}

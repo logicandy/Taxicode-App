@@ -16,7 +16,7 @@
 	
 	<br/>
 
-	<div class="center">
+	<div class="center payment-options">
 
 		<a class="btn double" onclick="Booking.pay.quote('card');">
 			<span>New Card</span>
@@ -27,6 +27,13 @@
 			<a class="btn double" onclick="Booking.pay.quote('token');">
 				<span>Saved Card</span>
 				<small>Ending {{%User.user.card_token.digits}}</small>
+			</a>
+		{{#endif}}
+
+		{{#if User.user && User.user.balance > Template.data.quote.price}}
+			<a class="btn double" onclick="Booking.pay.quote('balance');">
+				<span>Balance</span>
+				<small>Current &pound;{{%User.user.balance.toFixed(2)}}</small>
 			</a>
 		{{#endif}}
 
