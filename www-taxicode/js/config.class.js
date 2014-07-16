@@ -1,5 +1,3 @@
-var Params = window.location.search ? JSON.parse('{"' + decodeURI(window.location.search.substr(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}') : {};
-
 var Config = {
 
 	app:		AppName == "tpc" ? "taxipricecompare" : "taxicode",

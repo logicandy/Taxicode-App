@@ -13,8 +13,10 @@
 		<script type="text/javascript" src="boot.js"></script>
 		<script type="text/javascript">
 
+			var Params = window.location.search ? JSON.parse('{"' + decodeURI(window.location.search.substr(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}') : {};
+
 			var AppBoot = typeof AppBoot == "undefined" ? false : AppBoot;
-			var AppName = typeof AppName == "undefined" ? "tc" : AppName;
+			var AppName = typeof AppName == "undefined" ? (typeof Params.app == "string" ? Params.app : "tc") : AppName;
 			var AppConfigFile = AppBoot ? "config.xml" : ( AppName == "tc" ? "config-taxicode.xml" : "config-tpc.xml" );
 
 			var DevMode = false;
