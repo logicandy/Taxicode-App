@@ -84,7 +84,7 @@ var Config = {
 
 	loadPhoneGapConfig: function(callback) {
 		$.ajax({
-			url: "config.xml",
+			url: AppConfigFile,
 			success: function(data) {
 				Config.phonegap = $(data);
 			},

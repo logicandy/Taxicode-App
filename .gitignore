@@ -3,7 +3,9 @@ taxicode/plugins/android.json
 /taxicode/npm-debug.log
 /taxicode/platforms/*
 
-Archive.zip
+taxicode.zip
+tpc.zip
+dashboard.zip
 *.apk
 *.xap
 *.ipa

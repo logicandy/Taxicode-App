@@ -10,8 +10,13 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/tablet.css" />
 
+		<script type="text/javascript" src="boot.js"></script>
 		<script type="text/javascript">
-			var AppName = "tc";
+
+			var AppBoot = typeof AppBoot == "undefined" ? false : AppBoot;
+			var AppName = typeof AppName == "undefined" ? "tc" : AppName;
+			var AppConfigFile = AppBoot ? "config.xml" : ( AppName == "tc" ? "config-taxicode.xml" : "config-tpc.xml" );
+
 			var DevMode = false;
 			var OfflineMode = false;
 		</script>

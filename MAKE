@@ -1,0 +1,56 @@
+#! /bin/sh
+
+# Move to Taxicode App Directory
+cd $(dirname $0)
+
+# Ask if taxicode / tpc / dashboard
+while true; do
+	read -p "Which app do you wish to compile? [ taxicode | tpc | dashboard ] `echo $'\n> '`" app
+	case $app in
+		taxicode ) break;;
+		tpc ) break;;
+		dashboard ) break;;
+	esac
+done
+
+# Remove Taxicode.zip if exists
+rm -f $app.zip
+
+while true; do
+	case $app in
+		taxicode )
+
+			# PREPARE TAXICODE APP
+			mv www-taxicode www
+			mv www/config-taxicode.xml www/config.xml
+			mv www/boot-taxicode.js www/boot.js
+			zip -r $app.zip www plugins -x *res-tpc*
+			mv www/boot.js www/boot-taxicode.js
+			mv www/config.xml www/config-taxicode.xml
+			mv www www-taxicode
+
+			break;;
+		tpc )
+
+			# PREPARE TAXI PRICE COMPARE APP
+			mv www-taxicode www
+			mv www/config-tpc.xml www/config.xml
+			mv www/boot-tpc.js www/boot.js
+			zip -r $app.zip www plugins -x *res-taxicode*
+			mv www/boot.js www/boot-tpc.js
+			mv www/config.xml www/config-tpc.xml
+			mv www www-taxicode
+
+			break;;
+		dashboard )
+
+			# PREPARE DASHBOARD APP
+			mv www-dashboard www
+			zip -r $app.zip www plugins
+			mv www www-dashboard
+			
+			break;;
+	esac
+done
+
+exit

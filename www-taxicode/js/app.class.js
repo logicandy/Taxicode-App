@@ -260,9 +260,9 @@ var App = {
 	},
 
 	/* Array of tooltips. Shuffled accept first element. */
-	tooltips: ["Taxicode works best for all your medium and long distance bookings."].concat($([
+	tooltips: [Config.title + " works best for all your medium and long distance bookings."].concat($([
 		"Creating an account will speed up your booking process in the future.",
-		"You need to book a minimum of 1 hour in advance with Taxicode.",
+		"You need to book a minimum of 1 hour in advance with " + Config.title + ".",
 		"Our taxi network is great for all airport transfers and holiday pickups.",
 		"Business customers can create a business account to manage bookings"
 	]).sort(function() {

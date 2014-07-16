@@ -19,5 +19,6 @@
 	<br/>
 
 	<p date-dev-mode-count="20"><small>Developed by Web3r.</small></p>
+	<p date-dev-mode-count="20"><small>Version {{%Config.phonegap.find("widget").attr("version")}}</small></p>
 
 </div>
