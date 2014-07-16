@@ -52,8 +52,8 @@ var Help = {
 			answer: "Your driver will be waiting for you in the arrivals area by the airport information desk, holding a 'meet & greet' board with your name clearly written on it. If you have provided your mobile number we will try and contact you if we have any difficulty finding you. Please take a note of our phone number so you can ring us should you need to."
 		},
 		{
-			question: "What is taxicode?",
-			answer: "Taxicode is the UK's premier provider of online taxi services working with over 100s of taxi providers to offer reliable and competitively priced travel services throughout the UK."
+			question: "What is " + Config.AppName + "?",
+			answer: Config.title + " is the UK's premier provider of online taxi services working with over 100s of taxi providers to offer reliable and competitively priced travel services throughout the UK."
 		},
 		{
 			question: "Are your drivers licensed?",
@@ -64,7 +64,7 @@ var Help = {
 	initialize: function() {
 		API.get("faq", {
 			type: "GET",
-			data: {platform: Config.platform, version: Config.settings.faqVersion},
+			data: {platform: Config.platform, version: Config.settings.faqVersion, app: AppName},
 			success: function(response) {
 				if (response.faq) {
 					Config.setting("faqVersion", response.version);

@@ -55,11 +55,10 @@ var Config = {
 			$.each(rows, function(i, row) {
 				Config.settings[row.setting] = row.value;
 			});
-			Config.loadPhoneGapConfig(callback);
-		}, function() {
-			// No saved settings to load
-			Config.loadPhoneGapConfig(callback);
-		});
+			if (typeof callback == "function") {
+				callback();
+			}
+		}, callback);
 		
 		// Adjust theme
 		if (typeof device == "object" && device.platform && device.platform.toLowerCase) {
@@ -80,16 +79,6 @@ var Config = {
 			}
 		}
 		
-	},
-
-	loadPhoneGapConfig: function(callback) {
-		$.ajax({
-			url: AppConfigFile,
-			success: function(data) {
-				Config.phonegap = $(data);
-			},
-			complete: callback
-		});
 	},
 
 	setting: function() {

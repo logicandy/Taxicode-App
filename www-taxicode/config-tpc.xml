@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.taxicode.taxipricecompare" version="0.1.0" versionCode="1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.taxicode.taxipricecompare" version="0.1.2" versionCode="2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	
 	<!-- Meta Data -->
-	<name>Taxicode - UK Taxi Booking App</name>
+	<name>Taxi Price Compare</name>
 
-	<description>The UK's only Online National Taxi Booking App. Market leaders in both price and reliability. Taxicode is a National UK booking service that covers 95% of the UK population. Taxicode is great for all your medium and long distance taxi bookings. You can use us to pre-book your taxi journey almost anywhere in the country and compare prices from our highly reliable and competitively priced taxi partners.</description>
-	<author email="support@web3r.co.uk" href="http://www.taxicode.com">Web 3 Resource</author>
+	<description>Taxi Price Compare makes it easier to book a taxi. With over 1000 taxi companies to choose from you're sure to get the best price for your journey. We promise you will receive not just an amazing service but a punctual driver and a pleasant car at a very low price. We have the only UK network and we cover from London to Aberdeen, from Liverpool to Leeds.</description>
+	<author email="support@web3r.co.uk" href="http://www.taxipricecompare.co.uk">Web 3 Resource</author>
 
 	<!-- Preferences -->
 	<feature name="http://api.phonegap.com/1.0/device" />

@@ -1,6 +1,6 @@
 <div class="block center">
 
-	<h1>Welcome to {{%Config.title}}!</h1>
+	<h1>Welcome to<br/>{{%Config.title}}!</h1>
 
 	<br/>
 
@@ -14,7 +14,7 @@
 
 	<br/>
 
-	<p>Taxicode is a National UK booking service that covers 95% of the UK population. Taxicode is great for all your medium and long distance taxi bookings.</p>
+	<p>{{%Config.title}} is a National UK booking service that covers 95% of the UK population. {{%Config.title}} is great for all your medium and long distance taxi bookings.</p>
 	<p>You can use us to pre-book your taxi journey almost anywhere in the country and compare prices from our highly reliable and competitively priced taxi partners.</p>
 
 	<br/>
