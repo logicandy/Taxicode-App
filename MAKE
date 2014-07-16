@@ -24,7 +24,9 @@ while true; do
 			mv www-taxicode www
 			mv www/config-taxicode.xml www/config.xml
 			mv www/boot-taxicode.js www/boot.js
+			mv www/icon-taxicode.png www/icon.png
 			zip -r $app.zip www plugins -x *res-tpc*
+			mv www/icon.png www/icon-taxicode.png
 			mv www/boot.js www/boot-taxicode.js
 			mv www/config.xml www/config-taxicode.xml
 			mv www www-taxicode
@@ -36,7 +38,9 @@ while true; do
 			mv www-taxicode www
 			mv www/config-tpc.xml www/config.xml
 			mv www/boot-tpc.js www/boot.js
+			mv www/icon-tpc.png www/icon.png
 			zip -r $app.zip www plugins -x *res-taxicode*
+			mv www/icon.png www/icon-tpc.png
 			mv www/boot.js www/boot-tpc.js
 			mv www/config.xml www/config-tpc.xml
 			mv www www-taxicode

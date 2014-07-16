@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.taxicode.taxicode" version="1.0.21" versionCode="37" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.taxicode.taxipricecompare" version="0.1.0" versionCode="1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	
 	<!-- Meta Data -->
 	<name>Taxicode - UK Taxi Booking App</name>
@@ -31,52 +31,52 @@
 	<icon src="icon.png" />
 
 	<!-- iOS Icons -->
-	<icon gap:platform="ios" height="57" width="57" src="res/icons/ios/icon-57.png" />
-	<icon gap:platform="ios" height="72" width="72"  src="res/icons/ios/icon-72.png"/>
-	<icon gap:platform="ios" height="76" width="76"  src="res/icons/ios/icon-76.png"/>
-	<icon gap:platform="ios" height="114" width="114" src="res/icons/ios/icon-114.png" />
-	<icon gap:platform="ios" height="120" width="120"  src="res/icons/ios/icon-120.png"/>
-	<icon gap:platform="ios" height="144" width="144" src="res/icons/ios/icon-144.png" />
-	<icon gap:platform="ios" height="152" width="152"  src="res/icons/ios/icon-152.png"/>
-	<icon gap:platform="ios" height="156" width="156"  src="res/icons/ios/icon-156.png"/>
+	<icon gap:platform="ios" height="57" width="57" src="res-tpc/icons/ios/icon-57.png" />
+	<icon gap:platform="ios" height="72" width="72"  src="res-tpc/icons/ios/icon-72.png"/>
+	<icon gap:platform="ios" height="76" width="76"  src="res-tpc/icons/ios/icon-76.png"/>
+	<icon gap:platform="ios" height="114" width="114" src="res-tpc/icons/ios/icon-114.png" />
+	<icon gap:platform="ios" height="120" width="120"  src="res-tpc/icons/ios/icon-120.png"/>
+	<icon gap:platform="ios" height="144" width="144" src="res-tpc/icons/ios/icon-144.png" />
+	<icon gap:platform="ios" height="152" width="152"  src="res-tpc/icons/ios/icon-152.png"/>
+	<icon gap:platform="ios" height="156" width="156"  src="res-tpc/icons/ios/icon-156.png"/>
 
 	<!-- Android Icons -->
-	<icon gap:platform="android" gap:density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
-	<icon gap:platform="android" gap:density="mdpi" src="res/icons/android/icon-48-mdpi.png" />
-	<icon gap:platform="android" gap:density="hdpi" src="res/icons/android/icon-72-hdpi.png" />
-	<icon gap:platform="android" gap:density="xhdpi" src="res/icons/android/icon-96-xhdpi.png" />
-	<icon gap:platform="android" gap:density="xxhdpi" src="res/icons/android/icon-144-xxhdpi.png" />
-	<icon gap:platform="android" gap:density="xxxhdpi" src="res/icons/android/icon-192-xxxhdpi.png" />
+	<icon gap:platform="android" gap:density="ldpi" src="res-tpc/icons/android/icon-36-ldpi.png" />
+	<icon gap:platform="android" gap:density="mdpi" src="res-tpc/icons/android/icon-48-mdpi.png" />
+	<icon gap:platform="android" gap:density="hdpi" src="res-tpc/icons/android/icon-72-hdpi.png" />
+	<icon gap:platform="android" gap:density="xhdpi" src="res-tpc/icons/android/icon-96-xhdpi.png" />
+	<icon gap:platform="android" gap:density="xxhdpi" src="res-tpc/icons/android/icon-144-xxhdpi.png" />
+	<icon gap:platform="android" gap:density="xxxhdpi" src="res-tpc/icons/android/icon-192-xxxhdpi.png" />
 
 	<!-- Windows Icons / Tiles -->
-	<icon gap:platform="winphone" src="res/icons/windows-phone/icon-48.png" />
-	<icon gap:platform="winphone" src="res/icons/windows-phone/icon-62-tile.png" />
-	<icon gap:platform="winphone" gap:role="background" src="res/icons/windows-phone/icon-173-tile.png" />
+	<icon gap:platform="winphone" src="res-tpc/icons/windows-phone/icon-48.png" />
+	<icon gap:platform="winphone" src="res-tpc/icons/windows-phone/icon-62-tile.png" />
+	<icon gap:platform="winphone" gap:role="background" src="res-tpc/icons/windows-phone/icon-173-tile.png" />
 
 	<!-- iPhone 4 Splash Screen -->
-	<gap:splash gap:platform="ios" height="480" width="320" src="res/screen/ios/screen-iphone-portrait.png" />
-	<gap:splash gap:platform="ios" height="960" width="640" src="res/screen/ios/screen-iphone-portrait-2x.png" />
+	<gap:splash gap:platform="ios" height="480" width="320" src="res-tpc/screen/ios/screen-iphone-portrait.png" />
+	<gap:splash gap:platform="ios" height="960" width="640" src="res-tpc/screen/ios/screen-iphone-portrait-2x.png" />
 
 	<!-- iPhone 5+ Splash Screen -->
-	<gap:splash gap:platform="ios" height="568" width="320" src="res/screen/ios/screen-iphone-portrait-568h.png" />
-	<gap:splash gap:platform="ios" height="1136" width="640" src="res/screen/ios/screen-iphone-portrait-568h-2x.png" />
+	<gap:splash gap:platform="ios" height="568" width="320" src="res-tpc/screen/ios/screen-iphone-portrait-568h.png" />
+	<gap:splash gap:platform="ios" height="1136" width="640" src="res-tpc/screen/ios/screen-iphone-portrait-568h-2x.png" />
 
 	<!-- iPad Splash Screen -->
-	<gap:splash gap:platform="ios" height="1024" width="768" src="res/screen/ios/screen-ipad-portrait.png" />
-	<gap:splash gap:platform="ios" height="2048" width="1536" src="res/screen/ios/screen-ipad-portrait-2x.png" />
-	<gap:splash gap:platform="ios" height="768" width="1024" src="res/screen/ios/screen-ipad-landscape.png" />
-	<gap:splash gap:platform="ios" height="1536" width="2048" src="res/screen/ios/screen-ipad-landscape-2x.png" />
+	<gap:splash gap:platform="ios" height="1024" width="768" src="res-tpc/screen/ios/screen-ipad-portrait.png" />
+	<gap:splash gap:platform="ios" height="2048" width="1536" src="res-tpc/screen/ios/screen-ipad-portrait-2x.png" />
+	<gap:splash gap:platform="ios" height="768" width="1024" src="res-tpc/screen/ios/screen-ipad-landscape.png" />
+	<gap:splash gap:platform="ios" height="1536" width="2048" src="res-tpc/screen/ios/screen-ipad-landscape-2x.png" />
 
 	<!-- Android Splash Screen -->
-	<gap:splash gap:density="ldpi" gap:platform="android" src="res/screen/android/screen-ldpi-portrait.png" />
-	<gap:splash gap:density="mdpi" gap:platform="android" src="res/screen/android/screen-mdpi-portrait.png" />
-	<gap:splash gap:density="hdpi" gap:platform="android" src="res/screen/android/screen-hdpi-portrait.png" />
-	<gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/screen-xhdpi-portrait.png" />
-	<gap:splash gap:density="xxhdpi" gap:platform="android" src="res/screen/android/screen-xxhdpi-portrait.png" />
-	<gap:splash gap:density="xxxhdpi" gap:platform="android" src="res/screen/android/screen-xxxhdpi-portrait.png" />
+	<gap:splash gap:density="ldpi" gap:platform="android" src="res-tpc/screen/android/screen-ldpi-portrait.png" />
+	<gap:splash gap:density="mdpi" gap:platform="android" src="res-tpc/screen/android/screen-mdpi-portrait.png" />
+	<gap:splash gap:density="hdpi" gap:platform="android" src="res-tpc/screen/android/screen-hdpi-portrait.png" />
+	<gap:splash gap:density="xhdpi" gap:platform="android" src="res-tpc/screen/android/screen-xhdpi-portrait.png" />
+	<gap:splash gap:density="xxhdpi" gap:platform="android" src="res-tpc/screen/android/screen-xxhdpi-portrait.png" />
+	<gap:splash gap:density="xxxhdpi" gap:platform="android" src="res-tpc/screen/android/screen-xxxhdpi-portrait.png" />
 
 	<!-- Windows Splash Screen -->
-	<gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
+	<gap:splash gap:platform="winphone" src="res-tpc/screen/windows-phone/screen-portrait.jpg" />
 
 	<!-- Plugins -->
 	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
