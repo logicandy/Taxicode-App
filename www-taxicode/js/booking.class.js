@@ -211,7 +211,7 @@ var Booking = {
 			Booking.pay.data.quote = Booking.quote;
 
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, source: Config.title + " App"}, User.authObject(), Booking.pay.data),
+				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, key: Config.api_key}, User.authObject(), Booking.pay.data),
 				success: function(response) {
 					Booking.pay.complete_success(response, 'customer');
 				},
@@ -224,7 +224,7 @@ var Booking = {
 			$.extend(Booking.pay.data, data);
 			App.loading();
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, source: Config.title + " App"}, User.authObject(), {
+				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, key: Config.api_key}, User.authObject(), {
 					method: "token",
 					name: data.name,
 					telephone: data.telephone,
@@ -243,7 +243,7 @@ var Booking = {
 		complete_cash: function(data) {
 			App.loading();
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, source: Config.title + " App"}, User.authObject(), {
+				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, key: Config.api_key}, User.authObject(), {
 					method: "cash",
 					name: data.name,
 					telephone: data.telephone,
@@ -261,7 +261,7 @@ var Booking = {
 		complete_balance: function(data) {
 			App.loading();
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, source: Config.title + " App"}, User.authObject(), {
+				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, key: Config.api_key}, User.authObject(), {
 					method: "balance",
 					name: data.name,
 					telephone: data.telephone,

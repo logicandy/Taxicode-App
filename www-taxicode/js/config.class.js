@@ -4,6 +4,7 @@ var Config = {
 	title:		AppName == "tpc" ? "Taxi Price Compare" : "Taxicode",
 	quote_mode:	AppName == "tpc" ? "all" : "tc",
 	subdir:		AppName == "tpc" ? "tpc" : "taxicode",
+	api_key:	AppName == "tpc" ? "NwwFTcF6VVHmCg6k" : "drVbTNgnZT3JaqeE",
 
 	demo: Params.demo,
 
