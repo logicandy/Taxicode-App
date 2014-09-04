@@ -70,7 +70,7 @@
 					<div><strong>{{%User.user && User.user.companies[Template.data[Template.data.key].company_id]?"<small>You've successfully booked with "+Template.data[Template.data.key].company_name+" before.</small>":""}}</strong></div>
 
 					<!-- No active companies phone number -->
-					{{%!Template.data.val.active && Template.data.val.company_phone ? "<center class='clear' style='opacity: 1; margin-top: 15px;'><strong>Click to call on " + Template.data.val.company_phone + "</strong></center>" : ""}}
+					{{%!Template.data.val.active && Template.data.val.company_phone ? "<center class='clear' style='opacity: 1; margin-top: 15px;'>Require " + Template.data.val.notification + " hours notice to book online<br /><strong>Click to call on " + Template.data.val.company_phone + "</strong></center>" : ""}}
 
 				</a>
 
