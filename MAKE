@@ -5,11 +5,12 @@ cd "$(dirname "$0")"
 
 # Ask if taxicode / tpc / dashboard
 while true; do
-	read -p "Which app do you wish to compile? [ taxicode | tpc | dashboard ] `echo $'\n> '`" app
+	read -p "Which app do you wish to compile? [ taxicode | tpc | dashboard | aa ] `echo $'\n> '`" app
 	case $app in
 		taxicode ) break;;
 		tpc ) break;;
 		dashboard ) break;;
+		aa ) break;;
 	esac
 done
 
@@ -43,6 +44,20 @@ while true; do
 			mv www/icon.png www/icon-tpc.png
 			mv www/boot.js www/boot-tpc.js
 			mv www/config.xml www/config-tpc.xml
+			mv www www-taxicode
+
+			break;;
+		aa )
+
+			# PREPARE AA APP
+			mv www-taxicode www
+			mv www/config-aa.xml www/config.xml
+			mv www/boot-aa.js www/boot.js
+			mv www/icon-aa.png www/icon.png
+			zip -r $app.zip www plugins -x *res-taxicode*
+			mv www/icon.png www/icon-aa.png
+			mv www/boot.js www/boot-aa.js
+			mv www/config.xml www/config-aa.xml
 			mv www www-taxicode
 
 			break;;
