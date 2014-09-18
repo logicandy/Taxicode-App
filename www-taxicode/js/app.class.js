@@ -24,8 +24,7 @@ var App = {
 			User.initialize();
 			Help.initialize();
 
-			// App.addCSS(Config.app);
-			App.addCSS("aa");
+			App.addCSS(Config.app);
 			if (Config.demo) {
 				App.addCSS("demo");
 			}

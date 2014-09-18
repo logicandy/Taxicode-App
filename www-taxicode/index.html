@@ -19,8 +19,8 @@
 			var AppName = typeof AppName == "undefined" ? (typeof Params.app == "string" ? Params.app : "tc") : AppName;
 			var AppConfigFile = AppBoot ? "config.xml" : ( AppName == "tc" ? "config-taxicode.xml" : "config-tpc.xml" );
 
-			var DevMode = true; // Use offline API domains
-			var OfflineMode = true; // Don't require internet connection - for offline dev
+			var DevMode = false; // Use offline API domains
+			var OfflineMode = false; // Don't require internet connection - for offline dev
 			
 		</script>
 

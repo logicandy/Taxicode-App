@@ -126,3 +126,27 @@ var Config = {
 	}
 
 };
+
+switch (AppName) {
+	case "tpc":
+		Config.app = "taxipricecompare";
+		Config.title = "Taxi Price Compare";
+		Config.quote_mode = "all";
+		Config.subdir = "tpc";
+		Config.api_key = "NwwFTcF6VVHmCg6k";
+		break;
+	case "aa":
+		Config.app = "aa";
+		Config.title = "AA Taxis";
+		Config.quote_mode = "all";
+		Config.subdir = "aa";
+		Config.api_key = "AJaRdn234As3kn0d";
+		break;
+	case "taxicode": case "tc": default:
+		Config.app = "taxicode";
+		Config.title = "Taxicode";
+		Config.quote_mode = "tc";
+		Config.subdir = "taxicode";
+		Config.api_key = "drVbTNgnZT3JaqeE";
+		break;
+}
