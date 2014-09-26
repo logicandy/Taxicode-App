@@ -1,0 +1,3 @@
+body {
+	cursor: -webkit-image-set(url("/img/cursor.png") 1x, url("/img/cursor@2x.png") 2x), url("/aa/cursor.png"), auto;
+}
