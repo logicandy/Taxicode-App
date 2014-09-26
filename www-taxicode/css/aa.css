@@ -96,7 +96,7 @@ body {
 	height: 64px;
 	width: 64px;
 
-	background-image: url("../img/aa/loading.png");
+	background-image: url("../img/aa/loading@2x.gif");
 	background-size: 64px 64px;
 	background-position: 0px;
 }
