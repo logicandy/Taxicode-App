@@ -4,42 +4,43 @@ var Template = {
 
 	templates: {
 
-		"tutorial/1"			: false,
-//		"tutorial/2"			: false,
+		"tutorial/1"			    : false,
+//		"tutorial/2"			    : false,
 
-		"booking/form"			: false,
-		"booking/results"		: false,
-		"booking/quote"			: false,
-		"booking/complete"		: false,
-		"booking/details"		: false,
+		"booking/form"			    : false,
+		"booking/results"		    : false,
+		"booking/quote"			    : false,
+		"booking/complete"		    : false,
+		"booking/details"		    : false,
 
-		"pay/customer"			: false,
-		"pay/card"				: false,
-		"pay/billing"			: false,
+		"pay/customer"			    : false,
+		"pay/card"				    : false,
+		"pay/billing"			    : false,
 		
-		"pay/token"				: false,
-		"pay/cash"				: false,
-		"pay/balance"			: false,
+		"pay/token"				    : false,
+		"pay/cash"				    : false,
+		"pay/balance"			    : false,
 
-		"account/login"			: false,
-		"account/login_popup"	: false,
-		"account/user"			: false,
-		"account/create"		: false,
-		"account/verify"		: false,
-		"account/password"		: false,
-		"account/cards"			: false,
+		"account/login"			    : false,
+		"account/login_popup"	    : false,
+		"account/user"			    : false,
+		"account/create"		    : false,
+		"account/verify"		    : false,
+		"account/password"		    : false,
+		"account/cards"			    : false,
+        "account/forgot_password"   : false,
 		
-		"offline/screen"		: false,
-		"offline/alert"			: false,
+		"offline/screen"		    : false,
+		"offline/alert"			    : false,
 
-		"bookings"				: false,
-		"help"					: false,
-		"alert"					: false,
+		"bookings"				    : false,
+		"help"					    : false,
+		"alert"				    	: false,
 		
-		"errors"				: false,
-		"debug"					: false,
+		"errors"			    	: false,
+		"debug"				    	: false,
 
-		"common/card"			: false
+		"common/card"		    	: false
 
 	},
 

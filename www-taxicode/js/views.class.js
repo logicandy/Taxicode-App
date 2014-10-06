@@ -401,9 +401,13 @@ var Views = {
 			Views.render('account', 'slide', 'create');
 		});
 
-		$view.find("[data-action=verify]").click(function() {
-			Views.render('account', 'slide', 'verify');
-		});
+        $view.find("[data-action=verify]").click(function() {
+            Views.render('account', 'slide', 'verify');
+        });
+
+        $view.find("[data-action=forgot]").click(function() {
+            User.forgotPopup();
+        });
 
 		$view.find("[data-action=card]").click(function() {
 			Views.render('account', 'slide', 'card');

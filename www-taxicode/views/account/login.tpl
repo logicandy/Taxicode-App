@@ -14,4 +14,5 @@
 <br/>
 
 <center><a class='btn small' data-action='create'>Create Account</a></center><br/>
-<center><a class='btn small' data-action='verify'>Verify Account</a></center>
+<center><a class='btn small' data-action='verify'>Verify Account</a></center><br/>
+<center><a class='btn small' data-action='forgot'>Forgot Password</a></center>

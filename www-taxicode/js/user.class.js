@@ -227,6 +227,35 @@ var User = {
 			}
 
 		);
-	}
+	},
+
+    forgotPopup: function(success, error) {
+        App.alert(
+            Template.render('account/forgot_password', {error: error}).html(),
+            {
+                title: "Forgot Password",
+                options: {
+                    Cancel: function() {
+                        $(this).closest('.alert').remove();
+                    },
+                    Submit: function() {
+                        App.loading();
+                        var email = $(this).closest('.alert').find(".email").val();
+                        API.get("user/forgot_password", {
+                            data: {email: email},
+                            success: function(response) {
+                                App.stopLoading();
+                                alert(response['message']);
+                            }, failure: function() {
+                                App.stopLoading();
+                            }
+                        });
+
+                    }
+                }
+            }
+        );
+    }
+
 
 };
