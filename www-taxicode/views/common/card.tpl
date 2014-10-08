@@ -34,7 +34,7 @@
 
 	<div class="field">
 		<label>CV2 <span class="help" data-help="The CV2 code is the last 3 digits on the back of your card normally found in the signature strip.">?</span></label><!--
-	--><input type="text" maxlength="3" placeholder="xxx" name="CV2" data-type="cv2" />
+	--><input type="text" maxlength="4" placeholder="xxx" name="CV2" data-type="cv2" />
 	</div>
 
 </div>
