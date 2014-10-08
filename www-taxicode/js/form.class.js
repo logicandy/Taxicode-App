@@ -69,7 +69,7 @@ var Form = {
 			}
 		});
 		$(form).find("[data-type=cv2]").each(function() {
-			if ($(this).val().length != 3 || $(this).val().length != 4) {
+			if ($(this).val().length != 3 && $(this).val().length != 4) {
 				errors.push({field: this, message: "Invalid CV2."});
 			}
 		});
