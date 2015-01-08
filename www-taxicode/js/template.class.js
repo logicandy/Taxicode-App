@@ -40,7 +40,9 @@ var Template = {
 		"errors"			    	: false,
 		"debug"				    	: false,
 
-		"common/card"		    	: false
+		"common/card"		    	: false,
+
+		"feedback/send"				: false
 
 	},
 

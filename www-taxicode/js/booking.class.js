@@ -90,6 +90,7 @@ var Booking = {
 				"return": return_date ? return_date.getTime() / 1000 + return_date.getTimezoneOffset() * 60 : false,
 				people: Booking.data.passengers,
 				mode: Config.quote_mode,
+				key: Config.api_key
 			},
 			success: function(response) {
 				if (response.status == "OK") {

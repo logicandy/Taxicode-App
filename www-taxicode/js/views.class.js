@@ -585,6 +585,12 @@ var Views = {
 		icon.hide();
 	},
 
+	renderFeedback : function($view, mode) {
+		switch (mode) {
+			case "send": return Template.render("feedback/send", {company_name: "TEST"});
+		}
+	},
+
 	refreshView: function() {
 
 	}
