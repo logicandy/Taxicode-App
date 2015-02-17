@@ -1041,3 +1041,17 @@ input.tc-autocomplete-searching[type=text] {
 .payment-options > a {
 	margin-bottom: 4px;
 }
+
+.iframe-outer {
+	position: fixed;
+	z-index: 100000;
+	background: rgba(0, 0, 0, 0.6);
+	top: 0px;
+	left: 0px;
+}
+.iframe-outer iframe {
+	background: white;
+	margin: 10px;
+	border: none;
+}
+

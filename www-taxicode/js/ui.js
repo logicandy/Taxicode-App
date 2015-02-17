@@ -188,6 +188,14 @@ $(document).on("click", ".locatable.located", function(e) {
 	}
 });
 
+var resizeIFrame = function() {
+	$(".iframe-outer").each(function() {
+		$(this).width($(window).width()).height($(window).height());
+		$(this).find("iframe").width($(window).width() - 20).height($(window).height() - 20);
+	});
+}
+$(window).resize(resizeIFrame);
+
 $(document).ready(function() {
 	// Scroll back down on refresh pull - currently not being used due to bug with short pages.
 	/*

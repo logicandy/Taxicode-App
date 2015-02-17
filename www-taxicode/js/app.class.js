@@ -158,7 +158,9 @@ var App = {
 				$(this).closest('.alert').remove();
 			}},
 			title: false,
-			prompt: false
+			prompt: false,
+			bodyStyle: false,
+			id: ""
 		}, settings);
 
 		// Create alert box HTML with a template
@@ -166,7 +168,8 @@ var App = {
 			title: settings.title,
 			data: data,
 			options: $.map(settings.options, function(e, i) { return i; }),
-			prompt: settings.prompt
+			prompt: settings.prompt,
+			id: settings.id
 		});
 
 		// Add functionality to the alert buttons
@@ -181,6 +184,11 @@ var App = {
 					settings.prompt(this);
 				}
 			});
+		}
+
+		// Add body style
+		if (settings.bodyStyle) {
+			alert.find(".body").css(settings.bodyStyle);
 		}
 
 		// Add the page

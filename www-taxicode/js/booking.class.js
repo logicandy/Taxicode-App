@@ -10,6 +10,7 @@ var Booking = {
 	initialize: function() {
 		Booking.clear();
 		Booking.getBookings();
+		Booking.setupPostMessage();
 	},
 
 	startDate: function() {
@@ -212,7 +213,13 @@ var Booking = {
 			Booking.pay.data.quote = Booking.quote;
 
 			API.get("booking/pay", {
-				data: $.extend({quote: Booking.quote, vehicle: Booking.data.vehicle, key: Config.api_key}, User.authObject(), Booking.pay.data),
+				data: $.extend({
+					quote: Booking.quote,
+					vehicle: Booking.data.vehicle,
+					key: Config.api_key,
+					secure: true,
+					origin: window.location.origin
+				}, User.authObject(), Booking.pay.data),
 				success: function(response) {
 					Booking.pay.complete_success(response, 'customer');
 				},
@@ -292,18 +299,42 @@ var Booking = {
 			});
 		},
 		complete_success: function (response, fail_view) {
-			Analytics.event("Booking", "Booked", "Booking Complete", 1);
-			if (response.status == "OK") {
-				Booking.reference = response.reference;
-				Booking.store();
-				Booking.clear();
-				Views.render('booking', 'slide', 'complete');
-			} else {
-				App.stopLoading();
-				App.alert(response.error ? response.error : "Error taking payment. Please review your information.", {options: {OK: function() {
-					$(this).closest('.alert').remove();
-					Views.render('booking', fail_view == 'customer' ? 'slideFromLeft' : 'swap', fail_view);
-				}}});
+			switch (response.status) {
+				case "3DAUTH":
+					Analytics.event("Booking", "Booked", "3D Securing", 1);
+
+					$("body").append("<div class='iframe-outer' id='3DAUTH'><iframe src='" + response.url + "'></iframe></div>");
+					resizeIFrame();
+
+					/*App.alert("<iframe style='width: 100%; height: 250px; border: none;' src='" + response.url + "'></iframe>", {
+						id: "3DAUTH",
+						title: "Contacting Your Bank",
+						bodyStyle: {
+							padding: 0
+						},
+						options: {
+							Cancel: function() {
+								// Cancel 3D Secure
+							}
+						}
+					});*/
+
+					break;
+				case "OK":
+					Analytics.event("Booking", "Booked", "Booking Complete", 1);
+					Booking.reference = response.reference;
+					Booking.store();
+					Booking.clear();
+					Views.render('booking', 'slide', 'complete');
+					break;
+				default:
+					Analytics.event("Booking", "Booked", "Booking Failed", 1);
+					App.stopLoading();
+					App.alert(response.error ? response.error : "Error taking payment. Please review your information.", {options: {OK: function() {
+						$(this).closest('.alert').remove();
+						Views.render('booking', fail_view == 'customer' ? 'slideFromLeft' : 'swap', fail_view);
+					}}});
+					break;
 			}
 		}
 	},
@@ -722,6 +753,43 @@ var Booking = {
 			WY : 'Wyoming'
 		},
 		card_types: false
+	},
+
+	// Function and setup to allow cross origin iFrame communcation
+	// Currently used primarily for 3D secure payments.
+	setupPostMessageComplete: false,
+	setupPostMessage: function() {
+		if (!Booking.setupPostMessageComplete) {
+			// Function that will process the message
+			var processMessage = function (event) {
+				// Get api domain name and remove trailing /
+				var domain = Config.domains.api;
+				if (domain.substr(-1) == '/') {
+					domain = domain.substr(0, domain.length - 1);
+				}
+				// Check API domain matches the message origin
+		    	if (event.origin == domain) {
+		    		// Decode the JSON response
+		    		var response = $.parseJSON(event.data);
+		    		// Check what message has been responded
+		    		switch (response.message) {
+		    			case "3DAUTH":
+		    				// If 3DAUTH message, remove the popup iframe and complete the booking payment
+		    				$("#3DAUTH").remove();
+		    				Booking.pay.complete_success(response, 'customer');
+		    				break;
+		    		}
+				}
+			};
+			// Attach the proccess message function to the window
+			if (window.addEventListener) {
+			    window.addEventListener("message", processMessage, false);
+			} else {
+			    window.attachEvent("onmessage", processMessage, false);
+			}
+			// Mark as setup so this doesn't run twice
+			Booking.setupPostMessageComplete = true;
+		}
 	}
 
 };
