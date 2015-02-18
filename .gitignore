@@ -2,6 +2,7 @@
 taxicode/plugins/android.json
 /taxicode/npm-debug.log
 /taxicode/platforms/*
+app-repos/*
 /app-repos/*
 
 taxicode.zip

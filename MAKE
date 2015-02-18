@@ -72,8 +72,10 @@ while true; do
 	esac
 done
 
-test -d "app-repos/taxicode-app-$app" || mkdir -p "app-repos/taxicode-app-$app"
-echo "A" | unzip $app.zip "*" -d "app-repos/taxicode-app-$app"
-
+# CLEAN / CREATE REPO
+repo="app-repos/taxicode-app-$app"
+test -d $repo || mkdir -p $repo
+find "$repo" -type f -not -name '.git*' | xargs rm -f
+unzip $app.zip "*" -d "$repo"
 
 exit
