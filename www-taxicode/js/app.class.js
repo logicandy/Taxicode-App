@@ -101,12 +101,25 @@ var App = {
 		callback = callback ? callback : function() {};
 		API.get("ping/?v="+Config.version, {
 			success: function(response) {
-				if (response.status == "UPDATE_REQUIRED" || response.status == "BAD_VERSION") {
-					App.alert("An update required is required to continue. Please downloading it.");
+				if ((response.status == "UPDATE_REQUIRED" || response.status == "BAD_VERSION") && !App.update_alerted) {
+					App.alert("An important update is required to continue. Please download it.",{title:"Important",options:{}});
+					App.update_alerted = true;
 					return false;
 				}
 				if (response.status == "UPDATE_AVAILABLE" && !App.update_alerted) {
-					App.alert('An update is available to download.');
+					var alert = App.alert('An update is available to download.<br/>Please update in the App Store.',{
+						// options: {
+						// 	Cancel: function() {
+						// 		$(this).closest(".alert").remove();
+						// 	},
+						// 	Update: function() {
+						// 		$(this).attr({
+						// 			"href": ,
+						// 			"target": "_blank"
+						// 		});
+						// 	}
+						// }
+				});
 					App.update_alerted = true;
 				}
 				callback();

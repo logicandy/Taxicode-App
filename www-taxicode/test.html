@@ -14,21 +14,12 @@
 
 		<h1>Test Page</h1>
 
-		<input type="text" id="t1" placeholder="test field one" />
-		<input type="text" id="t2" placeholder="test field two" />
-
 		<pre></pre>
 
 		<script type="text/javascript">
 			function log(t) {
 				$("pre").prepend(t + "\n");
 			}
-			(function rep() {
-				log("\n\n\n\n");
-				log("1: " + $("#t1").val());
-				log("2: " + $("#t2").val());
-				setTimeout(rep, 250);
-			})();
 		</script>
 
 	</body>

@@ -1,6 +1,11 @@
 body {
+//	background: #F6F6F6;
 	background-image: url('../img/taxicode/bg.jpg');
 	display: block !important;
+}
+
+.block {
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo {

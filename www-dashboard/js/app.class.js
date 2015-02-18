@@ -95,8 +95,9 @@ var App = {
 		callback = callback ? callback : function() {};
 		API.get("ping/?app=" + Config.app + "&v=" + Config.version, {
 			success: function(response) {
-				if (response.status == "UPDATE_REQUIRED" || response.status == "BAD_VERSION") {
-					App.alert("An update required is required to continue. Please downloading it.");
+				if ((response.status == "UPDATE_REQUIRED" || response.status == "BAD_VERSION") && !App.update_alerted) {
+					App.alert("An important update is required to continue. Please download it.",{title:"Important",options:{}});
+					App.update_alerted = true;
 					return false;
 				}
 				if (response.status == "UPDATE_AVAILABLE" && !App.update_alerted) {
@@ -149,9 +150,11 @@ var App = {
 
 		// Default settings - no title - one button that says OK and closes window
 		settings = $.extend({
-			options: {OK: function() {
-				$(this).closest('.alert').remove();
-			}},
+			options: {
+				OK: function() {
+					$(this).closest('.alert').remove();
+				}
+			},
 			title: false,
 			prompt: false,
 			bodyStyle: false,

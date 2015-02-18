@@ -498,11 +498,12 @@ img[src='taxicode-loader@2x.gif'] {
 
 .alert > .inner > .footer .option:focus {
 	outline: none;
-	color: green;
+//	color: green;
 }
 
 .alert > .inner > .footer .option:active {
 	background: #F0F0F0;
+	box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.15);
 }
 
 .alert input.prompt {
