@@ -72,4 +72,8 @@ while true; do
 	esac
 done
 
+test -d "app-repos/taxicode-app-$app" || mkdir -p "app-repos/taxicode-app-$app"
+echo "A" | unzip $app.zip "*" -d "app-repos/taxicode-app-$app"
+
+
 exit
