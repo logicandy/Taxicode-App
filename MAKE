@@ -72,15 +72,15 @@ while true; do
 	esac
 done
 
-# CLEAN / CREATE REPO
+# # CLEAN / CREATE REPO
 # repo="app-repos/taxicode-app-$app"
 # test -d $repo || mkdir -p $repo
 # find "$repo" -type f -not -name '.git*' | xargs rm -f
 # unzip $app.zip "*" -d "$repo"
-
-# GIT
+# 
+# # GIT
 # cd $repo
-
+# 
 # git init
 # git remote add origin "https://github.com/Web3r/taxicode-app-$app/.git"
 # git add .
@@ -88,4 +88,4 @@ done
 # git push origin master
 # cd -
 
-exit
+exit -f

@@ -219,7 +219,7 @@ var Booking = {
 					vehicle: Booking.data.vehicle,
 					key: Config.api_key,
 					secure: true,
-					origin: window.location.origin
+					origin: window.location.origin,
 				}, User.authObject(), Booking.pay.data),
 				success: function(response) {
 					Booking.pay.complete_success(response, 'customer');
@@ -238,6 +238,8 @@ var Booking = {
 					name: data.name,
 					telephone: data.telephone,
 					email: data.email,
+					secure: true,
+					origin: window.location.origin,
 					CV2: data.CV2,
 					notes: data.notes
 				}),
