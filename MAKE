@@ -73,9 +73,19 @@ while true; do
 done
 
 # CLEAN / CREATE REPO
-repo="app-repos/taxicode-app-$app"
-test -d $repo || mkdir -p $repo
-find "$repo" -type f -not -name '.git*' | xargs rm -f
-unzip $app.zip "*" -d "$repo"
+# repo="app-repos/taxicode-app-$app"
+# test -d $repo || mkdir -p $repo
+# find "$repo" -type f -not -name '.git*' | xargs rm -f
+# unzip $app.zip "*" -d "$repo"
+
+# GIT
+# cd $repo
+
+# git init
+# git remote add origin "https://github.com/Web3r/taxicode-app-$app/.git"
+# git add .
+# git commit -m "Auto git commit - $(date)"
+# git push origin master
+# cd -
 
 exit

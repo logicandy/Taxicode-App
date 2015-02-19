@@ -3,6 +3,7 @@ var Analytics = {
 	gaPlugin: false,
 
 	setup: function() {
+		return;
 		if (window.plugins && window.plugins.gaPlugin) {
 			Analytics.gaPlugin = window.plugins.gaPlugin;
 			Analytics.gaPlugin.init(
