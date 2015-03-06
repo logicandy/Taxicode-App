@@ -14,6 +14,10 @@ var App = {
 			StatusBar.overlaysWebView(false);
 		}
 
+		if (typeof FastClick != "undefined") {
+			FastClick.attach(document.body);
+		}
+
 		// Startup
 		App.loading("Loading App Data");
 		App.start_time = new Date().getTime();
