@@ -1,6 +1,6 @@
 body {
-//	background: #F6F6F6;
 	background-image: url('../img/taxicode/bg.jpg');
+	background: #F6F6F6;
 	display: block !important;
 }
 
@@ -88,8 +88,10 @@ body {
 }
 
 .btn:active {
-	border-top: 1px solid #75BDCC;
+	/*border-top: 1px solid #75BDCC;*/
 	box-shadow: inset 0px 2px 8px rgba(0,0,0,0.2);
+	/*padding-top: 6px !important;*/
+	/*padding-bottom: 4px !important;*/
 }
 
 .btn.small {

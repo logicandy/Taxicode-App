@@ -44,7 +44,7 @@ a, a:active, a:visited {
 
 hr {
 	border: none;
-	border-top: 1px solid #CCC;
+	border-top: 1px solid #EEE;
 }
 
 #StatusBar {
@@ -263,7 +263,7 @@ select {
 }
 
 input[type=date], input[type=time] {
-	border: 1px solid #CCC;
+	border: 1px solid #EEE;
 }
 
 input[type=date], input[type=time] {
@@ -304,7 +304,7 @@ select {
 .block {
 	padding: 10px;
 	background: white;
-	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 	color: black;
 }
 
@@ -320,8 +320,8 @@ select {
 
 .field {
 	margin: 10px -10px;
-	border-top: 1px solid #CCC;
-	border-bottom: 1px solid #CCC;
+	border-top: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
 	font-size: 0px;
 }
 
@@ -345,7 +345,7 @@ select {
 
 .field input, .field select, .field textarea {
 	width: 70%;
-	border-left: 1px solid #CCC;
+	border-left: 1px solid #EEE;
 }
 
 .field input.locatable {
@@ -391,7 +391,7 @@ select {
 
 .field textarea {
 	border: none;
-	border-left: 1px solid #CCC;
+	border-left: 1px solid #EEE;
 	height: auto;
 	display: inline-block;
 	box-sizing: border-box;
@@ -406,7 +406,7 @@ select {
 	display: inline-block;zoom:1;*display:inline;
 	height: 37px;
 	width: 36px;
-	border-left: 1px solid #CCC;
+	border-left: 1px solid #EEE;
 	background-image: url("../img/locate.png");
 	background-size: 17px 17px;
 	background-position: center;
@@ -419,8 +419,8 @@ select {
 }
 
 .expand-block {
-	border-top: 1px solid #CCC;
-	border-bottom: 1px solid #CCC;
+	border-top: 1px solid #EEE;
+	border-bottom: 1px solid #EEE;
 	margin: 5px -10px -6px;
 	padding: 10px;
 }
@@ -470,10 +470,10 @@ img[src='taxicode-loader@2x.gif'] {
 .alert > .inner > .footer .option {
 	display: table-cell;
 	padding: 10px;
-	border-top: 1px solid #CCC;
+	border-top: 1px solid #EEE;
 	cursor: pointer;
 	color: black;
-	border-right: 1px solid #CCC;
+	border-right: 1px solid #EEE;
 }
 
 .alert > .inner > .footer .option.first {
@@ -487,7 +487,7 @@ img[src='taxicode-loader@2x.gif'] {
 
 .alert > .inner > .header {
 	padding: 10px;
-	border-bottom: 1px solid #CCC;
+	border-bottom: 1px solid #EEE;
 	cursor: pointer;
 	border-radius: 10px 10px 0px 0px;
 }
@@ -508,7 +508,7 @@ img[src='taxicode-loader@2x.gif'] {
 
 .alert input.prompt {
 	width: 100%;
-	border: 1px solid #CCC;
+	border: 1px solid #EEE;
 	padding: 5px;
 	margin: 10px 0px -5px;
 	box-sizing: border-box;
@@ -572,7 +572,7 @@ img[src='taxicode-loader@2x.gif'] {
 }
 .block-section, .block-section:active, .block-section:visited {
 	border-width: 0px;
-	border-top: 1px solid #CCC;
+	border-top: 1px solid #EEE;
 	padding: 15px;
 	margin: 10px -10px -10px;
 	cursor: pointer;
@@ -653,7 +653,7 @@ table {
 
 table td {
 	padding: 5px;
-	border: 1px solid #CCC;
+	border: 1px solid #EEE;
 }
 
 .block .full {
@@ -690,8 +690,8 @@ table.small td {
 	-webkit-box-sizing: border-box;
 	width: 50%;
 	border: none;
-	border-top: 1px solid #CCC;
-	border-left: 1px solid #CCC;
+	border-top: 1px solid #EEE;
+	border-left: 1px solid #EEE;
 	font-size: 16px;
 }
 
@@ -771,7 +771,7 @@ table.small td {
 	text-align: center;
 	margin-top: -5px;
 	margin-right: -5px;
-	border: 1px solid #CCC;
+	border: 1px solid #EEE;
 }
 
 #sort-results_dummy {
@@ -978,7 +978,7 @@ body[data-status=offline] .btn.online {
 }
 
 .tc-autocomplete-suggestions li {
-	border-top: 1px solid #CCC;
+	border-top: 1px solid #EEE;
 	padding: 5px 10px;
 	line-height: 20px;
 	cursor: pointer;

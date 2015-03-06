@@ -154,6 +154,7 @@ var User = {
 					User.user.card_token = false;
 				}
 				App.stopLoading();
+				Views.render('account', 'swap', 'card');
 			}, failure: function() {
 				App.stopLoading();
 			}
