@@ -11,7 +11,7 @@
 			<div class="block-section" style="background: white !important; cursor: default;"><strong>We don't offer online bookings in the area you selected. Here are the numbers of some local taxi firms that may be able to provide you with service</strong></div>
 
 			{{#foreach Booking.numbers}}
-				<a class="block-section" href="tel:{{$val.phone.replace(/\ /g,'');}}" style="text-decoration: none;">
+				<a class="block-section btn-ink" href="tel:{{$val.phone.replace(/\ /g,'');}}" style="text-decoration: none;">
 					<span class="fright btn small" style="margin-left: 10px; margin-top: -5px;">{{$val.phone}}</span>
 					{{$val.company}}
 				</a>

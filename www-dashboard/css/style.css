@@ -151,6 +151,7 @@ hr {
 
 .option-button:hover {
 	color: black;
+	background-color: #F4F4F4;
 }
 
 #main {
@@ -245,7 +246,7 @@ h3.underlined {
 }
 
 #footer a[data-render=new] i { background-image: url('../img/icons/new.png'); }
-#footer a[data-render=bin] i { background-image: url('../img/icons/help.png'); }
+#footer a[data-render=bin] i { background-image: url('../img/icons/bin.png'); }
 #footer a[data-render=bookings] i { background-image: url('../img/icons/view_bookings.png'); }
 #footer a[data-render=terminal] i { background-image: url('../img/icons/card.png'); }
 #footer a[data-render=settings] i { background-image: url('../img/icons/console.png'); }

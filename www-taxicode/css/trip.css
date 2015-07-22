@@ -1,0 +1,119 @@
+body {
+	background: #FFFFFF;
+	display: block !important;
+}
+
+.logo {
+	display: inline-block;zoom:1;*display:inline;
+
+	width: 51px;
+	height: 30px;
+
+	background-image: url('../img/trip/logo.png');
+	background-size: 51px 30px;
+	margin: 0px 10px;
+
+}
+
+#header {
+	height: 24px;
+	padding: 10px 0px 15px 0px;
+	text-align: center;
+}
+
+#header {
+	background: #42A79D;
+	color: black;
+}
+
+#footer {
+	background: #42A79D;
+	color: white;
+}
+
+.btn {
+	font-size: 14px;
+	background: #42A79D;
+	color: #FFFFFF;
+	padding: 10px 20px;
+	display: inline-block;zoom:1;*display:inline;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	border: none;
+
+	border-radius: 3px;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	max-width: 100%;
+
+}
+
+.btn:hover, .btn:active {
+	background: #BD1E61;
+	border-color: #000;
+	color: white;
+}
+
+.btn:active {
+	// box-shadow: inset 0px 2px 8px rgba(0,0,0,0.2);
+}
+
+.btn.small {
+	font-size: 14px;
+	line-height: 14px;
+	padding: 5px 15px;
+	width: auto;
+}
+
+/*#footer a {
+	color: black;
+}
+#footer a[data-render=booking] i { background-image: url('../img/aa/book_journey.png'); }
+#footer a[data-render=booking2] i { background-image: url('../img/aa/book_journey.png'); }
+#footer a[data-render=account] i { background-image: url('../img/aa/my_account.png'); }
+#footer a[data-render=bookings] i { background-image: url('../img/aa/view_bookings.png'); }
+#footer a[data-render=help] i { background-image: url('../img/aa/help.png'); }
+#footer a[data-render=console] i { background-image: url('../img/aa/console.png'); }*/
+
+.option-button {
+	color: black;
+	border-radius: 4px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	font-size: 12px;
+	padding: 5px 9px;
+	vertical-align: 8px;
+	background: #FFF;
+	font-weight: bold;
+	margin-right: 10px;
+	cursor: pointer;
+	float: right;
+	display: none;
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.tc-autocomplete-suggestions li:hover, .tc-autocomplete-suggestions li.selected, .result .price, .quote .price {
+	color: #000000 !important;
+}
+
+.loader div {
+	display: inline-block;zoom:1;*display:inline;
+	height: 64px;
+	width: 64px;
+
+	background-image: url("../img/trip/loading@2x.gif");
+	background-size: 64px 64px;
+	background-position: 0px;
+}
+
+#header, #header.option {
+	text-align: left !important;
+}
+
+.calendar .month, .calendar.return .month {
+	background: #FFCC00;
+	color: black;
+}

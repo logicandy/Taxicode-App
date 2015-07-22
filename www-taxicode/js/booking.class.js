@@ -87,6 +87,7 @@ var Booking = {
 		API.get("booking/quote", {
 			data: {
 				pickup: Booking.data.pickup,
+				via: Booking.data.vias ? Booking.data.vias : false,
 				destination: Booking.data.destination,
 				date: date,
 				"return": return_date,
@@ -308,19 +309,6 @@ var Booking = {
 
 					$("body").append("<div class='iframe-outer' id='3DAUTH'><iframe src='" + response.url + "'></iframe></div>");
 					resizeIFrame();
-
-					/*App.alert("<iframe style='width: 100%; height: 250px; border: none;' src='" + response.url + "'></iframe>", {
-						id: "3DAUTH",
-						title: "Contacting Your Bank",
-						bodyStyle: {
-							padding: 0
-						},
-						options: {
-							Cancel: function() {
-								// Cancel 3D Secure
-							}
-						}
-					});*/
 
 					break;
 				case "OK":
@@ -771,7 +759,7 @@ var Booking = {
 					domain = domain.substr(0, domain.length - 1);
 				}
 				// Check API domain matches the message origin
-		    	if (event.origin == domain) {
+		    	if (event.origin.replace("https", "http") == domain.replace("https", "http")) {
 		    		// Decode the JSON response
 		    		var response = $.parseJSON(event.data);
 		    		// Check what message has been responded
@@ -786,9 +774,9 @@ var Booking = {
 			};
 			// Attach the proccess message function to the window
 			if (window.addEventListener) {
-			    window.addEventListener("message", processMessage, false);
+				window.addEventListener("message", processMessage, false);
 			} else {
-			    window.attachEvent("onmessage", processMessage, false);
+				window.attachEvent("onmessage", processMessage, false);
 			}
 			// Mark as setup so this doesn't run twice
 			Booking.setupPostMessageComplete = true;

@@ -24,6 +24,11 @@
 				--><input type="text" name="pickup" maxlength="100" data-required="true" />
 				</div>
 
+				<!--<div class="field">
+					<label>Via</label>--><!--
+				--><!--<input type="text" name="vias" maxlength="100" data-required="false" />
+				</div>-->
+
 				<div class="field">
 					<label>Destination</label><!--
 				--><input type="text" name="destination" maxlength="100" data-required="true" />
@@ -63,7 +68,8 @@
 			</div>
 			
 			
-			<center><input type="submit" class="btn online" value="Get Quote" /></center>
+			<center class="hide"><input type="submit" class="btn online" value="Get Quote" /></center>
+			<center><a class="btn online btn-ink" onclick="$(this).closest('form').submit();">Get Quote</a></center>
 
 		</form>
 

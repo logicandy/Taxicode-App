@@ -217,3 +217,22 @@ $(document).ready(function() {
 		}
 	});*/
 });
+
+$(document).on("click", ".btn-ink", function(event) {
+
+	if (!$(this).children().length) {
+		$(this).html("<span>" + $(this).html() + "</span>");
+	}
+
+	var ink = $("<span class='ink'></span>")
+	$(this).prepend(ink);
+	var size = Math.max($(this).width(), $(this).height());
+	var x = event.pageX - $(this).offset().left - size / 2;
+	var y = event.pageY - $(this).offset().top - size / 2;
+	ink.css({width: size, height: size, top: y + "px", left: x + "px"});
+	setTimeout(function() {
+		ink.remove();
+	}, 1000);
+});
+
+

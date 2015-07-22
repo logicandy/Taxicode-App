@@ -33,7 +33,7 @@
 				} else if (i == journey.length - 1) {
 					request.destination = point;
 				} else {
-					request.waypoints.push({location:point,stopover:true});
+					request.waypoints.push({location: point, stopover: true});
 				}
 			});
 			var directionsDisplay = new google.maps.DirectionsRenderer({map:map});
@@ -70,7 +70,7 @@
 			} else {
 
 				var pickup = $(this).attr('data-pickup');
-				var via = $(this).attr('data-via')?$(this).attr('data-via'):false;
+				var via = $(this).attr('data-via') ? $(this).attr('data-via') : false;
 				var destination = $(this).attr('data-destination');
 				var journey = [];
 

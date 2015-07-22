@@ -142,6 +142,13 @@ switch (AppName) {
 		Config.subdir = "aa";
 		Config.api_key = "AJaRdn234As3kn0d";
 		break;
+	case "trip":
+		Config.app = "trip";
+		Config.title = "Trip";
+		Config.quote_mode = "all";
+		Config.subdir = "trip";
+		Config.api_key = "Dq580rTxHUvzN4ed";
+		break;
 	case "taxicode": case "tc": default:
 		Config.app = "taxicode";
 		Config.title = "Taxicode";
