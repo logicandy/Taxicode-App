@@ -1,3 +1,6 @@
 [submodule "plugins/cordova-plugin-device"]
 	path = plugins/cordova-plugin-device
 	url = https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git
+[submodule "plugins/cordova-plugin-statusbar"]
+	path = plugins/cordova-plugin-statusbar
+	url = https://github.com/apache/cordova-plugin-statusbar.git

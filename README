@@ -16,6 +16,10 @@
 	Javascript. It is designed to be deployed to iOS and Android devices
 	and potentially Kindle/Blackberries/Windows 8 Phones in the long run.
 
+	It also uses git submodules for additional plugins and libraries.  for more
+	information on working with submodules, visit 
+	https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
 	Following is a list of remaining requirements.
 
 #############################################################################
