@@ -7,3 +7,6 @@
 [submodule "plugins/phonegap-build/GAPlugin"]
 	path = plugins/phonegap-build/GAPlugin
 	url = https://github.com/phonegap-build/GAPlugin.git
+[submodule "plugins/phonegap-build/StatusBarPlugin"]
+	path = plugins/phonegap-build/StatusBarPlugin
+	url = https://github.com/phonegap-build/StatusBarPlugin.git
