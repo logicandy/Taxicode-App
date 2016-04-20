@@ -4,6 +4,3 @@
 [submodule "plugins/cordova-plugin-statusbar"]
 	path = plugins/cordova-plugin-statusbar
 	url = https://github.com/apache/cordova-plugin-statusbar.git
-[submodule "GAPlugin"]
-	path = GAPlugin
-	url = https://github.com/phonegap-build/GAPlugin.git
