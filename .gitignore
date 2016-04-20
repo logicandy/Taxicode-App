@@ -11,3 +11,4 @@ dashboard.zip
 *.xap
 *.ipa
 .idea/*
+/www-taxicode/nbproject/private/
