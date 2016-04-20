@@ -12,3 +12,5 @@ dashboard.zip
 *.ipa
 .idea/*
 /www-taxicode/nbproject/private/
+/build/platforms/android/CordovaLib/build/
+/build/

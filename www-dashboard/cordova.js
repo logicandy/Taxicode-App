@@ -1,5 +1,5 @@
 /**
- * Fake phonegap.js file to help for browser testing.
+ * Fake cordova.js file to help for browser testing.
  * This will be replaced with a platform specific JS file when compiled.
  */
 
