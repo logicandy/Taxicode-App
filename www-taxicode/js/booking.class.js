@@ -362,8 +362,8 @@ var Booking = {
 	saveUser: function() {
 		$.each(User.bookings, function(id, b) {
 			User.bookings[id].user = User.user.email;
-			User.bookings[id].pickup = JSON.stringify(b.pickup);
-			User.bookings[id].destination = JSON.stringify(b.destination);
+//			User.bookings[id].pickup = JSON.stringify(b.pickup);
+//			User.bookings[id].destination = JSON.stringify(b.destination);
 		});
 		DBMC.createTable("USER_BOOKINGS", "user, reference, date, return, pickup, destination, price, distance, people, company_name, company_number, status", true, function() {
 			DBMC.insert("USER_BOOKINGS", User.bookings, function() {
@@ -412,6 +412,7 @@ var Booking = {
 	getBookings: function() {
 		DBMC.select("BOOKINGS", "*", false, function(bookings) {
 			Booking.bookings = {};
+			console.log(bookings);
 			for (var i = 0; i < bookings.length; i++) {
 				Booking.bookings[bookings[i].reference] = $.extend({}, bookings[i], {
 					pickup: JSON.parse(bookings[i].pickup),
