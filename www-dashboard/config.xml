@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.taxicode.dashboard" version="1.0.7" versionCode="26" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.taxicode.dashboard" version="1.0.8" android-versionCode="27" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
 	
 	<!-- Meta Data -->
 	<name>Web3r Dashboard</name>
@@ -73,7 +73,7 @@
 	<!-- Plugins -->
 	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
 	<gap:plugin name="com.adobe.plugins.gaplugin" version="2.3.1" />
-	<gap:plugin name="org.apache.cordova.device" version="0.2.8" />
+	<gap:plugin name="cordova-plugin-device" version="https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git" />
 	
 	<feature name="StatusBar">
 		<param name="ios-package" value="CDVStatusBar" onload="true" />
