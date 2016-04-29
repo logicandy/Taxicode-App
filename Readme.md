@@ -1,4 +1,5 @@
-# Taxicode Phonegap / Cordova Version
+# Taxicode App
+## Phonegap / Cordova Version
 
 ## Repository no longer maintained!
 
